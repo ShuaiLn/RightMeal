@@ -82,6 +82,7 @@ class OptimizationResult:
     dominance_flags: tuple[str, ...]
     excluded_foods: dict[str, str] = field(default_factory=dict)  # food_id -> reason
     penalties_applied: dict[str, float] = field(default_factory=dict)
+    horizon_days: int = 7
 
     @property
     def source_mix(self) -> dict[PriceSource, int]:
