@@ -1,8 +1,10 @@
 """Optimizer acceptance tests, including the LA $50/week family case."""
 
+from dataclasses import replace
+
 import pytest
 
-from models import FoodGroup, HouseholdProfile
+from models import FoodGroup, HouseholdProfile, PriceSource
 from optimizer import optimize
 from services.nutrition import NutritionService
 
@@ -92,6 +94,28 @@ class TestCaps:
                 item.food.max_weekly_grams * 1 * 3 / 7, item.food.smallest_package.grams
             )
             assert item.grams <= cap + 1e-6, item.food.id
+
+
+def test_linear_live_pricing_consolidates_packages(
+    foods, foods_by_id, seed_quotes, la_family_profile, nutrition
+):
+    """Under a live per-100ml quote every milk package costs the same per ml;
+    the basket should then use gallons, not a pile of quarts."""
+    milk = foods_by_id["milk_whole"]
+    quotes = dict(seed_quotes)
+    quotes["milk_whole"] = replace(
+        seed_quotes["milk_whole"],
+        source=PriceSource.BLS_REGIONAL_AVERAGE,
+        confidence=0.9,
+        normalized_unit_price=0.105,  # ~$3.97/gallon
+        normalized_unit="100ml",
+    )
+    result = optimize(foods, quotes, la_family_profile, 50.0, 7, nutrition)
+    milk_items = [item for item in result.items if item.food.id == "milk_whole"]
+    total_milk_grams = sum(item.grams for item in milk_items)
+    gallon_grams = max(p.grams for p in milk.package_options)
+    if total_milk_grams >= gallon_grams:
+        assert any(item.package.label == "1 gallon" for item in milk_items)
 
 
 class TestBudgetScaling:

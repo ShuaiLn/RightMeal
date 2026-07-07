@@ -786,9 +786,9 @@
       "is_liquid": true,
       "density_g_per_ml": 1.03,
       "package_options": [
-        { "label": "1 gallon", "grams": 3899, "ml": 3785, "seed_price": 3.99 },
-        { "label": "half gallon", "grams": 1950, "ml": 1893, "seed_price": 2.35 },
-        { "label": "1 quart", "grams": 974, "ml": 946, "seed_price": 1.49 }
+        { "label": "1 gallon", "grams": 3898.55, "ml": 3785, "seed_price": 3.99 },
+        { "label": "half gallon", "grams": 1949.79, "ml": 1893, "seed_price": 2.35 },
+        { "label": "1 quart", "grams": 974.38, "ml": 946, "seed_price": 1.49 }
       ],
       "max_weekly_grams": 4000,
       "allergen_tags": ["dairy"],
@@ -870,8 +870,8 @@
       "is_liquid": true,
       "density_g_per_ml": 1.03,
       "package_options": [
-        { "label": "half gallon", "grams": 1950, "ml": 1893, "seed_price": 2.99 },
-        { "label": "32 oz carton", "grams": 974, "ml": 946, "seed_price": 1.89 }
+        { "label": "half gallon", "grams": 1949.79, "ml": 1893, "seed_price": 2.99 },
+        { "label": "32 oz carton", "grams": 974.38, "ml": 946, "seed_price": 1.89 }
       ],
       "max_weekly_grams": 4000,
       "allergen_tags": ["soy"],
@@ -898,8 +898,8 @@
       "is_liquid": true,
       "density_g_per_ml": 0.92,
       "package_options": [
-        { "label": "48 fl oz bottle", "grams": 1306, "ml": 1420, "seed_price": 4.29 },
-        { "label": "16 fl oz bottle", "grams": 435, "ml": 473, "seed_price": 2.19 }
+        { "label": "48 fl oz bottle", "grams": 1306.4, "ml": 1420, "seed_price": 4.29 },
+        { "label": "16 fl oz bottle", "grams": 435.16, "ml": 473, "seed_price": 2.19 }
       ],
       "max_weekly_grams": 250,
       "allergen_tags": [],
@@ -926,7 +926,7 @@
       "is_liquid": true,
       "density_g_per_ml": 0.92,
       "package_options": [
-        { "label": "17 fl oz bottle", "grams": 463, "ml": 503, "seed_price": 7.99 }
+        { "label": "17 fl oz bottle", "grams": 462.76, "ml": 503, "seed_price": 7.99 }
       ],
       "max_weekly_grams": 250,
       "allergen_tags": [],

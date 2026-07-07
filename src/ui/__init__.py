@@ -1,0 +1,1 @@
+"""RightMeal Flet UI."""

@@ -27,7 +27,7 @@
       "item_code": "709112",
       "description": "Milk, fresh, whole, fortified, per gal.",
       "bls_unit": "gallon",
-      "grams_per_unit": 3899,
+      "grams_per_unit": 3898.55,
       "ml_per_unit": 3785
     },
     "bread_whole_wheat": {

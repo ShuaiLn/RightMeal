@@ -98,7 +98,12 @@ def optimize(
                 state.remove(unit)
                 if delta <= EPSILON:
                     continue
-                rank = (delta / unit.unit_cost if unit.unit_cost > 0 else float("inf"), -unit.unit_cost)
+                value_density = delta / unit.unit_cost if unit.unit_cost > 0 else float("inf")
+                # Tie-break on package size: under linear live pricing every
+                # size of a food scores identically per dollar (up to float
+                # noise), and fewer, larger packages read better on a
+                # shopping list — so quantize before comparing.
+                rank = (round(value_density, 6), unit.grams)
                 if best is None or rank > best[0]:
                     best = (rank, unit)
             if best is None:

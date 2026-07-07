@@ -74,7 +74,7 @@ def test_group_coverage_sums_grams(nutrition, foods_by_id):
     ]
     coverage = nutrition.group_coverage(items)
     assert coverage[FoodGroup.GRAINS_STARCHY] == pytest.approx(2 * 453.6)
-    assert coverage[FoodGroup.DAIRY_FORTIFIED_ALT] == pytest.approx(3899)
+    assert coverage[FoodGroup.DAIRY_FORTIFIED_ALT] == pytest.approx(milk.package_options[0].grams)
     assert FoodGroup.FRUITS not in coverage
 
 
