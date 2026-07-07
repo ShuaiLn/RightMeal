@@ -82,8 +82,23 @@ def to_grams(value: float, unit: str, food: Food) -> float | None:
             return value * per_dozen
         return None
     if unit in ("ct", "count", "each", "ea"):
+        per_count = _grams_per_count(food)
+        if per_count is not None:
+            return value * per_count
         # Curated fallback: assume the smallest package is one countable unit.
         return value * food.smallest_package.grams
+    return None
+
+
+def _grams_per_count(food: Food) -> float | None:
+    """Grams per single countable unit, derived from curated packages."""
+    per_dozen = _package_grams_matching(food, "dozen")
+    if per_dozen is not None:
+        return per_dozen / 12.0
+    for pkg in food.package_options:
+        size = parse_size(pkg.label)
+        if size and size[1] in ("ct", "count", "each", "ea"):
+            return pkg.grams / size[0]
     return None
 
 

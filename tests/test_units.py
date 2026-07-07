@@ -41,6 +41,12 @@ class TestToGrams:
         assert to_grams(1, "dozen", eggs) == pytest.approx(600)
         assert to_grams(2, "dozen", eggs) == pytest.approx(1200)
 
+    def test_count_units_derive_from_packages(self, foods_by_id):
+        eggs = foods_by_id["eggs_large"]
+        assert to_grams(12, "ct", eggs) == pytest.approx(600)  # 50 g per egg
+        tortillas = foods_by_id["tortillas_flour"]
+        assert to_grams(10, "ct", tortillas) == pytest.approx(490)
+
     def test_volume_needs_density(self, foods_by_id):
         milk = foods_by_id["milk_whole"]  # density 1.03
         assert to_grams(1, "gal", milk) == pytest.approx(3785.41 * 1.03)
