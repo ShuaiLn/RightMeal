@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "notes": "Explicit food -> BLS Average Price (AP) series mappings. A food id absent from 'series' (or mapped to null) must NEVER be priced by the BLS provider. Full series id = 'APU' + area_code + item_code. Area is resolved from the first ZIP digit to a census region; '0000' is the U.S. city average fallback.",
+  "area_codes": {
+    "default": "0000",
+    "zip_prefix_to_area": {
+      "0": "0100",
+      "1": "0100",
+      "2": "0300",
+      "3": "0300",
+      "4": "0200",
+      "5": "0200",
+      "6": "0200",
+      "7": "0300",
+      "8": "0400",
+      "9": "0400"
+    }
+  },
+  "series": {
+    "eggs_large": {
+      "item_code": "708111",
+      "description": "Eggs, grade A, large, per doz.",
+      "bls_unit": "dozen",
+      "grams_per_unit": 600
+    },
+    "milk_whole": {
+      "item_code": "709112",
+      "description": "Milk, fresh, whole, fortified, per gal.",
+      "bls_unit": "gallon",
+      "grams_per_unit": 3899,
+      "ml_per_unit": 3785
+    },
+    "bread_whole_wheat": {
+      "item_code": "702212",
+      "description": "Bread, whole wheat, pan, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "bananas": {
+      "item_code": "711211",
+      "description": "Bananas, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "ground_beef": {
+      "item_code": "703112",
+      "description": "Ground beef, 100% beef, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "chicken_breast": {
+      "item_code": "FF1101",
+      "description": "Chicken breast, boneless, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "rice_white": {
+      "item_code": "701312",
+      "description": "Rice, white, long grain, uncooked, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "potatoes_russet": {
+      "item_code": "712112",
+      "description": "Potatoes, white, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "oranges_navel": {
+      "item_code": "711311",
+      "description": "Oranges, navel, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "cheddar_cheese": {
+      "item_code": "710212",
+      "description": "Cheddar cheese, natural, per lb.",
+      "bls_unit": "lb",
+      "grams_per_unit": 453.6
+    },
+    "tomatoes_canned": null
+  }
+}

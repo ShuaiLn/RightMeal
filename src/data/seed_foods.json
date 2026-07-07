@@ -1,0 +1,976 @@
+{
+  "version": 1,
+  "notes": "Curated seed foods. Nutrients are per 100 g of edible food on the stated prep_state basis (dry foods on a dry basis). edible_fraction converts purchased grams to edible grams. Values are simplified from USDA FoodData Central records; fdc_id is set only where a curated mapping is confident, and live FDC lookups are optional enrichment only — curated values always win.",
+  "foods": [
+    {
+      "id": "brown_rice",
+      "name": "Brown rice, dry",
+      "food_group": "grains_starchy",
+      "prep_state": "raw",
+      "form": "dry",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 453.6, "seed_price": 1.39 },
+        { "label": "2 lb bag", "grams": 907.2, "seed_price": 2.49 }
+      ],
+      "max_weekly_grams": 700,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["brown rice", "whole grain rice"],
+      "nutrients_per_100g": {
+        "calories_kcal": 370, "protein_g": 7.9, "fiber_g": 3.5,
+        "calcium_mg": 23, "iron_mg": 1.5, "potassium_mg": 223,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 20, "magnesium_mg": 143, "zinc_mg": 2.0
+      }
+    },
+    {
+      "id": "rice_white",
+      "name": "White rice, long grain, enriched, dry",
+      "food_group": "grains_starchy",
+      "prep_state": "raw",
+      "form": "dry",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 453.6, "seed_price": 0.99 },
+        { "label": "5 lb bag", "grams": 2268, "seed_price": 3.99 }
+      ],
+      "max_weekly_grams": 700,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["white rice", "long grain rice", "enriched rice"],
+      "nutrients_per_100g": {
+        "calories_kcal": 365, "protein_g": 7.1, "fiber_g": 1.3,
+        "calcium_mg": 28, "iron_mg": 4.3, "potassium_mg": 115,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 231, "magnesium_mg": 25, "zinc_mg": 1.1
+      }
+    },
+    {
+      "id": "rolled_oats",
+      "name": "Rolled oats, dry",
+      "food_group": "grains_starchy",
+      "prep_state": "raw",
+      "form": "dry",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "18 oz canister", "grams": 510, "seed_price": 1.99 },
+        { "label": "42 oz canister", "grams": 1190, "seed_price": 3.79 }
+      ],
+      "max_weekly_grams": 500,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["rolled oats", "old fashioned oats", "oatmeal"],
+      "nutrients_per_100g": {
+        "calories_kcal": 379, "protein_g": 13.2, "fiber_g": 10.1,
+        "calcium_mg": 52, "iron_mg": 4.3, "potassium_mg": 362,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 32, "magnesium_mg": 138, "zinc_mg": 3.6
+      }
+    },
+    {
+      "id": "bread_whole_wheat",
+      "name": "Whole wheat bread",
+      "food_group": "grains_starchy",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "20 oz loaf", "grams": 567, "seed_price": 2.79 }
+      ],
+      "max_weekly_grams": 600,
+      "allergen_tags": ["wheat", "gluten"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["whole wheat bread", "wheat bread loaf"],
+      "nutrients_per_100g": {
+        "calories_kcal": 250, "protein_g": 12.3, "fiber_g": 6.8,
+        "calcium_mg": 161, "iron_mg": 2.5, "potassium_mg": 250,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 42, "magnesium_mg": 76, "zinc_mg": 1.8
+      }
+    },
+    {
+      "id": "spaghetti_dry",
+      "name": "Spaghetti, enriched, dry",
+      "food_group": "grains_starchy",
+      "prep_state": "raw",
+      "form": "dry",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb box", "grams": 453.6, "seed_price": 1.25 }
+      ],
+      "max_weekly_grams": 500,
+      "allergen_tags": ["wheat", "gluten"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["spaghetti", "pasta"],
+      "nutrients_per_100g": {
+        "calories_kcal": 371, "protein_g": 13.0, "fiber_g": 3.2,
+        "calcium_mg": 21, "iron_mg": 3.3, "potassium_mg": 223,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 237, "magnesium_mg": 53, "zinc_mg": 1.4
+      }
+    },
+    {
+      "id": "tortillas_flour",
+      "name": "Flour tortillas",
+      "food_group": "grains_starchy",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "10 ct pack", "grams": 490, "seed_price": 2.99 }
+      ],
+      "max_weekly_grams": 500,
+      "allergen_tags": ["wheat", "gluten"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["flour tortillas", "tortilla pack"],
+      "nutrients_per_100g": {
+        "calories_kcal": 310, "protein_g": 8.2, "fiber_g": 2.2,
+        "calcium_mg": 146, "iron_mg": 3.6, "potassium_mg": 125,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 110, "magnesium_mg": 22, "zinc_mg": 0.6
+      }
+    },
+    {
+      "id": "potatoes_russet",
+      "name": "Russet potatoes",
+      "food_group": "grains_starchy",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 0.89 },
+        { "label": "5 lb bag", "grams": 2268, "seed_price": 3.49 }
+      ],
+      "max_weekly_grams": 1500,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["russet potatoes", "baking potatoes"],
+      "edible_fraction": 0.9,
+      "nutrients_per_100g": {
+        "calories_kcal": 79, "protein_g": 2.1, "fiber_g": 1.3,
+        "calcium_mg": 13, "iron_mg": 0.86, "potassium_mg": 417,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 5.7, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 14, "magnesium_mg": 23, "zinc_mg": 0.3
+      }
+    },
+    {
+      "id": "eggs_large",
+      "name": "Eggs, large",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": 748967,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 dozen", "grams": 600, "seed_price": 3.2 },
+        { "label": "half dozen", "grams": 300, "seed_price": 1.85 }
+      ],
+      "max_weekly_grams": 600,
+      "allergen_tags": ["egg"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["large eggs", "grade a eggs"],
+      "nutrients_per_100g": {
+        "calories_kcal": 143, "protein_g": 12.6, "fiber_g": 0,
+        "calcium_mg": 56, "iron_mg": 1.75, "potassium_mg": 138,
+        "vitamin_a_mcg_rae": 160, "vitamin_c_mg": 0, "vitamin_d_mcg": 2.0,
+        "folate_mcg_dfe": 47, "magnesium_mg": 12, "zinc_mg": 1.29
+      }
+    },
+    {
+      "id": "chicken_breast",
+      "name": "Chicken breast, boneless skinless",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 3.49 },
+        { "label": "3 lb family pack", "grams": 1360.8, "seed_price": 9.99 }
+      ],
+      "max_weekly_grams": 900,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["chicken breast", "boneless skinless chicken"],
+      "nutrients_per_100g": {
+        "calories_kcal": 120, "protein_g": 22.5, "fiber_g": 0,
+        "calcium_mg": 5, "iron_mg": 0.37, "potassium_mg": 334,
+        "vitamin_a_mcg_rae": 9, "vitamin_c_mg": 0, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 9, "magnesium_mg": 28, "zinc_mg": 0.68
+      }
+    },
+    {
+      "id": "ground_beef",
+      "name": "Ground beef, 80% lean",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 4.99 }
+      ],
+      "max_weekly_grams": 700,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["ground beef", "80/20 ground beef"],
+      "nutrients_per_100g": {
+        "calories_kcal": 254, "protein_g": 17.2, "fiber_g": 0,
+        "calcium_mg": 18, "iron_mg": 1.94, "potassium_mg": 270,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 7, "magnesium_mg": 17, "zinc_mg": 4.18
+      }
+    },
+    {
+      "id": "canned_tuna",
+      "name": "Canned tuna, light, in water",
+      "food_group": "protein",
+      "prep_state": "canned",
+      "form": "canned",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "5 oz can (drained 120 g)", "grams": 120, "seed_price": 1.19 }
+      ],
+      "max_weekly_grams": 360,
+      "allergen_tags": ["fish"],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["canned tuna", "chunk light tuna in water"],
+      "nutrients_per_100g": {
+        "calories_kcal": 116, "protein_g": 25.5, "fiber_g": 0,
+        "calcium_mg": 11, "iron_mg": 1.53, "potassium_mg": 237,
+        "vitamin_a_mcg_rae": 17, "vitamin_c_mg": 0, "vitamin_d_mcg": 1.2,
+        "folate_mcg_dfe": 4, "magnesium_mg": 27, "zinc_mg": 0.77
+      }
+    },
+    {
+      "id": "black_beans_dry",
+      "name": "Black beans, dry",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "dry",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 453.6, "seed_price": 1.59 }
+      ],
+      "max_weekly_grams": 450,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["black beans dry", "dried black beans"],
+      "nutrients_per_100g": {
+        "calories_kcal": 341, "protein_g": 21.6, "fiber_g": 15.5,
+        "calcium_mg": 123, "iron_mg": 5.0, "potassium_mg": 1483,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 444, "magnesium_mg": 171, "zinc_mg": 3.7
+      }
+    },
+    {
+      "id": "lentils_dry",
+      "name": "Lentils, dry",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "dry",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 453.6, "seed_price": 1.79 }
+      ],
+      "max_weekly_grams": 450,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["lentils", "dried lentils"],
+      "nutrients_per_100g": {
+        "calories_kcal": 352, "protein_g": 24.6, "fiber_g": 10.7,
+        "calcium_mg": 35, "iron_mg": 6.5, "potassium_mg": 677,
+        "vitamin_a_mcg_rae": 2, "vitamin_c_mg": 4.5, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 479, "magnesium_mg": 47, "zinc_mg": 3.3
+      }
+    },
+    {
+      "id": "chickpeas_canned",
+      "name": "Chickpeas, canned",
+      "food_group": "protein",
+      "prep_state": "canned",
+      "form": "canned",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "15.5 oz can (drained 250 g)", "grams": 250, "seed_price": 1.09 }
+      ],
+      "max_weekly_grams": 750,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["canned chickpeas", "garbanzo beans"],
+      "nutrients_per_100g": {
+        "calories_kcal": 139, "protein_g": 7.0, "fiber_g": 6.2,
+        "calcium_mg": 45, "iron_mg": 1.07, "potassium_mg": 172,
+        "vitamin_a_mcg_rae": 1, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 48, "magnesium_mg": 39, "zinc_mg": 1.0
+      }
+    },
+    {
+      "id": "peanut_butter",
+      "name": "Peanut butter",
+      "food_group": "protein",
+      "prep_state": "prepared",
+      "form": "shelf-stable",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "16 oz jar", "grams": 462, "seed_price": 2.79 }
+      ],
+      "max_weekly_grams": 350,
+      "allergen_tags": ["peanut"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["peanut butter", "creamy peanut butter"],
+      "nutrients_per_100g": {
+        "calories_kcal": 588, "protein_g": 25.1, "fiber_g": 6.0,
+        "calcium_mg": 49, "iron_mg": 1.74, "potassium_mg": 649,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 87, "magnesium_mg": 168, "zinc_mg": 2.5
+      }
+    },
+    {
+      "id": "tofu_firm",
+      "name": "Tofu, firm",
+      "food_group": "protein",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "14 oz pack", "grams": 396, "seed_price": 2.29 }
+      ],
+      "max_weekly_grams": 800,
+      "allergen_tags": ["soy"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["firm tofu", "tofu"],
+      "nutrients_per_100g": {
+        "calories_kcal": 78, "protein_g": 9.0, "fiber_g": 0.9,
+        "calcium_mg": 201, "iron_mg": 1.6, "potassium_mg": 148,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0.2, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 19, "magnesium_mg": 37, "zinc_mg": 0.8
+      }
+    },
+    {
+      "id": "carrots",
+      "name": "Carrots",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 453.6, "seed_price": 1.09 },
+        { "label": "2 lb bag", "grams": 907.2, "seed_price": 1.89 }
+      ],
+      "max_weekly_grams": 1000,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["carrots", "whole carrots bag"],
+      "edible_fraction": 0.95,
+      "nutrients_per_100g": {
+        "calories_kcal": 41, "protein_g": 0.93, "fiber_g": 2.8,
+        "calcium_mg": 33, "iron_mg": 0.3, "potassium_mg": 320,
+        "vitamin_a_mcg_rae": 835, "vitamin_c_mg": 5.9, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 19, "magnesium_mg": 12, "zinc_mg": 0.24
+      }
+    },
+    {
+      "id": "onions_yellow",
+      "name": "Yellow onions",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 1.19 },
+        { "label": "3 lb bag", "grams": 1360.8, "seed_price": 2.79 }
+      ],
+      "max_weekly_grams": 800,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["yellow onions", "onions"],
+      "edible_fraction": 0.9,
+      "nutrients_per_100g": {
+        "calories_kcal": 40, "protein_g": 1.1, "fiber_g": 1.7,
+        "calcium_mg": 23, "iron_mg": 0.21, "potassium_mg": 146,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 7.4, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 19, "magnesium_mg": 10, "zinc_mg": 0.17
+      }
+    },
+    {
+      "id": "cabbage_green",
+      "name": "Green cabbage",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 head (~2 lb)", "grams": 908, "seed_price": 1.99 }
+      ],
+      "max_weekly_grams": 1000,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["green cabbage", "cabbage head"],
+      "edible_fraction": 0.8,
+      "nutrients_per_100g": {
+        "calories_kcal": 25, "protein_g": 1.28, "fiber_g": 2.5,
+        "calcium_mg": 40, "iron_mg": 0.47, "potassium_mg": 170,
+        "vitamin_a_mcg_rae": 5, "vitamin_c_mg": 36.6, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 43, "magnesium_mg": 12, "zinc_mg": 0.18
+      }
+    },
+    {
+      "id": "spinach_fresh",
+      "name": "Fresh spinach",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "10 oz bag", "grams": 283, "seed_price": 2.49 }
+      ],
+      "max_weekly_grams": 600,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["fresh spinach", "spinach bag"],
+      "nutrients_per_100g": {
+        "calories_kcal": 23, "protein_g": 2.86, "fiber_g": 2.2,
+        "calcium_mg": 99, "iron_mg": 2.71, "potassium_mg": 558,
+        "vitamin_a_mcg_rae": 469, "vitamin_c_mg": 28.1, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 194, "magnesium_mg": 79, "zinc_mg": 0.53
+      }
+    },
+    {
+      "id": "broccoli_frozen",
+      "name": "Frozen broccoli",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "frozen",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 454, "seed_price": 1.99 }
+      ],
+      "max_weekly_grams": 900,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["frozen broccoli", "broccoli florets frozen"],
+      "nutrients_per_100g": {
+        "calories_kcal": 26, "protein_g": 2.8, "fiber_g": 3.0,
+        "calcium_mg": 56, "iron_mg": 0.8, "potassium_mg": 212,
+        "vitamin_a_mcg_rae": 46, "vitamin_c_mg": 56.4, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 45, "magnesium_mg": 13, "zinc_mg": 0.4
+      }
+    },
+    {
+      "id": "mixed_veg_frozen",
+      "name": "Frozen mixed vegetables",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "frozen",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 454, "seed_price": 1.79 }
+      ],
+      "max_weekly_grams": 900,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["frozen mixed vegetables", "mixed veggies frozen"],
+      "nutrients_per_100g": {
+        "calories_kcal": 65, "protein_g": 3.3, "fiber_g": 4.0,
+        "calcium_mg": 25, "iron_mg": 0.95, "potassium_mg": 212,
+        "vitamin_a_mcg_rae": 385, "vitamin_c_mg": 10.4, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 27, "magnesium_mg": 17, "zinc_mg": 0.45
+      }
+    },
+    {
+      "id": "tomatoes_canned",
+      "name": "Canned diced tomatoes",
+      "food_group": "vegetables",
+      "prep_state": "canned",
+      "form": "canned",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "14.5 oz can", "grams": 411, "seed_price": 1.29 }
+      ],
+      "max_weekly_grams": 850,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["canned diced tomatoes", "diced tomatoes"],
+      "nutrients_per_100g": {
+        "calories_kcal": 17, "protein_g": 0.8, "fiber_g": 1.0,
+        "calcium_mg": 33, "iron_mg": 0.65, "potassium_mg": 191,
+        "vitamin_a_mcg_rae": 12, "vitamin_c_mg": 9.2, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 9, "magnesium_mg": 12, "zinc_mg": 0.15
+      }
+    },
+    {
+      "id": "bananas",
+      "name": "Bananas",
+      "food_group": "fruits",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 0.59 },
+        { "label": "3 lb bunch", "grams": 1360.8, "seed_price": 1.69 }
+      ],
+      "max_weekly_grams": 1400,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["bananas"],
+      "edible_fraction": 0.64,
+      "nutrients_per_100g": {
+        "calories_kcal": 89, "protein_g": 1.1, "fiber_g": 2.6,
+        "calcium_mg": 5, "iron_mg": 0.26, "potassium_mg": 358,
+        "vitamin_a_mcg_rae": 3, "vitamin_c_mg": 8.7, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 20, "magnesium_mg": 27, "zinc_mg": 0.15
+      }
+    },
+    {
+      "id": "apples_gala",
+      "name": "Gala apples",
+      "food_group": "fruits",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 1.49 },
+        { "label": "3 lb bag", "grams": 1360.8, "seed_price": 3.99 }
+      ],
+      "max_weekly_grams": 1400,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["gala apples", "apples"],
+      "edible_fraction": 0.9,
+      "nutrients_per_100g": {
+        "calories_kcal": 52, "protein_g": 0.26, "fiber_g": 2.4,
+        "calcium_mg": 6, "iron_mg": 0.12, "potassium_mg": 107,
+        "vitamin_a_mcg_rae": 3, "vitamin_c_mg": 4.6, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 3, "magnesium_mg": 5, "zinc_mg": 0.04
+      }
+    },
+    {
+      "id": "oranges_navel",
+      "name": "Navel oranges",
+      "food_group": "fruits",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 1.39 },
+        { "label": "4 lb bag", "grams": 1814.4, "seed_price": 4.49 }
+      ],
+      "max_weekly_grams": 1400,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["navel oranges", "oranges"],
+      "edible_fraction": 0.73,
+      "nutrients_per_100g": {
+        "calories_kcal": 47, "protein_g": 0.94, "fiber_g": 2.4,
+        "calcium_mg": 40, "iron_mg": 0.1, "potassium_mg": 181,
+        "vitamin_a_mcg_rae": 11, "vitamin_c_mg": 53.2, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 30, "magnesium_mg": 10, "zinc_mg": 0.07
+      }
+    },
+    {
+      "id": "berries_frozen",
+      "name": "Frozen mixed berries",
+      "food_group": "fruits",
+      "prep_state": "raw",
+      "form": "frozen",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "12 oz bag", "grams": 340, "seed_price": 2.99 }
+      ],
+      "max_weekly_grams": 700,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["frozen mixed berries", "frozen berries"],
+      "nutrients_per_100g": {
+        "calories_kcal": 42, "protein_g": 1.1, "fiber_g": 3.1,
+        "calcium_mg": 16, "iron_mg": 0.6, "potassium_mg": 100,
+        "vitamin_a_mcg_rae": 3, "vitamin_c_mg": 21, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 10, "magnesium_mg": 10, "zinc_mg": 0.2
+      }
+    },
+    {
+      "id": "raisins",
+      "name": "Raisins",
+      "food_group": "fruits",
+      "prep_state": "prepared",
+      "form": "dried",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "12 oz box", "grams": 340, "seed_price": 2.49 }
+      ],
+      "max_weekly_grams": 250,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["raisins", "seedless raisins"],
+      "nutrients_per_100g": {
+        "calories_kcal": 299, "protein_g": 3.1, "fiber_g": 3.7,
+        "calcium_mg": 50, "iron_mg": 1.88, "potassium_mg": 749,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 2.3, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 5, "magnesium_mg": 32, "zinc_mg": 0.22
+      }
+    },
+    {
+      "id": "milk_whole",
+      "name": "Whole milk",
+      "food_group": "dairy_fortified_alt",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": 746782,
+      "is_liquid": true,
+      "density_g_per_ml": 1.03,
+      "package_options": [
+        { "label": "1 gallon", "grams": 3899, "ml": 3785, "seed_price": 3.99 },
+        { "label": "half gallon", "grams": 1950, "ml": 1893, "seed_price": 2.35 },
+        { "label": "1 quart", "grams": 974, "ml": 946, "seed_price": 1.49 }
+      ],
+      "max_weekly_grams": 4000,
+      "allergen_tags": ["dairy"],
+      "lactose": true,
+      "vegetarian": true,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["whole milk", "whole milk gallon"],
+      "nutrients_per_100g": {
+        "calories_kcal": 61, "protein_g": 3.15, "fiber_g": 0,
+        "calcium_mg": 113, "iron_mg": 0.03, "potassium_mg": 132,
+        "vitamin_a_mcg_rae": 46, "vitamin_c_mg": 0, "vitamin_d_mcg": 1.3,
+        "folate_mcg_dfe": 5, "magnesium_mg": 10, "zinc_mg": 0.37
+      }
+    },
+    {
+      "id": "yogurt_plain",
+      "name": "Plain yogurt, whole milk",
+      "food_group": "dairy_fortified_alt",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "32 oz tub", "grams": 907, "seed_price": 3.49 }
+      ],
+      "max_weekly_grams": 1200,
+      "allergen_tags": ["dairy"],
+      "lactose": true,
+      "vegetarian": true,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["plain yogurt", "whole milk yogurt tub"],
+      "nutrients_per_100g": {
+        "calories_kcal": 61, "protein_g": 3.5, "fiber_g": 0,
+        "calcium_mg": 121, "iron_mg": 0.05, "potassium_mg": 155,
+        "vitamin_a_mcg_rae": 27, "vitamin_c_mg": 0.5, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 7, "magnesium_mg": 12, "zinc_mg": 0.59
+      }
+    },
+    {
+      "id": "cheddar_cheese",
+      "name": "Cheddar cheese",
+      "food_group": "dairy_fortified_alt",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "8 oz block", "grams": 227, "seed_price": 2.69 },
+        { "label": "16 oz block", "grams": 454, "seed_price": 4.49 }
+      ],
+      "max_weekly_grams": 350,
+      "allergen_tags": ["dairy"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["cheddar cheese block", "cheddar"],
+      "nutrients_per_100g": {
+        "calories_kcal": 403, "protein_g": 22.9, "fiber_g": 0,
+        "calcium_mg": 710, "iron_mg": 0.14, "potassium_mg": 76,
+        "vitamin_a_mcg_rae": 330, "vitamin_c_mg": 0, "vitamin_d_mcg": 0.6,
+        "folate_mcg_dfe": 27, "magnesium_mg": 27, "zinc_mg": 3.64
+      }
+    },
+    {
+      "id": "soy_milk_fortified",
+      "name": "Fortified soy milk",
+      "food_group": "dairy_fortified_alt",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": true,
+      "density_g_per_ml": 1.03,
+      "package_options": [
+        { "label": "half gallon", "grams": 1950, "ml": 1893, "seed_price": 2.99 },
+        { "label": "32 oz carton", "grams": 974, "ml": 946, "seed_price": 1.89 }
+      ],
+      "max_weekly_grams": 4000,
+      "allergen_tags": ["soy"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["fortified soy milk", "soy milk"],
+      "nutrients_per_100g": {
+        "calories_kcal": 45, "protein_g": 2.9, "fiber_g": 0.4,
+        "calcium_mg": 123, "iron_mg": 0.42, "potassium_mg": 118,
+        "vitamin_a_mcg_rae": 63, "vitamin_c_mg": 0, "vitamin_d_mcg": 1.2,
+        "folate_mcg_dfe": 18, "magnesium_mg": 15, "zinc_mg": 0.25
+      }
+    },
+    {
+      "id": "canola_oil",
+      "name": "Canola oil",
+      "food_group": "healthy_fats",
+      "prep_state": "prepared",
+      "form": "shelf-stable",
+      "fdc_id": null,
+      "is_liquid": true,
+      "density_g_per_ml": 0.92,
+      "package_options": [
+        { "label": "48 fl oz bottle", "grams": 1306, "ml": 1420, "seed_price": 4.29 },
+        { "label": "16 fl oz bottle", "grams": 435, "ml": 473, "seed_price": 2.19 }
+      ],
+      "max_weekly_grams": 250,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["canola oil", "vegetable oil canola"],
+      "nutrients_per_100g": {
+        "calories_kcal": 884, "protein_g": 0, "fiber_g": 0,
+        "calcium_mg": 0, "iron_mg": 0, "potassium_mg": 0,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 0, "magnesium_mg": 0, "zinc_mg": 0
+      }
+    },
+    {
+      "id": "olive_oil",
+      "name": "Olive oil",
+      "food_group": "healthy_fats",
+      "prep_state": "prepared",
+      "form": "shelf-stable",
+      "fdc_id": null,
+      "is_liquid": true,
+      "density_g_per_ml": 0.92,
+      "package_options": [
+        { "label": "17 fl oz bottle", "grams": 463, "ml": 503, "seed_price": 7.99 }
+      ],
+      "max_weekly_grams": 250,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["olive oil", "extra virgin olive oil"],
+      "nutrients_per_100g": {
+        "calories_kcal": 884, "protein_g": 0, "fiber_g": 0,
+        "calcium_mg": 1, "iron_mg": 0.56, "potassium_mg": 1,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 0, "magnesium_mg": 0, "zinc_mg": 0
+      }
+    },
+    {
+      "id": "avocados",
+      "name": "Avocados",
+      "food_group": "healthy_fats",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 avocado", "grams": 170, "seed_price": 1.1 },
+        { "label": "bag of 4", "grams": 680, "seed_price": 3.99 }
+      ],
+      "max_weekly_grams": 700,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["avocados", "hass avocado"],
+      "edible_fraction": 0.74,
+      "nutrients_per_100g": {
+        "calories_kcal": 160, "protein_g": 2.0, "fiber_g": 6.7,
+        "calcium_mg": 12, "iron_mg": 0.55, "potassium_mg": 485,
+        "vitamin_a_mcg_rae": 7, "vitamin_c_mg": 10, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 81, "magnesium_mg": 29, "zinc_mg": 0.64
+      }
+    }
+  ]
+}

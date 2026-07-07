@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "notes": "Simplified DRI-based daily targets per person type (gender-averaged). This is an MVP planning aid inspired by the Thrifty Food Plan structure — not the USDA TFP, not an official nutrition scoring system, and not medical advice.",
+  "person_types": {
+    "adult": {
+      "calories_kcal": 2200, "protein_g": 55, "fiber_g": 28,
+      "calcium_mg": 1000, "iron_mg": 12, "potassium_mg": 3400,
+      "vitamin_a_mcg_rae": 800, "vitamin_c_mg": 82, "vitamin_d_mcg": 15,
+      "folate_mcg_dfe": 400, "magnesium_mg": 370, "zinc_mg": 10
+    },
+    "child": {
+      "calories_kcal": 1600, "protein_g": 25, "fiber_g": 20,
+      "calcium_mg": 1000, "iron_mg": 9, "potassium_mg": 2400,
+      "vitamin_a_mcg_rae": 500, "vitamin_c_mg": 40, "vitamin_d_mcg": 15,
+      "folate_mcg_dfe": 250, "magnesium_mg": 180, "zinc_mg": 6
+    },
+    "senior": {
+      "calories_kcal": 1900, "protein_g": 60, "fiber_g": 25,
+      "calcium_mg": 1200, "iron_mg": 8, "potassium_mg": 3100,
+      "vitamin_a_mcg_rae": 750, "vitamin_c_mg": 82, "vitamin_d_mcg": 20,
+      "folate_mcg_dfe": 400, "magnesium_mg": 350, "zinc_mg": 10
+    }
+  },
+  "group_weekly_caps_g_per_person": {
+    "grains_starchy": 3200,
+    "protein": 2500,
+    "vegetables": 4000,
+    "fruits": 3500,
+    "dairy_fortified_alt": 5000,
+    "healthy_fats": 500
+  }
+}
