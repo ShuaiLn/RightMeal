@@ -10,7 +10,7 @@ import theme
 from models import HouseholdProfile
 from models.profile import API_KEY_NAMES
 from services.keys import resolve_key
-from ui.components import muted_text, section_card
+from ui.components import muted_text, primary_button, section_card, style_field
 from ui.household_form import HouseholdForm
 
 API_KEY_FIELD_LABELS = {
@@ -44,17 +44,18 @@ def build_profile_view(
 ) -> ft.Control:
     form = HouseholdForm(page, profile)
 
-    key_fields = {
-        name: ft.TextField(
+    key_fields = {}
+    for name in API_KEY_NAMES:
+        field = ft.TextField(
             label=API_KEY_FIELD_LABELS[name],
             value=profile.api_keys.get(name, ""),
             password=True,
             can_reveal_password=True,
             width=340,
         )
-        for name in API_KEY_NAMES
-    }
-    status_line = muted_text(_provider_status(profile))
+        style_field(field)
+        key_fields[name] = field
+    status_line = muted_text(_provider_status(profile), size=12)
 
     def save(e):
         if not form.validate():
@@ -71,34 +72,41 @@ def build_profile_view(
     def delete(e):
         on_delete()
 
+    save_button = primary_button("Save profile", icon=ft.Icons.CHECK)
+    save_button.on_click = save
+
+    delete_button = ft.OutlinedButton(
+        content="Delete saved data",
+        icon=ft.Icons.DELETE_OUTLINE,
+        on_click=delete,
+        tooltip="Removes profile.json from this computer and restarts onboarding",
+        style=ft.ButtonStyle(
+            color=theme.DANGER,
+            icon_color=theme.DANGER,
+            side=ft.BorderSide(1, theme.BORDER),
+            shape=ft.RoundedRectangleBorder(radius=theme.RADIUS_SM),
+        ),
+        height=44,
+    )
+
     keys_card = section_card(
-        "API keys (optional)",
-        muted_text(
+        "API keys",
+        *key_fields.values(),
+        status_line,
+        subtitle=(
             "All keys are optional — without them RightMeal uses BLS averages and seed "
             "estimates. Leave a field blank to use the matching environment variable "
             "from your .env file. Keys entered here are saved in your local profile."
         ),
-        *key_fields.values(),
-        status_line,
     )
 
     return ft.Column(
         [
-            ft.Text("Your household profile", size=24, weight=ft.FontWeight.BOLD, color=theme.TEXT_DARK),
+            ft.Text("Your household profile", size=24, weight=ft.FontWeight.W_700, color=theme.TEXT),
+            muted_text("Everything here stays on this computer.", size=14),
             form.build(),
             keys_card,
-            ft.Row(
-                [
-                    ft.FilledButton(content="Save profile", on_click=save),
-                    ft.OutlinedButton(
-                        content="Delete saved data",
-                        icon=ft.Icons.DELETE_OUTLINE,
-                        on_click=delete,
-                        tooltip="Removes profile.json from this computer and restarts onboarding",
-                    ),
-                ],
-                spacing=12,
-            ),
+            ft.Row([save_button, delete_button], spacing=12),
         ],
         spacing=16,
         scroll=ft.ScrollMode.AUTO,

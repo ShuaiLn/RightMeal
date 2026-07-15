@@ -155,6 +155,15 @@ class Food:
     search_terms: tuple[str, ...]
     nutrients_per_100g: Nutrients
     edible_fraction: float = 1.0  # edible share of purchased weight (peels, cores)
+    image_url: str | None = None  # small ingredient photo (web; cached locally)
+    # Cooked weight / dry (or raw) weight, for display of plate weights of dry
+    # foods (rice, pasta, lentils, ...). None when not applicable.
+    cooked_yield_factor: float | None = None
+    # Daily grams one member can realistically eat/drink of this food; caps
+    # optimizer purchases so it can't buy more than the meal plan can plate.
+    # Set only for foods with a limited plate role (beverages today).
+    # Leave None for staples.
+    max_plated_grams_per_member_day: float | None = None
 
     def __post_init__(self) -> None:
         if not self.package_options:
@@ -171,6 +180,10 @@ class Food:
             raise ValueError(f"Food '{self.id}' edible_fraction must be in (0, 1]")
         if self.max_weekly_grams <= 0:
             raise ValueError(f"Food '{self.id}' max_weekly_grams must be positive")
+        if self.max_plated_grams_per_member_day is not None and self.max_plated_grams_per_member_day <= 0:
+            raise ValueError(
+                f"Food '{self.id}' max_plated_grams_per_member_day must be positive when set"
+            )
 
     def seed_cost_per_100(self, pkg: PackageOption) -> float:
         """Seed cost per 100 g (solids) or per 100 ml (liquids) for a package."""

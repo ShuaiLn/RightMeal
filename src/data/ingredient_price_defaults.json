@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "notes": "Estimated seed prices (USD) per package label for extended catalog foods, kept separate from package sizes and USDA nutrition. These are rough national estimates used as a starting seed price only; live pricing and user-entered/receipt prices override them, exactly as for the 53 seed foods. USDA (including Branded) is not treated as authoritative for retail price.",
+  "prices": {
+    "butter":            {"1 lb (4 sticks)": 4.29, "1 stick": 1.19},
+    "flour_all_purpose": {"2 lb bag": 1.99, "5 lb bag": 3.79},
+    "sugar_white":       {"2 lb bag": 2.29, "4 lb bag": 3.99},
+    "brown_sugar":       {"1 lb box": 1.89, "2 lb bag": 3.29},
+    "honey":             {"12 oz bottle": 4.49},
+    "tomatoes_fresh":    {"1 lb": 1.99, "each": 0.60},
+    "tomato_paste":      {"6 oz can": 0.89},
+    "tomato_sauce":      {"15 oz can": 1.19, "24 oz jar": 2.49},
+    "chicken_broth":     {"32 oz carton": 2.49, "14.5 oz can": 1.09},
+    "lemon":             {"each": 0.69, "bag of 6": 3.49},
+    "lime":              {"each": 0.50, "bag of 8": 2.99},
+    "heavy_cream":       {"16 oz": 3.79, "8 oz": 2.29},
+    "sour_cream":        {"16 oz tub": 2.29},
+    "parmesan_cheese":   {"8 oz wedge": 5.49, "5 oz shaker": 3.99},
+    "mozzarella_cheese": {"16 oz": 3.99, "8 oz": 2.49},
+    "sausage":           {"1 lb": 4.49},
+    "bacon":             {"1 lb": 5.99, "12 oz": 4.99},
+    "beef_stew_meat":    {"1 lb": 5.99, "2 lb": 11.49},
+    "mushrooms":         {"8 oz pack": 2.29, "16 oz pack": 3.99},
+    "green_onions":      {"bunch": 0.89},
+    "celery":            {"bunch": 1.99},
+    "zucchini":          {"each": 0.79, "1 lb": 1.79},
+    "green_beans":       {"1 lb": 2.49, "12 oz bag": 2.29},
+    "corn":              {"15 oz can": 1.09, "each ear": 0.50},
+    "soy_sauce":         {"15 oz bottle": 3.29, "10 oz bottle": 2.49}
+  },
+  "default_per_100g": 0.60
+}

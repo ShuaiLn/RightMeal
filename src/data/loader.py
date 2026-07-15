@@ -58,6 +58,15 @@ def _build_food(raw: dict) -> Food:
             search_terms=tuple(str(t) for t in raw["search_terms"]),
             nutrients_per_100g=Nutrients.from_dict(raw["nutrients_per_100g"]),
             edible_fraction=float(raw.get("edible_fraction", 1.0)),
+            image_url=str(raw["image_url"]) if raw.get("image_url") else None,
+            cooked_yield_factor=(
+                float(raw["cooked_yield_factor"]) if raw.get("cooked_yield_factor") is not None else None
+            ),
+            max_plated_grams_per_member_day=(
+                float(raw["max_plated_grams_per_member_day"])
+                if raw.get("max_plated_grams_per_member_day") is not None
+                else None
+            ),
         )
     except (KeyError, ValueError, TypeError) as exc:
         raise DataValidationError(f"Invalid seed food {raw.get('id', '<missing id>')!r}: {exc}") from exc
@@ -77,6 +86,70 @@ def load_seed_foods() -> tuple[Food, ...]:
             f"Seed foods must cover all 6 food groups; missing: {sorted(g.value for g in missing_groups)}"
         )
     return foods
+
+
+@lru_cache(maxsize=1)
+def load_extended_foods() -> tuple[Food, ...]:
+    """Reviewed catalog foods beyond the 53 seeds (USDA import + review).
+
+    Absent or empty is fine (first run before any USDA review). These carry the
+    same schema as seed foods; nutrition is always reviewed, never invented.
+    """
+    try:
+        data = _read_json("extended_foods.json")
+    except FileNotFoundError:
+        return ()
+    return tuple(_build_food(raw) for raw in data.get("foods", []))
+
+
+@lru_cache(maxsize=1)
+def load_catalog() -> tuple[Food, ...]:
+    """The full food catalog the app plans with: seed + reviewed extended.
+
+    Ids are unique across both sets; the catalog is strictly additive so old
+    plans and pantries keep resolving their food ids.
+    """
+    seed = load_seed_foods()
+    extended = load_extended_foods()
+    foods = seed + extended
+    ids = [f.id for f in foods]
+    if len(ids) != len(set(ids)):
+        dupes = sorted({i for i in ids if ids.count(i) > 1})
+        raise DataValidationError(f"Duplicate catalog food ids (seed vs extended): {dupes}")
+    return foods
+
+
+@lru_cache(maxsize=1)
+def load_recipe_index():
+    """Load and validate the compiled recipe catalog.
+
+    Every ``canonical_food_id`` referenced by a recipe must exist in the food
+    catalog, so a meal can never reference a food the app cannot price or track.
+    """
+    from models.recipe import Recipe  # local import: models depend on data pkg
+
+    data = _read_json("recipe_index.json")
+    catalog_ids = {f.id for f in load_catalog()}
+    recipes = []
+    for raw in data.get("recipes", []):
+        recipe = Recipe.from_dict(raw)
+        for ing in recipe.ingredients:
+            if ing.canonical_food_id and ing.canonical_food_id not in catalog_ids:
+                raise DataValidationError(
+                    f"Recipe {recipe.id!r} references unknown food id {ing.canonical_food_id!r}"
+                )
+        recipes.append(recipe)
+    ids = [r.id for r in recipes]
+    if len(ids) != len(set(ids)):
+        dupes = sorted({i for i in ids if ids.count(i) > 1})
+        raise DataValidationError(f"Duplicate recipe ids: {dupes}")
+    return tuple(recipes)
+
+
+@lru_cache(maxsize=1)
+def load_portion_rules() -> dict:
+    """Per-person portion ranges + slot/daily kcal shares for the validators."""
+    return _read_json("portion_rules.json")
 
 
 @lru_cache(maxsize=1)

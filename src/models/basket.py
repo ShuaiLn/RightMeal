@@ -3,9 +3,24 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from enum import Enum
 
 from models.food import Food, FoodGroup, Nutrients, PackageOption
 from models.pricing import PriceQuote, PriceSource
+
+
+class BudgetStatus(str, Enum):
+    """Whether the plan's real cost fits the budget.
+
+    UNKNOWN means price data is missing for part of the demand — the known
+    total may understate the real cost, so neither WITHIN nor OVER can be
+    claimed. Readers must branch on all three states explicitly; there is
+    deliberately no boolean view of this (``UNKNOWN`` is not falsy-OVER).
+    """
+
+    WITHIN = "within"
+    OVER = "over"
+    UNKNOWN = "unknown"
 
 
 @dataclass(frozen=True)
@@ -47,6 +62,14 @@ class BasketItem:
 
 
 @dataclass(frozen=True)
+class PantryUse:
+    """Grams of one already-owned food the optimizer counts on using (cost 0)."""
+
+    food: Food
+    grams: float
+
+
+@dataclass(frozen=True)
 class NutrientGap:
     nutrient: str  # Nutrients field name
     achieved: float
@@ -76,13 +99,17 @@ class OptimizationResult:
     group_coverage: dict[FoodGroup, float]  # grams per group (covered groups only)
     groups_covered: int
     distinct_foods: int
-    budget_feasible: bool  # a non-empty basket fits within the budget
+    budget_status: BudgetStatus  # known-over always wins over unknown
     nutrition_feasible: bool  # soft nutrition constraints all met
     relaxed_constraints: tuple[str, ...]
     dominance_flags: tuple[str, ...]
+    # Sorted display names of demanded foods that had no price quote (for the
+    # explanation payload; the programmatic ids live on PricedDemand).
+    unpriced_food_names: tuple[str, ...] = ()
     excluded_foods: dict[str, str] = field(default_factory=dict)  # food_id -> reason
     penalties_applied: dict[str, float] = field(default_factory=dict)
     horizon_days: int = 7
+    pantry_used: tuple[PantryUse, ...] = ()  # pantry supply seeded into this plan
 
     @property
     def source_mix(self) -> dict[PriceSource, int]:

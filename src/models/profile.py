@@ -29,6 +29,8 @@ class HouseholdProfile:
     city: str = ""
     zip_code: str = ""
     api_keys: dict[str, str] = field(default_factory=dict)
+    # Sticky recipe-first variety mode: "high_variety" | "balanced" | "meal_prep".
+    variety_mode: str = "balanced"
 
     @property
     def total_members(self) -> int:
@@ -46,6 +48,7 @@ class HouseholdProfile:
             "lactose_free": self.lactose_free,
             "city": self.city,
             "zip_code": self.zip_code,
+            "variety_mode": self.variety_mode,
             "api_keys": {k: v for k, v in self.api_keys.items() if v},
         }
 
@@ -61,5 +64,6 @@ class HouseholdProfile:
             lactose_free=bool(data.get("lactose_free", False)),
             city=str(data.get("city", "")),
             zip_code=str(data.get("zip_code", "")),
+            variety_mode=str(data.get("variety_mode", "balanced")) or "balanced",
             api_keys={k: str(v) for k, v in dict(data.get("api_keys", {})).items() if k in API_KEY_NAMES},
         )

@@ -1,6 +1,7 @@
 """Integrity checks over the curated JSON data files."""
 
 from data import load_bls_price_map, load_nutrient_targets, load_seed_foods
+from data.loader import load_catalog
 from models import FoodGroup, Nutrients
 
 
@@ -73,6 +74,16 @@ def test_bls_deliberately_unmapped_foods():
     series = load_bls_price_map()["series"]
     for food_id in ("rolled_oats", "lentils_dry", "broccoli_frozen", "mixed_veg_frozen"):
         assert series.get(food_id) is None, food_id
+
+
+def test_every_food_has_wellformed_image_url():
+    # Covers the full catalog (seed + extended), not just the seeds, so a
+    # newly added extended food without a photo fails CI instead of silently
+    # showing the generic icon.
+    for food in load_catalog():
+        assert food.image_url, food.id
+        assert food.image_url.startswith("https://www.themealdb.com/images/ingredients/"), food.id
+        assert food.image_url.endswith("-Small.png"), food.id
 
 
 def test_nutrient_targets_complete():

@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "food_id": "rice_white",
+      "canonical_aliases": [
+        {"text": "white rice", "forms": ["dry"]},
+        {"text": "long grain rice", "forms": ["dry"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "wht rice", "forms": ["dry"]},
+        {"text": "lng grn rice", "forms": ["dry"]}
+      ],
+      "translations": [
+        {"text": "arroz blanco", "language": "es", "forms": ["dry"]},
+        {"text": "riz blanc", "language": "fr", "forms": ["dry"]}
+      ],
+      "concepts": ["white rice"],
+      "forms": ["dry"]
+    },
+    {
+      "food_id": "brown_rice",
+      "canonical_aliases": [
+        {"text": "brown rice", "forms": ["dry"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "brn rice", "forms": ["dry"]}
+      ],
+      "translations": [
+        {"text": "arroz integral", "language": "es", "forms": ["dry"]}
+      ],
+      "concepts": ["brown rice"],
+      "forms": ["dry"]
+    },
+    {
+      "food_id": "black_beans_dry",
+      "canonical_aliases": [
+        {"text": "dried black beans", "forms": ["dry"]},
+        {"text": "black beans", "forms": ["dry"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "blk beans dry", "forms": ["dry"]}
+      ],
+      "translations": [
+        {"text": "frijoles negros secos", "language": "es", "forms": ["dry"]}
+      ],
+      "concepts": ["black bean"],
+      "forms": ["dry"]
+    },
+    {
+      "food_id": "lentils_dry",
+      "canonical_aliases": [
+        {"text": "dried lentils", "forms": ["dry"]},
+        {"text": "lentils", "forms": ["dry"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "lntl dry", "forms": ["dry"]}
+      ],
+      "translations": [
+        {"text": "lentejas secas", "language": "es", "forms": ["dry"]}
+      ],
+      "concepts": ["lentil"],
+      "forms": ["dry"]
+    },
+    {
+      "food_id": "tomatoes_canned",
+      "canonical_aliases": [
+        {"text": "canned diced tomatoes", "forms": ["canned"]},
+        {"text": "diced tomatoes", "forms": ["canned"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "tom diced cn", "forms": ["canned"]}
+      ],
+      "translations": [
+        {"text": "tomates enlatados", "language": "es", "forms": ["canned"]}
+      ],
+      "concepts": ["tomato"],
+      "forms": ["canned"]
+    },
+    {
+      "food_id": "tomatoes_fresh",
+      "canonical_aliases": [
+        {"text": "fresh tomatoes", "forms": ["fresh"]},
+        {"text": "tomatoes", "forms": ["fresh"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "tom fresh", "forms": ["fresh"]}
+      ],
+      "translations": [
+        {"text": "tomates frescos", "language": "es", "forms": ["fresh"]}
+      ],
+      "concepts": ["tomato"],
+      "forms": ["fresh"]
+    },
+    {
+      "food_id": "canned_tuna",
+      "canonical_aliases": [
+        {"text": "canned tuna", "forms": ["canned"]},
+        {"text": "tuna in water", "forms": ["canned"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "tuna lt wtr", "forms": ["canned"]}
+      ],
+      "translations": [
+        {"text": "atun enlatado", "language": "es", "forms": ["canned"]}
+      ],
+      "concepts": ["tuna"],
+      "forms": ["canned"]
+    },
+    {
+      "food_id": "milk_whole",
+      "canonical_aliases": [
+        {"text": "whole milk", "forms": ["fresh"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "whl milk", "forms": ["fresh"]}
+      ],
+      "translations": [
+        {"text": "leche entera", "language": "es", "forms": ["fresh"]}
+      ],
+      "concepts": ["dairy milk"],
+      "forms": ["fresh"]
+    },
+    {
+      "food_id": "eggs_large",
+      "canonical_aliases": [
+        {"text": "large eggs", "forms": ["fresh"]},
+        {"text": "eggs", "forms": ["fresh"]}
+      ],
+      "receipt_abbreviations": [
+        {"text": "eggs lg", "forms": ["fresh"]}
+      ],
+      "translations": [
+        {"text": "huevos grandes", "language": "es", "forms": ["fresh"]}
+      ],
+      "concepts": ["egg"],
+      "forms": ["fresh"]
+    }
+  ]
+}

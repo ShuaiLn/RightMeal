@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "notes": "Dietary + allergen metadata for extended catalog foods, kept separate from USDA nutrition (which covers nutrients only). Merged into extended_foods.json by tools/review_usda_mappings.py. allergen_tags use the same lowercase vocabulary as seed foods.",
+  "foods": {
+    "butter":            {"allergen_tags": ["dairy"], "lactose": true,  "vegetarian": true,  "vegan": false, "contains_pork": false, "is_meat_or_fish": false},
+    "flour_all_purpose": {"allergen_tags": ["gluten", "wheat"], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "sugar_white":       {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "brown_sugar":       {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "honey":             {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": false, "contains_pork": false, "is_meat_or_fish": false},
+    "tomatoes_fresh":    {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "tomato_paste":      {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "tomato_sauce":      {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "chicken_broth":     {"allergen_tags": [], "lactose": false, "vegetarian": false, "vegan": false, "contains_pork": false, "is_meat_or_fish": true},
+    "lemon":             {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "lime":              {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "heavy_cream":       {"allergen_tags": ["dairy"], "lactose": true, "vegetarian": true, "vegan": false, "contains_pork": false, "is_meat_or_fish": false},
+    "sour_cream":        {"allergen_tags": ["dairy"], "lactose": true, "vegetarian": true, "vegan": false, "contains_pork": false, "is_meat_or_fish": false},
+    "parmesan_cheese":   {"allergen_tags": ["dairy"], "lactose": true, "vegetarian": true, "vegan": false, "contains_pork": false, "is_meat_or_fish": false},
+    "mozzarella_cheese": {"allergen_tags": ["dairy"], "lactose": true, "vegetarian": true, "vegan": false, "contains_pork": false, "is_meat_or_fish": false},
+    "sausage":           {"allergen_tags": [], "lactose": false, "vegetarian": false, "vegan": false, "contains_pork": true, "is_meat_or_fish": true},
+    "bacon":             {"allergen_tags": [], "lactose": false, "vegetarian": false, "vegan": false, "contains_pork": true, "is_meat_or_fish": true},
+    "beef_stew_meat":    {"allergen_tags": [], "lactose": false, "vegetarian": false, "vegan": false, "contains_pork": false, "is_meat_or_fish": true},
+    "mushrooms":         {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "green_onions":      {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "celery":            {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "zucchini":          {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "green_beans":       {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "corn":              {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false},
+    "soy_sauce":         {"allergen_tags": ["soy", "gluten"], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false}
+  },
+  "default": {"allergen_tags": [], "lactose": false, "vegetarian": true, "vegan": true, "contains_pork": false, "is_meat_or_fish": false}
+}

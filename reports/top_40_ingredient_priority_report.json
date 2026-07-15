@@ -1,0 +1,196 @@
+{
+ "total_blocked_recipes": 64,
+ "blocked_by_unresolved_alias": 66,
+ "ranking": [
+  {
+   "rank": 1,
+   "ingredient_id": "tomatoes_fresh",
+   "role": "vegetable",
+   "default_state": "raw",
+   "score": 623.0,
+   "immediate_unlocks": 6,
+   "recipes_touched": 11,
+   "cumulative_recipes_unlocked": 6
+  },
+  {
+   "rank": 2,
+   "ingredient_id": "butter",
+   "role": "fat",
+   "default_state": "raw",
+   "score": 603.4,
+   "immediate_unlocks": 5,
+   "recipes_touched": 29,
+   "cumulative_recipes_unlocked": 11
+  },
+  {
+   "rank": 3,
+   "ingredient_id": "flour_all_purpose",
+   "role": "main_carb",
+   "default_state": "dry",
+   "score": 648.0,
+   "immediate_unlocks": 5,
+   "recipes_touched": 22,
+   "cumulative_recipes_unlocked": 16
+  },
+  {
+   "rank": 4,
+   "ingredient_id": "sugar_white",
+   "role": "sweetener",
+   "default_state": "dry",
+   "score": 914.0,
+   "immediate_unlocks": 9,
+   "recipes_touched": 12,
+   "cumulative_recipes_unlocked": 25
+  },
+  {
+   "rank": 5,
+   "ingredient_id": "chicken_broth",
+   "role": "liquid",
+   "default_state": "raw",
+   "score": 745.0,
+   "immediate_unlocks": 7,
+   "recipes_touched": 12,
+   "cumulative_recipes_unlocked": 32
+  },
+  {
+   "rank": 6,
+   "ingredient_id": "lemon",
+   "role": "fruit",
+   "default_state": "raw",
+   "score": 423.0,
+   "immediate_unlocks": 4,
+   "recipes_touched": 6,
+   "cumulative_recipes_unlocked": 36
+  },
+  {
+   "rank": 7,
+   "ingredient_id": "heavy_cream",
+   "role": "dairy",
+   "default_state": "raw",
+   "score": 417.0,
+   "immediate_unlocks": 4,
+   "recipes_touched": 6,
+   "cumulative_recipes_unlocked": 40
+  },
+  {
+   "rank": 8,
+   "ingredient_id": "sausage",
+   "role": "protein",
+   "default_state": "raw",
+   "score": 327.0,
+   "immediate_unlocks": 3,
+   "recipes_touched": 5,
+   "cumulative_recipes_unlocked": 43
+  },
+  {
+   "rank": 9,
+   "ingredient_id": "bacon",
+   "role": "protein",
+   "default_state": "raw",
+   "score": 318.0,
+   "immediate_unlocks": 3,
+   "recipes_touched": 4,
+   "cumulative_recipes_unlocked": 46
+  },
+  {
+   "rank": 10,
+   "ingredient_id": "tomato_paste",
+   "role": "sauce",
+   "default_state": "canned",
+   "score": 313.6,
+   "immediate_unlocks": 3,
+   "recipes_touched": 4,
+   "cumulative_recipes_unlocked": 49
+  },
+  {
+   "rank": 11,
+   "ingredient_id": "tomato_sauce",
+   "role": "sauce",
+   "default_state": "canned",
+   "score": 304.6,
+   "immediate_unlocks": 3,
+   "recipes_touched": 3,
+   "cumulative_recipes_unlocked": 52
+  },
+  {
+   "rank": 12,
+   "ingredient_id": "green_onions",
+   "role": "vegetable",
+   "default_state": "raw",
+   "score": 206.0,
+   "immediate_unlocks": 2,
+   "recipes_touched": 2,
+   "cumulative_recipes_unlocked": 54
+  },
+  {
+   "rank": 13,
+   "ingredient_id": "parmesan_cheese",
+   "role": "dairy",
+   "default_state": "raw",
+   "score": 131.0,
+   "immediate_unlocks": 1,
+   "recipes_touched": 4,
+   "cumulative_recipes_unlocked": 55
+  },
+  {
+   "rank": 14,
+   "ingredient_id": "honey",
+   "role": "sweetener",
+   "default_state": "raw",
+   "score": 121.0,
+   "immediate_unlocks": 1,
+   "recipes_touched": 3,
+   "cumulative_recipes_unlocked": 56
+  },
+  {
+   "rank": 15,
+   "ingredient_id": "soy_sauce",
+   "role": "sauce",
+   "default_state": "raw",
+   "score": 304.6,
+   "immediate_unlocks": 3,
+   "recipes_touched": 3,
+   "cumulative_recipes_unlocked": 59
+  },
+  {
+   "rank": 16,
+   "ingredient_id": "mushrooms",
+   "role": "vegetable",
+   "default_state": "raw",
+   "score": 114.0,
+   "immediate_unlocks": 1,
+   "recipes_touched": 2,
+   "cumulative_recipes_unlocked": 60
+  },
+  {
+   "rank": 17,
+   "ingredient_id": "sour_cream",
+   "role": "dairy",
+   "default_state": "raw",
+   "score": 205.0,
+   "immediate_unlocks": 2,
+   "recipes_touched": 2,
+   "cumulative_recipes_unlocked": 62
+  },
+  {
+   "rank": 18,
+   "ingredient_id": "mozzarella_cheese",
+   "role": "dairy",
+   "default_state": "raw",
+   "score": 104.0,
+   "immediate_unlocks": 1,
+   "recipes_touched": 1,
+   "cumulative_recipes_unlocked": 63
+  },
+  {
+   "rank": 19,
+   "ingredient_id": "lime",
+   "role": "fruit",
+   "default_state": "raw",
+   "score": 102.0,
+   "immediate_unlocks": 1,
+   "recipes_touched": 1,
+   "cumulative_recipes_unlocked": 64
+  }
+ ]
+}

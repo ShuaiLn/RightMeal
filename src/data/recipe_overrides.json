@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "notes": "Per-recipe classification overrides, keyed by recipe slug. Any of recipe_type, meal_types, cuisine, dish_category, cooking_methods, batchable, recommended_batch_servings, leftover_storage_days, reheat_method, allow_multiple_main_carbs may be set. This is the final word over the deterministic classifier; the original markdown is never edited.",
+  "overrides": {
+    "baked-rice": {"allow_multiple_main_carbs": false},
+    "arroz-chaufa": {"recipe_type": "main_meal"},
+    "frittata": {"recipe_type": "breakfast"},
+    "omelet": {"recipe_type": "breakfast"},
+    "quiche": {"recipe_type": "breakfast"},
+    "spanish-tortilla": {"recipe_type": "breakfast"},
+    "roesti": {"recipe_type": "breakfast"},
+    "okonomiyaki": {"recipe_type": "breakfast"},
+    "shakshuka": {"recipe_type": "breakfast"},
+    "breakfast-burrito": {"recipe_type": "breakfast"}
+  }
+}

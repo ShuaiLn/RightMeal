@@ -1,0 +1,4650 @@
+{
+ "summary": {
+  "total_recipes": 408,
+  "auto_plannable": 107,
+  "by_recipe_type": {
+   "main_meal": 159,
+   "side": 60,
+   "dessert": 47,
+   "breakfast": 33,
+   "sauce": 41,
+   "drink": 20,
+   "base": 44,
+   "seasoning": 2,
+   "snack": 2
+  },
+  "auto_plannable_by_slot": {
+   "lunch": 82,
+   "dinner": 82,
+   "breakfast": 25
+  }
+ },
+ "recipes": [
+  {
+   "id": "aelplermagronen",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "~150g (1/3 lb) bacon cubes",
+    "~150g (1/3 lb) medium soft cheese. Appenzeller works best. Gruyère would be my go-to alternative."
+   ]
+  },
+  {
+   "id": "aglio-e-olio",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "air-fryer-zucchini",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 0.0741,
+   "unresolved_core": [
+    "2 zucchinis"
+   ]
+  },
+  {
+   "id": "aljotta",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "almeirim-stone-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "apple-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "apple-pie",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.9648,
+   "unresolved_core": []
+  },
+  {
+   "id": "apple-strudel",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "Apricot jam (about 300 g | 10 oz)"
+   ]
+  },
+  {
+   "id": "ardei-umpluti",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 yellow peppers per person"
+   ]
+  },
+  {
+   "id": "arroz-chaufa",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "asian-style-chicken-sticky-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.9031,
+   "unresolved_core": []
+  },
+  {
+   "id": "assam-tea",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "aussie-snags",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "autumn-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 Medium Squash",
+    "1 Chicken Bullion Cube"
+   ]
+  },
+  {
+   "id": "babas-feta-pasta",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "15-20 Kalamon/Kalamata Olives (Cut into thirds)"
+   ]
+  },
+  {
+   "id": "baby-back-ribs",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "2 baby back rib racks",
+    "1 container of barbecue rub ([Traeger Pork and Poultry Rub](https://www.traeger.com/rubs-spices/pork-poultry) is recommended)"
+   ]
+  },
+  {
+   "id": "baked-mostaccioli",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "24 oz or 1 jar of Fradiavolo Sauce"
+   ]
+  },
+  {
+   "id": "baked-pasta-with-broccoli",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "baked-rice",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.625,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "500 g of pork ribs, cut into pieces",
+    "200 g of pork belly, cut into pieces",
+    "1 whole garlic head"
+   ]
+  },
+  {
+   "id": "baked-salmon",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "baked-trout",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "banana-bread",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "banana-muffins-with-chocolate",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "banana-oatmeal-cookies",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "banana-pancakes",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "basic-meatballs",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "basic-waffles",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "batter-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "bean-salad",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "bebek-mropol",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 whole duck, cut into pieces",
+    "2 lemongrass stalks, bruised",
+    "4 kaffir lime leaves",
+    "2 red chilies, sliced"
+   ]
+  },
+  {
+   "id": "beef-and-broccoli",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 cup Broccoli Pieces",
+    "1/2 cup Beef Bouillon"
+   ]
+  },
+  {
+   "id": "beef-goulash",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "beef-jerky",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.9731,
+   "unresolved_core": []
+  },
+  {
+   "id": "beef-kidney",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 beef kidney"
+   ]
+  },
+  {
+   "id": "beef-liver-and-onions",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 lb Beef Liver"
+   ]
+  },
+  {
+   "id": "beef-stew",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "beef-tips",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "beef-wellington",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "4 Thinly Cut Slices of Ham"
+   ]
+  },
+  {
+   "id": "belgian-pear-syrup",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "7 pears (Quality doesn't matter; you can argue that overripe pears are better because they have more sugar content.)"
+   ]
+  },
+  {
+   "id": "bloody-mary-mix",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "blueberry-muffins",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 1/2 cups fresh blueberries"
+   ]
+  },
+  {
+   "id": "bolinhos-de-coco",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "300 g coconut"
+   ]
+  },
+  {
+   "id": "bolo-do-caco",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "bolognese-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.4444,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 celery sticks",
+    "350 grams pork mince",
+    "350 grams veal mince (if you cant find veal replace with pork)",
+    "140 grams concentrated tomato paste",
+    "1-2 glasses wine (whatever you have open)"
+   ]
+  },
+  {
+   "id": "bread-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "bread",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 and 1/4 teaspoons Active Dry Yeast"
+   ]
+  },
+  {
+   "id": "breakfast-wrap",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "breton-crepes",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "brigadeiro",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "broiled-trevally",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "broiled-venison-steaks",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "brown-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "burger-dressing",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "butter-based-biscuit",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "butter-biscuits",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "butter-cake",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "butter-chicken-masala",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cacio-e-pepe",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "caesar-salad",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cannellini-bean-salad",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "carbonade",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "carbonara",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "casio-in-pastelletto",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "2 slice cheese. Use a cheese that is mid-aged, not too savoury and not too delicate."
+   ]
+  },
+  {
+   "id": "castagnole",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ceviche",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "challah-bread",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cheddar-crusted-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cheese",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 cheesecloth",
+    "1 cheese recipient"
+   ]
+  },
+  {
+   "id": "cheesy-meatballs",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "300-400g of ground beef meat",
+    "8 spoonfuls of tomato paste"
+   ]
+  },
+  {
+   "id": "cheesy-pasta-bake",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cheesy-potatoe-bake",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicharrones",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicken-biscuit-potpie",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.4,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1-2/3 cups frozen mixed vegetables, thawed",
+    "1 can (10-3/4 ounces) condensed cream of chicken soup, undiluted",
+    "1 cup biscuit/baking mix"
+   ]
+  },
+  {
+   "id": "chicken-in-red-wine-vinegar-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicken-paprikash",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "8 bone-in, skin-on chicken thighs"
+   ]
+  },
+  {
+   "id": "chicken-parmesan",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicken-pasta-casserole",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.6,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "16oz (450g) macaroni (elbow, penne)",
+    "24oz (700g) raw chicken breast, diced"
+   ]
+  },
+  {
+   "id": "chicken-satay",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 lbs boneless chicken breast or thigh"
+   ]
+  },
+  {
+   "id": "chicken-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 celery stalks"
+   ]
+  },
+  {
+   "id": "chicken-stock-bone-broth",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicken-tacos",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicken-tenders-airfried",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicken-tikka-masala",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 can (29 ounces) tomato puree",
+    "4-1/2 teaspoons minced fresh gingerroot",
+    "1 cup heavy whipping cream"
+   ]
+  },
+  {
+   "id": "chicken-tomato-spinach-curry",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chicken-wings",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chili-con-carne",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chimichanga",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chipolata-in-balsamic-vinegar",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "chocolate-chip-cookies",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 0.8378,
+   "unresolved_core": [
+    "225 g 50-70% dark chocolate chips or semi-sweet milk chocolate chips"
+   ]
+  },
+  {
+   "id": "chorizo-and-chickpea-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cinnamon-biscuits",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cinnamon-waffles",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cinque-pi",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "classic-bechamel-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cocoanut-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "coconut-flour-bread",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "coconut-oil-coffee",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 cup hot coffee"
+   ]
+  },
+  {
+   "id": "colcannon-bake",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 cubes Chicken Bouillon"
+   ]
+  },
+  {
+   "id": "coleslaw",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "collard-greens-with-smoked-duck-and-parnips",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.4,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1/2 smoked duck breast (skin on) chopped",
+    "1 small parsnip julienned",
+    "1 large bunch collard greens chopped into ribbons"
+   ]
+  },
+  {
+   "id": "cooked-chickpeas",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "coriander-chicken",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 Bayleaf",
+    "1 Cinnamom stick"
+   ]
+  },
+  {
+   "id": "corn-polenta",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "corn-salsa",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0764,
+   "unresolved_core": [
+    "2 pounds frozen corn, defrosted",
+    "4 Radishes, sliced thin and chopped"
+   ]
+  },
+  {
+   "id": "country-crisp-cereals",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "country-skillet",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "crab-salad",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "Сrab meat (300 grams)"
+   ]
+  },
+  {
+   "id": "cream-cheese",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 cheesecloth",
+    "1 cheese recipient",
+    "6g of of citric acid (contained in 130ml of lemon juice)"
+   ]
+  },
+  {
+   "id": "creamy-mashed-potatoes",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "creme-brulee",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "400 ml high fat cream",
+    "1 vanilla bean (mark, optionally essence)"
+   ]
+  },
+  {
+   "id": "croque-monsieur",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "12 very thin slices of ham with Italian herbs"
+   ]
+  },
+  {
+   "id": "crostata",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "8 servings [shortcrust pastry](/shortcrust-pastry)",
+    "300 g jam or marmalade"
+   ]
+  },
+  {
+   "id": "croutons",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "cuca-italiana",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "curry-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "damper",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "danish-pancake",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "demi-glace",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 qt (32 oz, 946mL) **low-sodium** broth or stock (I prefer Pacific Foods)"
+   ]
+  },
+  {
+   "id": "diannes-southwest-salad",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "6 bacon slices, cooked and crumbled"
+   ]
+  },
+  {
+   "id": "dominican-spaghetti",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "dou-sha-bao",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "250g (~ 9 oz)red beans Azuki (soak 24h before recipe)",
+    "6 baking paper square 7x7cm (~ 3x3inches)"
+   ]
+  },
+  {
+   "id": "dried-tomato-plum-spread",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "10 dried plums"
+   ]
+  },
+  {
+   "id": "drunken-beans",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "dulce-de-leche",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "easy-chicken-and-rice-casserole",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 0.8905,
+   "unresolved_core": [
+    "1 can (10 oz) Mushrooms with liquid"
+   ]
+  },
+  {
+   "id": "easy-pizza-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "6 spoon tomato concentrate"
+   ]
+  },
+  {
+   "id": "eggroll-in-a-bowl",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 bag coleslaw mix",
+    "1/4 cup Hoisin sauce"
+   ]
+  },
+  {
+   "id": "eggs-benedict",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "4 slices of Canadian bacon or ham"
+   ]
+  },
+  {
+   "id": "eggs",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "egyptian-lentils",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "erwtensoep",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 0.9311,
+   "unresolved_core": [
+    "1 bouillon cube (vegetable, pork or chicken)",
+    "1 cup celeriac (cubed)",
+    "1 pound sausage (chopped rookworst, smoked sausage)"
+   ]
+  },
+  {
+   "id": "exotic-ginger-cumin-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "fajita-seasoning",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "fajitas",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "fall-vegetable-and-chickpea-curry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.9456,
+   "unresolved_core": []
+  },
+  {
+   "id": "farci-tomatoes",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 tomatoes per person"
+   ]
+  },
+  {
+   "id": "fennel-beans-and-kale-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 small fennel bulbs, small-diced",
+    "10-12 oz kale, (escarole, swiss chard, or spinach can also be used)."
+   ]
+  },
+  {
+   "id": "finnish-salmon-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 pcs salmon fillet"
+   ]
+  },
+  {
+   "id": "fish-curry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "flammkuchen",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 big spoons of sour creme or creme fraiche"
+   ]
+  },
+  {
+   "id": "fondue",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "4 dl (1.5 cups) white wine",
+    "1 shot of kirsch (cherry brandy)"
+   ]
+  },
+  {
+   "id": "francesinha",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "french-crepes",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "french-mustard-sauce-porkchops",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "french-onion-soup",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.9695,
+   "unresolved_core": []
+  },
+  {
+   "id": "french-toast",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "fried-anglerfish-fillet",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 Anglerfish"
+   ]
+  },
+  {
+   "id": "fried-potatoes",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "frijol-con-puerco",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "fritatem-pomeranciis",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "frittata",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "full-english-breakfast",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "fume-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "200 g milk cream",
+    "100 g pancetta"
+   ]
+  },
+  {
+   "id": "galinha-caipira",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "A whole ckicken weighing close to 2,5kg (roughly 3 pounds). Avoid industrially grown birds, as those can make the stew very greasy and flavorless."
+   ]
+  },
+  {
+   "id": "garam-masala",
+   "recipe_type": "seasoning",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "4 Green Cardamom",
+    "2 Black Cardamom",
+    "2 Cloves"
+   ]
+  },
+  {
+   "id": "garlic-toast",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ginataang-kalabasa",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ginger-garlic-broccoli",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1-2 Broccoli (fresh best, frozen works too)"
+   ]
+  },
+  {
+   "id": "gluehwein",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "300 ml Cassis-Juice (Johannesbeer), if you can't find it you can replace it with another juice, I did it e.g. with cranberry pomegranate juice",
+    "1 bottle 700ml red wine (I prefer Primitivo/Zinfandel), don't buy a cheap cooking wine, you want to drink it :)",
+    "1 cinamon bark",
+    "1 spoon ginger powder (or a bit of fresh ginger)",
+    "1 spoon cloves"
+   ]
+  },
+  {
+   "id": "gnocchi",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "gooseberry-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "grands-peres",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 cup maple syrup"
+   ]
+  },
+  {
+   "id": "granita",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "granola",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 cup dried fruit (apricots, unsweetened cranberries, dates, etc)"
+   ]
+  },
+  {
+   "id": "greek-easter-cookies",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.4286,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "6 tsps baking powder",
+    "2 tsps baker’s ammonium",
+    "1/2 cup orange juice",
+    "1 egg yolk whisked to brush cookies"
+   ]
+  },
+  {
+   "id": "greek-salad",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 cup assorted Lettuce, chopped or torn",
+    "1 whole Cucumber, seeded and sliced",
+    "1/2 cup pitted Black Olives (preferably brine-cured), coarsely chopped"
+   ]
+  },
+  {
+   "id": "greek-yogurt",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "2 thermos, ½l capacity each",
+    "1 cheesecloth"
+   ]
+  },
+  {
+   "id": "grilled-mackerel-with-miso-soup-and-squash",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 Norwegian Mackerel Fillets",
+    "1 Summer Squash"
+   ]
+  },
+  {
+   "id": "grostoli",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "guacamole",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "gumbo-shrimp-and-sausage",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.7778,
+   "coverage_by_mass": 0.9556,
+   "unresolved_core": [
+    "1 cup finely chopped Celery",
+    "1 12 oz. bottle of Beer"
+   ]
+  },
+  {
+   "id": "guobaorou",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "gypsy-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.927,
+   "unresolved_core": []
+  },
+  {
+   "id": "hakka-style-meatballs",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ham-and-lentil-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 0.8863,
+   "unresolved_core": [
+    "1/2 lb Ham, diced"
+   ]
+  },
+  {
+   "id": "hamburger-patties-all-beef",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "hamburger-patties",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "hangover-eggs",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "hearty-breakfast-oatmeal",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "hellfire-steak",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "herbs-pizza",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "hoisin-pork-belly",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 scotch bonnet chili"
+   ]
+  },
+  {
+   "id": "hoisin-tofu-and-broccoli",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.4,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "One block of firm tofu (400g, extra firm will work too)",
+    "1/2 cup light soy sause",
+    "1 cup dark soy sause"
+   ]
+  },
+  {
+   "id": "honey-garlic-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "honey-sriracha-chicken-thighs",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "5-6 bone-in, skin-on chicken thighs"
+   ]
+  },
+  {
+   "id": "honey-vanilla-ice-cream",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "hummus",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1/2 cup of tahini (also known as tehina)"
+   ]
+  },
+  {
+   "id": "indian-tea",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "10 cardamom seeds"
+   ]
+  },
+  {
+   "id": "instant-tom-yam-kung-noodle-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "irish-coffee",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 (1.5 fluid ounce) jigger Irish cream liqueur",
+    "1 (1.5 fluid ounce) jigger Irish whiskey",
+    "1 cup hot brewed coffee"
+   ]
+  },
+  {
+   "id": "irish-potato-casserole",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "italian-bread",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "italian-mulled-wine",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 bottle Italian red wine"
+   ]
+  },
+  {
+   "id": "jam",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 kg fruit of your choice"
+   ]
+  },
+  {
+   "id": "japanese-noodle-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "4 Pork chops OR 4 Chicken Breasts"
+   ]
+  },
+  {
+   "id": "kalderetang-manok",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ketchup",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "kettlecorn",
+   "recipe_type": "snack",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "kombucha",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "korv-stroganoff",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1/2 kg Swedish falukorv",
+    "2 1/2 dl cream"
+   ]
+  },
+  {
+   "id": "kropsua",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "kvass",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "lamb-biriyani",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "4-5 pods of Cardamom",
+    "3-4 Cinnamon Sticks",
+    "8 Cloves",
+    "10 Garlic pearls"
+   ]
+  },
+  {
+   "id": "lasagna",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "lavacake",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "lebanese-lentil-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 0.9234,
+   "unresolved_core": [
+    "4 cups Swiss chard, chopped"
+   ]
+  },
+  {
+   "id": "lemon-and-oregano-chicken-traybake",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "5 oregano sprigs / heavy sprinkle of oregano leaves"
+   ]
+  },
+  {
+   "id": "lemon-juice-salad-dressing",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "lemon-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "lentejas",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "lenten-chili",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6,
+   "coverage_by_mass": 0.8444,
+   "unresolved_core": [
+    "1 29oz large can tomato sauce (or 4 cups fresh tomato sauce)",
+    "1/2 can of sweet corn"
+   ]
+  },
+  {
+   "id": "lenten-lentil-curry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "50 g (1¾ oz) vermicelli"
+   ]
+  },
+  {
+   "id": "limoncello",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "limoncini",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "lithuanian-cold-borscht",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "2-3 fresh or pickled beets",
+    "1-2 potatoes per serving",
+    "1-2 normal sized cucumbers per serving"
+   ]
+  },
+  {
+   "id": "liverpate",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "loaded-mexican-rice",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 0.8737,
+   "unresolved_core": [
+    "2 Caned adobo chilies chopped"
+   ]
+  },
+  {
+   "id": "lobster-bisque",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 live lobster that weighs ~750 grams",
+    "1 glass dry white wine",
+    "1 bayleaf"
+   ]
+  },
+  {
+   "id": "long-cooked-chuck-steak",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 fennel."
+   ]
+  },
+  {
+   "id": "mapo-tofu",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2-3 chopped scallions white and green separated)"
+   ]
+  },
+  {
+   "id": "maque-choux",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "marinated-pork-steaks",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "matcha-cookies",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "mayonnaise-or-aioli",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 whole egg or 2 egg yolks, preferably at room temperature"
+   ]
+  },
+  {
+   "id": "mazurek",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "meatloaf",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 0.8932,
+   "unresolved_core": [
+    "1 Can of Campbell's tomato soup"
+   ]
+  },
+  {
+   "id": "medieval-beef-soup",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "merchants-buckwheat",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "mexican-meat-loaf",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 0.8724,
+   "unresolved_core": [
+    "1 cup Salsa, divided"
+   ]
+  },
+  {
+   "id": "miso-ginger-pork",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "miso-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "modern-borscht",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.4286,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 lb beef tenderloin, or stew meat if you are frugal",
+    "2 large beets (or 3 medium beets)",
+    "4 celery shoots",
+    "2 large potatoes (Yukon Gold preferred, but any quality potatoes work)"
+   ]
+  },
+  {
+   "id": "mushroom-risotto",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "mushroom-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "mushroom-stragonov",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "12 oz mushrooms (I reccommend shitake, but white, portabello, or maitake will also work.)"
+   ]
+  },
+  {
+   "id": "naan-bread",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "nashville-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 0.9638,
+   "unresolved_core": [
+    "2 Cups Buttermilk"
+   ]
+  },
+  {
+   "id": "newfoundland-cod-chowder",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 1/2 lbs Cod Fillets"
+   ]
+  },
+  {
+   "id": "no-knead-bread",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "no-knead-pizza-dough",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "oatmeal-cookies",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "oatmeal-pancakes",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "oats",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "oaty-pancakes",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "okonomiyaki",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "okroshka",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 long or 4 short cucumbers",
+    "10-12 radishes",
+    "2 Kefir or 1 kvass"
+   ]
+  },
+  {
+   "id": "omelet",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "one-pot-chicken-tetrazzini",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "5 oz Boursin Garlic and Fine Herbs"
+   ]
+  },
+  {
+   "id": "onion-raitha",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "50 gm of Cucumber"
+   ]
+  },
+  {
+   "id": "orange-glorious",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 (6 ounce) can frozen orange juice concentrate",
+    "12 cubes ice"
+   ]
+  },
+  {
+   "id": "orange-jam",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "orange-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "paella",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8571,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "500 g of rabbit, cut into pieces"
+   ]
+  },
+  {
+   "id": "pan-pizza",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pan-seared-chicken",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "panang-style-beef-curry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1/2 cup Red Curry Paste"
+   ]
+  },
+  {
+   "id": "pancake",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "paneer-tikka-masala",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.6,
+   "unresolved_core": [
+    "1 capsicum"
+   ]
+  },
+  {
+   "id": "parmesan-potatoes",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "party-mimosa",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 (12 ounce) can apricot-mango nectar",
+    "1 (12 ounce) can pineapple juice",
+    "1 (6 ounce) can frozen orange juice concentrate, thawed and undiluted",
+    "1 (750 milliliter) bottle cold champagne"
+   ]
+  },
+  {
+   "id": "pasta-alla-norma",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "3 aubergines (900g)",
+    "1 chilli (or 1 tsp of dried chilli flakes)"
+   ]
+  },
+  {
+   "id": "pasta-arrabbiata",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pasta-navy-style",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pasta-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pasta",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pastitsio",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pate-chinois",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 0.4923,
+   "unresolved_core": [
+    "1 small can (around 14oz) of whole kernel corn",
+    "1 small can (around 14oz) of cream style corn"
+   ]
+  },
+  {
+   "id": "pavlova",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "peanut-butter",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 lb. of raw pre-shelled peanuts"
+   ]
+  },
+  {
+   "id": "peat-carrot-salad",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pepper-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "perfect-potato-salad",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 0.9845,
+   "unresolved_core": [
+    "4 Radishes, thinly sliced"
+   ]
+  },
+  {
+   "id": "pho-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pickled-onions",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pilaf",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1.5kg meat (lamb or any other kind of meat)"
+   ]
+  },
+  {
+   "id": "pizza-dough",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pizza-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "plum-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pork-based-chili-con-carne",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pork-carnitas",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 ½ lbs. boneless pork shoulder",
+    "2-3 chipotle peppers in adobo sauce"
+   ]
+  },
+  {
+   "id": "portuguese-steak-with-beer-sauce",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "potato-and-eggplant-curry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 large eggplant (aubergine)"
+   ]
+  },
+  {
+   "id": "potato-leek-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "potato-pure",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "potato-soup",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pozharskiye-cutlets",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pretzels",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "puff-pastry",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "pulled-rabbit",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 cleaned rabbits",
+    "2 hard-boiled egg yolks"
+   ]
+  },
+  {
+   "id": "pulpo-gallega",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 octopus (1.7 to 2kg)"
+   ]
+  },
+  {
+   "id": "quarkbaellchen",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "quesadilla",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1-2 tortillas. Any brand works, but you can decide if you want the tortilla folded in half, or 2 tortillas together."
+   ]
+  },
+  {
+   "id": "quiche",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "quickbreakfastspaghetti",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "rabbit-onions",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 cleaned rabbits"
+   ]
+  },
+  {
+   "id": "ragu-napoletano",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "8 fresh basil leaves",
+    "1-2 lb pork tenderloin",
+    "1 lb cubed stewing beef (chuck, short rib, or oxtail)",
+    "1-2 lb total of ground beef chuck, veal, and pork"
+   ]
+  },
+  {
+   "id": "ragu",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 celery stalk, minced"
+   ]
+  },
+  {
+   "id": "ratatouille",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 0.8666,
+   "unresolved_core": [
+    "1 1/2 lbs Eggplant"
+   ]
+  },
+  {
+   "id": "ravioli",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "red-lentil-dahl",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "red-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.25,
+   "coverage_by_mass": 0.5245,
+   "unresolved_core": [
+    "2 lb chuck roast",
+    "12 oz. Can tomato paste",
+    "29 oz. Tomato puree"
+   ]
+  },
+  {
+   "id": "refried-beans",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "rice-pudding",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "rice",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ricotta-lasagna-filling",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ricotta",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 cheesecloth",
+    "1 cheese recipient",
+    "500ml of milk (or if not using whey, 2l of milk)",
+    "6g of citric acid (contained in 130ml of lemon juice)"
+   ]
+  },
+  {
+   "id": "risengroed",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "roasted-chicken-breast",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "roesti",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "russian-1000-islands-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "salsa-verde",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 pound (450g) tomatillos, husks removed",
+    "2 jalapeño or serrano chilies"
+   ]
+  },
+  {
+   "id": "salsa",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sand-tarts",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sardine-cakes",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sauerkraut",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2-4% sea salt by cabbage weight"
+   ]
+  },
+  {
+   "id": "sausage-rolls",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "savory-squash",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 Butternut Squash"
+   ]
+  },
+  {
+   "id": "scandinavian-coffee-cake",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1/2 cup shortening",
+    "1 package active dry yeast"
+   ]
+  },
+  {
+   "id": "schinkenfleckerl-gratinated",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "500 ml cream"
+   ]
+  },
+  {
+   "id": "schnitzel",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "4 veal cutlets (1 ~ 150g)"
+   ]
+  },
+  {
+   "id": "scouse",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "seafood-pasta",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "shakshouka",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "shepherds-pie",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "800 g of minced lamb"
+   ]
+  },
+  {
+   "id": "shortcrust-pastry-biscuits",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "8 servings [shortcrust pastry](/shortcrust-pastry)"
+   ]
+  },
+  {
+   "id": "shortcrust-pastry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "shrimp-and-chicken-jambalaya",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.75,
+   "coverage_by_mass": 0.8944,
+   "unresolved_core": [
+    "1/2 cup Diced Andouille (or Chirozo sausage)"
+   ]
+  },
+  {
+   "id": "shrimp-and-grits",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 cup Un-Cooked Grits"
+   ]
+  },
+  {
+   "id": "shrimp-fettuccine-alfredo",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "Pasta noodles of choice (e.g. approximately 9oz of fettuccine noodles)"
+   ]
+  },
+  {
+   "id": "simple-chicken-curry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "simple-pasta-cream-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "simple-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "slow-cooked-lamb-with-lemon",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "smoked-salmon-pasta-primavera",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 0.9373,
+   "unresolved_core": [
+    "1/2 lb Asparagus, cut into 2\" pieces"
+   ]
+  },
+  {
+   "id": "smoked-salmon-quiche",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "smoked-turkey",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "soleier",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "3 cloves",
+    "4 allspice"
+   ]
+  },
+  {
+   "id": "sourdough-bread-with-seeds-and-grains",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sourdough-loaf",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sourdough-potato-bread",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sourdough-starter",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "southern-biscuits",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "spaghetti-all-amatriciana",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "Guanciale preferably or Bacon 3.5oz (100g)",
+    "Tomato passata 10oz (300g)",
+    "Spaghetti or similar long pasta 12oz (350g)"
+   ]
+  },
+  {
+   "id": "spaghetti-alla-puttanesca",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 chopped chillies"
+   ]
+  },
+  {
+   "id": "spaghetti-and-meatballs",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "spaghetti-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "12 garlic gloves"
+   ]
+  },
+  {
+   "id": "spanish-tortilla",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "spatchcock-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "spiced-apple-pancakes",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "spiced-cantaloupe",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "3 lbs cantaloupe"
+   ]
+  },
+  {
+   "id": "spicy-kung-pao-style-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.7143,
+   "coverage_by_mass": 0.907,
+   "unresolved_core": [
+    "3 ribs Celery",
+    "1/4 cup Peanuts, chopped"
+   ]
+  },
+  {
+   "id": "spicy-mayo",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "spicy-sausage-pasta",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 red chilli, deseeded and diced",
+    "A large glass of red wine (approx. 250ml)"
+   ]
+  },
+  {
+   "id": "spinach-rice-casserole",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "steak-tartare",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sticky-porkchops",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "stir-fried-chicken-with-an-orange-sauce",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "stoemp",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "stoofvlees",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.25,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 33cl bottles of brown beer",
+    "2 bayleaves",
+    "1 clove (spice)"
+   ]
+  },
+  {
+   "id": "stracciatella-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "strawberry-compote",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "stroganoff",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "stuffed-round-squash",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "4 Round squash"
+   ]
+  },
+  {
+   "id": "stuffed-vegetables",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 0.793,
+   "unresolved_core": [
+    "1 courgette",
+    "1 elongated aubergine"
+   ]
+  },
+  {
+   "id": "sunday-milkshake",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "swedish-pancakes",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "sweet-potato-fries",
+   "recipe_type": "snack",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1-2 Sweet Pototoes (try different types)"
+   ]
+  },
+  {
+   "id": "tabouleh",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 cups Cracked Wheat (bulghur)"
+   ]
+  },
+  {
+   "id": "taco-meat",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tahini-short-bread",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tajine",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tanzania-tea-with-milk",
+   "recipe_type": "drink",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tarta-de-santiago",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 ½ cup almond meal (150 gr)"
+   ]
+  },
+  {
+   "id": "tarte-merengada",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "teriyaki-beef",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tiramisu",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "500 g mascarpone",
+    "300 g savoiardi biscuits"
+   ]
+  },
+  {
+   "id": "tiroler-groestl",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "500 g / 1 lbs porkchops"
+   ]
+  },
+  {
+   "id": "tofu-and-cashew-chow-mein",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "2 cups Small Broccoli Florets",
+    "1/2 cup Roasted Cashews"
+   ]
+  },
+  {
+   "id": "tofu-stir-fry",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tomato-and-grilled-paprika-soup",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tomato-flavored-hamburger-macaroni",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 3/4 cups of Macaroni Elbows"
+   ]
+  },
+  {
+   "id": "torrijas",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "torta-frita-criolla",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tortellini",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tuhu",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "450 g of lamb leg meat, diced",
+    "350 mL of sour-tasting beer (e.g. Weißbier)",
+    "2 cups of arugula, chopped",
+    "2 large beetroots, chopped"
+   ]
+  },
+  {
+   "id": "tuna-salad",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tuna-sub",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 recipe of your favorite tuna salad"
+   ]
+  },
+  {
+   "id": "turkish-red-lentil-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "turkish-style-spiced-chicken",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "turkish-yogurt-soup",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "turmeric-flatbread",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tuscan-style-pork-roast",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "tzatziki",
+   "recipe_type": "sauce",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "ukrainian-borscht",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "3 red beetroots"
+   ]
+  },
+  {
+   "id": "ukrainian-vareniki",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "venezuelan-arepa",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "wholemeal-pizza",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 serving [Wholemeal Wheat Flour Pizza Dough](/wholemeal-wheat-flour-pizza-dough)",
+    "1 serving [Easy Pizza Sauce](/easy-pizza-sauce)"
+   ]
+  },
+  {
+   "id": "wholemeal-wheat-flour-pizza-dough",
+   "recipe_type": "base",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "winter-risotto",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "yibin-burning-noodles",
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "yogurt-cake",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "yogurt",
+   "recipe_type": "breakfast",
+   "meal_types": [
+    "breakfast"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "2 thermos, ½l capacity each"
+   ]
+  },
+  {
+   "id": "yorkshire-puddings",
+   "recipe_type": "dessert",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "zaatar-chicken-bulgur-bowls",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.8,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 cup bulghur wheat"
+   ]
+  },
+  {
+   "id": "zaatar",
+   "recipe_type": "seasoning",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.0,
+   "coverage_by_mass": 0.0,
+   "unresolved_core": [
+    "1 cup zaatar leaves (without the stalks), cleaned and dried.",
+    "1 cup sesame (optionally roasted).",
+    "1 cup sumac."
+   ]
+  },
+  {
+   "id": "zarangollo",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "1 Eggplant"
+   ]
+  },
+  {
+   "id": "zopf",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  },
+  {
+   "id": "zurich-sytle-meat-saute",
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": []
+  }
+ ]
+}

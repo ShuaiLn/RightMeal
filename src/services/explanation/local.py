@@ -6,7 +6,7 @@ diagnosis, treatment language, or promises of health outcomes.
 
 from __future__ import annotations
 
-from models.basket import BasketItem, OptimizationResult
+from models.basket import BasketItem, BudgetStatus, OptimizationResult
 from models.explanation import Explanation
 from models.food import FOOD_GROUP_LABELS, FoodGroup, Nutrients
 from models.profile import HouseholdProfile
@@ -29,10 +29,15 @@ class LocalExplanationService(ExplanationService):
 
     @staticmethod
     def _summary(result: OptimizationResult, profile: HouseholdProfile) -> str:
-        if not result.budget_feasible:
+        if result.budget_status is BudgetStatus.OVER:
             return (
-                f"No food package fits the ${result.budget:.2f} budget for "
-                f"{result.horizon_days} days. Try a higher budget or a shorter planning period."
+                f"This basket is estimated at ${result.total_cost:.2f}, which is over "
+                f"your ${result.budget:.2f} budget for {result.horizon_days} days."
+            )
+        if result.budget_status is BudgetStatus.UNKNOWN:
+            return (
+                f"Price data is missing for some ingredients, so we can't confirm "
+                f"whether this basket fits the ${result.budget:.2f} budget."
             )
         base = (
             f"This basket has an estimated planning total of ${result.total_cost:.2f} "
@@ -77,7 +82,7 @@ class LocalExplanationService(ExplanationService):
     @staticmethod
     def _budget_tradeoffs(result: OptimizationResult) -> str:
         parts: list[str] = []
-        if result.budget_feasible:
+        if result.budget_status is BudgetStatus.WITHIN:
             parts.append(
                 f"${result.total_cost:.2f} of the ${result.budget:.2f} budget is used "
                 f"(prices are planning estimates from mixed sources, not one store's checkout total)."

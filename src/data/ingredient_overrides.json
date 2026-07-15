@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "notes": "Per-recipe, per-ingredient-line forced resolution, keyed by recipe slug then the exact raw ingredient text. Each value may set food_id (or null to force unresolved/ignore), role, is_core, or grams_per_serving. Use sparingly for lines the resolver gets wrong; the original markdown is never edited.",
+  "overrides": {}
+}

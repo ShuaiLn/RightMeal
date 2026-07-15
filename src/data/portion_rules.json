@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "notes": "Per-person portion sanity ranges (grams) by ingredient role, plus slot and daily calorie shares, used by the meal and daily validators. Portions outside these ranges are rebalanced or the recipe is rejected; calories are never met by inflating a single carb.",
+  "per_person_grams": {
+    "protein":   {"min": 80,  "max": 260},
+    "main_carb": {"min": 30,  "max": 180},
+    "vegetable": {"min": 60,  "max": 400},
+    "fruit":     {"min": 40,  "max": 300},
+    "dairy":     {"min": 15,  "max": 300},
+    "fat":       {"min": 3,   "max": 60},
+    "sauce":     {"min": 5,   "max": 120}
+  },
+  "dry_carb_per_person_grams": {"min": 40, "max": 120},
+  "cooked_carb_per_person_grams": {"min": 120, "max": 360},
+  "slot_kcal_share": {
+    "breakfast": {"min": 0.20, "max": 0.30},
+    "lunch":     {"min": 0.30, "max": 0.35},
+    "dinner":    {"min": 0.30, "max": 0.40}
+  },
+  "slot_kcal_share_midpoint": {"breakfast": 0.25, "lunch": 0.325, "dinner": 0.375},
+  "daily_kcal_tolerance": 0.10,
+  "slot_kcal_soft_tolerance": 0.35
+}

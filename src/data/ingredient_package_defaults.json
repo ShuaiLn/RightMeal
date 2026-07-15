@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "notes": "Common retail package sizes (grams) for extended catalog foods, kept separate from USDA nutrition and from prices. seed_price is filled from ingredient_price_defaults.json by the review tool. Sizes are typical US grocery packages; users can edit or override via product scans.",
+  "foods": {
+    "butter":            [{"label": "1 lb (4 sticks)", "grams": 454}, {"label": "1 stick", "grams": 113}],
+    "flour_all_purpose": [{"label": "2 lb bag", "grams": 907}, {"label": "5 lb bag", "grams": 2268}],
+    "sugar_white":       [{"label": "2 lb bag", "grams": 907}, {"label": "4 lb bag", "grams": 1814}],
+    "brown_sugar":       [{"label": "1 lb box", "grams": 454}, {"label": "2 lb bag", "grams": 907}],
+    "honey":             [{"label": "12 oz bottle", "grams": 340}],
+    "tomatoes_fresh":    [{"label": "1 lb", "grams": 454}, {"label": "each", "grams": 123}],
+    "tomato_paste":      [{"label": "6 oz can", "grams": 170}],
+    "tomato_sauce":      [{"label": "15 oz can", "grams": 425}, {"label": "24 oz jar", "grams": 680}],
+    "chicken_broth":     [{"label": "32 oz carton", "grams": 907, "ml": 946}, {"label": "14.5 oz can", "grams": 411, "ml": 429}],
+    "lemon":             [{"label": "each", "grams": 100}, {"label": "bag of 6", "grams": 600}],
+    "lime":              [{"label": "each", "grams": 67}, {"label": "bag of 8", "grams": 536}],
+    "heavy_cream":       [{"label": "16 oz", "grams": 473, "ml": 473}, {"label": "8 oz", "grams": 237, "ml": 237}],
+    "sour_cream":        [{"label": "16 oz tub", "grams": 454}],
+    "parmesan_cheese":   [{"label": "8 oz wedge", "grams": 227}, {"label": "5 oz shaker", "grams": 142}],
+    "mozzarella_cheese": [{"label": "16 oz", "grams": 454}, {"label": "8 oz", "grams": 227}],
+    "sausage":           [{"label": "1 lb", "grams": 454}],
+    "bacon":             [{"label": "1 lb", "grams": 454}, {"label": "12 oz", "grams": 340}],
+    "beef_stew_meat":    [{"label": "1 lb", "grams": 454}, {"label": "2 lb", "grams": 907}],
+    "mushrooms":         [{"label": "8 oz pack", "grams": 227}, {"label": "16 oz pack", "grams": 454}],
+    "green_onions":      [{"label": "bunch", "grams": 100}],
+    "celery":            [{"label": "bunch", "grams": 500}],
+    "zucchini":          [{"label": "each", "grams": 196}, {"label": "1 lb", "grams": 454}],
+    "green_beans":       [{"label": "1 lb", "grams": 454}, {"label": "12 oz bag", "grams": 340}],
+    "corn":              [{"label": "15 oz can", "grams": 425}, {"label": "each ear", "grams": 90}],
+    "soy_sauce":         [{"label": "15 oz bottle", "grams": 444, "ml": 444}, {"label": "10 oz bottle", "grams": 296, "ml": 296}]
+  },
+  "default": [{"label": "package", "grams": 400}]
+}

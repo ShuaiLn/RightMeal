@@ -3,6 +3,7 @@
 import pytest
 
 from models import BasketItem, FoodGroup, HouseholdProfile, Nutrients, PriceQuote, PriceSource
+from services.nutrition import eaten_day_status, suggest_foods_for
 
 
 def seed_quote(food):
@@ -83,3 +84,55 @@ def test_group_caps_scale_with_household_and_horizon(nutrition, la_family_profil
     caps_3day = nutrition.group_caps_g(la_family_profile, horizon_days=3)
     assert caps_week[FoodGroup.GRAINS_STARCHY] == pytest.approx(3200 * 4)
     assert caps_3day[FoodGroup.GRAINS_STARCHY] == pytest.approx(3200 * 4 * 3 / 7)
+
+
+class TestEatenDayStatus:
+    def test_zero_target_returns_none_pct_without_raising(self):
+        targets = Nutrients()  # everything zero
+        eaten = Nutrients(calories_kcal=500)
+        statuses = {s.nutrient: s for s in eaten_day_status(eaten, targets)}
+        assert statuses["calories_kcal"].pct is None
+        assert statuses["calories_kcal"].level == "sufficient"
+
+    def test_boundary_values_at_70_and_100_percent(self):
+        targets = Nutrients(protein_g=100, iron_mg=100, fiber_g=100)
+        eaten = Nutrients(protein_g=70, iron_mg=100, fiber_g=69)
+        statuses = {s.nutrient: s for s in eaten_day_status(eaten, targets)}
+        assert statuses["protein_g"].pct == pytest.approx(70.0)
+        assert statuses["protein_g"].level == "borderline"  # >=70 is the borderline floor
+        assert statuses["iron_mg"].pct == pytest.approx(100.0)
+        assert statuses["iron_mg"].level == "sufficient"  # >=100 is the sufficient floor
+        assert statuses["fiber_g"].pct == pytest.approx(69.0)
+        assert statuses["fiber_g"].level == "lacking"  # just under the borderline floor
+
+    def test_zero_eaten_classifies_everything_lacking(self):
+        targets = Nutrients(**{name: 100.0 for name in Nutrients.NAMES})
+        eaten = Nutrients()  # nothing eaten at all
+        statuses = eaten_day_status(eaten, targets)
+        assert len(statuses) == len(Nutrients.NAMES)
+        assert all(s.level == "lacking" for s in statuses)
+        assert all(s.pct == pytest.approx(0.0) for s in statuses)
+
+
+class TestSuggestFoodsFor:
+    def test_excludes_allergen(self, foods_by_id):
+        profile = HouseholdProfile(adults=2, allergies=["peanut"])
+        suggestions = suggest_foods_for(
+            "protein_g", list(foods_by_id.values()), profile, limit=50
+        )
+        assert "peanut_butter" not in {f.id for f in suggestions}
+
+    def test_excludes_non_vegetarian(self, foods_by_id):
+        profile = HouseholdProfile(adults=2, vegetarian=True)
+        suggestions = suggest_foods_for(
+            "protein_g", list(foods_by_id.values()), profile, limit=50
+        )
+        assert suggestions  # still finds vegetarian protein sources
+        assert all(f.vegetarian for f in suggestions)
+
+    def test_ranks_by_nutrient_descending_and_respects_limit(self, foods_by_id):
+        profile = HouseholdProfile(adults=2)
+        suggestions = suggest_foods_for("protein_g", list(foods_by_id.values()), profile, limit=3)
+        assert len(suggestions) == 3
+        values = [f.nutrients_per_100g.protein_g for f in suggestions]
+        assert values == sorted(values, reverse=True)

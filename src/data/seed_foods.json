@@ -5,6 +5,7 @@
     {
       "id": "brown_rice",
       "name": "Brown rice, dry",
+      "image_url": "https://www.themealdb.com/images/ingredients/Brown%20Rice-Small.png",
       "food_group": "grains_starchy",
       "prep_state": "raw",
       "form": "dry",
@@ -33,6 +34,7 @@
     {
       "id": "rice_white",
       "name": "White rice, long grain, enriched, dry",
+      "image_url": "https://www.themealdb.com/images/ingredients/Rice-Small.png",
       "food_group": "grains_starchy",
       "prep_state": "raw",
       "form": "dry",
@@ -61,6 +63,7 @@
     {
       "id": "rolled_oats",
       "name": "Rolled oats, dry",
+      "image_url": "https://www.themealdb.com/images/ingredients/Oats-Small.png",
       "food_group": "grains_starchy",
       "prep_state": "raw",
       "form": "dry",
@@ -89,6 +92,7 @@
     {
       "id": "bread_whole_wheat",
       "name": "Whole wheat bread",
+      "image_url": "https://www.themealdb.com/images/ingredients/Wholegrain%20Bread-Small.png",
       "food_group": "grains_starchy",
       "prep_state": "prepared",
       "form": "fresh",
@@ -116,6 +120,7 @@
     {
       "id": "spaghetti_dry",
       "name": "Spaghetti, enriched, dry",
+      "image_url": "https://www.themealdb.com/images/ingredients/Spaghetti-Small.png",
       "food_group": "grains_starchy",
       "prep_state": "raw",
       "form": "dry",
@@ -143,6 +148,7 @@
     {
       "id": "tortillas_flour",
       "name": "Flour tortillas",
+      "image_url": "https://www.themealdb.com/images/ingredients/Flour%20Tortilla-Small.png",
       "food_group": "grains_starchy",
       "prep_state": "prepared",
       "form": "fresh",
@@ -170,6 +176,7 @@
     {
       "id": "potatoes_russet",
       "name": "Russet potatoes",
+      "image_url": "https://www.themealdb.com/images/ingredients/Potatoes-Small.png",
       "food_group": "grains_starchy",
       "prep_state": "raw",
       "form": "fresh",
@@ -199,6 +206,7 @@
     {
       "id": "eggs_large",
       "name": "Eggs, large",
+      "image_url": "https://www.themealdb.com/images/ingredients/Eggs-Small.png",
       "food_group": "protein",
       "prep_state": "raw",
       "form": "fresh",
@@ -227,6 +235,7 @@
     {
       "id": "chicken_breast",
       "name": "Chicken breast, boneless skinless",
+      "image_url": "https://www.themealdb.com/images/ingredients/Chicken%20Breast-Small.png",
       "food_group": "protein",
       "prep_state": "raw",
       "form": "fresh",
@@ -255,6 +264,7 @@
     {
       "id": "ground_beef",
       "name": "Ground beef, 80% lean",
+      "image_url": "https://www.themealdb.com/images/ingredients/Minced%20Beef-Small.png",
       "food_group": "protein",
       "prep_state": "raw",
       "form": "fresh",
@@ -282,6 +292,7 @@
     {
       "id": "canned_tuna",
       "name": "Canned tuna, light, in water",
+      "image_url": "https://www.themealdb.com/images/ingredients/Tuna-Small.png",
       "food_group": "protein",
       "prep_state": "canned",
       "form": "canned",
@@ -309,6 +320,7 @@
     {
       "id": "black_beans_dry",
       "name": "Black beans, dry",
+      "image_url": "https://www.themealdb.com/images/ingredients/Black%20Beans-Small.png",
       "food_group": "protein",
       "prep_state": "raw",
       "form": "dry",
@@ -336,6 +348,7 @@
     {
       "id": "lentils_dry",
       "name": "Lentils, dry",
+      "image_url": "https://www.themealdb.com/images/ingredients/Lentils-Small.png",
       "food_group": "protein",
       "prep_state": "raw",
       "form": "dry",
@@ -363,6 +376,7 @@
     {
       "id": "chickpeas_canned",
       "name": "Chickpeas, canned",
+      "image_url": "https://www.themealdb.com/images/ingredients/Chickpeas-Small.png",
       "food_group": "protein",
       "prep_state": "canned",
       "form": "canned",
@@ -390,6 +404,7 @@
     {
       "id": "peanut_butter",
       "name": "Peanut butter",
+      "image_url": "https://www.themealdb.com/images/ingredients/Peanut%20Butter-Small.png",
       "food_group": "protein",
       "prep_state": "prepared",
       "form": "shelf-stable",
@@ -417,6 +432,7 @@
     {
       "id": "tofu_firm",
       "name": "Tofu, firm",
+      "image_url": "https://www.themealdb.com/images/ingredients/Tofu-Small.png",
       "food_group": "protein",
       "prep_state": "prepared",
       "form": "fresh",
@@ -444,6 +460,7 @@
     {
       "id": "carrots",
       "name": "Carrots",
+      "image_url": "https://www.themealdb.com/images/ingredients/Carrots-Small.png",
       "food_group": "vegetables",
       "prep_state": "raw",
       "form": "fresh",
@@ -473,6 +490,7 @@
     {
       "id": "onions_yellow",
       "name": "Yellow onions",
+      "image_url": "https://www.themealdb.com/images/ingredients/Onions-Small.png",
       "food_group": "vegetables",
       "prep_state": "raw",
       "form": "fresh",
@@ -502,6 +520,7 @@
     {
       "id": "cabbage_green",
       "name": "Green cabbage",
+      "image_url": "https://www.themealdb.com/images/ingredients/Cabbage-Small.png",
       "food_group": "vegetables",
       "prep_state": "raw",
       "form": "fresh",
@@ -530,6 +549,7 @@
     {
       "id": "spinach_fresh",
       "name": "Fresh spinach",
+      "image_url": "https://www.themealdb.com/images/ingredients/Spinach-Small.png",
       "food_group": "vegetables",
       "prep_state": "raw",
       "form": "fresh",
@@ -557,6 +577,7 @@
     {
       "id": "broccoli_frozen",
       "name": "Frozen broccoli",
+      "image_url": "https://www.themealdb.com/images/ingredients/Broccoli-Small.png",
       "food_group": "vegetables",
       "prep_state": "raw",
       "form": "frozen",
@@ -584,6 +605,7 @@
     {
       "id": "mixed_veg_frozen",
       "name": "Frozen mixed vegetables",
+      "image_url": "https://www.themealdb.com/images/ingredients/Vegetables-Small.png",
       "food_group": "vegetables",
       "prep_state": "raw",
       "form": "frozen",
@@ -611,6 +633,7 @@
     {
       "id": "tomatoes_canned",
       "name": "Canned diced tomatoes",
+      "image_url": "https://www.themealdb.com/images/ingredients/Canned%20Tomatoes-Small.png",
       "food_group": "vegetables",
       "prep_state": "canned",
       "form": "canned",
@@ -638,6 +661,7 @@
     {
       "id": "bananas",
       "name": "Bananas",
+      "image_url": "https://www.themealdb.com/images/ingredients/Banana-Small.png",
       "food_group": "fruits",
       "prep_state": "raw",
       "form": "fresh",
@@ -667,6 +691,7 @@
     {
       "id": "apples_gala",
       "name": "Gala apples",
+      "image_url": "https://www.themealdb.com/images/ingredients/Apples-Small.png",
       "food_group": "fruits",
       "prep_state": "raw",
       "form": "fresh",
@@ -696,6 +721,7 @@
     {
       "id": "oranges_navel",
       "name": "Navel oranges",
+      "image_url": "https://www.themealdb.com/images/ingredients/Orange-Small.png",
       "food_group": "fruits",
       "prep_state": "raw",
       "form": "fresh",
@@ -725,6 +751,7 @@
     {
       "id": "berries_frozen",
       "name": "Frozen mixed berries",
+      "image_url": "https://www.themealdb.com/images/ingredients/Frozen%20Mixed%20Berries-Small.png",
       "food_group": "fruits",
       "prep_state": "raw",
       "form": "frozen",
@@ -752,6 +779,7 @@
     {
       "id": "raisins",
       "name": "Raisins",
+      "image_url": "https://www.themealdb.com/images/ingredients/Raisins-Small.png",
       "food_group": "fruits",
       "prep_state": "prepared",
       "form": "dried",
@@ -779,6 +807,7 @@
     {
       "id": "milk_whole",
       "name": "Whole milk",
+      "image_url": "https://www.themealdb.com/images/ingredients/Whole%20Milk-Small.png",
       "food_group": "dairy_fortified_alt",
       "prep_state": "prepared",
       "form": "fresh",
@@ -791,6 +820,7 @@
         { "label": "1 quart", "grams": 974.38, "ml": 946, "seed_price": 1.49 }
       ],
       "max_weekly_grams": 4000,
+      "max_plated_grams_per_member_day": 260,
       "allergen_tags": ["dairy"],
       "lactose": true,
       "vegetarian": true,
@@ -808,6 +838,7 @@
     {
       "id": "yogurt_plain",
       "name": "Plain yogurt, whole milk",
+      "image_url": "https://www.themealdb.com/images/ingredients/Yogurt-Small.png",
       "food_group": "dairy_fortified_alt",
       "prep_state": "prepared",
       "form": "fresh",
@@ -835,6 +866,7 @@
     {
       "id": "cheddar_cheese",
       "name": "Cheddar cheese",
+      "image_url": "https://www.themealdb.com/images/ingredients/Cheddar%20Cheese-Small.png",
       "food_group": "dairy_fortified_alt",
       "prep_state": "prepared",
       "form": "fresh",
@@ -863,6 +895,7 @@
     {
       "id": "soy_milk_fortified",
       "name": "Fortified soy milk",
+      "image_url": "https://www.themealdb.com/images/ingredients/Soya%20Milk-Small.png",
       "food_group": "dairy_fortified_alt",
       "prep_state": "prepared",
       "form": "fresh",
@@ -874,6 +907,7 @@
         { "label": "32 oz carton", "grams": 974.38, "ml": 946, "seed_price": 1.89 }
       ],
       "max_weekly_grams": 4000,
+      "max_plated_grams_per_member_day": 260,
       "allergen_tags": ["soy"],
       "lactose": false,
       "vegetarian": true,
@@ -891,6 +925,7 @@
     {
       "id": "canola_oil",
       "name": "Canola oil",
+      "image_url": "https://www.themealdb.com/images/ingredients/Canola%20Oil-Small.png",
       "food_group": "healthy_fats",
       "prep_state": "prepared",
       "form": "shelf-stable",
@@ -919,6 +954,7 @@
     {
       "id": "olive_oil",
       "name": "Olive oil",
+      "image_url": "https://www.themealdb.com/images/ingredients/Olive%20Oil-Small.png",
       "food_group": "healthy_fats",
       "prep_state": "prepared",
       "form": "shelf-stable",
@@ -946,6 +982,7 @@
     {
       "id": "avocados",
       "name": "Avocados",
+      "image_url": "https://www.themealdb.com/images/ingredients/Avocado-Small.png",
       "food_group": "healthy_fats",
       "prep_state": "raw",
       "form": "fresh",
@@ -970,6 +1007,521 @@
         "calcium_mg": 12, "iron_mg": 0.55, "potassium_mg": 485,
         "vitamin_a_mcg_rae": 7, "vitamin_c_mg": 10, "vitamin_d_mcg": 0,
         "folate_mcg_dfe": 81, "magnesium_mg": 29, "zinc_mg": 0.64
+      }
+    },
+    {
+      "id": "chicken_thighs",
+      "name": "Chicken thighs, boneless skinless",
+      "image_url": "https://www.themealdb.com/images/ingredients/Chicken%20Thighs-Small.png",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 3.29 },
+        { "label": "3 lb family pack", "grams": 1360.8, "seed_price": 8.49 }
+      ],
+      "max_weekly_grams": 900,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["chicken thighs", "boneless skinless thighs"],
+      "nutrients_per_100g": {
+        "calories_kcal": 172, "protein_g": 20.1, "fiber_g": 0,
+        "calcium_mg": 9, "iron_mg": 0.9, "potassium_mg": 229,
+        "vitamin_a_mcg_rae": 30, "vitamin_c_mg": 0, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 6, "magnesium_mg": 20, "zinc_mg": 1.8
+      }
+    },
+    {
+      "id": "ground_turkey",
+      "name": "Ground turkey, 93% lean",
+      "image_url": "https://www.themealdb.com/images/ingredients/Turkey%20Mince-Small.png",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 4.49 }
+      ],
+      "max_weekly_grams": 700,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["ground turkey", "93/7 turkey mince"],
+      "nutrients_per_100g": {
+        "calories_kcal": 148, "protein_g": 18.4, "fiber_g": 0,
+        "calcium_mg": 20, "iron_mg": 1.3, "potassium_mg": 237,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 6, "magnesium_mg": 20, "zinc_mg": 2.0
+      }
+    },
+    {
+      "id": "pork_chops",
+      "name": "Pork loin chops, boneless",
+      "image_url": "https://www.themealdb.com/images/ingredients/Pork%20Chops-Small.png",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 4.29 },
+        { "label": "2.5 lb family pack", "grams": 1134.0, "seed_price": 9.49 }
+      ],
+      "max_weekly_grams": 700,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": true,
+      "is_meat_or_fish": true,
+      "search_terms": ["pork chops", "boneless pork loin chops"],
+      "nutrients_per_100g": {
+        "calories_kcal": 143, "protein_g": 21.5, "fiber_g": 0,
+        "calcium_mg": 4, "iron_mg": 0.6, "potassium_mg": 362,
+        "vitamin_a_mcg_rae": 2, "vitamin_c_mg": 0.5, "vitamin_d_mcg": 0.5,
+        "folate_mcg_dfe": 3, "magnesium_mg": 22, "zinc_mg": 1.9
+      }
+    },
+    {
+      "id": "beef_sirloin_steak",
+      "name": "Beef sirloin steak",
+      "image_url": "https://www.themealdb.com/images/ingredients/Sirloin%20Steak-Small.png",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 6.99 }
+      ],
+      "max_weekly_grams": 600,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["sirloin steak", "beef steak"],
+      "nutrients_per_100g": {
+        "calories_kcal": 150, "protein_g": 22.0, "fiber_g": 0,
+        "calcium_mg": 8, "iron_mg": 2.0, "potassium_mg": 340,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 6, "magnesium_mg": 22, "zinc_mg": 4.4
+      }
+    },
+    {
+      "id": "salmon_fillet",
+      "name": "Salmon fillet",
+      "image_url": "https://www.themealdb.com/images/ingredients/Salmon-Small.png",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 7.99 }
+      ],
+      "max_weekly_grams": 300,
+      "allergen_tags": ["fish"],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["salmon fillet", "fresh salmon"],
+      "nutrients_per_100g": {
+        "calories_kcal": 208, "protein_g": 20.4, "fiber_g": 0,
+        "calcium_mg": 9, "iron_mg": 0.3, "potassium_mg": 384,
+        "vitamin_a_mcg_rae": 12, "vitamin_c_mg": 0, "vitamin_d_mcg": 11.0,
+        "folate_mcg_dfe": 26, "magnesium_mg": 27, "zinc_mg": 0.4
+      }
+    },
+    {
+      "id": "shrimp",
+      "name": "Shrimp, raw, peeled and deveined",
+      "image_url": "https://www.themealdb.com/images/ingredients/Prawns-Small.png",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 453.6, "seed_price": 7.49 }
+      ],
+      "max_weekly_grams": 400,
+      "allergen_tags": ["shellfish"],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["shrimp", "prawns"],
+      "nutrients_per_100g": {
+        "calories_kcal": 99, "protein_g": 24.0, "fiber_g": 0,
+        "calcium_mg": 70, "iron_mg": 0.5, "potassium_mg": 259,
+        "vitamin_a_mcg_rae": 3, "vitamin_c_mg": 1.7, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 3, "magnesium_mg": 39, "zinc_mg": 1.3
+      }
+    },
+    {
+      "id": "tilapia_fillet",
+      "name": "Tilapia fillet",
+      "image_url": "https://www.themealdb.com/images/ingredients/Fish%20Fillets-Small.png",
+      "food_group": "protein",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 5.49 }
+      ],
+      "max_weekly_grams": 500,
+      "allergen_tags": ["fish"],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["tilapia", "tilapia fillet"],
+      "nutrients_per_100g": {
+        "calories_kcal": 96, "protein_g": 20.1, "fiber_g": 0,
+        "calcium_mg": 10, "iron_mg": 0.6, "potassium_mg": 302,
+        "vitamin_a_mcg_rae": 6, "vitamin_c_mg": 1.5, "vitamin_d_mcg": 0.6,
+        "folate_mcg_dfe": 15, "magnesium_mg": 27, "zinc_mg": 0.4
+      }
+    },
+    {
+      "id": "canned_salmon",
+      "name": "Canned salmon, pink, with bone",
+      "image_url": "https://www.themealdb.com/images/ingredients/Salmon-Small.png",
+      "food_group": "protein",
+      "prep_state": "canned",
+      "form": "canned",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "14.75 oz can", "grams": 418, "seed_price": 6.99 }
+      ],
+      "max_weekly_grams": 50,
+      "allergen_tags": ["fish"],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["canned salmon", "pink salmon"],
+      "nutrients_per_100g": {
+        "calories_kcal": 139, "protein_g": 20.5, "fiber_g": 0,
+        "calcium_mg": 203, "iron_mg": 0.8, "potassium_mg": 277,
+        "vitamin_a_mcg_rae": 35, "vitamin_c_mg": 0, "vitamin_d_mcg": 13.5,
+        "folate_mcg_dfe": 15, "magnesium_mg": 27, "zinc_mg": 0.9
+      }
+    },
+    {
+      "id": "deli_turkey_breast",
+      "name": "Deli turkey breast, sliced",
+      "image_url": "https://www.themealdb.com/images/ingredients/Turkey%20Ham-Small.png",
+      "food_group": "protein",
+      "prep_state": "cooked",
+      "form": "deli",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "9 oz pack", "grams": 255, "seed_price": 4.99 }
+      ],
+      "max_weekly_grams": 400,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": false,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": true,
+      "search_terms": ["deli turkey", "sliced turkey breast"],
+      "nutrients_per_100g": {
+        "calories_kcal": 104, "protein_g": 17.1, "fiber_g": 0,
+        "calcium_mg": 8, "iron_mg": 0.6, "potassium_mg": 300,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 3, "magnesium_mg": 18, "zinc_mg": 0.9
+      }
+    },
+    {
+      "id": "bell_peppers",
+      "name": "Green bell peppers",
+      "image_url": "https://www.themealdb.com/images/ingredients/Green%20Pepper-Small.png",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 pepper", "grams": 170, "seed_price": 0.99 },
+        { "label": "3 ct bag", "grams": 510, "seed_price": 2.49 }
+      ],
+      "max_weekly_grams": 800,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["green bell pepper", "bell peppers"],
+      "edible_fraction": 0.8,
+      "nutrients_per_100g": {
+        "calories_kcal": 20, "protein_g": 0.86, "fiber_g": 1.7,
+        "calcium_mg": 10, "iron_mg": 0.34, "potassium_mg": 175,
+        "vitamin_a_mcg_rae": 18, "vitamin_c_mg": 80.4, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 10, "magnesium_mg": 10, "zinc_mg": 0.13
+      }
+    },
+    {
+      "id": "peas_frozen",
+      "name": "Frozen green peas",
+      "image_url": "https://www.themealdb.com/images/ingredients/Frozen%20Peas-Small.png",
+      "food_group": "vegetables",
+      "prep_state": "raw",
+      "form": "frozen",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb bag", "grams": 454, "seed_price": 1.39 },
+        { "label": "2 lb bag", "grams": 907, "seed_price": 2.49 }
+      ],
+      "max_weekly_grams": 800,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["frozen peas", "green peas frozen"],
+      "nutrients_per_100g": {
+        "calories_kcal": 77, "protein_g": 5.2, "fiber_g": 4.5,
+        "calcium_mg": 22, "iron_mg": 1.5, "potassium_mg": 153,
+        "vitamin_a_mcg_rae": 110, "vitamin_c_mg": 18, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 53, "magnesium_mg": 26, "zinc_mg": 0.8
+      }
+    },
+    {
+      "id": "sweet_potatoes",
+      "name": "Sweet potatoes",
+      "image_url": "https://www.themealdb.com/images/ingredients/Sweet%20Potatoes-Small.png",
+      "food_group": "grains_starchy",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "1 lb", "grams": 453.6, "seed_price": 1.29 },
+        { "label": "3 lb bag", "grams": 1360.8, "seed_price": 3.49 }
+      ],
+      "max_weekly_grams": 1200,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["sweet potatoes", "yams"],
+      "edible_fraction": 0.85,
+      "nutrients_per_100g": {
+        "calories_kcal": 86, "protein_g": 1.57, "fiber_g": 3.0,
+        "calcium_mg": 30, "iron_mg": 0.61, "potassium_mg": 337,
+        "vitamin_a_mcg_rae": 709, "vitamin_c_mg": 2.4, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 11, "magnesium_mg": 25, "zinc_mg": 0.3
+      }
+    },
+    {
+      "id": "grapes",
+      "name": "Grapes, red seedless",
+      "image_url": "https://www.themealdb.com/images/ingredients/Blueberries-Small.png",
+      "food_group": "fruits",
+      "prep_state": "raw",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "2 lb bag", "grams": 907.2, "seed_price": 4.29 }
+      ],
+      "max_weekly_grams": 1000,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["red grapes", "seedless grapes", "grapes"],
+      "edible_fraction": 0.95,
+      "nutrients_per_100g": {
+        "calories_kcal": 69, "protein_g": 0.72, "fiber_g": 0.9,
+        "calcium_mg": 10, "iron_mg": 0.36, "potassium_mg": 191,
+        "vitamin_a_mcg_rae": 3, "vitamin_c_mg": 3.2, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 2, "magnesium_mg": 7, "zinc_mg": 0.07
+      }
+    },
+    {
+      "id": "peaches_canned",
+      "name": "Canned peaches, in juice",
+      "image_url": "https://www.themealdb.com/images/ingredients/Peaches-Small.png",
+      "food_group": "fruits",
+      "prep_state": "canned",
+      "form": "canned",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "15 oz can (drained 250 g)", "grams": 250, "seed_price": 1.69 }
+      ],
+      "max_weekly_grams": 800,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["canned peaches", "peaches in juice"],
+      "nutrients_per_100g": {
+        "calories_kcal": 44, "protein_g": 0.63, "fiber_g": 1.3,
+        "calcium_mg": 6, "iron_mg": 0.27, "potassium_mg": 130,
+        "vitamin_a_mcg_rae": 19, "vitamin_c_mg": 3.6, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 3, "magnesium_mg": 7, "zinc_mg": 0.11
+      }
+    },
+    {
+      "id": "cottage_cheese",
+      "name": "Cottage cheese, 4% milkfat",
+      "image_url": "https://www.themealdb.com/images/ingredients/Ricotta-Small.png",
+      "food_group": "dairy_fortified_alt",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "16 oz tub", "grams": 454, "seed_price": 2.89 },
+        { "label": "24 oz tub", "grams": 680, "seed_price": 3.99 }
+      ],
+      "max_weekly_grams": 900,
+      "allergen_tags": ["dairy"],
+      "lactose": true,
+      "vegetarian": true,
+      "vegan": false,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["cottage cheese", "small curd cottage cheese"],
+      "nutrients_per_100g": {
+        "calories_kcal": 98, "protein_g": 11.1, "fiber_g": 0,
+        "calcium_mg": 83, "iron_mg": 0.07, "potassium_mg": 104,
+        "vitamin_a_mcg_rae": 37, "vitamin_c_mg": 0, "vitamin_d_mcg": 0.1,
+        "folate_mcg_dfe": 12, "magnesium_mg": 8, "zinc_mg": 0.4
+      }
+    },
+    {
+      "id": "almonds",
+      "name": "Almonds, whole raw",
+      "image_url": "https://www.themealdb.com/images/ingredients/Almonds-Small.png",
+      "food_group": "healthy_fats",
+      "prep_state": "raw",
+      "form": "shelf-stable",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "8 oz bag", "grams": 227, "seed_price": 3.99 },
+        { "label": "16 oz bag", "grams": 454, "seed_price": 6.99 }
+      ],
+      "max_weekly_grams": 250,
+      "allergen_tags": ["tree nut"],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["almonds", "whole almonds", "raw almonds"],
+      "nutrients_per_100g": {
+        "calories_kcal": 579, "protein_g": 21.2, "fiber_g": 12.5,
+        "calcium_mg": 269, "iron_mg": 3.71, "potassium_mg": 733,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 44, "magnesium_mg": 270, "zinc_mg": 3.12
+      }
+    },
+    {
+      "id": "quinoa_dry",
+      "name": "Quinoa, dry",
+      "image_url": "https://www.themealdb.com/images/ingredients/Quinoa-Small.png",
+      "food_group": "grains_starchy",
+      "prep_state": "raw",
+      "form": "dry",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "12 oz bag", "grams": 340, "seed_price": 3.49 },
+        { "label": "2 lb bag", "grams": 907.2, "seed_price": 7.99 }
+      ],
+      "max_weekly_grams": 500,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["quinoa", "dry quinoa"],
+      "nutrients_per_100g": {
+        "calories_kcal": 368, "protein_g": 14.1, "fiber_g": 7.0,
+        "calcium_mg": 47, "iron_mg": 4.57, "potassium_mg": 563,
+        "vitamin_a_mcg_rae": 1, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 184, "magnesium_mg": 197, "zinc_mg": 3.1
+      }
+    },
+    {
+      "id": "tortillas_corn",
+      "name": "Corn tortillas",
+      "image_url": "https://www.themealdb.com/images/ingredients/Corn%20Tortillas-Small.png",
+      "food_group": "grains_starchy",
+      "prep_state": "prepared",
+      "form": "fresh",
+      "fdc_id": null,
+      "is_liquid": false,
+      "density_g_per_ml": null,
+      "package_options": [
+        { "label": "30 ct pack", "grams": 780, "seed_price": 2.99 }
+      ],
+      "max_weekly_grams": 500,
+      "allergen_tags": [],
+      "lactose": false,
+      "vegetarian": true,
+      "vegan": true,
+      "contains_pork": false,
+      "is_meat_or_fish": false,
+      "search_terms": ["corn tortillas", "tortillas corn"],
+      "nutrients_per_100g": {
+        "calories_kcal": 218, "protein_g": 5.7, "fiber_g": 6.3,
+        "calcium_mg": 81, "iron_mg": 1.23, "potassium_mg": 186,
+        "vitamin_a_mcg_rae": 0, "vitamin_c_mg": 0, "vitamin_d_mcg": 0,
+        "folate_mcg_dfe": 47, "magnesium_mg": 72, "zinc_mg": 1.3
       }
     }
   ]

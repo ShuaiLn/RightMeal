@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Iterable, Sequence
 
 from models.basket import BasketItem, NutrientGap
-from models.food import FoodGroup, Nutrients
+from models.food import Food, FoodGroup, Nutrients
 from models.profile import HouseholdProfile
+from services.dietary import exclusion_reason
 
 
 class NutritionService:
@@ -66,3 +68,42 @@ class NutritionService:
     def group_caps_g(self, profile: HouseholdProfile, horizon_days: int = 7) -> dict[FoodGroup, float]:
         factor = profile.total_members * horizon_days / 7.0
         return {group: cap * factor for group, cap in self._group_caps.items()}
+
+
+@dataclass(frozen=True)
+class NutrientStatus:
+    """One nutrient's coverage for a day's actually-eaten meals vs. target."""
+
+    nutrient: str
+    pct: float | None  # None when target is 0 (no divide-by-zero, no fake 0%)
+    level: str  # "sufficient" | "borderline" | "lacking"
+
+
+def eaten_day_status(eaten: Nutrients, targets: Nutrients) -> list[NutrientStatus]:
+    """Coverage of what was actually eaten in a day against the household's
+    daily targets. All 12 tracked nutrients are "more is better, up to
+    target" — this app tracks no upper-bound nutrient (e.g. sodium) — so a
+    single >=100% / >=70% threshold direction is correct for every nutrient.
+    """
+    statuses: list[NutrientStatus] = []
+    for name in Nutrients.NAMES:
+        target = targets.get(name)
+        if target <= 0:
+            statuses.append(NutrientStatus(name, None, "sufficient"))
+            continue
+        pct = 100.0 * eaten.get(name) / target
+        level = "sufficient" if pct >= 100 else "borderline" if pct >= 70 else "lacking"
+        statuses.append(NutrientStatus(name, pct, level))
+    return statuses
+
+
+def suggest_foods_for(
+    nutrient: str, foods: Sequence[Food], profile: HouseholdProfile, limit: int = 3
+) -> list[Food]:
+    """The top foods for one nutrient that fit the household's dietary
+    restrictions — filtered through the same exclusion rules the basket
+    builder and recipe validator use, so a suggestion never crosses an
+    allergy or diet restriction."""
+    allowed = [food for food in foods if exclusion_reason(food, profile) is None]
+    allowed.sort(key=lambda food: food.nutrients_per_100g.get(nutrient), reverse=True)
+    return allowed[:limit]

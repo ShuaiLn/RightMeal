@@ -1,0 +1,485 @@
+{
+ "count": 227,
+ "top_unresolved_core": [
+  {
+   "name": "cheesecloth",
+   "recipes": 4
+  },
+  {
+   "name": "",
+   "recipes": 4
+  },
+  {
+   "name": "cheese recipient",
+   "recipes": 3
+  },
+  {
+   "name": "radishes",
+   "recipes": 3
+  },
+  {
+   "name": "eggplant",
+   "recipes": 3
+  },
+  {
+   "name": "bone-in",
+   "recipes": 2
+  },
+  {
+   "name": "tomato puree",
+   "recipes": 2
+  },
+  {
+   "name": "bayleaf",
+   "recipes": 2
+  },
+  {
+   "name": "servings [shortcrust pastry]",
+   "recipes": 2
+  },
+  {
+   "name": "thermos",
+   "recipes": 2
+  },
+  {
+   "name": "cream",
+   "recipes": 2
+  },
+  {
+   "name": "frozen orange juice concentrate",
+   "recipes": 2
+  },
+  {
+   "name": "cleaned rabbits",
+   "recipes": 2
+  },
+  {
+   "name": "~150g bacon cubes",
+   "recipes": 1
+  },
+  {
+   "name": "~150g medium soft cheese. appenzeller works best. gruyère would be my go-to alternative",
+   "recipes": 1
+  },
+  {
+   "name": "apricot jam",
+   "recipes": 1
+  },
+  {
+   "name": "yellow peppers per person",
+   "recipes": 1
+  },
+  {
+   "name": "squash",
+   "recipes": 1
+  },
+  {
+   "name": "chicken bullion cube",
+   "recipes": 1
+  },
+  {
+   "name": "kalamon/kalamata olives",
+   "recipes": 1
+  },
+  {
+   "name": "baby back rib racks",
+   "recipes": 1
+  },
+  {
+   "name": "container of barbecue rub is recommended)",
+   "recipes": 1
+  },
+  {
+   "name": "or 1 jar of fradiavolo sauce",
+   "recipes": 1
+  },
+  {
+   "name": "pork ribs",
+   "recipes": 1
+  },
+  {
+   "name": "pork belly",
+   "recipes": 1
+  },
+  {
+   "name": "garlic head",
+   "recipes": 1
+  },
+  {
+   "name": "duck",
+   "recipes": 1
+  },
+  {
+   "name": "lemongrass stalks",
+   "recipes": 1
+  },
+  {
+   "name": "kaffir lime leaves",
+   "recipes": 1
+  },
+  {
+   "name": "red chilies",
+   "recipes": 1
+  },
+  {
+   "name": "broccoli pieces",
+   "recipes": 1
+  },
+  {
+   "name": "beef bouillon",
+   "recipes": 1
+  },
+  {
+   "name": "beef kidney",
+   "recipes": 1
+  },
+  {
+   "name": "beef liver",
+   "recipes": 1
+  },
+  {
+   "name": "cut slices of ham",
+   "recipes": 1
+  },
+  {
+   "name": "pears",
+   "recipes": 1
+  },
+  {
+   "name": "blueberries",
+   "recipes": 1
+  },
+  {
+   "name": "coconut",
+   "recipes": 1
+  },
+  {
+   "name": "celery sticks",
+   "recipes": 1
+  },
+  {
+   "name": "pork mince",
+   "recipes": 1
+  },
+  {
+   "name": "veal mince",
+   "recipes": 1
+  },
+  {
+   "name": "concentrated tomato paste",
+   "recipes": 1
+  },
+  {
+   "name": "glasses wine",
+   "recipes": 1
+  },
+  {
+   "name": "and 1/4 teaspoons active dry yeast",
+   "recipes": 1
+  },
+  {
+   "name": "cheese. use a cheese that is mid-aged",
+   "recipes": 1
+  },
+  {
+   "name": "400g of ground beef meat",
+   "recipes": 1
+  },
+  {
+   "name": "spoonfuls of tomato paste",
+   "recipes": 1
+  },
+  {
+   "name": "/3 cups frozen mixed vegetables",
+   "recipes": 1
+  },
+  {
+   "name": "condensed cream of chicken soup",
+   "recipes": 1
+  },
+  {
+   "name": "biscuit/baking mix",
+   "recipes": 1
+  },
+  {
+   "name": "16oz macaroni (elbow",
+   "recipes": 1
+  },
+  {
+   "name": "24oz raw chicken breast",
+   "recipes": 1
+  },
+  {
+   "name": "chicken breast or thigh",
+   "recipes": 1
+  },
+  {
+   "name": "celery stalks",
+   "recipes": 1
+  },
+  {
+   "name": "/2 teaspoons minced fresh gingerroot",
+   "recipes": 1
+  },
+  {
+   "name": "heavy whipping cream",
+   "recipes": 1
+  },
+  {
+   "name": "50-70% dark chocolate chips or semi-sweet milk chocolate chips",
+   "recipes": 1
+  },
+  {
+   "name": "coffee",
+   "recipes": 1
+  },
+  {
+   "name": "chicken bouillon",
+   "recipes": 1
+  },
+  {
+   "name": "smoked duck breast",
+   "recipes": 1
+  },
+  {
+   "name": "parsnip julienned",
+   "recipes": 1
+  },
+  {
+   "name": "bunch collard greens chopped into ribbons",
+   "recipes": 1
+  },
+  {
+   "name": "cinnamom stick",
+   "recipes": 1
+  },
+  {
+   "name": "сrab meat",
+   "recipes": 1
+  },
+  {
+   "name": "6g of of citric acid",
+   "recipes": 1
+  },
+  {
+   "name": "high fat cream",
+   "recipes": 1
+  },
+  {
+   "name": "vanilla bean (mark",
+   "recipes": 1
+  },
+  {
+   "name": "very thin slices of ham with italian herbs",
+   "recipes": 1
+  },
+  {
+   "name": "jam or marmalade",
+   "recipes": 1
+  },
+  {
+   "name": "qt (32 oz",
+   "recipes": 1
+  },
+  {
+   "name": "bacon slices",
+   "recipes": 1
+  },
+  {
+   "name": "250g red beans azuki",
+   "recipes": 1
+  },
+  {
+   "name": "baking paper square 7x7cm",
+   "recipes": 1
+  },
+  {
+   "name": "plums",
+   "recipes": 1
+  },
+  {
+   "name": "mushrooms with liquid",
+   "recipes": 1
+  },
+  {
+   "name": "spoon tomato concentrate",
+   "recipes": 1
+  },
+  {
+   "name": "coleslaw mix",
+   "recipes": 1
+  },
+  {
+   "name": "hoisin sauce",
+   "recipes": 1
+  },
+  {
+   "name": "canadian bacon or ham",
+   "recipes": 1
+  },
+  {
+   "name": "bouillon cube (vegetable",
+   "recipes": 1
+  },
+  {
+   "name": "celeriac",
+   "recipes": 1
+  },
+  {
+   "name": "sausage (chopped rookworst",
+   "recipes": 1
+  },
+  {
+   "name": "tomatoes per person",
+   "recipes": 1
+  },
+  {
+   "name": "fennel bulbs",
+   "recipes": 1
+  },
+  {
+   "name": "kale",
+   "recipes": 1
+  },
+  {
+   "name": "pcs salmon fillet",
+   "recipes": 1
+  },
+  {
+   "name": "big spoons of sour creme or creme fraiche",
+   "recipes": 1
+  },
+  {
+   "name": "white wine",
+   "recipes": 1
+  },
+  {
+   "name": "shot of kirsch",
+   "recipes": 1
+  },
+  {
+   "name": "anglerfish",
+   "recipes": 1
+  },
+  {
+   "name": "milk cream",
+   "recipes": 1
+  },
+  {
+   "name": "pancetta",
+   "recipes": 1
+  },
+  {
+   "name": "whole ckicken weighing close to 2",
+   "recipes": 1
+  },
+  {
+   "name": "green cardamom",
+   "recipes": 1
+  },
+  {
+   "name": "black cardamom",
+   "recipes": 1
+  },
+  {
+   "name": "broccoli (fresh best",
+   "recipes": 1
+  },
+  {
+   "name": "cassis-juice",
+   "recipes": 1
+  },
+  {
+   "name": "bottle 700ml red wine",
+   "recipes": 1
+  },
+  {
+   "name": "cinamon bark",
+   "recipes": 1
+  },
+  {
+   "name": "spoon ginger powder",
+   "recipes": 1
+  },
+  {
+   "name": "spoon cloves",
+   "recipes": 1
+  },
+  {
+   "name": "maple syrup",
+   "recipes": 1
+  },
+  {
+   "name": "fruit (apricots",
+   "recipes": 1
+  },
+  {
+   "name": "tsps baking powder",
+   "recipes": 1
+  },
+  {
+   "name": "tsps baker’s ammonium",
+   "recipes": 1
+  },
+  {
+   "name": "orange juice",
+   "recipes": 1
+  },
+  {
+   "name": "egg yolk whisked to brush cookies",
+   "recipes": 1
+  },
+  {
+   "name": "assorted lettuce",
+   "recipes": 1
+  },
+  {
+   "name": "cucumber",
+   "recipes": 1
+  },
+  {
+   "name": "pitted black olives",
+   "recipes": 1
+  },
+  {
+   "name": "norwegian mackerel fillets",
+   "recipes": 1
+  },
+  {
+   "name": "summer squash",
+   "recipes": 1
+  },
+  {
+   "name": "12 oz. bottle of beer",
+   "recipes": 1
+  },
+  {
+   "name": "ham",
+   "recipes": 1
+  },
+  {
+   "name": "scotch bonnet chili",
+   "recipes": 1
+  },
+  {
+   "name": "one block of firm tofu (400g",
+   "recipes": 1
+  },
+  {
+   "name": "light soy sause",
+   "recipes": 1
+  },
+  {
+   "name": "dark soy sause",
+   "recipes": 1
+  },
+  {
+   "name": "tahini",
+   "recipes": 1
+  },
+  {
+   "name": "cardamom seeds",
+   "recipes": 1
+  }
+ ]
+}

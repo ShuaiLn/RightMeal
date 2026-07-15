@@ -1,0 +1,2520 @@
+{
+ "status": "needs_review",
+ "mappings": [
+  {
+   "ingredient_id": "tomatoes_fresh",
+   "role": "vegetable",
+   "expected_state": "raw",
+   "search_terms": [
+    "fresh tomatoes",
+    "roma tomatoes",
+    "tomato",
+    "tomatoes",
+    "tomatoes fresh"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 333281,
+     "description": "Tomatoes, canned, red, ripe, diced",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 18.0,
+      "protein_g": 0.84,
+      "fiber_g": 0.0,
+      "calcium_mg": 30.0,
+      "iron_mg": 0.57,
+      "potassium_mg": 198.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 9.8,
+      "zinc_mg": 0.12
+     }
+    },
+    {
+     "fdcId": 1105314,
+     "description": "Bananas, ripe and slightly ripe, raw",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 97.0,
+      "protein_g": 0.74,
+      "fiber_g": 1.7,
+      "calcium_mg": 5.0,
+      "iron_mg": 0.0,
+      "potassium_mg": 326.0,
+      "vitamin_a_mcg_rae": 1.0,
+      "vitamin_c_mg": 12.3,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 28.0,
+      "zinc_mg": 0.16
+     }
+    },
+    {
+     "fdcId": 170457,
+     "description": "Tomatoes, red, ripe, raw, year round average",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 18.0,
+      "protein_g": 0.88,
+      "fiber_g": 1.2,
+      "calcium_mg": 10.0,
+      "iron_mg": 0.27,
+      "potassium_mg": 237.0,
+      "vitamin_a_mcg_rae": 42.0,
+      "vitamin_c_mg": 13.7,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 15.0,
+      "magnesium_mg": 11.0,
+      "zinc_mg": 0.17
+     }
+    },
+    {
+     "fdcId": 170050,
+     "description": "Tomatoes, red, ripe, cooked",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 18.0,
+      "protein_g": 0.95,
+      "fiber_g": 0.7,
+      "calcium_mg": 11.0,
+      "iron_mg": 0.68,
+      "potassium_mg": 218.0,
+      "vitamin_a_mcg_rae": 24.0,
+      "vitamin_c_mg": 22.8,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 13.0,
+      "magnesium_mg": 9.0,
+      "zinc_mg": 0.14
+     }
+    },
+    {
+     "fdcId": 170052,
+     "description": "Tomatoes, red, ripe, canned, stewed",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 26.0,
+      "protein_g": 0.91,
+      "fiber_g": 1.0,
+      "calcium_mg": 34.0,
+      "iron_mg": 1.33,
+      "potassium_mg": 207.0,
+      "vitamin_a_mcg_rae": 9.0,
+      "vitamin_c_mg": 7.9,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 5.0,
+      "magnesium_mg": 12.0,
+      "zinc_mg": 0.17
+     }
+    },
+    {
+     "fdcId": 170089,
+     "description": "Tomatoes, red, ripe, cooked, stewed",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 79.0,
+      "protein_g": 1.96,
+      "fiber_g": 1.7,
+      "calcium_mg": 26.0,
+      "iron_mg": 1.06,
+      "potassium_mg": 247.0,
+      "vitamin_a_mcg_rae": 33.0,
+      "vitamin_c_mg": 18.2,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 15.0,
+      "zinc_mg": 0.18
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "butter",
+   "role": "fat",
+   "expected_state": "raw",
+   "search_terms": [
+    "butter",
+    "melted butter",
+    "salted butter",
+    "unsalted butter"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 790508,
+     "description": "Butter, stick, salted",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 0.0,
+      "protein_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 21.0,
+      "iron_mg": 0.06,
+      "potassium_mg": 23.0,
+      "vitamin_a_mcg_rae": 758.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 1.6,
+      "zinc_mg": 0.07
+     }
+    },
+    {
+     "fdcId": 173410,
+     "description": "Butter, salted",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 717.0,
+      "protein_g": 0.85,
+      "fiber_g": 0.0,
+      "calcium_mg": 24.0,
+      "iron_mg": 0.02,
+      "potassium_mg": 24.0,
+      "vitamin_a_mcg_rae": 684.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 3.0,
+      "magnesium_mg": 2.0,
+      "zinc_mg": 0.09
+     }
+    },
+    {
+     "fdcId": 173411,
+     "description": "Butter, whipped, with salt",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 731.0,
+      "protein_g": 0.49,
+      "fiber_g": 0.0,
+      "calcium_mg": 23.0,
+      "iron_mg": 0.05,
+      "potassium_mg": 41.0,
+      "vitamin_a_mcg_rae": 683.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 4.0,
+      "magnesium_mg": 1.0,
+      "zinc_mg": 0.05
+     }
+    },
+    {
+     "fdcId": 173430,
+     "description": "Butter, without salt",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 717.0,
+      "protein_g": 0.85,
+      "fiber_g": 0.0,
+      "calcium_mg": 24.0,
+      "iron_mg": 0.02,
+      "potassium_mg": 24.0,
+      "vitamin_a_mcg_rae": 684.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 3.0,
+      "magnesium_mg": 2.0,
+      "zinc_mg": 0.09
+     }
+    },
+    {
+     "fdcId": 173581,
+     "description": "Butter, light, stick, with salt",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 499.0,
+      "protein_g": 3.3,
+      "fiber_g": 0.0,
+      "calcium_mg": 48.0,
+      "iron_mg": 1.09,
+      "potassium_mg": 71.0,
+      "vitamin_a_mcg_rae": 465.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 1.0,
+      "magnesium_mg": 5.0,
+      "zinc_mg": 0.26
+     }
+    },
+    {
+     "fdcId": 172344,
+     "description": "Butter, light, stick, without salt",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 499.0,
+      "protein_g": 3.3,
+      "fiber_g": 0.0,
+      "calcium_mg": 48.0,
+      "iron_mg": 1.09,
+      "potassium_mg": 71.0,
+      "vitamin_a_mcg_rae": 465.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 1.0,
+      "magnesium_mg": 5.0,
+      "zinc_mg": 0.26
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "flour_all_purpose",
+   "role": "main_carb",
+   "expected_state": "dry",
+   "search_terms": [
+    "all purpose flour",
+    "all-purpose flour",
+    "bread flour",
+    "flour",
+    "flour all purpose",
+    "plain flour",
+    "wheat flour",
+    "white flour"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 789890,
+     "description": "Flour, wheat, all-purpose, enriched, bleached",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 366.0,
+      "protein_g": 10.9,
+      "fiber_g": 0.0,
+      "calcium_mg": 19.0,
+      "iron_mg": 5.62,
+      "potassium_mg": 136.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 26.7,
+      "zinc_mg": 0.72
+     }
+    },
+    {
+     "fdcId": 789951,
+     "description": "Flour, wheat, all-purpose, enriched, unbleached",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 358.0,
+      "protein_g": 13.1,
+      "fiber_g": 0.0,
+      "calcium_mg": 21.0,
+      "iron_mg": 5.41,
+      "potassium_mg": 135.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 33.3,
+      "zinc_mg": 0.9
+     }
+    },
+    {
+     "fdcId": 790018,
+     "description": "Flour, wheat, all-purpose, unenriched, unbleached",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 362.0,
+      "protein_g": 12.0,
+      "fiber_g": 3.0,
+      "calcium_mg": 22.0,
+      "iron_mg": 1.18,
+      "potassium_mg": 150.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 36.1,
+      "zinc_mg": 1.15
+     }
+    },
+    {
+     "fdcId": 168894,
+     "description": "Wheat flour, white, all-purpose, enriched, bleached",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 364.0,
+      "protein_g": 10.3,
+      "fiber_g": 2.7,
+      "calcium_mg": 15.0,
+      "iron_mg": 4.64,
+      "potassium_mg": 107.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 291.0,
+      "magnesium_mg": 22.0,
+      "zinc_mg": 0.7
+     }
+    },
+    {
+     "fdcId": 168936,
+     "description": "Wheat flour, white, all-purpose, enriched, unbleached",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 364.0,
+      "protein_g": 10.3,
+      "fiber_g": 2.7,
+      "calcium_mg": 15.0,
+      "iron_mg": 4.64,
+      "potassium_mg": 107.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 291.0,
+      "magnesium_mg": 22.0,
+      "zinc_mg": 0.7
+     }
+    },
+    {
+     "fdcId": 169754,
+     "description": "Wheat flour, white, all-purpose, enriched, calcium-fortified",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 364.0,
+      "protein_g": 10.3,
+      "fiber_g": 2.7,
+      "calcium_mg": 252.0,
+      "iron_mg": 4.64,
+      "potassium_mg": 107.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 291.0,
+      "magnesium_mg": 22.0,
+      "zinc_mg": 0.7
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "sugar_white",
+   "role": "sweetener",
+   "expected_state": "dry",
+   "search_terms": [
+    "caster sugar",
+    "confectioners sugar",
+    "granulated sugar",
+    "icing sugar",
+    "powdered sugar",
+    "sugar",
+    "sugar white",
+    "white sugar"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 746784,
+     "description": "Sugars, granulated",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 385.0,
+      "protein_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 1.0,
+      "iron_mg": 0.05,
+      "potassium_mg": 2.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 0.3,
+      "zinc_mg": 0.01
+     }
+    },
+    {
+     "fdcId": 169655,
+     "description": "Sugars, granulated",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 387.0,
+      "protein_g": 0.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 1.0,
+      "iron_mg": 0.05,
+      "potassium_mg": 2.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 0.0,
+      "zinc_mg": 0.01
+     }
+    },
+    {
+     "fdcId": 170675,
+     "description": "Sweeteners, sugar substitute, granulated, brown",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 347.0,
+      "protein_g": 2.06,
+      "fiber_g": 0.6,
+      "calcium_mg": 879.0,
+      "iron_mg": 0.16,
+      "potassium_mg": 39.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 6.0,
+      "zinc_mg": 0.04
+     }
+    },
+    {
+     "fdcId": 170041,
+     "description": "Potatoes, mashed, dehydrated, granules with milk, dry form",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 357.0,
+      "protein_g": 10.9,
+      "fiber_g": 6.6,
+      "calcium_mg": 142.0,
+      "iron_mg": 3.5,
+      "potassium_mg": 1850.0,
+      "vitamin_a_mcg_rae": 18.0,
+      "vitamin_c_mg": 16.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 30.0,
+      "magnesium_mg": 74.0,
+      "zinc_mg": 1.2
+     }
+    },
+    {
+     "fdcId": 171613,
+     "description": "Soup, bouillon cubes and granules, low sodium, dry",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 438.0,
+      "protein_g": 16.7,
+      "fiber_g": 0.2,
+      "calcium_mg": 187.0,
+      "iron_mg": 1.03,
+      "potassium_mg": 309.0,
+      "vitamin_a_mcg_rae": 25.0,
+      "vitamin_c_mg": 1.1,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 21.0,
+      "magnesium_mg": 56.0,
+      "zinc_mg": 0.09
+     }
+    },
+    {
+     "fdcId": 170039,
+     "description": "Potatoes, mashed, dehydrated, granules without milk, dry form",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 372.0,
+      "protein_g": 8.22,
+      "fiber_g": 7.1,
+      "calcium_mg": 41.0,
+      "iron_mg": 1.09,
+      "potassium_mg": 703.0,
+      "vitamin_a_mcg_rae": 1.0,
+      "vitamin_c_mg": 37.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 40.0,
+      "magnesium_mg": 98.0,
+      "zinc_mg": 0.91
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "chicken_broth",
+   "role": "liquid",
+   "expected_state": "raw",
+   "search_terms": [
+    "beef broth",
+    "broth",
+    "chicken broth",
+    "chicken stock",
+    "stock",
+    "vegetable broth"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 171542,
+     "description": "Soup, chicken broth, canned, condensed",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 31.0,
+      "protein_g": 4.42,
+      "fiber_g": 0.0,
+      "calcium_mg": 6.0,
+      "iron_mg": 0.41,
+      "potassium_mg": 170.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 4.0,
+      "magnesium_mg": 2.0,
+      "zinc_mg": 0.2
+     }
+    },
+    {
+     "fdcId": 171609,
+     "description": "Soup, chicken broth, low sodium, canned",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 16.0,
+      "protein_g": 2.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 4.0,
+      "iron_mg": 0.21,
+      "potassium_mg": 86.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 1.0,
+      "zinc_mg": 0.1
+     }
+    },
+    {
+     "fdcId": 171110,
+     "description": "Chicken, canned, no broth",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 185.0,
+      "protein_g": 25.3,
+      "fiber_g": 0.0,
+      "calcium_mg": 14.0,
+      "iron_mg": 1.3,
+      "potassium_mg": 153.0,
+      "vitamin_a_mcg_rae": 53.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.1,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 19.0,
+      "zinc_mg": 2.5
+     }
+    },
+    {
+     "fdcId": 174551,
+     "description": "Soup, chicken broth, canned, prepared with equal volume water",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 16.0,
+      "protein_g": 2.02,
+      "fiber_g": 0.0,
+      "calcium_mg": 4.0,
+      "iron_mg": 0.21,
+      "potassium_mg": 86.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 1.0,
+      "zinc_mg": 0.1
+     }
+    },
+    {
+     "fdcId": 171099,
+     "description": "Chicken, canned, meat only, with broth",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 165.0,
+      "protein_g": 21.8,
+      "fiber_g": 0.0,
+      "calcium_mg": 14.0,
+      "iron_mg": 1.58,
+      "potassium_mg": 138.0,
+      "vitamin_a_mcg_rae": 34.0,
+      "vitamin_c_mg": 2.0,
+      "vitamin_d_mcg": 0.1,
+      "folate_mcg_dfe": 4.0,
+      "magnesium_mg": 12.0,
+      "zinc_mg": 1.41
+     }
+    },
+    {
+     "fdcId": 171164,
+     "description": "Soup, vegetable with beef broth, canned, condensed",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 66.0,
+      "protein_g": 2.42,
+      "fiber_g": 1.3,
+      "calcium_mg": 14.0,
+      "iron_mg": 0.79,
+      "potassium_mg": 157.0,
+      "vitamin_a_mcg_rae": 85.0,
+      "vitamin_c_mg": 1.9,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 5.0,
+      "zinc_mg": 0.65
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "lemon",
+   "role": "fruit",
+   "expected_state": "raw",
+   "search_terms": [
+    "lemon"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 2346406,
+     "description": "Cucumber, with peel, raw",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 15.9,
+      "protein_g": 0.625,
+      "fiber_g": 0.0,
+      "calcium_mg": 16.3,
+      "iron_mg": 0.0,
+      "potassium_mg": 170.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 10.1,
+      "zinc_mg": 0.204
+     }
+    },
+    {
+     "fdcId": 167746,
+     "description": "Lemons, raw, without peel",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 29.0,
+      "protein_g": 1.1,
+      "fiber_g": 2.8,
+      "calcium_mg": 26.0,
+      "iron_mg": 0.6,
+      "potassium_mg": 138.0,
+      "vitamin_a_mcg_rae": 1.0,
+      "vitamin_c_mg": 53.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 8.0,
+      "zinc_mg": 0.06
+     }
+    },
+    {
+     "fdcId": 167749,
+     "description": "Lemon peel, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 47.0,
+      "protein_g": 1.5,
+      "fiber_g": 10.6,
+      "calcium_mg": 134.0,
+      "iron_mg": 0.8,
+      "potassium_mg": 160.0,
+      "vitamin_a_mcg_rae": 3.0,
+      "vitamin_c_mg": 129.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 13.0,
+      "magnesium_mg": 15.0,
+      "zinc_mg": 0.25
+     }
+    },
+    {
+     "fdcId": 171689,
+     "description": "Apples, raw, without skin",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 48.0,
+      "protein_g": 0.27,
+      "fiber_g": 1.3,
+      "calcium_mg": 5.0,
+      "iron_mg": 0.07,
+      "potassium_mg": 90.0,
+      "vitamin_a_mcg_rae": 2.0,
+      "vitamin_c_mg": 4.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 4.0,
+      "zinc_mg": 0.05
+     }
+    },
+    {
+     "fdcId": 169225,
+     "description": "Cucumber, peeled, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 10.0,
+      "protein_g": 0.59,
+      "fiber_g": 0.7,
+      "calcium_mg": 14.0,
+      "iron_mg": 0.22,
+      "potassium_mg": 136.0,
+      "vitamin_a_mcg_rae": 4.0,
+      "vitamin_c_mg": 3.2,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 14.0,
+      "magnesium_mg": 12.0,
+      "zinc_mg": 0.17
+     }
+    },
+    {
+     "fdcId": 168409,
+     "description": "Cucumber, with peel, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 15.0,
+      "protein_g": 0.65,
+      "fiber_g": 0.5,
+      "calcium_mg": 16.0,
+      "iron_mg": 0.28,
+      "potassium_mg": 147.0,
+      "vitamin_a_mcg_rae": 5.0,
+      "vitamin_c_mg": 2.8,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 7.0,
+      "magnesium_mg": 13.0,
+      "zinc_mg": 0.2
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "heavy_cream",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "cream",
+    "double cream",
+    "heavy cream",
+    "whipping cream"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 170857,
+     "description": "Cream, fluid, light (coffee cream or table cream)",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 195.0,
+      "protein_g": 2.96,
+      "fiber_g": 0.0,
+      "calcium_mg": 91.0,
+      "iron_mg": 0.05,
+      "potassium_mg": 136.0,
+      "vitamin_a_mcg_rae": 120.0,
+      "vitamin_c_mg": 0.8,
+      "vitamin_d_mcg": 1.1,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 9.0,
+      "zinc_mg": 0.32
+     }
+    },
+    {
+     "fdcId": 170860,
+     "description": "Cream, whipped, cream topping, pressurized",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 257.0,
+      "protein_g": 3.2,
+      "fiber_g": 0.0,
+      "calcium_mg": 101.0,
+      "iron_mg": 0.05,
+      "potassium_mg": 147.0,
+      "vitamin_a_mcg_rae": 188.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 3.0,
+      "magnesium_mg": 11.0,
+      "zinc_mg": 0.37
+     }
+    },
+    {
+     "fdcId": 2705593,
+     "description": "Cream, light",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 195.0,
+      "protein_g": 2.96,
+      "fiber_g": 0.0,
+      "calcium_mg": 91.0,
+      "iron_mg": 0.05,
+      "potassium_mg": 136.0,
+      "vitamin_a_mcg_rae": 120.0,
+      "vitamin_c_mg": 0.8,
+      "vitamin_d_mcg": 1.1,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 9.0,
+      "zinc_mg": 0.32
+     }
+    },
+    {
+     "fdcId": 2708415,
+     "description": "Cream of rice",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 69.0,
+      "protein_g": 1.17,
+      "fiber_g": 0.1,
+      "calcium_mg": 4.0,
+      "iron_mg": 5.01,
+      "potassium_mg": 25.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 4.0,
+      "magnesium_mg": 5.0,
+      "zinc_mg": 0.22
+     }
+    },
+    {
+     "fdcId": 2705597,
+     "description": "Cream, heavy",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 343.0,
+      "protein_g": 2.02,
+      "fiber_g": 0.0,
+      "calcium_mg": 61.0,
+      "iron_mg": 0.0,
+      "potassium_mg": 97.0,
+      "vitamin_a_mcg_rae": 327.0,
+      "vitamin_c_mg": 0.6,
+      "vitamin_d_mcg": 1.6,
+      "folate_mcg_dfe": 4.0,
+      "magnesium_mg": 6.0,
+      "zinc_mg": 0.22
+     }
+    },
+    {
+     "fdcId": 2710624,
+     "description": "Liqueur, cream",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 296.0,
+      "protein_g": 0.15,
+      "fiber_g": 0.0,
+      "calcium_mg": 5.0,
+      "iron_mg": 0.04,
+      "potassium_mg": 9.0,
+      "vitamin_a_mcg_rae": 24.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.1,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 0.0,
+      "zinc_mg": 0.04
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "sausage",
+   "role": "protein",
+   "expected_state": "raw",
+   "search_terms": [
+    "italian sausage",
+    "pork sausage",
+    "sausage"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 746780,
+     "description": "Sausage, Italian, pork, mild, cooked, pan-fried",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 322.0,
+      "protein_g": 18.2,
+      "fiber_g": 0.0,
+      "calcium_mg": 12.0,
+      "iron_mg": 1.29,
+      "potassium_mg": 310.0,
+      "vitamin_a_mcg_rae": 22.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 18.6,
+      "zinc_mg": 2.41
+     }
+    },
+    {
+     "fdcId": 746783,
+     "description": "Sausage, turkey, breakfast links, mild, raw",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 169.0,
+      "protein_g": 16.7,
+      "fiber_g": 0.0,
+      "calcium_mg": 32.0,
+      "iron_mg": 1.17,
+      "potassium_mg": 310.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 18.9,
+      "zinc_mg": 2.58
+     }
+    },
+    {
+     "fdcId": 171631,
+     "description": "Sausage, Italian, pork, mild, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 290.0,
+      "protein_g": 13.9,
+      "fiber_g": 0.0,
+      "calcium_mg": 12.0,
+      "iron_mg": 1.77,
+      "potassium_mg": 211.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 16.0,
+      "zinc_mg": 1.91
+     }
+    },
+    {
+     "fdcId": 174586,
+     "description": "Sausage, Italian, pork, mild, cooked, pan-fried",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 324.0,
+      "protein_g": 18.4,
+      "fiber_g": 0.0,
+      "calcium_mg": 13.0,
+      "iron_mg": 1.25,
+      "potassium_mg": 339.0,
+      "vitamin_a_mcg_rae": 10.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 1.0,
+      "folate_mcg_dfe": 1.0,
+      "magnesium_mg": 19.0,
+      "zinc_mg": 2.4
+     }
+    },
+    {
+     "fdcId": 174600,
+     "description": "Sausage, turkey, breakfast links, mild, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 174.0,
+      "protein_g": 15.9,
+      "fiber_g": 0.0,
+      "calcium_mg": 55.0,
+      "iron_mg": 1.34,
+      "potassium_mg": 258.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 6.0,
+      "magnesium_mg": 20.0,
+      "zinc_mg": 2.51
+     }
+    },
+    {
+     "fdcId": 173859,
+     "description": "Sausage, pork, chorizo, link or ground, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 296.0,
+      "protein_g": 13.6,
+      "fiber_g": 0.0,
+      "calcium_mg": 19.0,
+      "iron_mg": 1.41,
+      "potassium_mg": 308.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 1.5,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 20.0,
+      "zinc_mg": 1.68
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "bacon",
+   "role": "protein",
+   "expected_state": "raw",
+   "search_terms": [
+    "bacon"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 749420,
+     "description": "Pork, cured, bacon, cooked, restaurant",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 500.0,
+      "protein_g": 40.9,
+      "fiber_g": 0.0,
+      "calcium_mg": 13.0,
+      "iron_mg": 1.28,
+      "potassium_mg": 557.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 36.5,
+      "zinc_mg": 3.56
+     }
+    },
+    {
+     "fdcId": 167914,
+     "description": "Pork, cured, bacon, cooked, baked",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 548.0,
+      "protein_g": 35.7,
+      "fiber_g": 0.0,
+      "calcium_mg": 10.0,
+      "iron_mg": 1.49,
+      "potassium_mg": 539.0,
+      "vitamin_a_mcg_rae": 11.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 30.0,
+      "zinc_mg": 3.36
+     }
+    },
+    {
+     "fdcId": 168321,
+     "description": "Pork, cured, bacon, cooked, microwaved",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 476.0,
+      "protein_g": 39.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 13.0,
+      "iron_mg": 1.14,
+      "potassium_mg": 525.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 34.0,
+      "zinc_mg": 3.51
+     }
+    },
+    {
+     "fdcId": 168277,
+     "description": "Pork, cured, bacon, unprepared",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 393.0,
+      "protein_g": 13.7,
+      "fiber_g": 0.0,
+      "calcium_mg": 6.0,
+      "iron_mg": 0.38,
+      "potassium_mg": 201.0,
+      "vitamin_a_mcg_rae": 11.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 13.0,
+      "zinc_mg": 1.14
+     }
+    },
+    {
+     "fdcId": 168322,
+     "description": "Pork, cured, bacon, pre-sliced, cooked, pan-fried",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 468.0,
+      "protein_g": 33.9,
+      "fiber_g": 0.0,
+      "calcium_mg": 11.0,
+      "iron_mg": 0.95,
+      "potassium_mg": 499.0,
+      "vitamin_a_mcg_rae": 11.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 31.0,
+      "zinc_mg": 3.06
+     }
+    },
+    {
+     "fdcId": 2705889,
+     "description": "Pork bacon, smoked or cured, cooked",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 468.0,
+      "protein_g": 33.92,
+      "fiber_g": 0.0,
+      "calcium_mg": 11.0,
+      "iron_mg": 0.95,
+      "potassium_mg": 499.0,
+      "vitamin_a_mcg_rae": 11.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 31.0,
+      "zinc_mg": 3.06
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "tomato_paste",
+   "role": "sauce",
+   "expected_state": "canned",
+   "search_terms": [
+    "tomato paste"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 2685580,
+     "description": "Tomato, paste, canned, without salt added",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 104.0,
+      "protein_g": 4.23,
+      "fiber_g": 4.7,
+      "calcium_mg": 36.8,
+      "iron_mg": 3.18,
+      "potassium_mg": 972.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 18.4,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 49.6,
+      "zinc_mg": 0.511
+     }
+    },
+    {
+     "fdcId": 2685579,
+     "description": "Tomato, sauce, canned, with salt added",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 34.2,
+      "protein_g": 1.35,
+      "fiber_g": 1.64,
+      "calcium_mg": 17.1,
+      "iron_mg": 1.11,
+      "potassium_mg": 356.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 9.2,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 18.7,
+      "zinc_mg": 0.183
+     }
+    },
+    {
+     "fdcId": 170460,
+     "description": "Tomato products, canned, puree, without salt added",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 38.0,
+      "protein_g": 1.65,
+      "fiber_g": 1.9,
+      "calcium_mg": 18.0,
+      "iron_mg": 1.78,
+      "potassium_mg": 439.0,
+      "vitamin_a_mcg_rae": 26.0,
+      "vitamin_c_mg": 10.6,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 23.0,
+      "zinc_mg": 0.36
+     }
+    },
+    {
+     "fdcId": 170545,
+     "description": "Tomato juice, canned, without salt added",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 17.0,
+      "protein_g": 0.85,
+      "fiber_g": 0.4,
+      "calcium_mg": 10.0,
+      "iron_mg": 0.39,
+      "potassium_mg": 217.0,
+      "vitamin_a_mcg_rae": 23.0,
+      "vitamin_c_mg": 70.1,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 20.0,
+      "magnesium_mg": 11.0,
+      "zinc_mg": 0.11
+     }
+    },
+    {
+     "fdcId": 170459,
+     "description": "Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program)",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 82.0,
+      "protein_g": 4.32,
+      "fiber_g": 4.1,
+      "calcium_mg": 36.0,
+      "iron_mg": 2.98,
+      "potassium_mg": 1010.0,
+      "vitamin_a_mcg_rae": 76.0,
+      "vitamin_c_mg": 21.9,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 12.0,
+      "magnesium_mg": 42.0,
+      "zinc_mg": 0.63
+     }
+    },
+    {
+     "fdcId": 170546,
+     "description": "Tomato products, canned, puree, with salt added",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 38.0,
+      "protein_g": 1.65,
+      "fiber_g": 1.9,
+      "calcium_mg": 18.0,
+      "iron_mg": 1.78,
+      "potassium_mg": 439.0,
+      "vitamin_a_mcg_rae": 26.0,
+      "vitamin_c_mg": 10.6,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 23.0,
+      "zinc_mg": 0.36
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "tomato_sauce",
+   "role": "sauce",
+   "expected_state": "canned",
+   "search_terms": [
+    "passata",
+    "tomato sauce"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 170054,
+     "description": "Tomato products, canned, sauce",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 24.0,
+      "protein_g": 1.2,
+      "fiber_g": 1.5,
+      "calcium_mg": 14.0,
+      "iron_mg": 0.96,
+      "potassium_mg": 297.0,
+      "vitamin_a_mcg_rae": 22.0,
+      "vitamin_c_mg": 7.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 15.0,
+      "zinc_mg": 0.22
+     }
+    },
+    {
+     "fdcId": 170463,
+     "description": "Tomato products, canned, sauce, with tomato tidbits",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 32.0,
+      "protein_g": 1.32,
+      "fiber_g": 1.4,
+      "calcium_mg": 10.0,
+      "iron_mg": 0.68,
+      "potassium_mg": 373.0,
+      "vitamin_a_mcg_rae": 40.0,
+      "vitamin_c_mg": 21.5,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 20.0,
+      "zinc_mg": 0.19
+     }
+    },
+    {
+     "fdcId": 170055,
+     "description": "Tomato products, canned, sauce, with mushrooms",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 35.0,
+      "protein_g": 1.45,
+      "fiber_g": 1.5,
+      "calcium_mg": 13.0,
+      "iron_mg": 0.89,
+      "potassium_mg": 380.0,
+      "vitamin_a_mcg_rae": 48.0,
+      "vitamin_c_mg": 12.4,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 19.0,
+      "zinc_mg": 0.21
+     }
+    },
+    {
+     "fdcId": 170056,
+     "description": "Tomato products, canned, sauce, with onions",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 42.0,
+      "protein_g": 1.56,
+      "fiber_g": 1.8,
+      "calcium_mg": 17.0,
+      "iron_mg": 0.93,
+      "potassium_mg": 413.0,
+      "vitamin_a_mcg_rae": 43.0,
+      "vitamin_c_mg": 12.7,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 22.0,
+      "magnesium_mg": 19.0,
+      "zinc_mg": 0.23
+     }
+    },
+    {
+     "fdcId": 170085,
+     "description": "Tomato products, canned, sauce, spanish style",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 33.0,
+      "protein_g": 1.44,
+      "fiber_g": 1.4,
+      "calcium_mg": 17.0,
+      "iron_mg": 3.48,
+      "potassium_mg": 369.0,
+      "vitamin_a_mcg_rae": 49.0,
+      "vitamin_c_mg": 8.6,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 14.0,
+      "magnesium_mg": 19.0,
+      "zinc_mg": 0.34
+     }
+    },
+    {
+     "fdcId": 170057,
+     "description": "Tomato products, canned, sauce, with herbs and cheese",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 59.0,
+      "protein_g": 2.13,
+      "fiber_g": 2.2,
+      "calcium_mg": 37.0,
+      "iron_mg": 0.87,
+      "potassium_mg": 356.0,
+      "vitamin_a_mcg_rae": 49.0,
+      "vitamin_c_mg": 10.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 8.0,
+      "magnesium_mg": 19.0,
+      "zinc_mg": 0.36
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "green_onions",
+   "role": "vegetable",
+   "expected_state": "raw",
+   "search_terms": [
+    "green onion",
+    "green onions",
+    "scallion",
+    "scallions",
+    "spring onion"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 2727585,
+     "description": "Green onion, (scallion), bulb and greens, root removed, raw",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 0.0,
+      "protein_g": 0.669,
+      "fiber_g": 2.3,
+      "calcium_mg": 59.4,
+      "iron_mg": 1.04,
+      "potassium_mg": 232.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 18.9,
+      "zinc_mg": 0.248
+     }
+    },
+    {
+     "fdcId": 790577,
+     "description": "Onions, red, raw",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 44.0,
+      "protein_g": 0.94,
+      "fiber_g": 2.2,
+      "calcium_mg": 17.0,
+      "iron_mg": 0.24,
+      "potassium_mg": 197.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 8.1,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 11.4,
+      "zinc_mg": 0.17
+     }
+    },
+    {
+     "fdcId": 170005,
+     "description": "Onions, spring or scallions (includes tops and bulb), raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 32.0,
+      "protein_g": 1.83,
+      "fiber_g": 2.6,
+      "calcium_mg": 72.0,
+      "iron_mg": 1.48,
+      "potassium_mg": 276.0,
+      "vitamin_a_mcg_rae": 50.0,
+      "vitamin_c_mg": 18.8,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 64.0,
+      "magnesium_mg": 20.0,
+      "zinc_mg": 0.39
+     }
+    },
+    {
+     "fdcId": 170000,
+     "description": "Onions, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 40.0,
+      "protein_g": 1.1,
+      "fiber_g": 1.7,
+      "calcium_mg": 23.0,
+      "iron_mg": 0.21,
+      "potassium_mg": 146.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 7.4,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 19.0,
+      "magnesium_mg": 10.0,
+      "zinc_mg": 0.17
+     }
+    },
+    {
+     "fdcId": 170008,
+     "description": "Onions, sweet, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 32.0,
+      "protein_g": 0.8,
+      "fiber_g": 0.9,
+      "calcium_mg": 20.0,
+      "iron_mg": 0.26,
+      "potassium_mg": 119.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 4.8,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 9.0,
+      "zinc_mg": 0.13
+     }
+    },
+    {
+     "fdcId": 170007,
+     "description": "Onions, welsh, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 34.0,
+      "protein_g": 1.9,
+      "fiber_g": 2.4,
+      "calcium_mg": 18.0,
+      "iron_mg": 1.22,
+      "potassium_mg": 212.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 27.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 16.0,
+      "magnesium_mg": 23.0,
+      "zinc_mg": 0.52
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "parmesan_cheese",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "grated parmesan",
+    "parmesan",
+    "parmesan cheese",
+    "parmigiano"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 325036,
+     "description": "Cheese, parmesan, grated",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 421.0,
+      "protein_g": 29.6,
+      "fiber_g": 0.0,
+      "calcium_mg": 884.0,
+      "iron_mg": 0.45,
+      "potassium_mg": 184.0,
+      "vitamin_a_mcg_rae": 228.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 34.9,
+      "zinc_mg": 4.33
+     }
+    },
+    {
+     "fdcId": 2259795,
+     "description": "Cheese, parmesan, grated, refrigerated",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 403.0,
+      "protein_g": 30.1,
+      "fiber_g": 0.0,
+      "calcium_mg": 950.0,
+      "iron_mg": 0.14,
+      "potassium_mg": 74.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 35.4,
+      "zinc_mg": 4.62
+     }
+    },
+    {
+     "fdcId": 171247,
+     "description": "Cheese, parmesan, grated",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 420.0,
+      "protein_g": 28.4,
+      "fiber_g": 0.0,
+      "calcium_mg": 853.0,
+      "iron_mg": 0.49,
+      "potassium_mg": 180.0,
+      "vitamin_a_mcg_rae": 262.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.5,
+      "folate_mcg_dfe": 6.0,
+      "magnesium_mg": 34.0,
+      "zinc_mg": 4.2
+     }
+    },
+    {
+     "fdcId": 173452,
+     "description": "Cheese, parmesan, dry grated, reduced fat",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 265.0,
+      "protein_g": 20.0,
+      "fiber_g": 0.0,
+      "calcium_mg": 1110.0,
+      "iron_mg": 0.9,
+      "potassium_mg": 125.0,
+      "vitamin_a_mcg_rae": 160.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 10.0,
+      "magnesium_mg": 38.0,
+      "zinc_mg": 3.87
+     }
+    },
+    {
+     "fdcId": 174928,
+     "description": "Bread, crumbs, dry, grated, plain",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 395.0,
+      "protein_g": 13.4,
+      "fiber_g": 4.5,
+      "calcium_mg": 183.0,
+      "iron_mg": 4.83,
+      "potassium_mg": 196.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 164.0,
+      "magnesium_mg": 43.0,
+      "zinc_mg": 1.45
+     }
+    },
+    {
+     "fdcId": 2705728,
+     "description": "Cheese, Parmesan, dry grated",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 412.0,
+      "protein_g": 29.87,
+      "fiber_g": 0.0,
+      "calcium_mg": 917.0,
+      "iron_mg": 0.3,
+      "potassium_mg": 129.0,
+      "vitamin_a_mcg_rae": 230.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.2,
+      "folate_mcg_dfe": 7.0,
+      "magnesium_mg": 35.0,
+      "zinc_mg": 4.47
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "honey",
+   "role": "sweetener",
+   "expected_state": "raw",
+   "search_terms": [
+    "honey"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 169640,
+     "description": "Honey",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 304.0,
+      "protein_g": 0.3,
+      "fiber_g": 0.2,
+      "calcium_mg": 6.0,
+      "iron_mg": 0.42,
+      "potassium_mg": 52.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.5,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 2.0,
+      "zinc_mg": 0.22
+     }
+    },
+    {
+     "fdcId": 2710281,
+     "description": "Honey",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 304.0,
+      "protein_g": 0.3,
+      "fiber_g": 0.2,
+      "calcium_mg": 6.0,
+      "iron_mg": 0.42,
+      "potassium_mg": 52.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.5,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 2.0,
+      "zinc_mg": 0.22
+     }
+    },
+    {
+     "fdcId": 2710179,
+     "description": "Honey butter",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 485.0,
+      "protein_g": 0.53,
+      "fiber_g": 0.1,
+      "calcium_mg": 12.0,
+      "iron_mg": 0.27,
+      "potassium_mg": 40.0,
+      "vitamin_a_mcg_rae": 312.0,
+      "vitamin_c_mg": 0.3,
+      "vitamin_d_mcg": 0.2,
+      "folate_mcg_dfe": 3.0,
+      "magnesium_mg": 2.0,
+      "zinc_mg": 0.16
+     }
+    },
+    {
+     "fdcId": 2710202,
+     "description": "Honey mustard dressing",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 464.0,
+      "protein_g": 0.87,
+      "fiber_g": 0.4,
+      "calcium_mg": 12.0,
+      "iron_mg": 0.29,
+      "potassium_mg": 20.0,
+      "vitamin_a_mcg_rae": 12.0,
+      "vitamin_c_mg": 0.2,
+      "vitamin_d_mcg": 0.1,
+      "folate_mcg_dfe": 5.0,
+      "magnesium_mg": 5.0,
+      "zinc_mg": 0.14
+     }
+    },
+    {
+     "fdcId": 2710086,
+     "description": "Honey mustard dip",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 275.0,
+      "protein_g": 1.77,
+      "fiber_g": 1.0,
+      "calcium_mg": 24.0,
+      "iron_mg": 0.61,
+      "potassium_mg": 64.0,
+      "vitamin_a_mcg_rae": 19.0,
+      "vitamin_c_mg": 0.1,
+      "vitamin_d_mcg": 0.3,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 13.0,
+      "zinc_mg": 0.28
+     }
+    },
+    {
+     "fdcId": 2707491,
+     "description": "Almonds, honey roasted",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 579.0,
+      "protein_g": 14.11,
+      "fiber_g": 7.3,
+      "calcium_mg": 181.0,
+      "iron_mg": 2.54,
+      "potassium_mg": 481.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 37.0,
+      "magnesium_mg": 188.0,
+      "zinc_mg": 2.23
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "soy_sauce",
+   "role": "sauce",
+   "expected_state": "raw",
+   "search_terms": [
+    "dark soy sauce",
+    "light soy sauce",
+    "soy sauce"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 174278,
+     "description": "Soy sauce made from soy (tamari)",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 60.0,
+      "protein_g": 10.5,
+      "fiber_g": 0.8,
+      "calcium_mg": 20.0,
+      "iron_mg": 2.38,
+      "potassium_mg": 212.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 18.0,
+      "magnesium_mg": 40.0,
+      "zinc_mg": 0.43
+     }
+    },
+    {
+     "fdcId": 174277,
+     "description": "Soy sauce made from soy and wheat (shoyu)",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 53.0,
+      "protein_g": 8.14,
+      "fiber_g": 0.8,
+      "calcium_mg": 33.0,
+      "iron_mg": 1.45,
+      "potassium_mg": 435.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 14.0,
+      "magnesium_mg": 74.0,
+      "zinc_mg": 0.87
+     }
+    },
+    {
+     "fdcId": 172473,
+     "description": "Soy sauce made from soy and wheat (shoyu), low sodium",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 57.0,
+      "protein_g": 9.05,
+      "fiber_g": 0.7,
+      "calcium_mg": 30.0,
+      "iron_mg": 1.35,
+      "potassium_mg": 352.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 44.0,
+      "magnesium_mg": 69.0,
+      "zinc_mg": 0.79
+     }
+    },
+    {
+     "fdcId": 2707442,
+     "description": "Soy sauce",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 53.0,
+      "protein_g": 8.14,
+      "fiber_g": 0.8,
+      "calcium_mg": 33.0,
+      "iron_mg": 1.45,
+      "potassium_mg": 435.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 14.0,
+      "magnesium_mg": 74.0,
+      "zinc_mg": 0.87
+     }
+    },
+    {
+     "fdcId": 2707148,
+     "description": "Gravy, made with soy sauce",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 46.0,
+      "protein_g": 0.82,
+      "fiber_g": 0.1,
+      "calcium_mg": 6.0,
+      "iron_mg": 0.12,
+      "potassium_mg": 31.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 6.0,
+      "zinc_mg": 0.05
+     }
+    },
+    {
+     "fdcId": 2706386,
+     "description": "Beef with soy-based sauce",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 187.0,
+      "protein_g": 15.86,
+      "fiber_g": 0.5,
+      "calcium_mg": 19.0,
+      "iron_mg": 1.51,
+      "potassium_mg": 211.0,
+      "vitamin_a_mcg_rae": 3.0,
+      "vitamin_c_mg": 2.3,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 12.0,
+      "magnesium_mg": 18.0,
+      "zinc_mg": 2.64
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "mushrooms",
+   "role": "vegetable",
+   "expected_state": "raw",
+   "search_terms": [
+    "button mushrooms",
+    "cremini mushrooms",
+    "mushroom",
+    "mushrooms"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 169251,
+     "description": "Mushrooms, white, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 22.0,
+      "protein_g": 3.09,
+      "fiber_g": 1.0,
+      "calcium_mg": 3.0,
+      "iron_mg": 0.5,
+      "potassium_mg": 318.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 2.1,
+      "vitamin_d_mcg": 0.2,
+      "folate_mcg_dfe": 17.0,
+      "magnesium_mg": 9.0,
+      "zinc_mg": 0.52
+     }
+    },
+    {
+     "fdcId": 169376,
+     "description": "Mushroom, white, exposed to ultraviolet light, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 22.0,
+      "protein_g": 3.09,
+      "fiber_g": 1.0,
+      "calcium_mg": 3.0,
+      "iron_mg": 0.5,
+      "potassium_mg": 318.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 2.1,
+      "vitamin_d_mcg": 26.2,
+      "folate_mcg_dfe": 17.0,
+      "magnesium_mg": 9.0,
+      "zinc_mg": 0.52
+     }
+    },
+    {
+     "fdcId": 168422,
+     "description": "Mushrooms, Chanterelle, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 32.0,
+      "protein_g": 1.49,
+      "fiber_g": 3.8,
+      "calcium_mg": 15.0,
+      "iron_mg": 3.47,
+      "potassium_mg": 506.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 5.3,
+      "folate_mcg_dfe": 2.0,
+      "magnesium_mg": 13.0,
+      "zinc_mg": 0.71
+     }
+    },
+    {
+     "fdcId": 169382,
+     "description": "Mushrooms, enoki, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 37.0,
+      "protein_g": 2.66,
+      "fiber_g": 2.7,
+      "calcium_mg": 0.0,
+      "iron_mg": 1.15,
+      "potassium_mg": 359.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.1,
+      "folate_mcg_dfe": 48.0,
+      "magnesium_mg": 16.0,
+      "zinc_mg": 0.65
+     }
+    },
+    {
+     "fdcId": 169403,
+     "description": "Mushrooms, maitake, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 31.0,
+      "protein_g": 1.94,
+      "fiber_g": 2.7,
+      "calcium_mg": 1.0,
+      "iron_mg": 0.3,
+      "potassium_mg": 204.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 28.1,
+      "folate_mcg_dfe": 21.0,
+      "magnesium_mg": 10.0,
+      "zinc_mg": 0.75
+     }
+    },
+    {
+     "fdcId": 168423,
+     "description": "Mushrooms, morel, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 31.0,
+      "protein_g": 3.12,
+      "fiber_g": 2.8,
+      "calcium_mg": 43.0,
+      "iron_mg": 12.2,
+      "potassium_mg": 411.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 5.1,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 19.0,
+      "zinc_mg": 2.03
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "sour_cream",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "sour cream"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 2346387,
+     "description": "Cream, sour, full fat",
+     "dataType": "Foundation",
+     "nutrients_per_100g": {
+      "calories_kcal": 196.0,
+      "protein_g": 3.07,
+      "fiber_g": 0.0,
+      "calcium_mg": 107.0,
+      "iron_mg": 0.0,
+      "potassium_mg": 154.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 10.1,
+      "zinc_mg": 0.392
+     }
+    },
+    {
+     "fdcId": 171257,
+     "description": "Cream, sour, cultured",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 198.0,
+      "protein_g": 2.44,
+      "fiber_g": 0.0,
+      "calcium_mg": 101.0,
+      "iron_mg": 0.07,
+      "potassium_mg": 125.0,
+      "vitamin_a_mcg_rae": 124.0,
+      "vitamin_c_mg": 0.9,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 6.0,
+      "magnesium_mg": 10.0,
+      "zinc_mg": 0.33
+     }
+    },
+    {
+     "fdcId": 173443,
+     "description": "Sour cream, light",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 136.0,
+      "protein_g": 3.5,
+      "fiber_g": 0.0,
+      "calcium_mg": 141.0,
+      "iron_mg": 0.07,
+      "potassium_mg": 212.0,
+      "vitamin_a_mcg_rae": 90.0,
+      "vitamin_c_mg": 0.9,
+      "vitamin_d_mcg": 0.2,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 10.0,
+      "zinc_mg": 0.5
+     }
+    },
+    {
+     "fdcId": 173444,
+     "description": "Sour cream, fat free",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 74.0,
+      "protein_g": 3.1,
+      "fiber_g": 0.0,
+      "calcium_mg": 125.0,
+      "iron_mg": 0.0,
+      "potassium_mg": 129.0,
+      "vitamin_a_mcg_rae": 73.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 10.0,
+      "zinc_mg": 0.5
+     }
+    },
+    {
+     "fdcId": 2705617,
+     "description": "Sour cream, imitation",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 208.0,
+      "protein_g": 2.4,
+      "fiber_g": 0.0,
+      "calcium_mg": 3.0,
+      "iron_mg": 0.39,
+      "potassium_mg": 161.0,
+      "vitamin_a_mcg_rae": 0.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 6.0,
+      "zinc_mg": 1.18
+     }
+    },
+    {
+     "fdcId": 2705615,
+     "description": "Sour cream, light",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 136.0,
+      "protein_g": 3.5,
+      "fiber_g": 0.0,
+      "calcium_mg": 141.0,
+      "iron_mg": 0.07,
+      "potassium_mg": 212.0,
+      "vitamin_a_mcg_rae": 90.0,
+      "vitamin_c_mg": 0.9,
+      "vitamin_d_mcg": 0.2,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 10.0,
+      "zinc_mg": 0.5
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "mozzarella_cheese",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "mozzarella",
+    "mozzarella cheese"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 172198,
+     "description": "Cheese substitute, mozzarella",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 248.0,
+      "protein_g": 11.5,
+      "fiber_g": 0.0,
+      "calcium_mg": 610.0,
+      "iron_mg": 0.4,
+      "potassium_mg": 455.0,
+      "vitamin_a_mcg_rae": 437.0,
+      "vitamin_c_mg": 0.1,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 11.0,
+      "magnesium_mg": 41.0,
+      "zinc_mg": 1.92
+     }
+    },
+    {
+     "fdcId": 169051,
+     "description": "Cheese, mozzarella, nonfat",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 141.0,
+      "protein_g": 31.7,
+      "fiber_g": 1.8,
+      "calcium_mg": 961.0,
+      "iron_mg": 0.31,
+      "potassium_mg": 106.0,
+      "vitamin_a_mcg_rae": 127.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 10.0,
+      "magnesium_mg": 33.0,
+      "zinc_mg": 3.92
+     }
+    },
+    {
+     "fdcId": 167735,
+     "description": "Cheese, mozzarella, low sodium",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 280.0,
+      "protein_g": 27.5,
+      "fiber_g": 0.0,
+      "calcium_mg": 731.0,
+      "iron_mg": 0.25,
+      "potassium_mg": 95.0,
+      "vitamin_a_mcg_rae": 137.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.3,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 26.0,
+      "zinc_mg": 3.13
+     }
+    },
+    {
+     "fdcId": 170845,
+     "description": "Cheese, mozzarella, whole milk",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 299.0,
+      "protein_g": 22.2,
+      "fiber_g": 0.0,
+      "calcium_mg": 505.0,
+      "iron_mg": 0.44,
+      "potassium_mg": 76.0,
+      "vitamin_a_mcg_rae": 179.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 7.0,
+      "magnesium_mg": 20.0,
+      "zinc_mg": 2.92
+     }
+    },
+    {
+     "fdcId": 168076,
+     "description": "DENNY'S, mozzarella cheese sticks",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 324.0,
+      "protein_g": 13.6,
+      "fiber_g": 1.6,
+      "calcium_mg": 331.0,
+      "iron_mg": 0.84,
+      "potassium_mg": 121.0,
+      "vitamin_a_mcg_rae": 96.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 21.0,
+      "zinc_mg": 1.98
+     }
+    },
+    {
+     "fdcId": 2705722,
+     "description": "Cheese, Mozzarella, NFS",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 296.0,
+      "protein_g": 23.7,
+      "fiber_g": 0.0,
+      "calcium_mg": 693.0,
+      "iron_mg": 0.2,
+      "potassium_mg": 116.0,
+      "vitamin_a_mcg_rae": 203.0,
+      "vitamin_c_mg": 0.0,
+      "vitamin_d_mcg": 0.4,
+      "folate_mcg_dfe": 26.0,
+      "magnesium_mg": 27.0,
+      "zinc_mg": 3.62
+     }
+    }
+   ]
+  },
+  {
+   "ingredient_id": "lime",
+   "role": "fruit",
+   "expected_state": "raw",
+   "search_terms": [
+    "lime"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "needs_review",
+   "candidates": [
+    {
+     "fdcId": 168155,
+     "description": "Limes, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 30.0,
+      "protein_g": 0.7,
+      "fiber_g": 2.8,
+      "calcium_mg": 33.0,
+      "iron_mg": 0.6,
+      "potassium_mg": 102.0,
+      "vitamin_a_mcg_rae": 2.0,
+      "vitamin_c_mg": 29.1,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 8.0,
+      "magnesium_mg": 6.0,
+      "zinc_mg": 0.11
+     }
+    },
+    {
+     "fdcId": 168156,
+     "description": "Lime juice, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 25.0,
+      "protein_g": 0.42,
+      "fiber_g": 0.4,
+      "calcium_mg": 14.0,
+      "iron_mg": 0.09,
+      "potassium_mg": 117.0,
+      "vitamin_a_mcg_rae": 2.0,
+      "vitamin_c_mg": 30.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 10.0,
+      "magnesium_mg": 8.0,
+      "zinc_mg": 0.08
+     }
+    },
+    {
+     "fdcId": 167782,
+     "description": "Abiyuch, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 69.0,
+      "protein_g": 1.5,
+      "fiber_g": 5.3,
+      "calcium_mg": 8.0,
+      "iron_mg": 1.61,
+      "potassium_mg": 304.0,
+      "vitamin_a_mcg_rae": 5.0,
+      "vitamin_c_mg": 54.1,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 0.0,
+      "magnesium_mg": 24.0,
+      "zinc_mg": 0.31
+     }
+    },
+    {
+     "fdcId": 171697,
+     "description": "Apricots, raw",
+     "dataType": "SR Legacy",
+     "nutrients_per_100g": {
+      "calories_kcal": 48.0,
+      "protein_g": 1.4,
+      "fiber_g": 2.0,
+      "calcium_mg": 13.0,
+      "iron_mg": 0.39,
+      "potassium_mg": 259.0,
+      "vitamin_a_mcg_rae": 96.0,
+      "vitamin_c_mg": 10.0,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 9.0,
+      "magnesium_mg": 10.0,
+      "zinc_mg": 0.2
+     }
+    },
+    {
+     "fdcId": 2709170,
+     "description": "Lime, raw",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 30.0,
+      "protein_g": 0.7,
+      "fiber_g": 2.8,
+      "calcium_mg": 33.0,
+      "iron_mg": 0.6,
+      "potassium_mg": 102.0,
+      "vitamin_a_mcg_rae": 2.0,
+      "vitamin_c_mg": 29.1,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 8.0,
+      "magnesium_mg": 6.0,
+      "zinc_mg": 0.11
+     }
+    },
+    {
+     "fdcId": 2709164,
+     "description": "Clementine, raw",
+     "dataType": "Survey (FNDDS)",
+     "nutrients_per_100g": {
+      "calories_kcal": 53.0,
+      "protein_g": 0.81,
+      "fiber_g": 1.8,
+      "calcium_mg": 37.0,
+      "iron_mg": 0.15,
+      "potassium_mg": 166.0,
+      "vitamin_a_mcg_rae": 34.0,
+      "vitamin_c_mg": 26.7,
+      "vitamin_d_mcg": 0.0,
+      "folate_mcg_dfe": 16.0,
+      "magnesium_mg": 12.0,
+      "zinc_mg": 0.07
+     }
+    }
+   ]
+  }
+ ]
+}

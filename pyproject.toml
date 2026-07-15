@@ -8,8 +8,10 @@ authors = [
     { name = "Flet developer", email = "you@example.com" }
 ]
 dependencies = [
+    "fastembed==0.8.0",
     "flet>=0.85.3",
     "httpx>=0.28.1",
+    "pillow==12.3.0",
     "python-dotenv>=1.2.2",
 ]
 
@@ -32,6 +34,6 @@ copyright = "Copyright (C) 2023-2026 by Flet"
 path = "src"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 testpaths = ["tests"]
 asyncio_mode = "auto"

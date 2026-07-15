@@ -5,25 +5,36 @@ import json
 import httpx
 import pytest
 
-from models import HouseholdProfile
-from optimizer import optimize
+from models import BudgetStatus, HouseholdProfile
 from services.explanation import (
     LocalExplanationService,
     OpenAIExplanationService,
     get_explanation_service,
 )
 
+from conftest import result_from_demand
+
 
 @pytest.fixture
-def feasible_result(foods, seed_quotes, nutrition):
+def feasible_result(foods_by_id, seed_quotes, nutrition):
     profile = HouseholdProfile(adults=1, city="Los Angeles", zip_code="90001")
-    return optimize(foods, seed_quotes, profile, 40.0, 7, nutrition), profile
+    demand = {"rice_white": 1400.0, "eggs_large": 700.0, "milk_whole": 2000.0,
+              "bananas": 1000.0, "chicken_breast": 900.0, "carrots": 700.0,
+              "black_beans_dry": 500.0, "bread_whole_wheat": 800.0,
+              "peanut_butter": 300.0, "canola_oil": 200.0}
+    result = result_from_demand(demand, profile, 60.0, 7, foods_by_id, seed_quotes, nutrition)
+    assert result.items and result.budget_status is BudgetStatus.WITHIN
+    return result, profile
 
 
 @pytest.fixture
-def relaxed_result(foods, seed_quotes, nutrition, la_family_profile):
-    result = optimize(foods, seed_quotes, la_family_profile, 12.0, 7, nutrition)
-    assert not result.nutrition_feasible
+def relaxed_result(foods_by_id, seed_quotes, nutrition, la_family_profile):
+    # A tiny, cheap basket for a 4-person week: it fits the budget but comes
+    # nowhere near the nutrition target -> nutrition cannot be met.
+    demand = {"rice_white": 500.0, "carrots": 300.0}
+    result = result_from_demand(demand, la_family_profile, 30.0, 7, foods_by_id, seed_quotes,
+                                nutrition)
+    assert result.budget_status is BudgetStatus.WITHIN and not result.nutrition_feasible
     return result, la_family_profile
 
 
@@ -78,18 +89,7 @@ class TestLocalExplanations:
                     assert banned not in lowered
 
 
-def openai_client(payload=None, status=200, raise_timeout=False):
-    def handler(request: httpx.Request) -> httpx.Response:
-        if raise_timeout:
-            raise httpx.ReadTimeout("timed out")
-        if status != 200:
-            return httpx.Response(status, json={"error": {"message": "boom"}})
-        content = payload if isinstance(payload, str) else json.dumps(payload)
-        return httpx.Response(
-            200, json={"choices": [{"message": {"content": content}}]}
-        )
-
-    return httpx.AsyncClient(transport=httpx.MockTransport(handler))
+from conftest import openai_client  # shared mock OpenAI transport
 
 
 def valid_payload(result) -> dict:

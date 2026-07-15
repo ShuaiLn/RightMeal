@@ -8,6 +8,7 @@ import flet as ft
 
 import theme
 from models import HouseholdProfile
+from ui.components import muted_text, primary_button
 from ui.household_form import HouseholdForm
 
 
@@ -22,17 +23,19 @@ def build_onboarding_view(
             return
         on_save(form.read_profile())
 
+    save_button = primary_button("Save and start planning", icon=ft.Icons.ARROW_FORWARD)
+    save_button.on_click = save
+
     return ft.Column(
         [
-            ft.Text("Welcome to RightMeal", size=24, weight=ft.FontWeight.BOLD, color=theme.TEXT_DARK),
-            ft.Text(
+            ft.Text("Welcome to RightMeal", size=24, weight=ft.FontWeight.W_700, color=theme.TEXT),
+            muted_text(
                 "Tell us about your household once — then plan affordable, balanced "
                 "grocery baskets any time. You can edit everything later on the Profile page.",
                 size=14,
-                color=theme.TEXT_MUTED,
             ),
             form.build(),
-            ft.FilledButton(content="Save and start planning", on_click=save),
+            ft.Row([save_button]),
         ],
         spacing=16,
         scroll=ft.ScrollMode.AUTO,

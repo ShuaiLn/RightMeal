@@ -1,19 +1,32 @@
-"""RightMeal palette: white background, light-green surfaces, light-yellow
-budget/status highlights, dark readable text."""
+"""RightMeal design tokens: a clean light theme — soft neutral canvas,
+white cards with hairline borders, one fresh green accent, and paired
+tint/ink colors for chips and status surfaces."""
 
-BG_WHITE = "#FFFFFF"
-SURFACE_GREEN = "#E8F5E9"
-ACCENT_GREEN = "#A5D6A7"
-DEEP_GREEN = "#2E7D32"
-HILITE_YELLOW = "#FFF9C4"
-WARN_AMBER = "#FFECB3"
-TEXT_DARK = "#1B1B1B"
-TEXT_MUTED = "#5F6C5F"
-BORDER_GREEN = "#C8E6C9"
+# Canvas & surfaces
+BG = "#F6F8F6"
+SURFACE = "#FFFFFF"
+SURFACE_TINT = "#EEF4EF"  # progress tracks, subtle fills
+BORDER = "#E4EAE5"
 
-SOURCE_CHIP_COLORS = {
-    "kroger_real_price": "#C8E6C9",
-    "instacart_numeric_price": "#DCEDC8",
-    "bls_regional_average": "#FFF9C4",
-    "seed_estimate": "#EEEEEE",
-}
+# Brand
+PRIMARY = "#16A34A"
+PRIMARY_DARK = "#166534"  # ink on green tints
+PRIMARY_TINT = "#DCFCE7"  # green tint fill
+
+# Text
+TEXT = "#18201A"
+TEXT_MUTED = "#68766C"
+
+# Status
+WARN_BG = "#FFF8E7"
+WARN_BORDER = "#F2E3BC"
+WARN_INK = "#7A5A0F"
+DANGER = "#B3261E"
+DANGER_TINT = "#FEE2E2"  # red tint fill, paired with DANGER ink
+
+RADIUS = 14
+RADIUS_SM = 10
+
+# Shared width for card-grid items (basket cards, pantry cards) so the food
+# grids read as one system across pages.
+CARD_GRID_ITEM_WIDTH = 210

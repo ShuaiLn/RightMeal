@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "notes": "Deterministic conversions from parsed quantities to grams. density_g_per_ml is keyed by parent_category (fallback default 1.0). count_grams gives grams for a unitless count or a descriptive count unit, keyed by parent_category then unit; a bare piece uses '_piece'. absorption_grams_per_serving covers 'oil for frying'-style lines with no countable quantity. Values are common-kitchen approximations used only for portioning, never for inventing nutrient values.",
+  "density_g_per_ml": {
+    "flour": 0.53,
+    "sugar": 0.85,
+    "oil": 0.92,
+    "milk": 1.03,
+    "cream": 1.01,
+    "water": 1.0,
+    "broth": 1.0,
+    "soy_sauce": 1.15,
+    "honey": 1.42,
+    "rice": 0.85,
+    "oats": 0.41,
+    "_default": 1.0
+  },
+  "count_grams": {
+    "onion":   {"_piece": 150, "cup": 160},
+    "garlic":  {"_piece": 3, "clove": 3, "cloves": 3, "cup": 136},
+    "egg":     {"_piece": 50},
+    "carrot":  {"_piece": 61, "cup": 128},
+    "potato":  {"_piece": 173, "cup": 150},
+    "tomato":  {"_piece": 123, "can": 411, "cans": 411, "cup": 180},
+    "apple":   {"_piece": 182, "cup": 125},
+    "banana":  {"_piece": 118},
+    "orange":  {"_piece": 131},
+    "citrus":  {"_piece": 100},
+    "pepper":  {"_piece": 119, "cup": 149},
+    "celery":  {"_piece": 40, "stalk": 40, "stalks": 40, "rib": 40, "cup": 101},
+    "mushroom":{"_piece": 18, "cup": 70},
+    "butter":  {"_piece": 113, "stick": 113, "sticks": 113, "cup": 227, "tbsp": 14, "tablespoon": 14},
+    "cheese":  {"cup": 113, "slice": 22, "slices": 22},
+    "bread":   {"_piece": 40, "slice": 28, "slices": 28, "cup": 108, "loaf": 500},
+    "tortilla":{"_piece": 50},
+    "beans":   {"can": 425, "cans": 425, "cup": 172},
+    "broth":   {"can": 400, "cans": 400, "cup": 240},
+    "fish":    {"can": 142, "cans": 142, "fillet": 150, "fillets": 150},
+    "chicken": {"breast": 174, "breasts": 174, "thigh": 100, "thighs": 100, "fillet": 150, "fillets": 150},
+    "leafy":   {"cup": 30, "bunch": 340, "handful": 30, "handfuls": 30},
+    "corn":    {"ear": 90, "ears": 90, "can": 340, "cup": 145},
+    "avocado": {"_piece": 150},
+    "lemon":   {"_piece": 100},
+    "lime":    {"_piece": 67},
+    "_default":{"_piece": 100, "can": 400, "cans": 400, "cup": 150, "handful": 30, "pinch": 0.5, "dash": 0.5, "sprig": 1}
+  },
+  "absorption_grams_per_serving": {
+    "oil": 8,
+    "butter": 8,
+    "_default": 5
+  },
+  "seasoning_default_grams_per_serving": 1.0
+}

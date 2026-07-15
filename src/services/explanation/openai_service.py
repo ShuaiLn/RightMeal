@@ -79,7 +79,8 @@ def serialize_result(result: OptimizationResult, profile: HouseholdProfile) -> d
         "budget_usd": result.budget,
         "horizon_days": result.horizon_days,
         "household_members": profile.total_members,
-        "budget_feasible": result.budget_feasible,
+        "budget_status": result.budget_status.value,
+        "unpriced_foods": list(result.unpriced_food_names),
         "nutrition_feasible": result.nutrition_feasible,
         "items": [
             {
@@ -90,6 +91,10 @@ def serialize_result(result: OptimizationResult, profile: HouseholdProfile) -> d
                 "price_source": PRICE_SOURCE_LABELS[item.quote.source],
             }
             for item in result.items
+        ],
+        "pantry_used": [
+            {"food_name": use.food.name, "grams": round(use.grams, 1)}
+            for use in result.pantry_used
         ],
         "food_groups_covered": [
             FOOD_GROUP_LABELS[group] for group in result.group_coverage
@@ -165,7 +170,10 @@ class OpenAIExplanationService(ExplanationService):
         if not isinstance(data, dict) or any(key not in data for key in required):
             return None
 
-        basket_names = {item.food.name for item in result.items}
+        # Pantry-used foods are part of the plan: naming them is not a hallucination.
+        basket_names = {item.food.name for item in result.items} | {
+            use.food.name for use in result.pantry_used
+        }
         item_reasons: dict[str, str] = {}
         for entry in data["item_reasons"]:
             name = entry.get("food_name", "")

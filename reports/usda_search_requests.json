@@ -1,0 +1,335 @@
+{
+ "notes": "Offline stub. Feed these to tools/import_usda_foods.py; real candidates require FDC_API_KEY. Never treat an empty candidate list as a completed match.",
+ "requests": [
+  {
+   "ingredient_id": "tomatoes_fresh",
+   "role": "vegetable",
+   "expected_state": "raw",
+   "search_terms": [
+    "fresh tomatoes",
+    "roma tomatoes",
+    "tomato",
+    "tomatoes",
+    "tomatoes fresh"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "butter",
+   "role": "fat",
+   "expected_state": "raw",
+   "search_terms": [
+    "butter",
+    "melted butter",
+    "salted butter",
+    "unsalted butter"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "flour_all_purpose",
+   "role": "main_carb",
+   "expected_state": "dry",
+   "search_terms": [
+    "all purpose flour",
+    "all-purpose flour",
+    "bread flour",
+    "flour",
+    "flour all purpose",
+    "plain flour",
+    "wheat flour",
+    "white flour"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "sugar_white",
+   "role": "sweetener",
+   "expected_state": "dry",
+   "search_terms": [
+    "caster sugar",
+    "confectioners sugar",
+    "granulated sugar",
+    "icing sugar",
+    "powdered sugar",
+    "sugar",
+    "sugar white",
+    "white sugar"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "chicken_broth",
+   "role": "liquid",
+   "expected_state": "raw",
+   "search_terms": [
+    "beef broth",
+    "broth",
+    "chicken broth",
+    "chicken stock",
+    "stock",
+    "vegetable broth"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "lemon",
+   "role": "fruit",
+   "expected_state": "raw",
+   "search_terms": [
+    "lemon"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "heavy_cream",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "cream",
+    "double cream",
+    "heavy cream",
+    "whipping cream"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "sausage",
+   "role": "protein",
+   "expected_state": "raw",
+   "search_terms": [
+    "italian sausage",
+    "pork sausage",
+    "sausage"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "bacon",
+   "role": "protein",
+   "expected_state": "raw",
+   "search_terms": [
+    "bacon"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "tomato_paste",
+   "role": "sauce",
+   "expected_state": "canned",
+   "search_terms": [
+    "tomato paste"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "tomato_sauce",
+   "role": "sauce",
+   "expected_state": "canned",
+   "search_terms": [
+    "passata",
+    "tomato sauce"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "green_onions",
+   "role": "vegetable",
+   "expected_state": "raw",
+   "search_terms": [
+    "green onion",
+    "green onions",
+    "scallion",
+    "scallions",
+    "spring onion"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "parmesan_cheese",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "grated parmesan",
+    "parmesan",
+    "parmesan cheese",
+    "parmigiano"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "honey",
+   "role": "sweetener",
+   "expected_state": "raw",
+   "search_terms": [
+    "honey"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "soy_sauce",
+   "role": "sauce",
+   "expected_state": "raw",
+   "search_terms": [
+    "dark soy sauce",
+    "light soy sauce",
+    "soy sauce"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "mushrooms",
+   "role": "vegetable",
+   "expected_state": "raw",
+   "search_terms": [
+    "button mushrooms",
+    "cremini mushrooms",
+    "mushroom",
+    "mushrooms"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "sour_cream",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "sour cream"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "mozzarella_cheese",
+   "role": "dairy",
+   "expected_state": "raw",
+   "search_terms": [
+    "mozzarella",
+    "mozzarella cheese"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  },
+  {
+   "ingredient_id": "lime",
+   "role": "fruit",
+   "expected_state": "raw",
+   "search_terms": [
+    "lime"
+   ],
+   "preferred_data_types": [
+    "Foundation",
+    "SR Legacy",
+    "Survey (FNDDS)"
+   ],
+   "status": "pending",
+   "candidates": []
+  }
+ ]
+}

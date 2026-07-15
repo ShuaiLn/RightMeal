@@ -1,0 +1,896 @@
+{
+ "version": 1,
+ "notes": "Catalog foods beyond the 53 curated seeds, added by the dev-time USDA import + review workflow (tools/import_usda_foods.py + tools/review_usda_mappings.py). Same schema as seed_foods.json. Only entries with reviewed USDA nutrition belong here; ingredients still pending review live in the registry with nutrition_source='pending' and carry no nutrition until approved. This file never contains invented nutrient values.",
+ "foods": [
+  {
+   "id": "bacon",
+   "name": "Bacon",
+   "image_url": "https://www.themealdb.com/images/ingredients/Bacon-Small.png",
+   "food_group": "protein",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 749420,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "1 lb",
+     "grams": 454,
+     "seed_price": 5.99
+    },
+    {
+     "label": "12 oz",
+     "grams": 340,
+     "seed_price": 4.99
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": false,
+   "vegan": false,
+   "contains_pork": true,
+   "is_meat_or_fish": true,
+   "search_terms": [
+    "bacon"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 500.0,
+    "protein_g": 40.9,
+    "fiber_g": 0.0,
+    "calcium_mg": 13.0,
+    "iron_mg": 1.28,
+    "potassium_mg": 557.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 0.0,
+    "magnesium_mg": 36.5,
+    "zinc_mg": 3.56
+   }
+  },
+  {
+   "id": "butter",
+   "name": "Butter",
+   "image_url": "https://www.themealdb.com/images/ingredients/Butter-Small.png",
+   "food_group": "healthy_fats",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 173410,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "1 lb (4 sticks)",
+     "grams": 454,
+     "seed_price": 4.29
+    },
+    {
+     "label": "1 stick",
+     "grams": 113,
+     "seed_price": 1.19
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [
+    "dairy"
+   ],
+   "lactose": true,
+   "vegetarian": true,
+   "vegan": false,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "butter"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 717.0,
+    "protein_g": 0.85,
+    "fiber_g": 0.0,
+    "calcium_mg": 24.0,
+    "iron_mg": 0.02,
+    "potassium_mg": 24.0,
+    "vitamin_a_mcg_rae": 684.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 3.0,
+    "magnesium_mg": 2.0,
+    "zinc_mg": 0.09
+   }
+  },
+  {
+   "id": "chicken_broth",
+   "name": "Chicken broth",
+   "image_url": "https://www.themealdb.com/images/ingredients/Chicken%20Stock-Small.png",
+   "food_group": "vegetables",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 174551,
+   "is_liquid": true,
+   "density_g_per_ml": 1.0,
+   "package_options": [
+    {
+     "label": "32 oz carton",
+     "grams": 907,
+     "seed_price": 2.49,
+     "ml": 946
+    },
+    {
+     "label": "14.5 oz can",
+     "grams": 411,
+     "seed_price": 1.09,
+     "ml": 429
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": false,
+   "vegan": false,
+   "contains_pork": false,
+   "is_meat_or_fish": true,
+   "search_terms": [
+    "chicken broth"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 16.0,
+    "protein_g": 2.02,
+    "fiber_g": 0.0,
+    "calcium_mg": 4.0,
+    "iron_mg": 0.21,
+    "potassium_mg": 86.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 2.0,
+    "magnesium_mg": 1.0,
+    "zinc_mg": 0.1
+   }
+  },
+  {
+   "id": "flour_all_purpose",
+   "name": "Flour all purpose",
+   "image_url": "https://www.themealdb.com/images/ingredients/Flour-Small.png",
+   "food_group": "grains_starchy",
+   "prep_state": "raw",
+   "form": "dry",
+   "fdc_id": 789890,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "2 lb bag",
+     "grams": 907,
+     "seed_price": 1.99
+    },
+    {
+     "label": "5 lb bag",
+     "grams": 2268,
+     "seed_price": 3.79
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [
+    "gluten",
+    "wheat"
+   ],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "flour all purpose"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 366.0,
+    "protein_g": 10.9,
+    "fiber_g": 0.0,
+    "calcium_mg": 19.0,
+    "iron_mg": 5.62,
+    "potassium_mg": 136.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 0.0,
+    "magnesium_mg": 26.7,
+    "zinc_mg": 0.72
+   }
+  },
+  {
+   "id": "green_onions",
+   "name": "Green onions",
+   "image_url": "https://www.themealdb.com/images/ingredients/Spring%20Onions-Small.png",
+   "food_group": "vegetables",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 170005,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "bunch",
+     "grams": 100,
+     "seed_price": 0.89
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "green onions"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 32.0,
+    "protein_g": 1.83,
+    "fiber_g": 2.6,
+    "calcium_mg": 72.0,
+    "iron_mg": 1.48,
+    "potassium_mg": 276.0,
+    "vitamin_a_mcg_rae": 50.0,
+    "vitamin_c_mg": 18.8,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 64.0,
+    "magnesium_mg": 20.0,
+    "zinc_mg": 0.39
+   }
+  },
+  {
+   "id": "heavy_cream",
+   "name": "Heavy cream",
+   "image_url": "https://www.themealdb.com/images/ingredients/Heavy%20Cream-Small.png",
+   "food_group": "dairy_fortified_alt",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 2705597,
+   "is_liquid": true,
+   "density_g_per_ml": 1.0,
+   "package_options": [
+    {
+     "label": "16 oz",
+     "grams": 473,
+     "seed_price": 3.79,
+     "ml": 473
+    },
+    {
+     "label": "8 oz",
+     "grams": 237,
+     "seed_price": 2.29,
+     "ml": 237
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [
+    "dairy"
+   ],
+   "lactose": true,
+   "vegetarian": true,
+   "vegan": false,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "heavy cream"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 343.0,
+    "protein_g": 2.02,
+    "fiber_g": 0.0,
+    "calcium_mg": 61.0,
+    "iron_mg": 0.0,
+    "potassium_mg": 97.0,
+    "vitamin_a_mcg_rae": 327.0,
+    "vitamin_c_mg": 0.6,
+    "vitamin_d_mcg": 1.6,
+    "folate_mcg_dfe": 4.0,
+    "magnesium_mg": 6.0,
+    "zinc_mg": 0.22
+   }
+  },
+  {
+   "id": "honey",
+   "name": "Honey",
+   "image_url": "https://www.themealdb.com/images/ingredients/Honey-Small.png",
+   "food_group": "grains_starchy",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 169640,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "12 oz bottle",
+     "grams": 340,
+     "seed_price": 4.49
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": false,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "honey"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 304.0,
+    "protein_g": 0.3,
+    "fiber_g": 0.2,
+    "calcium_mg": 6.0,
+    "iron_mg": 0.42,
+    "potassium_mg": 52.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 0.5,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 2.0,
+    "magnesium_mg": 2.0,
+    "zinc_mg": 0.22
+   }
+  },
+  {
+   "id": "lemon",
+   "name": "Lemon",
+   "image_url": "https://www.themealdb.com/images/ingredients/Lemon-Small.png",
+   "food_group": "fruits",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 167746,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "each",
+     "grams": 100,
+     "seed_price": 0.69
+    },
+    {
+     "label": "bag of 6",
+     "grams": 600,
+     "seed_price": 3.49
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "lemon"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 29.0,
+    "protein_g": 1.1,
+    "fiber_g": 2.8,
+    "calcium_mg": 26.0,
+    "iron_mg": 0.6,
+    "potassium_mg": 138.0,
+    "vitamin_a_mcg_rae": 1.0,
+    "vitamin_c_mg": 53.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 11.0,
+    "magnesium_mg": 8.0,
+    "zinc_mg": 0.06
+   }
+  },
+  {
+   "id": "lime",
+   "name": "Lime",
+   "image_url": "https://www.themealdb.com/images/ingredients/Lime-Small.png",
+   "food_group": "fruits",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 168155,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "each",
+     "grams": 67,
+     "seed_price": 0.5
+    },
+    {
+     "label": "bag of 8",
+     "grams": 536,
+     "seed_price": 2.99
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "lime"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 30.0,
+    "protein_g": 0.7,
+    "fiber_g": 2.8,
+    "calcium_mg": 33.0,
+    "iron_mg": 0.6,
+    "potassium_mg": 102.0,
+    "vitamin_a_mcg_rae": 2.0,
+    "vitamin_c_mg": 29.1,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 8.0,
+    "magnesium_mg": 6.0,
+    "zinc_mg": 0.11
+   }
+  },
+  {
+   "id": "mozzarella_cheese",
+   "name": "Mozzarella cheese",
+   "image_url": "https://www.themealdb.com/images/ingredients/Mozzarella-Small.png",
+   "food_group": "dairy_fortified_alt",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 170845,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "16 oz",
+     "grams": 454,
+     "seed_price": 3.99
+    },
+    {
+     "label": "8 oz",
+     "grams": 227,
+     "seed_price": 2.49
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [
+    "dairy"
+   ],
+   "lactose": true,
+   "vegetarian": true,
+   "vegan": false,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "mozzarella cheese"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 299.0,
+    "protein_g": 22.2,
+    "fiber_g": 0.0,
+    "calcium_mg": 505.0,
+    "iron_mg": 0.44,
+    "potassium_mg": 76.0,
+    "vitamin_a_mcg_rae": 179.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.4,
+    "folate_mcg_dfe": 7.0,
+    "magnesium_mg": 20.0,
+    "zinc_mg": 2.92
+   }
+  },
+  {
+   "id": "mushrooms",
+   "name": "Mushrooms",
+   "image_url": "https://www.themealdb.com/images/ingredients/Mushrooms-Small.png",
+   "food_group": "vegetables",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 169251,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "8 oz pack",
+     "grams": 227,
+     "seed_price": 2.29
+    },
+    {
+     "label": "16 oz pack",
+     "grams": 454,
+     "seed_price": 3.99
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "mushrooms"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 22.0,
+    "protein_g": 3.09,
+    "fiber_g": 1.0,
+    "calcium_mg": 3.0,
+    "iron_mg": 0.5,
+    "potassium_mg": 318.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 2.1,
+    "vitamin_d_mcg": 0.2,
+    "folate_mcg_dfe": 17.0,
+    "magnesium_mg": 9.0,
+    "zinc_mg": 0.52
+   }
+  },
+  {
+   "id": "parmesan_cheese",
+   "name": "Parmesan cheese",
+   "image_url": "https://www.themealdb.com/images/ingredients/Parmesan%20Cheese-Small.png",
+   "food_group": "dairy_fortified_alt",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 325036,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "8 oz wedge",
+     "grams": 227,
+     "seed_price": 5.49
+    },
+    {
+     "label": "5 oz shaker",
+     "grams": 142,
+     "seed_price": 3.99
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [
+    "dairy"
+   ],
+   "lactose": true,
+   "vegetarian": true,
+   "vegan": false,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "parmesan cheese"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 421.0,
+    "protein_g": 29.6,
+    "fiber_g": 0.0,
+    "calcium_mg": 884.0,
+    "iron_mg": 0.45,
+    "potassium_mg": 184.0,
+    "vitamin_a_mcg_rae": 228.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 0.0,
+    "magnesium_mg": 34.9,
+    "zinc_mg": 4.33
+   }
+  },
+  {
+   "id": "sausage",
+   "name": "Sausage",
+   "image_url": "https://www.themealdb.com/images/ingredients/Sausages-Small.png",
+   "food_group": "protein",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 171631,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "1 lb",
+     "grams": 454,
+     "seed_price": 4.49
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": false,
+   "vegan": false,
+   "contains_pork": true,
+   "is_meat_or_fish": true,
+   "search_terms": [
+    "sausage"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 290.0,
+    "protein_g": 13.9,
+    "fiber_g": 0.0,
+    "calcium_mg": 12.0,
+    "iron_mg": 1.77,
+    "potassium_mg": 211.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 0.0,
+    "magnesium_mg": 16.0,
+    "zinc_mg": 1.91
+   }
+  },
+  {
+   "id": "sour_cream",
+   "name": "Sour cream",
+   "image_url": "https://www.themealdb.com/images/ingredients/Sour%20Cream-Small.png",
+   "food_group": "dairy_fortified_alt",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 171257,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "16 oz tub",
+     "grams": 454,
+     "seed_price": 2.29
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [
+    "dairy"
+   ],
+   "lactose": true,
+   "vegetarian": true,
+   "vegan": false,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "sour cream"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 198.0,
+    "protein_g": 2.44,
+    "fiber_g": 0.0,
+    "calcium_mg": 101.0,
+    "iron_mg": 0.07,
+    "potassium_mg": 125.0,
+    "vitamin_a_mcg_rae": 124.0,
+    "vitamin_c_mg": 0.9,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 6.0,
+    "magnesium_mg": 10.0,
+    "zinc_mg": 0.33
+   }
+  },
+  {
+   "id": "soy_sauce",
+   "name": "Soy sauce",
+   "image_url": "https://www.themealdb.com/images/ingredients/Soy%20Sauce-Small.png",
+   "food_group": "vegetables",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 174277,
+   "is_liquid": true,
+   "density_g_per_ml": 1.0,
+   "package_options": [
+    {
+     "label": "15 oz bottle",
+     "grams": 444,
+     "seed_price": 3.29,
+     "ml": 444
+    },
+    {
+     "label": "10 oz bottle",
+     "grams": 296,
+     "seed_price": 2.49,
+     "ml": 296
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [
+    "soy",
+    "gluten"
+   ],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "soy sauce"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 53.0,
+    "protein_g": 8.14,
+    "fiber_g": 0.8,
+    "calcium_mg": 33.0,
+    "iron_mg": 1.45,
+    "potassium_mg": 435.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 14.0,
+    "magnesium_mg": 74.0,
+    "zinc_mg": 0.87
+   }
+  },
+  {
+   "id": "sugar_white",
+   "name": "Sugar white",
+   "image_url": "https://www.themealdb.com/images/ingredients/Sugar-Small.png",
+   "food_group": "grains_starchy",
+   "prep_state": "raw",
+   "form": "dry",
+   "fdc_id": 746784,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "2 lb bag",
+     "grams": 907,
+     "seed_price": 2.29
+    },
+    {
+     "label": "4 lb bag",
+     "grams": 1814,
+     "seed_price": 3.99
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "sugar white"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 385.0,
+    "protein_g": 0.0,
+    "fiber_g": 0.0,
+    "calcium_mg": 1.0,
+    "iron_mg": 0.05,
+    "potassium_mg": 2.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 0.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 0.0,
+    "magnesium_mg": 0.3,
+    "zinc_mg": 0.01
+   }
+  },
+  {
+   "id": "tomato_paste",
+   "name": "Tomato paste",
+   "image_url": "https://www.themealdb.com/images/ingredients/Tomato%20Puree-Small.png",
+   "food_group": "vegetables",
+   "prep_state": "canned",
+   "form": "canned",
+   "fdc_id": 2685580,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "6 oz can",
+     "grams": 170,
+     "seed_price": 0.89
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "tomato paste"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 104.0,
+    "protein_g": 4.23,
+    "fiber_g": 4.7,
+    "calcium_mg": 36.8,
+    "iron_mg": 3.18,
+    "potassium_mg": 972.0,
+    "vitamin_a_mcg_rae": 0.0,
+    "vitamin_c_mg": 18.4,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 0.0,
+    "magnesium_mg": 49.6,
+    "zinc_mg": 0.511
+   }
+  },
+  {
+   "id": "tomato_sauce",
+   "name": "Tomato sauce",
+   "image_url": "https://www.themealdb.com/images/ingredients/Tomato%20Sauce-Small.png",
+   "food_group": "vegetables",
+   "prep_state": "canned",
+   "form": "canned",
+   "fdc_id": 170054,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "15 oz can",
+     "grams": 425,
+     "seed_price": 1.19
+    },
+    {
+     "label": "24 oz jar",
+     "grams": 680,
+     "seed_price": 2.49
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "tomato sauce"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 24.0,
+    "protein_g": 1.2,
+    "fiber_g": 1.5,
+    "calcium_mg": 14.0,
+    "iron_mg": 0.96,
+    "potassium_mg": 297.0,
+    "vitamin_a_mcg_rae": 22.0,
+    "vitamin_c_mg": 7.0,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 9.0,
+    "magnesium_mg": 15.0,
+    "zinc_mg": 0.22
+   }
+  },
+  {
+   "id": "tomatoes_fresh",
+   "name": "Tomatoes fresh",
+   "image_url": "https://www.themealdb.com/images/ingredients/Tomatoes-Small.png",
+   "food_group": "vegetables",
+   "prep_state": "raw",
+   "form": "raw",
+   "fdc_id": 170457,
+   "is_liquid": false,
+   "density_g_per_ml": null,
+   "package_options": [
+    {
+     "label": "1 lb",
+     "grams": 454,
+     "seed_price": 1.99
+    },
+    {
+     "label": "each",
+     "grams": 123,
+     "seed_price": 0.6
+    }
+   ],
+   "max_weekly_grams": 700,
+   "allergen_tags": [],
+   "lactose": false,
+   "vegetarian": true,
+   "vegan": true,
+   "contains_pork": false,
+   "is_meat_or_fish": false,
+   "search_terms": [
+    "tomatoes fresh"
+   ],
+   "nutrients_per_100g": {
+    "calories_kcal": 18.0,
+    "protein_g": 0.88,
+    "fiber_g": 1.2,
+    "calcium_mg": 10.0,
+    "iron_mg": 0.27,
+    "potassium_mg": 237.0,
+    "vitamin_a_mcg_rae": 42.0,
+    "vitamin_c_mg": 13.7,
+    "vitamin_d_mcg": 0.0,
+    "folate_mcg_dfe": 15.0,
+    "magnesium_mg": 11.0,
+    "zinc_mg": 0.17
+   }
+  }
+ ]
+}

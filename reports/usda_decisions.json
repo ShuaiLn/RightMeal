@@ -1,0 +1,22 @@
+{
+  "_notes": "Human-review decisions: canonical ingredient id -> approved USDA fdcId (or 'reject'/'unresolved'). Chosen for correct food identity, preferred data type, and complete nutrition. Applied by tools/review_usda_mappings.py.",
+  "tomatoes_fresh": "170457",
+  "butter": "173410",
+  "flour_all_purpose": "789890",
+  "sugar_white": "746784",
+  "chicken_broth": "174551",
+  "lemon": "167746",
+  "heavy_cream": "2705597",
+  "sausage": "171631",
+  "bacon": "749420",
+  "tomato_paste": "2685580",
+  "tomato_sauce": "170054",
+  "green_onions": "170005",
+  "parmesan_cheese": "325036",
+  "honey": "169640",
+  "soy_sauce": "174277",
+  "mushrooms": "169251",
+  "sour_cream": "171257",
+  "mozzarella_cheese": "170845",
+  "lime": "168155"
+}
