@@ -15,13 +15,19 @@ slice of changed foods against cumulative demand reconstructs exact totals.
 
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass
-from typing import Iterator
+from decimal import Decimal, ROUND_CEILING
+from typing import Iterator, Mapping, Sequence
 
 from models.basket import BasketItem, BudgetStatus, OptimizationResult, PantryUse
 from models.food import Food, FoodGroup, Nutrients, PackageOption
-from models.pricing import PriceQuote
+from models.pricing import (
+    PackageOffer,
+    PriceQuote,
+    PriceSource,
+    dollars_to_cents,
+    package_id_for,
+)
 from models.profile import HouseholdProfile
 from services.nutrition import NutritionService
 
@@ -30,8 +36,232 @@ COST_EPSILON = 0.01  # dollars — totals within a cent count as equal
 _DEEP_SHORTFALL = 0.5  # a nutrient below 50% of target => nutrition infeasible
 
 
-def _cheapest_package(food: Food) -> PackageOption:
-    return min(food.package_options, key=lambda p: (food.seed_cost_per_100(p), p.grams, p.label))
+PricingValue = PriceQuote | Sequence[PackageOffer]
+PricingInputs = Mapping[str, PricingValue]
+
+
+@dataclass(frozen=True)
+class _OfferedPackage:
+    """PackageOption-compatible snapshot for a non-catalog retailer package."""
+
+    package_id: str
+    label: str
+    grams: float
+    seed_price: float
+    ml: float | None = None
+
+
+def _package_for_offer(food: Food, offer: PackageOffer) -> PackageOption | _OfferedPackage:
+    for package in food.package_options:
+        if package_id_for(food.id, package) == offer.package_id:
+            return package
+    return _OfferedPackage(
+        package_id=offer.package_id,
+        label=offer.package_label,
+        grams=offer.package_grams,
+        ml=offer.package_ml,
+        seed_price=offer.price,
+    )
+
+
+def _offers_from_quote(food: Food, quote: PriceQuote) -> tuple[PackageOffer, ...]:
+    """Compatibility adapter from one normalized quote to package offers.
+
+    Native offer callers never use this.  Seed quotes recover the catalog's
+    real per-package seed prices; a legacy live/BLS normalized quote is rounded
+    to cents separately for each catalog package.
+    """
+
+    if quote.price <= 0 or quote.normalized_unit_price <= 0:
+        return ()
+    if quote.source is PriceSource.SEED_ESTIMATE:
+        return tuple(
+            PackageOffer.for_catalog_package(
+                food,
+                package,
+                price_cents=dollars_to_cents(package.seed_price),
+                source=quote.source,
+                store=quote.store,
+                matched_product_name=quote.matched_product_name,
+                confidence=quote.confidence,
+                is_estimate=quote.is_estimate,
+                last_updated=quote.last_updated,
+                match_reason=quote.match_reason,
+                provider_error=quote.provider_error,
+            )
+            for package in food.package_options
+            if dollars_to_cents(package.seed_price) > 0
+        )
+    offers: list[PackageOffer] = []
+    for package in food.package_options:
+        basis = package.ml if food.is_liquid and quote.normalized_unit == "100ml" else package.grams
+        if basis is None or basis <= 0:
+            continue
+        cents = dollars_to_cents(quote.normalized_unit_price * (basis / 100.0))
+        if cents <= 0:
+            continue
+        offers.append(
+            PackageOffer.for_catalog_package(
+                food,
+                package,
+                price_cents=cents,
+                source=quote.source,
+                store=quote.store,
+                matched_product_name=quote.matched_product_name,
+                confidence=quote.confidence,
+                is_estimate=quote.is_estimate,
+                last_updated=quote.last_updated,
+                match_reason=quote.match_reason,
+                raw_unit=quote.raw_unit,
+                provider_error=quote.provider_error,
+            )
+        )
+    return tuple(offers)
+
+
+def offers_for_food(food: Food, value: PricingValue | None) -> tuple[PackageOffer, ...]:
+    """Normalize a legacy quote or native offer collection, deduping exact triples."""
+
+    if value is None:
+        return ()
+    raw = _offers_from_quote(food, value) if isinstance(value, PriceQuote) else tuple(value)
+    by_triple: dict[tuple[str, str, str], PackageOffer] = {}
+    for offer in raw:
+        if not isinstance(offer, PackageOffer):
+            raise TypeError("pricing collections must contain PackageOffer values")
+        if offer.food_id != food.id:
+            raise ValueError(f"offer {offer.offer_id!r} belongs to a different food")
+        key = (offer.food_id, offer.package_id, offer.offer_id)
+        existing = by_triple.get(key)
+        if existing is not None and existing != offer:
+            raise ValueError(f"conflicting snapshots for package offer {offer.offer_id!r}")
+        by_triple[key] = offer
+    return tuple(sorted(by_triple.values(), key=lambda o: (o.offer_id, o.package_id)))
+
+
+@dataclass(frozen=True)
+class _CombinationState:
+    cost_cents: int
+    package_count: int
+    counts: tuple[int, ...]
+
+
+def _selection_signature(
+    offers: Sequence[PackageOffer], counts: Sequence[int]
+) -> tuple[str, ...]:
+    return tuple(
+        offer.offer_id
+        for offer, count in zip(offers, counts)
+        for _ in range(count)
+    )
+
+
+def minimum_cost_package_combination(
+    food: Food,
+    grams_needed: float,
+    offers: Sequence[PackageOffer],
+) -> tuple[BasketItem, ...]:
+    """Return the exact deterministic minimum-cost whole-package combination.
+
+    Ordering is cost, waste, package count, then stable expanded offer-id order.
+    The dynamic program enumerates each unordered offer-count vector once and
+    keeps only the best state for an identical covered weight.
+    """
+
+    if grams_needed <= GRAM_EPSILON:
+        return ()
+    ordered = offers_for_food(food, offers)
+    if not ordered:
+        return ()
+
+    need = Decimal(str(grams_needed - GRAM_EPSILON))
+    gram_sizes = tuple(Decimal(str(o.package_grams)) for o in ordered)
+    max_size = max(gram_sizes)
+    # An optimal positive-price cover cannot reach need + max_size: removing
+    # any one package would still cover the need for less money.
+    coverage_bound = need + max_size
+
+    single_covers: list[tuple[tuple, int]] = []
+    for index, (offer, grams) in enumerate(zip(ordered, gram_sizes)):
+        count = max(1, int((need / grams).to_integral_value(rounding=ROUND_CEILING)))
+        counts = tuple(count if i == index else 0 for i in range(len(ordered)))
+        total_grams = grams * count
+        key = (
+            offer.price_cents * count,
+            total_grams - need,
+            count,
+            _selection_signature(ordered, counts),
+        )
+        single_covers.append((key, offer.price_cents * count))
+    upper_cost = min(single_covers, key=lambda pair: pair[0])[1]
+
+    states: dict[Decimal, _CombinationState] = {
+        Decimal(0): _CombinationState(0, 0, ())
+    }
+    for index, (offer, grams) in enumerate(zip(ordered, gram_sizes)):
+        next_states: dict[Decimal, _CombinationState] = {}
+        for covered, state in states.items():
+            max_by_cost = (upper_cost - state.cost_cents) // offer.price_cents
+            k = 0
+            while k <= max_by_cost:
+                total_grams = covered + grams * k
+                if total_grams >= coverage_bound:
+                    break
+                candidate = _CombinationState(
+                    cost_cents=state.cost_cents + offer.price_cents * k,
+                    package_count=state.package_count + k,
+                    counts=state.counts + (k,),
+                )
+                prior = next_states.get(total_grams)
+                candidate_key = (
+                    candidate.cost_cents,
+                    candidate.package_count,
+                    _selection_signature(ordered[: index + 1], candidate.counts),
+                )
+                if prior is None:
+                    next_states[total_grams] = candidate
+                else:
+                    prior_key = (
+                        prior.cost_cents,
+                        prior.package_count,
+                        _selection_signature(ordered[: index + 1], prior.counts),
+                    )
+                    if candidate_key < prior_key:
+                        next_states[total_grams] = candidate
+                k += 1
+        states = next_states
+
+    candidates = [
+        (covered, state)
+        for covered, state in states.items()
+        if covered >= need and state.package_count > 0
+    ]
+    if not candidates:
+        return ()
+    _, best = min(
+        candidates,
+        key=lambda pair: (
+            pair[1].cost_cents,
+            pair[0] - need,
+            pair[1].package_count,
+            _selection_signature(ordered, pair[1].counts),
+        ),
+    )
+    return tuple(
+        BasketItem(
+            food=food,
+            package=_package_for_offer(food, offer),  # type: ignore[arg-type]
+            count=count,
+            quote=offer.to_quote(food),
+            offer=offer,
+        )
+        for offer, count in zip(ordered, best.counts)
+        if count > 0
+    )
+
+
+# A shorter public alias for callers that think in offers rather than packages.
+optimize_package_offers = minimum_cost_package_combination
 
 
 @dataclass(frozen=True)
@@ -42,7 +272,7 @@ class _FoodPrice:
     grams_needed: float
     from_pantry: float
     gap: float
-    item: BasketItem | None  # None when nothing must be bought or it is unpriced
+    items: tuple[BasketItem, ...]  # empty when nothing must be bought or it is unpriced
     unpriced: bool  # a gap exists but there is no quote for this food
 
 
@@ -69,7 +299,7 @@ def _iter_food_prices(
     demand: dict[str, float],
     pantry_items: dict[str, float],
     foods_by_id: dict[str, Food],
-    quotes: dict[str, PriceQuote] | None,
+    quotes: PricingInputs | None,
 ) -> Iterator[_FoodPrice]:
     quotes = quotes or {}
     for food_id in sorted(demand):
@@ -82,24 +312,24 @@ def _iter_food_prices(
         available = pantry_items.get(food_id, 0.0)
         from_pantry = min(grams_needed, available)
         gap = grams_needed - from_pantry
-        item: BasketItem | None = None
+        items: tuple[BasketItem, ...] = ()
         unpriced = False
         if gap > GRAM_EPSILON:
-            quote = quotes.get(food_id)
-            if quote is None:
+            offers = offers_for_food(food, quotes.get(food_id))
+            if not offers:
                 unpriced = True  # cannot price it; count the gap, never guess
             else:
-                pkg = _cheapest_package(food)
-                count = max(1, math.ceil((gap - GRAM_EPSILON) / pkg.grams))
-                item = BasketItem(food=food, package=pkg, count=count, quote=quote)
-        yield _FoodPrice(food, grams_needed, from_pantry, gap, item, unpriced)
+                items = minimum_cost_package_combination(food, gap, offers)
+                if not items:
+                    unpriced = True
+        yield _FoodPrice(food, grams_needed, from_pantry, gap, items, unpriced)
 
 
 def price_demand(
     demand: dict[str, float],
     pantry_items: dict[str, float],
     foods_by_id: dict[str, Food],
-    quotes: dict[str, PriceQuote] | None,
+    quotes: PricingInputs | None,
 ) -> PricedDemand:
     items: list[BasketItem] = []
     pantry_used: list[PantryUse] = []
@@ -122,14 +352,14 @@ def price_demand(
                 unpriced_gap += fp.gap
                 unpriced_ids.add(fp.food.id)
             else:
-                items.append(fp.item)
+                items.extend(fp.items)
 
     return PricedDemand(
         items=tuple(items),
         pantry_used=tuple(pantry_used),
         nutrient_totals=nutrient_totals,
         group_grams=tuple(sorted(group_grams.items(), key=lambda kv: kv[0].value)),
-        total_cost=round(sum(item.cost for item in items), 2),
+        total_cost=sum(item.total_cost_cents for item in items) / 100.0,
         total_gap_grams=total_gap,
         unpriced_gap_grams=unpriced_gap,
         unpriced_food_ids=frozenset(unpriced_ids),
@@ -140,7 +370,7 @@ def price_slice(
     demand: dict[str, float],
     pantry_items: dict[str, float],
     foods_by_id: dict[str, Food],
-    quotes: dict[str, PriceQuote] | None,
+    quotes: PricingInputs | None,
 ) -> SlicePrice:
     """Same per-food core as ``price_demand`` but skips the nutrient/group/
     pantry-use aggregation the repair inner loop does not need."""
@@ -153,9 +383,9 @@ def price_slice(
                 unpriced_gap += fp.gap
                 unpriced_ids.add(fp.food.id)
             else:
-                items.append(fp.item)
+                items.extend(fp.items)
     return SlicePrice(
-        total_cost=round(sum(item.cost for item in items), 2),
+        total_cost=sum(item.total_cost_cents for item in items) / 100.0,
         unpriced_gap_grams=unpriced_gap,
         unpriced_food_ids=frozenset(unpriced_ids),
     )
@@ -165,7 +395,7 @@ def build_shopping_result(
     demand: dict[str, float],
     pantry_items: dict[str, float],
     foods_by_id: dict[str, Food],
-    quotes: dict[str, PriceQuote],
+    quotes: PricingInputs,
     profile: HouseholdProfile,
     nutrition: NutritionService,
     budget: float,
@@ -192,8 +422,9 @@ def build_shopping_result(
     relaxed: list[str] = []
     if budget_status is BudgetStatus.OVER and priced.items:
         relaxed.append(
-            f"Estimated basket ${priced.total_cost:.2f} exceeds the ${budget:.2f} budget; "
-            f"reduce the plan, raise the budget, or check for cheaper stores.")
+            f"Estimated basket ${priced.total_cost:.2f} exceeds the ${budget:.2f} "
+            "estimated basket budget cap; reduce the plan, raise the cap, or "
+            "check for cheaper stores.")
     unpriced_names: tuple[str, ...] = ()
     if priced.unpriced_gap_grams > GRAM_EPSILON:
         # Name the foods, never a weight percentage — one unpriced ingredient
@@ -212,7 +443,7 @@ def build_shopping_result(
         gaps=gaps,
         group_coverage=dict(priced.group_grams),
         groups_covered=len(priced.group_grams),
-        distinct_foods=len(priced.items),
+        distinct_foods=len({item.food.id for item in priced.items}),
         budget_status=budget_status,
         nutrition_feasible=nutrition_feasible,
         relaxed_constraints=tuple(relaxed),
@@ -221,4 +452,18 @@ def build_shopping_result(
         excluded_foods=dict(excluded),
         horizon_days=horizon_days,
         pantry_used=priced.pantry_used,
+        local_fallback_used=any(
+            item.quote.source is PriceSource.SEED_ESTIMATE for item in priced.items
+        ),
+        local_fallback_food_ids=tuple(sorted({
+            item.food.id
+            for item in priced.items
+            if item.quote.source is PriceSource.SEED_ESTIMATE
+        })),
+        local_fallback_sources=(
+            (PriceSource.SEED_ESTIMATE,)
+            if any(item.quote.source is PriceSource.SEED_ESTIMATE for item in priced.items)
+            else ()
+        ),
+        unpriced_food_ids=tuple(sorted(priced.unpriced_food_ids)),
     )

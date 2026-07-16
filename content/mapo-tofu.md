@@ -1,5 +1,5 @@
 ---
-title: "Mapo Tofu (麻婆豆腐)"
+title: "Mapo Tofu"
 date: 2021-05-13
 tags: ['chinese', 'pork', 'tofu']
 author: mfed3

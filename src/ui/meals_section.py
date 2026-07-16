@@ -20,6 +20,7 @@ from models import (
     MealPortion,
     MealSlot,
     Nutrients,
+    PlanKind,
     SavedPlan,
 )
 from planner import SHORT_NAMES
@@ -45,7 +46,6 @@ from ui.components import (
     NUTRIENT_STYLES,
     collapsible_section,
     food_avatar,
-    food_photo,
     muted_text,
     nutrient_fraction,
     pill,
@@ -66,9 +66,98 @@ SLOT_ICONS: dict[MealSlot, str] = {
 # scroll=AUTO (unbounded height) — without it, Flutter can't resolve the
 # stretch and silently fails to render the row (and everything after it in the
 # scroll view). Sized for the tallest footer state; adjust here, never remove.
-MEAL_CARD_ROW_HEIGHT = 400
+MEAL_CARD_ROW_HEIGHT = 450
 
 ImageSrcFor = Callable[[Food], "bytes | str | None"]
+
+PARTIAL_FOOD_COVERAGE_WARNING = (
+    "This is not a complete food plan. Additional food is required."
+)
+STALE_PLAN_WARNING = (
+    "This plan was generated for an earlier household profile. "
+    "Build a new plan to update portions and dietary restrictions."
+)
+
+
+def plan_warning_banner(message: str, *, stale: bool = False, compact: bool = False) -> ft.Container:
+    """An always-visible plan warning used by Plan, Calendar, and meal details."""
+
+    ink = theme.DANGER if stale else theme.WARN_INK
+    return ft.Container(
+        content=ft.Row(
+            [
+                ft.Icon(
+                    ft.Icons.PERSON_OFF_OUTLINED if stale else ft.Icons.WARNING_AMBER_ROUNDED,
+                    size=16 if compact else 18,
+                    color=ink,
+                ),
+                ft.Text(
+                    message,
+                    size=11.5 if compact else 12.5,
+                    weight=ft.FontWeight.W_600,
+                    color=ink,
+                    expand=True,
+                ),
+            ],
+            spacing=8,
+            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        ),
+        bgcolor=theme.DANGER_TINT if stale else theme.WARN_BG,
+        border=ft.Border.all(1, theme.DANGER if stale else theme.WARN_BORDER),
+        border_radius=theme.RADIUS_SM,
+        padding=8 if compact else 12,
+    )
+
+
+def partial_plan_warning_banner(*, compact: bool = False) -> ft.Container:
+    return plan_warning_banner(PARTIAL_FOOD_COVERAGE_WARNING, compact=compact)
+
+
+def stale_plan_warning_banner(*, compact: bool = False) -> ft.Container:
+    return plan_warning_banner(STALE_PLAN_WARNING, stale=True, compact=compact)
+
+
+def _meal_member_count(meal: Meal) -> int:
+    if meal.household_member_count > 0:
+        return meal.household_member_count
+    if meal.servings > 0:
+        return max(1, int(round(meal.servings)))
+    return 0
+
+
+def meal_serving_summary(meal: Meal) -> str:
+    """Make reduced portions explicit without calling them fewer people."""
+
+    members = _meal_member_count(meal)
+    people = (
+        f"{members} {'person' if members == 1 else 'people'}"
+        if members
+        else "not recorded"
+    )
+    equivalents = meal.full_serving_equivalent
+    if equivalents <= 0:
+        equivalents = meal.servings
+    equivalent_label = (
+        "full-serving equivalent" if abs(equivalents - 1.0) < 1e-9
+        else "full-serving equivalents"
+    )
+    return (
+        f"Household: {people} · {equivalents:g} {equivalent_label} · "
+        f"{meal.portion_scale * 100:.0f}% portions"
+    )
+
+
+def meal_per_person_nutrition_label(meal: Meal) -> str:
+    """Estimated calories and protein divided across the actual household."""
+
+    members = _meal_member_count(meal)
+    if members <= 0:
+        return f"Estimated nutrition: ≈{meal.kcal:,.0f} kcal total"
+    nutrients = meal.nutrients
+    return (
+        f"Per person (estimated): ≈{nutrients.calories_kcal / members:,.0f} kcal · "
+        f"≈{nutrients.protein_g / members:,.1f} g protein"
+    )
 
 
 def _fmt_date(when: date) -> str:
@@ -167,14 +256,6 @@ def dish_or_ingredient_photo(
     return ingredient_ctrl
 
 
-def _kcal_label(meal: Meal) -> str:
-    """Per-person calories + servings; legacy meals fall back to the household total."""
-    pp = meal.per_person_kcal
-    if pp is not None and meal.servings > 0:
-        return f"≈{pp:,.0f} kcal/person · {meal.servings:g} servings"
-    return f"≈{meal.kcal:,.0f} kcal"
-
-
 def _dish_placeholder(size: int = 132, width: int | None = None) -> ft.Container:
     return ft.Container(
         content=ft.Icon(ft.Icons.RESTAURANT_MENU, size=int(size * 0.3), color=theme.TEXT_MUTED),
@@ -254,6 +335,11 @@ def meal_card(
         open_meal_detail_dialog(page, state, saved, when, meal, on_changed)
 
     portions_text = " · ".join(portion_label(p) for p in meal.portions)
+    partial_warning = (
+        [partial_plan_warning_banner(compact=True)]
+        if saved.plan_kind is PlanKind.PARTIAL_FOOD_COVERAGE
+        else []
+    )
     return ft.Container(
         expand=True,
         bgcolor=theme.SURFACE_TINT,
@@ -264,12 +350,13 @@ def meal_card(
         content=ft.Column(
             [
                 ft.Row(
-                    [_slot_pill(meal.slot), muted_text(_kcal_label(meal), size=12)],
-                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                    [_slot_pill(meal.slot)],
                     vertical_alignment=ft.CrossAxisAlignment.CENTER,
                 ),
                 dish_or_ingredient_photo(meal, state),
                 ft.Row(name_row, spacing=8, wrap=True),
+                muted_text(meal_serving_summary(meal), size=11.5),
+                muted_text(meal_per_person_nutrition_label(meal), size=11.5),
                 ft.Text(
                     portions_text,
                     size=12,
@@ -278,6 +365,7 @@ def meal_card(
                     overflow=ft.TextOverflow.ELLIPSIS,
                     tooltip=portions_text,
                 ),
+                *partial_warning,
                 ft.Container(expand=True),  # pins the footer to the card bottom
                 _card_status(page, state, saved, when, meal, on_changed),
             ],
@@ -331,7 +419,6 @@ def open_meal_detail_dialog(
     Tracking actions rebuild the dialog body in place and refresh the meals
     section behind it via ``on_changed``.
     """
-    image_src_for = state.image_src_for
     ui_state: dict = {"mode": None}  # None | "edit_amount" | "edit_note"
     body = ft.Column(spacing=10, tight=True, scroll=ft.ScrollMode.AUTO)
 
@@ -348,8 +435,19 @@ def open_meal_detail_dialog(
     def rebuild() -> None:
         recipe = state.recipes_by_id.get(meal.recipe_id) if meal.recipe_id else None
         body.controls = [
+            *(
+                [partial_plan_warning_banner()]
+                if saved.plan_kind is PlanKind.PARTIAL_FOOD_COVERAGE
+                else []
+            ),
+            *(
+                [stale_plan_warning_banner()]
+                if state.profile is not None and saved.profile_stale(state.profile)
+                else []
+            ),
             dish_or_ingredient_photo(meal, state),
-            muted_text(_kcal_label(meal), size=12.5),
+            muted_text(meal_serving_summary(meal), size=12.5),
+            muted_text(meal_per_person_nutrition_label(meal), size=12.5),
             *([muted_text(f"Source: {recipe.source_file}", size=11)] if recipe else []),
             ft.Divider(height=1, color=theme.BORDER),
             *[portion_row(p) for p in meal.portions],
@@ -941,6 +1039,15 @@ def daily_meals_section(
     foods_by_id = state.foods_by_id
     image_src_for = state.image_src_for
     today = date.today()
+    generated_members = (
+        saved.household_snapshot.adults
+        + saved.household_snapshot.children
+        + saved.household_snapshot.seniors
+        if saved.household_snapshot is not None
+        else max(profile.total_members, 1)
+    )
+    is_partial = saved.plan_kind is PlanKind.PARTIAL_FOOD_COVERAGE
+    is_stale = saved.profile_stale(profile)
     anchor = initial_date if initial_date is not None else today
     offset = (anchor - start_date).days
     selected = {"index": offset if 0 <= offset < len(plan.days) else 0}
@@ -1007,8 +1114,12 @@ def daily_meals_section(
     def rebuild_detail() -> None:
         day = plan.days[selected["index"]]
         when = start_date + timedelta(days=day.day_index)
-        members = max(profile.total_members, 1)
-        day_kcal_per_person = sum(meal.kcal for meal in day.meals) / members
+        day_kcal_per_person = sum(
+            meal.per_person_kcal
+            if meal.per_person_kcal is not None
+            else meal.kcal / generated_members
+            for meal in day.meals
+        )
 
         cards: list[ft.Control] = []
         for slot in SLOT_ORDER:
@@ -1066,16 +1177,21 @@ def daily_meals_section(
     rebuild_strip()
     rebuild_detail()
 
-    controls: list[ft.Control] = [
+    controls: list[ft.Control] = []
+    if is_partial:
+        controls.append(partial_plan_warning_banner())
+    if is_stale:
+        controls.append(stale_plan_warning_banner())
+    controls.extend([
         muted_text(
-            f"Portions cover the whole household ({max(profile.total_members, 1)} "
-            f"{'person' if profile.total_members == 1 else 'people'}). "
+            f"Portions were generated for the whole household ({generated_members} "
+            f"{'person' if generated_members == 1 else 'people'}). "
             "Pick a day to see its meals.",
             size=12.5,
         ),
         strip_column,
         detail_column,
-    ]
+    ])
     carryover = pantry_carryover_block(plan, foods_by_id, image_src_for)
     if carryover is not None:
         controls.append(ft.Divider(height=1, color=theme.BORDER))

@@ -1,10 +1,11 @@
 {
  "summary": {
   "total_recipes": 408,
-  "auto_plannable": 107,
+  "auto_plannable": 99,
+  "nonfood_lines": 23,
   "by_recipe_type": {
-   "main_meal": 159,
-   "side": 60,
+   "main_meal": 160,
+   "side": 59,
    "dessert": 47,
    "breakfast": 33,
    "sauce": 41,
@@ -14,9 +15,9 @@
    "snack": 2
   },
   "auto_plannable_by_slot": {
-   "lunch": 82,
-   "dinner": 82,
-   "breakfast": 25
+   "lunch": 75,
+   "dinner": 75,
+   "breakfast": 24
   }
  },
  "recipes": [
@@ -33,7 +34,8 @@
    "unresolved_core": [
     "~150g (1/3 lb) bacon cubes",
     "~150g (1/3 lb) medium soft cheese. Appenzeller works best. Gruyère would be my go-to alternative."
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "aglio-e-olio",
@@ -42,7 +44,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "air-fryer-zucchini",
@@ -53,7 +56,8 @@
    "coverage_by_mass": 0.0741,
    "unresolved_core": [
     "2 zucchinis"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "aljotta",
@@ -65,7 +69,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "almeirim-stone-soup",
@@ -77,7 +82,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "apple-chicken",
@@ -89,7 +95,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "apple-pie",
@@ -98,7 +105,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.9648,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "apple-strudel",
@@ -111,7 +119,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "Apricot jam (about 300 g | 10 oz)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "ardei-umpluti",
@@ -122,7 +131,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 yellow peppers per person"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "arroz-chaufa",
@@ -134,7 +144,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "asian-style-chicken-sticky-sauce",
@@ -143,7 +154,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.9031,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "assam-tea",
@@ -152,7 +164,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "aussie-snags",
@@ -164,7 +177,10 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": [
+    "Wood chips (optional, fuel for smokey flavour)"
+   ]
   },
   {
    "id": "autumn-soup",
@@ -179,7 +195,8 @@
    "unresolved_core": [
     "1 Medium Squash",
     "1 Chicken Bullion Cube"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "babas-feta-pasta",
@@ -193,7 +210,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "15-20 Kalamon/Kalamata Olives (Cut into thirds)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "baby-back-ribs",
@@ -205,6 +223,10 @@
    "unresolved_core": [
     "2 baby back rib racks",
     "1 container of barbecue rub ([Traeger Pork and Poultry Rub](https://www.traeger.com/rubs-spices/pork-poultry) is recommended)"
+   ],
+   "nonfood": [
+    "Applewood (or other sweet cooking wood such as cherry or maple)",
+    "Tin foil"
    ]
   },
   {
@@ -216,7 +238,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "24 oz or 1 jar of Fradiavolo Sauce"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "baked-pasta-with-broccoli",
@@ -225,10 +248,13 @@
     "lunch",
     "dinner"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.8,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "400g béchamel"
+   ],
+   "nonfood": []
   },
   {
    "id": "baked-rice",
@@ -244,7 +270,8 @@
     "500 g of pork ribs, cut into pieces",
     "200 g of pork belly, cut into pieces",
     "1 whole garlic head"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "baked-salmon",
@@ -256,7 +283,10 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": [
+    "Aluminum Foil"
+   ]
   },
   {
    "id": "baked-trout",
@@ -268,7 +298,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "banana-bread",
@@ -277,7 +308,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "banana-muffins-with-chocolate",
@@ -286,7 +318,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "banana-oatmeal-cookies",
@@ -295,7 +328,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "banana-pancakes",
@@ -306,7 +340,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "basic-meatballs",
@@ -318,7 +353,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "basic-waffles",
@@ -327,7 +363,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "batter-pudding",
@@ -336,7 +373,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "bean-salad",
@@ -348,7 +386,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "bebek-mropol",
@@ -362,7 +401,8 @@
     "2 lemongrass stalks, bruised",
     "4 kaffir lime leaves",
     "2 red chilies, sliced"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "beef-and-broccoli",
@@ -377,7 +417,8 @@
    "unresolved_core": [
     "1 cup Broccoli Pieces",
     "1/2 cup Beef Bouillon"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "beef-goulash",
@@ -389,7 +430,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "beef-jerky",
@@ -401,18 +443,21 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.9731,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "beef-kidney",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.75,
+   "core_coverage": 0.6,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
-    "1 beef kidney"
-   ]
+    "1 beef kidney",
+    "400g croutons or toasted bread in pieces"
+   ],
+   "nonfood": []
   },
   {
    "id": "beef-liver-and-onions",
@@ -423,7 +468,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 lb Beef Liver"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "beef-stew",
@@ -432,7 +478,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "beef-tips",
@@ -441,7 +488,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "beef-wellington",
@@ -454,8 +502,10 @@
    "core_coverage": 0.6667,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
-    "4 Thinly Cut Slices of Ham"
-   ]
+    "4 Thinly Cut Slices of Ham",
+    "7oz of Puff Pastry"
+   ],
+   "nonfood": []
   },
   {
    "id": "belgian-pear-syrup",
@@ -466,6 +516,10 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "7 pears (Quality doesn't matter; you can argue that overripe pears are better because they have more sugar content.)"
+   ],
+   "nonfood": [
+    "find sieve or cheese cloth",
+    "glass jar"
    ]
   },
   {
@@ -475,7 +529,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "blueberry-muffins",
@@ -489,7 +544,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 1/2 cups fresh blueberries"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "bolinhos-de-coco",
@@ -500,7 +556,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "300 g coconut"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "bolo-do-caco",
@@ -509,7 +566,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "bolognese-sauce",
@@ -524,7 +582,8 @@
     "350 grams veal mince (if you cant find veal replace with pork)",
     "140 grams concentrated tomato paste",
     "1-2 glasses wine (whatever you have open)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "bread-pudding",
@@ -533,7 +592,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "bread",
@@ -544,7 +604,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 and 1/4 teaspoons Active Dry Yeast"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "breakfast-wrap",
@@ -555,7 +616,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "breton-crepes",
@@ -567,7 +629,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "brigadeiro",
@@ -576,7 +639,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "broiled-trevally",
@@ -585,7 +649,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "broiled-venison-steaks",
@@ -594,16 +659,20 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "brown-sauce",
    "recipe_type": "sauce",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
+   "core_coverage": 0.5,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "1l bouillon"
+   ],
+   "nonfood": []
   },
   {
    "id": "burger-dressing",
@@ -612,7 +681,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "butter-based-biscuit",
@@ -621,7 +691,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "butter-biscuits",
@@ -630,7 +701,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "butter-cake",
@@ -639,7 +711,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "butter-chicken-masala",
@@ -648,7 +721,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cacio-e-pepe",
@@ -657,7 +731,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "caesar-salad",
@@ -666,7 +741,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cannellini-bean-salad",
@@ -678,7 +754,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "carbonade",
@@ -687,7 +764,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "carbonara",
@@ -696,7 +774,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "casio-in-pastelletto",
@@ -707,7 +786,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "2 slice cheese. Use a cheese that is mid-aged, not too savoury and not too delicate."
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "castagnole",
@@ -719,7 +799,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ceviche",
@@ -728,7 +809,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "challah-bread",
@@ -740,7 +822,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cheddar-crusted-chicken",
@@ -752,16 +835,19 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cheese",
    "recipe_type": "base",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.0,
-   "coverage_by_mass": 0.0,
-   "unresolved_core": [
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [],
+   "nonfood": [
+    "thermometer",
     "1 cheesecloth",
     "1 cheese recipient"
    ]
@@ -776,7 +862,8 @@
    "unresolved_core": [
     "300-400g of ground beef meat",
     "8 spoonfuls of tomato paste"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "cheesy-pasta-bake",
@@ -788,7 +875,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cheesy-potatoe-bake",
@@ -797,7 +885,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chicharrones",
@@ -806,7 +895,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chicken-biscuit-potpie",
@@ -819,7 +909,8 @@
     "1-2/3 cups frozen mixed vegetables, thawed",
     "1 can (10-3/4 ounces) condensed cream of chicken soup, undiluted",
     "1 cup biscuit/baking mix"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "chicken-in-red-wine-vinegar-sauce",
@@ -828,7 +919,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chicken-paprikash",
@@ -839,7 +931,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "8 bone-in, skin-on chicken thighs"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "chicken-parmesan",
@@ -851,19 +944,23 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chicken-pasta-casserole",
-   "recipe_type": "side",
-   "meal_types": [],
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
    "auto_plannable": false,
-   "core_coverage": 0.6,
+   "core_coverage": 0.8,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
-    "16oz (450g) macaroni (elbow, penne)",
-    "24oz (700g) raw chicken breast, diced"
-   ]
+    "16oz (450g) macaroni (elbow, penne)"
+   ],
+   "nonfood": []
   },
   {
    "id": "chicken-satay",
@@ -874,7 +971,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 lbs boneless chicken breast or thigh"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "chicken-soup",
@@ -888,7 +986,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 celery stalks"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "chicken-stock-bone-broth",
@@ -897,7 +996,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chicken-tacos",
@@ -909,7 +1009,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chicken-tenders-airfried",
@@ -918,7 +1019,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chicken-tikka-masala",
@@ -934,16 +1036,20 @@
     "1 can (29 ounces) tomato puree",
     "4-1/2 teaspoons minced fresh gingerroot",
     "1 cup heavy whipping cream"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "chicken-tomato-spinach-curry",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
+   "core_coverage": 0.6667,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "500g or 1lb of chicken breast"
+   ],
+   "nonfood": []
   },
   {
    "id": "chicken-wings",
@@ -952,7 +1058,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chili-con-carne",
@@ -964,7 +1071,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chimichanga",
@@ -976,7 +1084,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chipolata-in-balsamic-vinegar",
@@ -988,7 +1097,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "chocolate-chip-cookies",
@@ -999,7 +1109,8 @@
    "coverage_by_mass": 0.8378,
    "unresolved_core": [
     "225 g 50-70% dark chocolate chips or semi-sweet milk chocolate chips"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "chorizo-and-chickpea-soup",
@@ -1011,7 +1122,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cinnamon-biscuits",
@@ -1022,7 +1134,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cinnamon-waffles",
@@ -1031,7 +1144,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cinque-pi",
@@ -1040,7 +1154,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "classic-bechamel-sauce",
@@ -1049,7 +1164,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cocoanut-pudding",
@@ -1058,7 +1174,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "coconut-flour-bread",
@@ -1070,7 +1187,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "coconut-oil-coffee",
@@ -1081,7 +1199,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 cup hot coffee"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "colcannon-bake",
@@ -1095,7 +1214,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 cubes Chicken Bouillon"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "coleslaw",
@@ -1104,7 +1224,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "collard-greens-with-smoked-duck-and-parnips",
@@ -1117,7 +1238,8 @@
     "1/2 smoked duck breast (skin on) chopped",
     "1 small parsnip julienned",
     "1 large bunch collard greens chopped into ribbons"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "cooked-chickpeas",
@@ -1129,19 +1251,26 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "coriander-chicken",
-   "recipe_type": "side",
-   "meal_types": [],
+   "recipe_type": "main_meal",
+   "meal_types": [
+    "lunch",
+    "dinner"
+   ],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.4286,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
+    "250g fat free yoghurt",
+    "250g coriander leaves",
     "1 Bayleaf",
     "1 Cinnamom stick"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "corn-polenta",
@@ -1150,7 +1279,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "corn-salsa",
@@ -1162,7 +1292,8 @@
    "unresolved_core": [
     "2 pounds frozen corn, defrosted",
     "4 Radishes, sliced thin and chopped"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "country-crisp-cereals",
@@ -1173,7 +1304,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "country-skillet",
@@ -1184,7 +1316,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "crab-salad",
@@ -1198,19 +1331,23 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "Сrab meat (300 grams)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "cream-cheese",
    "recipe_type": "base",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.0,
-   "coverage_by_mass": 0.0,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
    "unresolved_core": [
+    "250ml of fresh, non-UHT milk"
+   ],
+   "nonfood": [
+    "thermometer",
     "1 cheesecloth",
-    "1 cheese recipient",
-    "6g of of citric acid (contained in 130ml of lemon juice)"
+    "1 cheese recipient"
    ]
   },
   {
@@ -1223,7 +1360,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "creme-brulee",
@@ -1235,7 +1373,8 @@
    "unresolved_core": [
     "400 ml high fat cream",
     "1 vanilla bean (mark, optionally essence)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "croque-monsieur",
@@ -1249,7 +1388,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "12 very thin slices of ham with Italian herbs"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "crostata",
@@ -1261,7 +1401,8 @@
    "unresolved_core": [
     "8 servings [shortcrust pastry](/shortcrust-pastry)",
     "300 g jam or marmalade"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "croutons",
@@ -1270,7 +1411,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "cuca-italiana",
@@ -1279,7 +1421,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "curry-sauce",
@@ -1288,7 +1431,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "damper",
@@ -1297,7 +1441,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "danish-pancake",
@@ -1308,7 +1453,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "demi-glace",
@@ -1319,7 +1465,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 qt (32 oz, 946mL) **low-sodium** broth or stock (I prefer Pacific Foods)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "diannes-southwest-salad",
@@ -1333,7 +1480,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "6 bacon slices, cooked and crumbled"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "dominican-spaghetti",
@@ -1345,7 +1493,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "dou-sha-bao",
@@ -1357,7 +1506,10 @@
    "core_coverage": 0.3333,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
-    "250g (~ 9 oz)red beans Azuki (soak 24h before recipe)",
+    "20cl (~ 0,05 gal) water",
+    "250g (~ 9 oz)red beans Azuki (soak 24h before recipe)"
+   ],
+   "nonfood": [
     "6 baking paper square 7x7cm (~ 3x3inches)"
    ]
   },
@@ -1370,7 +1522,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "10 dried plums"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "drunken-beans",
@@ -1379,10 +1532,13 @@
     "lunch",
     "dinner"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "12oz of Beer/dark ale"
+   ],
+   "nonfood": []
   },
   {
    "id": "dulce-de-leche",
@@ -1394,7 +1550,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "easy-chicken-and-rice-casserole",
@@ -1408,7 +1565,8 @@
    "coverage_by_mass": 0.8905,
    "unresolved_core": [
     "1 can (10 oz) Mushrooms with liquid"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "easy-pizza-sauce",
@@ -1419,7 +1577,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "6 spoon tomato concentrate"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "eggroll-in-a-bowl",
@@ -1434,7 +1593,8 @@
    "unresolved_core": [
     "1 bag coleslaw mix",
     "1/4 cup Hoisin sauce"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "eggs-benedict",
@@ -1447,7 +1607,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "4 slices of Canadian bacon or ham"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "eggs",
@@ -1459,7 +1620,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "egyptian-lentils",
@@ -1471,7 +1633,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "erwtensoep",
@@ -1487,7 +1650,8 @@
     "1 bouillon cube (vegetable, pork or chicken)",
     "1 cup celeriac (cubed)",
     "1 pound sausage (chopped rookworst, smoked sausage)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "exotic-ginger-cumin-chicken",
@@ -1499,7 +1663,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "fajita-seasoning",
@@ -1508,7 +1673,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "fajitas",
@@ -1520,7 +1686,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "fall-vegetable-and-chickpea-curry",
@@ -1532,18 +1699,21 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.9456,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "farci-tomatoes",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.3333,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
-    "2 tomatoes per person"
-   ]
+    "2 tomatoes per person",
+    "300g of ground beef meat"
+   ],
+   "nonfood": []
   },
   {
    "id": "fennel-beans-and-kale-soup",
@@ -1558,7 +1728,8 @@
    "unresolved_core": [
     "2 small fennel bulbs, small-diced",
     "10-12 oz kale, (escarole, swiss chard, or spinach can also be used)."
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "finnish-salmon-soup",
@@ -1572,19 +1743,21 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 pcs salmon fillet"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "fish-curry",
-   "recipe_type": "main_meal",
-   "meal_types": [
-    "lunch",
-    "dinner"
+   "recipe_type": "side",
+   "meal_types": [],
+   "auto_plannable": false,
+   "core_coverage": 0.6,
+   "coverage_by_mass": 0.8444,
+   "unresolved_core": [
+    "250g green beans",
+    "400g fish fillet (white fish)"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
-   "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "nonfood": []
   },
   {
    "id": "flammkuchen",
@@ -1597,8 +1770,10 @@
    "core_coverage": 0.5,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
+    "400g Pizza dough (either bought or from [Pizza Dough](/pizza-dough))",
     "2 big spoons of sour creme or creme fraiche"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "fondue",
@@ -1610,7 +1785,8 @@
    "unresolved_core": [
     "4 dl (1.5 cups) white wine",
     "1 shot of kirsch (cherry brandy)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "francesinha",
@@ -1622,7 +1798,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "french-crepes",
@@ -1630,10 +1807,13 @@
    "meal_types": [
     "breakfast"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.75,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "20cl beer"
+   ],
+   "nonfood": []
   },
   {
    "id": "french-mustard-sauce-porkchops",
@@ -1642,7 +1822,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "french-onion-soup",
@@ -1650,8 +1831,9 @@
    "meal_types": [],
    "auto_plannable": false,
    "core_coverage": 1.0,
-   "coverage_by_mass": 0.9695,
-   "unresolved_core": []
+   "coverage_by_mass": 0.9855,
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "french-toast",
@@ -1662,7 +1844,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "fried-anglerfish-fillet",
@@ -1673,7 +1856,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 Anglerfish"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "fried-potatoes",
@@ -1682,7 +1866,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "frijol-con-puerco",
@@ -1694,7 +1879,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "fritatem-pomeranciis",
@@ -1703,7 +1889,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "frittata",
@@ -1714,7 +1901,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "full-english-breakfast",
@@ -1725,7 +1913,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "fume-sauce",
@@ -1737,7 +1926,8 @@
    "unresolved_core": [
     "200 g milk cream",
     "100 g pancetta"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "galinha-caipira",
@@ -1748,7 +1938,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "A whole ckicken weighing close to 2,5kg (roughly 3 pounds). Avoid industrially grown birds, as those can make the stew very greasy and flavorless."
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "garam-masala",
@@ -1761,7 +1952,8 @@
     "4 Green Cardamom",
     "2 Black Cardamom",
     "2 Cloves"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "garlic-toast",
@@ -1770,7 +1962,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ginataang-kalabasa",
@@ -1779,7 +1972,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ginger-garlic-broccoli",
@@ -1790,7 +1984,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "1-2 Broccoli (fresh best, frozen works too)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "gluehwein",
@@ -1805,7 +2000,8 @@
     "1 cinamon bark",
     "1 spoon ginger powder (or a bit of fresh ginger)",
     "1 spoon cloves"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "gnocchi",
@@ -1814,7 +2010,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "gooseberry-pudding",
@@ -1823,7 +2020,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "grands-peres",
@@ -1834,7 +2032,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 cup maple syrup"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "granita",
@@ -1843,7 +2042,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "granola",
@@ -1856,7 +2056,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 cup dried fruit (apricots, unsweetened cranberries, dates, etc)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "greek-easter-cookies",
@@ -1870,7 +2071,8 @@
     "2 tsps baker’s ammonium",
     "1/2 cup orange juice",
     "1 egg yolk whisked to brush cookies"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "greek-salad",
@@ -1883,17 +2085,20 @@
     "2 cup assorted Lettuce, chopped or torn",
     "1 whole Cucumber, seeded and sliced",
     "1/2 cup pitted Black Olives (preferably brine-cured), coarsely chopped"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "greek-yogurt",
    "recipe_type": "base",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.0,
-   "coverage_by_mass": 0.0,
-   "unresolved_core": [
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [],
+   "nonfood": [
     "2 thermos, ½l capacity each",
+    "thermometer",
     "1 cheesecloth"
    ]
   },
@@ -1910,7 +2115,8 @@
    "unresolved_core": [
     "2 Norwegian Mackerel Fillets",
     "1 Summer Squash"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "grostoli",
@@ -1922,7 +2128,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "guacamole",
@@ -1931,7 +2138,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "gumbo-shrimp-and-sausage",
@@ -1946,16 +2154,20 @@
    "unresolved_core": [
     "1 cup finely chopped Celery",
     "1 12 oz. bottle of Beer"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "guobaorou",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
+   "core_coverage": 0.5,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "400g pork tenderloin or loin"
+   ],
+   "nonfood": []
   },
   {
    "id": "gypsy-soup",
@@ -1967,7 +2179,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.927,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "hakka-style-meatballs",
@@ -1979,7 +2192,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ham-and-lentil-soup",
@@ -1993,7 +2207,8 @@
    "coverage_by_mass": 0.8863,
    "unresolved_core": [
     "1/2 lb Ham, diced"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "hamburger-patties-all-beef",
@@ -2005,7 +2220,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "hamburger-patties",
@@ -2017,7 +2233,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "hangover-eggs",
@@ -2029,7 +2246,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "hearty-breakfast-oatmeal",
@@ -2040,7 +2258,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "hellfire-steak",
@@ -2049,7 +2268,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "herbs-pizza",
@@ -2058,18 +2278,21 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "hoisin-pork-belly",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.3333,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
+    "400g high fat pork belly (no skin)",
     "1 scotch bonnet chili"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "hoisin-tofu-and-broccoli",
@@ -2082,7 +2305,8 @@
     "One block of firm tofu (400g, extra firm will work too)",
     "1/2 cup light soy sause",
     "1 cup dark soy sause"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "honey-garlic-chicken",
@@ -2094,7 +2318,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "honey-sriracha-chicken-thighs",
@@ -2105,7 +2330,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "5-6 bone-in, skin-on chicken thighs"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "honey-vanilla-ice-cream",
@@ -2114,7 +2340,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "hummus",
@@ -2125,7 +2352,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "1/2 cup of tahini (also known as tehina)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "indian-tea",
@@ -2136,7 +2364,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "10 cardamom seeds"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "instant-tom-yam-kung-noodle-soup",
@@ -2148,7 +2377,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "irish-coffee",
@@ -2161,7 +2391,8 @@
     "1 (1.5 fluid ounce) jigger Irish cream liqueur",
     "1 (1.5 fluid ounce) jigger Irish whiskey",
     "1 cup hot brewed coffee"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "irish-potato-casserole",
@@ -2173,7 +2404,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "italian-bread",
@@ -2181,8 +2413,9 @@
    "meal_types": [],
    "auto_plannable": false,
    "core_coverage": 1.0,
-   "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "italian-mulled-wine",
@@ -2193,7 +2426,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 bottle Italian red wine"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "jam",
@@ -2204,7 +2438,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 kg fruit of your choice"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "japanese-noodle-soup",
@@ -2214,11 +2449,12 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.0,
-   "coverage_by_mass": 0.0,
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
    "unresolved_core": [
     "4 Pork chops OR 4 Chicken Breasts"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "kalderetang-manok",
@@ -2230,7 +2466,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ketchup",
@@ -2239,7 +2476,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "kettlecorn",
@@ -2248,7 +2486,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "kombucha",
@@ -2257,7 +2496,10 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": [
+    "5l (1 gallon) jar"
+   ]
   },
   {
    "id": "korv-stroganoff",
@@ -2269,7 +2511,8 @@
    "unresolved_core": [
     "1/2 kg Swedish falukorv",
     "2 1/2 dl cream"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "kropsua",
@@ -2280,7 +2523,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "kvass",
@@ -2289,7 +2533,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "lamb-biriyani",
@@ -2306,7 +2551,8 @@
     "3-4 Cinnamon Sticks",
     "8 Cloves",
     "10 Garlic pearls"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "lasagna",
@@ -2315,7 +2561,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "lavacake",
@@ -2324,7 +2571,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "lebanese-lentil-soup",
@@ -2338,7 +2586,8 @@
    "coverage_by_mass": 0.9234,
    "unresolved_core": [
     "4 cups Swiss chard, chopped"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "lemon-and-oregano-chicken-traybake",
@@ -2348,11 +2597,14 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.6667,
+   "core_coverage": 0.5,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
-    "5 oregano sprigs / heavy sprinkle of oregano leaves"
-   ]
+    "100g bacon lardon",
+    "5 oregano sprigs / heavy sprinkle of oregano leaves",
+    "100ml white wine"
+   ],
+   "nonfood": []
   },
   {
    "id": "lemon-juice-salad-dressing",
@@ -2361,7 +2613,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "lemon-pudding",
@@ -2370,7 +2623,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "lentejas",
@@ -2382,7 +2636,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "lenten-chili",
@@ -2397,7 +2652,8 @@
    "unresolved_core": [
     "1 29oz large can tomato sauce (or 4 cups fresh tomato sauce)",
     "1/2 can of sweet corn"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "lenten-lentil-curry",
@@ -2411,7 +2667,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "50 g (1¾ oz) vermicelli"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "limoncello",
@@ -2420,7 +2677,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "limoncini",
@@ -2429,7 +2687,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "lithuanian-cold-borscht",
@@ -2445,7 +2704,8 @@
     "2-3 fresh or pickled beets",
     "1-2 potatoes per serving",
     "1-2 normal sized cucumbers per serving"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "liverpate",
@@ -2457,7 +2717,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "loaded-mexican-rice",
@@ -2471,7 +2732,8 @@
    "coverage_by_mass": 0.8737,
    "unresolved_core": [
     "2 Caned adobo chilies chopped"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "lobster-bisque",
@@ -2487,18 +2749,20 @@
     "1 live lobster that weighs ~750 grams",
     "1 glass dry white wine",
     "1 bayleaf"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "long-cooked-chuck-steak",
    "recipe_type": "drink",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.6667,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 fennel."
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "mapo-tofu",
@@ -2512,7 +2776,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2-3 chopped scallions white and green separated)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "maque-choux",
@@ -2521,7 +2786,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "marinated-pork-steaks",
@@ -2530,7 +2796,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "matcha-cookies",
@@ -2538,8 +2805,9 @@
    "meal_types": [],
    "auto_plannable": false,
    "core_coverage": 1.0,
-   "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "coverage_by_mass": 0.7691,
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "mayonnaise-or-aioli",
@@ -2550,7 +2818,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 whole egg or 2 egg yolks, preferably at room temperature"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "mazurek",
@@ -2559,7 +2828,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "meatloaf",
@@ -2573,7 +2843,8 @@
    "coverage_by_mass": 0.8932,
    "unresolved_core": [
     "1 Can of Campbell's tomato soup"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "medieval-beef-soup",
@@ -2582,7 +2853,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "merchants-buckwheat",
@@ -2591,10 +2863,13 @@
     "lunch",
     "dinner"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "400g pork meat"
+   ],
+   "nonfood": []
   },
   {
    "id": "mexican-meat-loaf",
@@ -2608,7 +2883,8 @@
    "coverage_by_mass": 0.8724,
    "unresolved_core": [
     "1 cup Salsa, divided"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "miso-ginger-pork",
@@ -2620,7 +2896,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "miso-soup",
@@ -2632,7 +2909,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "modern-borscht",
@@ -2646,16 +2924,20 @@
     "2 large beets (or 3 medium beets)",
     "4 celery shoots",
     "2 large potatoes (Yukon Gold preferred, but any quality potatoes work)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "mushroom-risotto",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
+   "core_coverage": 0.75,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "400g risotto rice (Arborio, Carnaroli or Vialone Nano)"
+   ],
+   "nonfood": []
   },
   {
    "id": "mushroom-sauce",
@@ -2664,7 +2946,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "mushroom-stragonov",
@@ -2678,7 +2961,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "12 oz mushrooms (I reccommend shitake, but white, portabello, or maitake will also work.)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "naan-bread",
@@ -2687,7 +2971,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "nashville-chicken",
@@ -2701,7 +2986,8 @@
    "coverage_by_mass": 0.9638,
    "unresolved_core": [
     "2 Cups Buttermilk"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "newfoundland-cod-chowder",
@@ -2715,7 +3001,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 1/2 lbs Cod Fillets"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "no-knead-bread",
@@ -2724,7 +3011,10 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": [
+    "Oven-safe pan"
+   ]
   },
   {
    "id": "no-knead-pizza-dough",
@@ -2733,7 +3023,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "oatmeal-cookies",
@@ -2742,7 +3033,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "oatmeal-pancakes",
@@ -2753,7 +3045,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "oats",
@@ -2764,7 +3057,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "oaty-pancakes",
@@ -2775,7 +3069,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "okonomiyaki",
@@ -2786,20 +3081,23 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "okroshka",
    "recipe_type": "sauce",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.4286,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 long or 4 short cucumbers",
     "10-12 radishes",
-    "2 Kefir or 1 kvass"
-   ]
+    "2 Kefir or 1 kvass",
+    "500g boiled sausage or boiled chicken meat"
+   ],
+   "nonfood": []
   },
   {
    "id": "omelet",
@@ -2810,7 +3108,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "one-pot-chicken-tetrazzini",
@@ -2824,7 +3123,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "5 oz Boursin Garlic and Fine Herbs"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "onion-raitha",
@@ -2835,7 +3135,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "50 gm of Cucumber"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "orange-glorious",
@@ -2847,7 +3148,8 @@
    "unresolved_core": [
     "1 (6 ounce) can frozen orange juice concentrate",
     "12 cubes ice"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "orange-jam",
@@ -2856,7 +3158,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "orange-pudding",
@@ -2865,7 +3168,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "paella",
@@ -2879,7 +3183,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "500 g of rabbit, cut into pieces"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pan-pizza",
@@ -2888,7 +3193,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pan-seared-chicken",
@@ -2897,7 +3203,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "panang-style-beef-curry",
@@ -2911,7 +3218,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1/2 cup Red Curry Paste"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pancake",
@@ -2922,18 +3230,22 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "paneer-tikka-masala",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.0,
-   "coverage_by_mass": 0.6,
+   "core_coverage": 0.25,
+   "coverage_by_mass": 0.7143,
    "unresolved_core": [
-    "1 capsicum"
-   ]
+    "250g cubes paneer",
+    "1 capsicum",
+    "200ml tomato puree"
+   ],
+   "nonfood": []
   },
   {
    "id": "parmesan-potatoes",
@@ -2942,7 +3254,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "party-mimosa",
@@ -2956,7 +3269,8 @@
     "1 (12 ounce) can pineapple juice",
     "1 (6 ounce) can frozen orange juice concentrate, thawed and undiluted",
     "1 (750 milliliter) bottle cold champagne"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pasta-alla-norma",
@@ -2966,12 +3280,13 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.6,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "3 aubergines (900g)",
     "1 chilli (or 1 tsp of dried chilli flakes)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pasta-arrabbiata",
@@ -2983,7 +3298,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pasta-navy-style",
@@ -2995,7 +3311,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pasta-sauce",
@@ -3004,7 +3321,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pasta",
@@ -3013,7 +3331,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pastitsio",
@@ -3022,10 +3341,13 @@
     "lunch",
     "dinner"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.8,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "600g penne rigate"
+   ],
+   "nonfood": []
   },
   {
    "id": "pate-chinois",
@@ -3037,7 +3359,8 @@
    "unresolved_core": [
     "1 small can (around 14oz) of whole kernel corn",
     "1 small can (around 14oz) of cream style corn"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pavlova",
@@ -3046,7 +3369,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "peanut-butter",
@@ -3057,7 +3381,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "1 lb. of raw pre-shelled peanuts"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "peat-carrot-salad",
@@ -3066,16 +3391,21 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pepper-sauce",
    "recipe_type": "sauce",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
+   "core_coverage": 0.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "1dl bouillon",
+    "2dl cream"
+   ],
+   "nonfood": []
   },
   {
    "id": "perfect-potato-salad",
@@ -3089,7 +3419,8 @@
    "coverage_by_mass": 0.9845,
    "unresolved_core": [
     "4 Radishes, thinly sliced"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pho-soup",
@@ -3101,7 +3432,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pickled-onions",
@@ -3110,7 +3442,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pilaf",
@@ -3120,11 +3453,12 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.8,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1.5kg meat (lamb or any other kind of meat)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pizza-dough",
@@ -3133,7 +3467,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pizza-sauce",
@@ -3142,7 +3477,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "plum-pudding",
@@ -3151,7 +3487,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pork-based-chili-con-carne",
@@ -3163,7 +3500,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pork-carnitas",
@@ -3175,7 +3513,8 @@
    "unresolved_core": [
     "2 ½ lbs. boneless pork shoulder",
     "2-3 chipotle peppers in adobo sauce"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "portuguese-steak-with-beer-sauce",
@@ -3184,7 +3523,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "potato-and-eggplant-curry",
@@ -3198,7 +3538,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 large eggplant (aubergine)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "potato-leek-soup",
@@ -3210,7 +3551,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "potato-pure",
@@ -3219,7 +3561,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "potato-soup",
@@ -3228,7 +3571,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pozharskiye-cutlets",
@@ -3240,7 +3584,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pretzels",
@@ -3249,7 +3594,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "puff-pastry",
@@ -3258,7 +3604,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "pulled-rabbit",
@@ -3270,7 +3617,8 @@
    "unresolved_core": [
     "2 cleaned rabbits",
     "2 hard-boiled egg yolks"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "pulpo-gallega",
@@ -3284,7 +3632,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 octopus (1.7 to 2kg)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "quarkbaellchen",
@@ -3293,10 +3642,13 @@
     "lunch",
     "dinner"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.6667,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "420ml quark (plain yoghurt can be used as a replacement)"
+   ],
+   "nonfood": []
   },
   {
    "id": "quesadilla",
@@ -3307,7 +3659,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "1-2 tortillas. Any brand works, but you can decide if you want the tortilla folded in half, or 2 tortillas together."
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "quiche",
@@ -3315,10 +3668,14 @@
    "meal_types": [
     "breakfast"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.6,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "100g Butter or Margarine",
+    "200g of Ham (alternatively cooked ham)"
+   ],
+   "nonfood": []
   },
   {
    "id": "quickbreakfastspaghetti",
@@ -3329,7 +3686,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "rabbit-onions",
@@ -3343,7 +3701,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 cleaned rabbits"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "ragu-napoletano",
@@ -3357,7 +3716,8 @@
     "1-2 lb pork tenderloin",
     "1 lb cubed stewing beef (chuck, short rib, or oxtail)",
     "1-2 lb total of ground beef chuck, veal, and pork"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "ragu",
@@ -3371,7 +3731,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 celery stalk, minced"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "ratatouille",
@@ -3382,7 +3743,8 @@
    "coverage_by_mass": 0.8666,
    "unresolved_core": [
     "1 1/2 lbs Eggplant"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "ravioli",
@@ -3394,7 +3756,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "red-lentil-dahl",
@@ -3406,7 +3769,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "red-sauce",
@@ -3419,7 +3783,8 @@
     "2 lb chuck roast",
     "12 oz. Can tomato paste",
     "29 oz. Tomato puree"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "refried-beans",
@@ -3431,7 +3796,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "rice-pudding",
@@ -3440,7 +3806,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "rice",
@@ -3449,7 +3816,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ricotta-lasagna-filling",
@@ -3461,7 +3829,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ricotta",
@@ -3471,10 +3840,13 @@
    "core_coverage": 0.0,
    "coverage_by_mass": 0.0,
    "unresolved_core": [
+    "2l of whey",
+    "500ml of milk (or if not using whey, 2l of milk)"
+   ],
+   "nonfood": [
+    "thermometer",
     "1 cheesecloth",
-    "1 cheese recipient",
-    "500ml of milk (or if not using whey, 2l of milk)",
-    "6g of citric acid (contained in 130ml of lemon juice)"
+    "1 cheese recipient"
    ]
   },
   {
@@ -3484,7 +3856,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "roasted-chicken-breast",
@@ -3496,7 +3869,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "roesti",
@@ -3507,7 +3881,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "russian-1000-islands-sauce",
@@ -3516,7 +3891,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "salsa-verde",
@@ -3528,7 +3904,8 @@
    "unresolved_core": [
     "1 pound (450g) tomatillos, husks removed",
     "2 jalapeño or serrano chilies"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "salsa",
@@ -3537,7 +3914,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "sand-tarts",
@@ -3546,7 +3924,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "sardine-cakes",
@@ -3555,7 +3934,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "sauerkraut",
@@ -3566,7 +3946,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2-4% sea salt by cabbage weight"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "sausage-rolls",
@@ -3575,7 +3956,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "savory-squash",
@@ -3586,7 +3968,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 Butternut Squash"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "scandinavian-coffee-cake",
@@ -3598,7 +3981,8 @@
    "unresolved_core": [
     "1/2 cup shortening",
     "1 package active dry yeast"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "schinkenfleckerl-gratinated",
@@ -3611,8 +3995,10 @@
    "core_coverage": 0.5,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
+    "1kg ham or smoked rolled roast",
     "500 ml cream"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "schnitzel",
@@ -3622,11 +4008,12 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.6667,
+   "core_coverage": 0.8,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "4 veal cutlets (1 ~ 150g)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "scouse",
@@ -3638,7 +4025,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "seafood-pasta",
@@ -3650,7 +4038,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "shakshouka",
@@ -3661,7 +4050,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "shepherds-pie",
@@ -3672,7 +4062,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "800 g of minced lamb"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "shortcrust-pastry-biscuits",
@@ -3685,7 +4076,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "8 servings [shortcrust pastry](/shortcrust-pastry)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "shortcrust-pastry",
@@ -3697,7 +4089,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "shrimp-and-chicken-jambalaya",
@@ -3711,7 +4104,8 @@
    "coverage_by_mass": 0.8944,
    "unresolved_core": [
     "1/2 cup Diced Andouille (or Chirozo sausage)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "shrimp-and-grits",
@@ -3724,7 +4118,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 cup Un-Cooked Grits"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "shrimp-fettuccine-alfredo",
@@ -3734,11 +4129,12 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.8,
+   "core_coverage": 0.8333,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "Pasta noodles of choice (e.g. approximately 9oz of fettuccine noodles)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "simple-chicken-curry",
@@ -3750,7 +4146,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "simple-pasta-cream-sauce",
@@ -3759,7 +4156,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "simple-sauce",
@@ -3768,7 +4166,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "slow-cooked-lamb-with-lemon",
@@ -3780,7 +4179,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "smoked-salmon-pasta-primavera",
@@ -3794,7 +4194,8 @@
    "coverage_by_mass": 0.9373,
    "unresolved_core": [
     "1/2 lb Asparagus, cut into 2\" pieces"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "smoked-salmon-quiche",
@@ -3806,7 +4207,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "smoked-turkey",
@@ -3818,7 +4220,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "soleier",
@@ -3833,34 +4236,46 @@
    "unresolved_core": [
     "3 cloves",
     "4 allspice"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "sourdough-bread-with-seeds-and-grains",
    "recipe_type": "base",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
-   "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "core_coverage": 0.5,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "100g grain of choice (e.g. rye, spelt and wheat)",
+    "400g sourdough"
+   ],
+   "nonfood": []
   },
   {
    "id": "sourdough-loaf",
    "recipe_type": "base",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
-   "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "core_coverage": 0.75,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "100g fed [sourdough starter](/sourdough-starter) (levain)"
+   ],
+   "nonfood": []
   },
   {
    "id": "sourdough-potato-bread",
    "recipe_type": "base",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 1.0,
-   "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "core_coverage": 0.3333,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [
+    "150g boiled potatoes in there skin",
+    "250g sourdough"
+   ],
+   "nonfood": []
   },
   {
    "id": "sourdough-starter",
@@ -3869,7 +4284,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "southern-biscuits",
@@ -3878,7 +4294,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "spaghetti-all-amatriciana",
@@ -3891,18 +4308,22 @@
     "Guanciale preferably or Bacon 3.5oz (100g)",
     "Tomato passata 10oz (300g)",
     "Spaghetti or similar long pasta 12oz (350g)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "spaghetti-alla-puttanesca",
    "recipe_type": "side",
    "meal_types": [],
    "auto_plannable": false,
-   "core_coverage": 0.5,
+   "core_coverage": 0.25,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
+    "800g peeled tomatoes \"sugo\"",
+    "100g Gaeta olives",
     "2 chopped chillies"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "spaghetti-and-meatballs",
@@ -3914,7 +4335,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "spaghetti-sauce",
@@ -3925,7 +4347,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "12 garlic gloves"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "spanish-tortilla",
@@ -3936,7 +4359,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "spatchcock-chicken",
@@ -3948,7 +4372,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "spiced-apple-pancakes",
@@ -3959,7 +4384,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "spiced-cantaloupe",
@@ -3970,7 +4396,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "3 lbs cantaloupe"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "spicy-kung-pao-style-chicken",
@@ -3985,7 +4412,8 @@
    "unresolved_core": [
     "3 ribs Celery",
     "1/4 cup Peanuts, chopped"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "spicy-mayo",
@@ -3994,7 +4422,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "spicy-sausage-pasta",
@@ -4004,12 +4433,13 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.6667,
+   "core_coverage": 0.75,
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 red chilli, deseeded and diced",
     "A large glass of red wine (approx. 250ml)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "spinach-rice-casserole",
@@ -4021,7 +4451,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "steak-tartare",
@@ -4030,7 +4461,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "sticky-porkchops",
@@ -4042,7 +4474,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "stir-fried-chicken-with-an-orange-sauce",
@@ -4051,7 +4484,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "stoemp",
@@ -4063,7 +4497,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "stoofvlees",
@@ -4073,13 +4508,15 @@
     "dinner"
    ],
    "auto_plannable": false,
-   "core_coverage": 0.25,
-   "coverage_by_mass": 1.0,
+   "core_coverage": 0.2,
+   "coverage_by_mass": 0.2553,
    "unresolved_core": [
+    "1kg chuck roast, cut in bite-sized pieces",
     "2 33cl bottles of brown beer",
     "2 bayleaves",
     "1 clove (spice)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "stracciatella-soup",
@@ -4091,7 +4528,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "strawberry-compote",
@@ -4100,7 +4538,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "stroganoff",
@@ -4112,7 +4551,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "stuffed-round-squash",
@@ -4126,7 +4566,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "4 Round squash"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "stuffed-vegetables",
@@ -4141,7 +4582,8 @@
    "unresolved_core": [
     "1 courgette",
     "1 elongated aubergine"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "sunday-milkshake",
@@ -4150,7 +4592,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "swedish-pancakes",
@@ -4161,7 +4604,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "sweet-potato-fries",
@@ -4172,7 +4616,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1-2 Sweet Pototoes (try different types)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "tabouleh",
@@ -4183,7 +4628,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "2 cups Cracked Wheat (bulghur)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "taco-meat",
@@ -4195,7 +4641,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tahini-short-bread",
@@ -4204,7 +4651,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tajine",
@@ -4216,7 +4664,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tanzania-tea-with-milk",
@@ -4225,7 +4674,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 0.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tarta-de-santiago",
@@ -4236,7 +4686,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 ½ cup almond meal (150 gr)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "tarte-merengada",
@@ -4245,7 +4696,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "teriyaki-beef",
@@ -4257,7 +4709,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tiramisu",
@@ -4269,7 +4722,8 @@
    "unresolved_core": [
     "500 g mascarpone",
     "300 g savoiardi biscuits"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "tiroler-groestl",
@@ -4283,7 +4737,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "500 g / 1 lbs porkchops"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "tofu-and-cashew-chow-mein",
@@ -4298,7 +4753,8 @@
    "unresolved_core": [
     "2 cups Small Broccoli Florets",
     "1/2 cup Roasted Cashews"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "tofu-stir-fry",
@@ -4310,7 +4766,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tomato-and-grilled-paprika-soup",
@@ -4319,7 +4776,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tomato-flavored-hamburger-macaroni",
@@ -4333,7 +4791,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 3/4 cups of Macaroni Elbows"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "torrijas",
@@ -4342,7 +4801,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "torta-frita-criolla",
@@ -4351,7 +4811,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tortellini",
@@ -4363,7 +4824,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tuhu",
@@ -4377,7 +4839,8 @@
     "350 mL of sour-tasting beer (e.g. Weißbier)",
     "2 cups of arugula, chopped",
     "2 large beetroots, chopped"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "tuna-salad",
@@ -4389,7 +4852,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tuna-sub",
@@ -4403,7 +4867,8 @@
    "coverage_by_mass": 0.0,
    "unresolved_core": [
     "1 recipe of your favorite tuna salad"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "turkish-red-lentil-soup",
@@ -4415,7 +4880,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "turkish-style-spiced-chicken",
@@ -4427,7 +4893,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "turkish-yogurt-soup",
@@ -4439,7 +4906,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "turmeric-flatbread",
@@ -4448,7 +4916,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tuscan-style-pork-roast",
@@ -4460,7 +4929,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "tzatziki",
@@ -4469,7 +4939,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "ukrainian-borscht",
@@ -4483,7 +4954,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "3 red beetroots"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "ukrainian-vareniki",
@@ -4495,7 +4967,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "venezuelan-arepa",
@@ -4506,7 +4979,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "wholemeal-pizza",
@@ -4518,7 +4992,8 @@
    "unresolved_core": [
     "1 serving [Wholemeal Wheat Flour Pizza Dough](/wholemeal-wheat-flour-pizza-dough)",
     "1 serving [Easy Pizza Sauce](/easy-pizza-sauce)"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "wholemeal-wheat-flour-pizza-dough",
@@ -4527,7 +5002,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "winter-risotto",
@@ -4539,7 +5015,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "yibin-burning-noodles",
@@ -4548,7 +5025,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "yogurt-cake",
@@ -4557,7 +5035,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "yogurt",
@@ -4565,11 +5044,13 @@
    "meal_types": [
     "breakfast"
    ],
-   "auto_plannable": false,
-   "core_coverage": 0.0,
-   "coverage_by_mass": 0.0,
-   "unresolved_core": [
-    "2 thermos, ½l capacity each"
+   "auto_plannable": true,
+   "core_coverage": 1.0,
+   "coverage_by_mass": 1.0,
+   "unresolved_core": [],
+   "nonfood": [
+    "2 thermos, ½l capacity each",
+    "thermometer"
    ]
   },
   {
@@ -4579,7 +5060,8 @@
    "auto_plannable": false,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "zaatar-chicken-bulgur-bowls",
@@ -4593,7 +5075,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 cup bulghur wheat"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "zaatar",
@@ -4606,7 +5089,8 @@
     "1 cup zaatar leaves (without the stalks), cleaned and dried.",
     "1 cup sesame (optionally roasted).",
     "1 cup sumac."
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "zarangollo",
@@ -4620,7 +5104,8 @@
    "coverage_by_mass": 1.0,
    "unresolved_core": [
     "1 Eggplant"
-   ]
+   ],
+   "nonfood": []
   },
   {
    "id": "zopf",
@@ -4632,7 +5117,8 @@
    "auto_plannable": true,
    "core_coverage": 1.0,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [],
+   "nonfood": []
   },
   {
    "id": "zurich-sytle-meat-saute",
@@ -4641,10 +5127,14 @@
     "lunch",
     "dinner"
    ],
-   "auto_plannable": true,
-   "core_coverage": 1.0,
+   "auto_plannable": false,
+   "core_coverage": 0.5,
    "coverage_by_mass": 1.0,
-   "unresolved_core": []
+   "unresolved_core": [
+    "200ml\tWhite whine",
+    "200ml Cream"
+   ],
+   "nonfood": []
   }
  ]
 }

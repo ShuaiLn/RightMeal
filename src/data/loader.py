@@ -134,7 +134,11 @@ def load_recipe_index():
     for raw in data.get("recipes", []):
         recipe = Recipe.from_dict(raw)
         for ing in recipe.ingredients:
-            if ing.canonical_food_id and ing.canonical_food_id not in catalog_ids:
+            if (
+                ing.canonical_food_id
+                and not ing.is_nonfood
+                and ing.canonical_food_id not in catalog_ids
+            ):
                 raise DataValidationError(
                     f"Recipe {recipe.id!r} references unknown food id {ing.canonical_food_id!r}"
                 )

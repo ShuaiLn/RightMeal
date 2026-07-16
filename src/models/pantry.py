@@ -22,6 +22,12 @@ from dataclasses import dataclass, field
 from datetime import datetime
 
 from models.food import Food
+from models.quantities import (
+    add_grams,
+    canonical_grams,
+    normalize_grams,
+    subtract_grams,
+)
 
 PANTRY_SCHEMA_VERSION = 3
 
@@ -149,18 +155,37 @@ class Pantry:
     items: dict[str, float] = field(default_factory=dict)
     custom_items: list[CustomPantryItem] = field(default_factory=list)
 
+    def __post_init__(self) -> None:
+        normalized_items: dict[str, float] = {}
+        for food_id, grams in self.items.items():
+            try:
+                normalized = normalize_grams(grams)
+            except ValueError:
+                continue
+            if normalized > 0:
+                normalized_items[str(food_id)] = normalized
+        self.items = normalized_items
+
     def add(self, food_id: str, grams: float) -> None:
-        if grams <= 0:
+        try:
+            normalized = normalize_grams(grams)
+        except ValueError:
             return
-        self.items[food_id] = self.items.get(food_id, 0.0) + grams
+        if normalized <= 0:
+            return
+        self.items[food_id] = add_grams(self.items.get(food_id, 0.0), normalized)
 
     def remove(self, food_id: str, grams: float) -> float:
         """Remove up to ``grams``, clamped at zero; returns grams actually removed."""
-        if grams <= 0:
+        try:
+            normalized = normalize_grams(grams)
+        except ValueError:
             return 0.0
-        have = self.items.get(food_id, 0.0)
-        removed = min(have, grams)
-        remaining = have - removed
+        if normalized <= 0:
+            return 0.0
+        have = normalize_grams(self.items.get(food_id, 0.0))
+        removed = min(have, normalized)
+        remaining = subtract_grams(have, removed)
         if remaining <= _EPSILON:
             self.items.pop(food_id, None)
         else:
@@ -168,10 +193,14 @@ class Pantry:
         return removed
 
     def set_grams(self, food_id: str, grams: float) -> None:
-        if grams <= 0:
+        try:
+            normalized = normalize_grams(grams)
+        except ValueError:
+            normalized = 0.0
+        if normalized <= 0:
             self.items.pop(food_id, None)
         else:
-            self.items[food_id] = grams
+            self.items[food_id] = normalized
 
     # -- custom items --------------------------------------------------------
 
@@ -206,7 +235,10 @@ class Pantry:
         return {
             "version": PANTRY_SCHEMA_VERSION,
             "updated_at": datetime.now().isoformat(timespec="seconds"),
-            "items": {fid: round(grams, 3) for fid, grams in sorted(self.items.items())},
+            "items": {
+                fid: canonical_grams(grams)
+                for fid, grams in sorted(self.items.items())
+            },
             "custom_items": [c.to_dict() for c in self.custom_items],
         }
 
@@ -223,7 +255,10 @@ class Pantry:
             items: dict[str, float] = {}
             for fid, grams in dict(data.get("items", {})).items():
                 fid = str(fid)
-                grams = float(grams)
+                try:
+                    grams = normalize_grams(grams)
+                except ValueError:
+                    continue
                 if fid in foods_by_id and grams > 0:
                     items[fid] = grams
             custom_items: list[CustomPantryItem] = []

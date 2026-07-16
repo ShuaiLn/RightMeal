@@ -18,7 +18,9 @@ import os
 import tempfile
 import threading
 import uuid
+from dataclasses import dataclass
 from datetime import datetime
+from enum import Enum
 from pathlib import Path
 from typing import Iterable, Mapping
 
@@ -33,6 +35,38 @@ DEFAULT_ALLOWED_FILENAMES = frozenset(
         "recipes.json", "photo_imports.json",
     }
 )
+
+
+class TransactionStatus(str, Enum):
+    """Durable outcome of one attempted multi-file transaction."""
+
+    COMMITTED = "committed"
+    ROLLED_BACK = "rolled_back"
+    RECOVERY_REQUIRED = "recovery_required"
+
+
+@dataclass(frozen=True)
+class TransactionResult:
+    status: TransactionStatus
+    detail: str | None = None
+    files_may_be_committed: bool = False
+
+
+class TransactionError(OSError):
+    """An unsuccessful save with an explicit, machine-readable outcome."""
+
+    def __init__(self, result: TransactionResult, cause: BaseException | None = None):
+        super().__init__(result.detail or result.status.value)
+        self.result = result
+        self.cause = cause
+
+
+class TransactionRolledBackError(TransactionError):
+    pass
+
+
+class TransactionRecoveryRequiredError(TransactionError):
+    pass
 
 
 def _atomic_write(path: Path, text: str) -> None:
@@ -62,31 +96,76 @@ class TransactionManager:
         self.journal_path = self.base_dir / TX_JOURNAL_FILENAME
         self._allowed = frozenset(allowed_filenames) if allowed_filenames else DEFAULT_ALLOWED_FILENAMES
         self._lock = threading.RLock()
+        self._writes_frozen = self.journal_path.exists()
+
+    @property
+    def lock(self) -> threading.RLock:
+        """The one re-entrant service lock used by stateful write workflows."""
+
+        return self._lock
+
+    @property
+    def writes_frozen(self) -> bool:
+        return self._writes_frozen
 
     # -- writing ---------------------------------------------------------
 
-    def save_all(self, writes: Mapping[Path, str]) -> None:
+    def save_all(self, writes: Mapping[Path, str]) -> TransactionResult:
         """Write every file or none: journal the old contents, replace each
         target, then drop the journal (the commit point). Any failure rolls
         the already-replaced files back from the journal; if that rollback
         itself fails the journal is kept for recovery on next launch."""
-        if not writes:
-            return
         with self._lock:
+            if self._writes_frozen or self.journal_path.exists():
+                self._writes_frozen = True
+                raise TransactionRecoveryRequiredError(TransactionResult(
+                    TransactionStatus.RECOVERY_REQUIRED,
+                    "A previous transaction still requires recovery; writes are paused.",
+                ))
+            if not writes:
+                return TransactionResult(TransactionStatus.COMMITTED)
             named = self._validated(writes)
             self.base_dir.mkdir(parents=True, exist_ok=True)
             journal = {
                 "tx_id": uuid.uuid4().hex,
                 "files": {name: self._read_or_none(name) for name in named},
             }
-            _atomic_write(self.journal_path, json.dumps(journal, indent=2))
+            try:
+                _atomic_write(self.journal_path, json.dumps(journal, indent=2))
+            except BaseException as exc:
+                raise TransactionRolledBackError(TransactionResult(
+                    TransactionStatus.ROLLED_BACK,
+                    "The transaction could not start; no target files were changed.",
+                ), exc) from exc
             try:
                 for name, text in named.items():
                     _atomic_write(self.base_dir / name, text)
-            except BaseException:
-                self._rollback(journal["files"])  # keeps journal if it fails
-                raise
-            self.journal_path.unlink()
+            except BaseException as exc:
+                try:
+                    self._rollback(journal["files"])
+                except BaseException as rollback_exc:
+                    self._writes_frozen = True
+                    raise TransactionRecoveryRequiredError(TransactionResult(
+                        TransactionStatus.RECOVERY_REQUIRED,
+                        "The save failed and rollback could not be completed; writes are paused.",
+                    ), rollback_exc) from exc
+                raise TransactionRolledBackError(TransactionResult(
+                    TransactionStatus.ROLLED_BACK,
+                    "The save failed and every target file was restored.",
+                ), exc) from exc
+            try:
+                self.journal_path.unlink()
+            except BaseException as exc:
+                # All target files contain the new snapshot, but without a safe
+                # journal cleanup we cannot permit another writer to overwrite
+                # the recovery evidence or call this a rollback.
+                self._writes_frozen = True
+                raise TransactionRecoveryRequiredError(TransactionResult(
+                    TransactionStatus.RECOVERY_REQUIRED,
+                    "The files were written, but the recovery journal could not be cleared; writes are paused.",
+                    files_may_be_committed=True,
+                ), exc) from exc
+            return TransactionResult(TransactionStatus.COMMITTED)
 
     def _validated(self, writes: Mapping[Path, str]) -> dict[str, str]:
         named: dict[str, str] = {}
@@ -127,6 +206,7 @@ class TransactionManager:
         """
         with self._lock:
             if not self.journal_path.exists():
+                self._writes_frozen = False
                 return None
             try:
                 journal = json.loads(self.journal_path.read_text(encoding="utf-8"))
@@ -148,10 +228,23 @@ class TransactionManager:
                 try:
                     os.replace(self.journal_path, quarantine)
                 except OSError:
-                    pass
+                    self._writes_frozen = True
+                    return (
+                        "A previous save needs recovery, but its unreadable journal "
+                        "could not be set aside. Writes remain paused."
+                    )
+                self._writes_frozen = False
                 return (
                     "A previous save was interrupted and its recovery journal is "
                     "unreadable; it was set aside. Please review your plan and pantry."
                 )
-            self._rollback(safe)
+            try:
+                self._rollback(safe)
+            except OSError:
+                self._writes_frozen = True
+                return (
+                    "An interrupted save could not be rolled back safely. "
+                    "Writes remain paused until recovery succeeds."
+                )
+            self._writes_frozen = False
             return "An interrupted save was rolled back to the last consistent state."

@@ -69,17 +69,57 @@ def build_profile_view(
         status_line.value = _provider_status(updated)
         on_save(updated)
 
-    def delete(e):
-        on_delete()
+    def show_clear_all_confirmation(e):
+        def confirm_clear(ev):
+            page.pop_dialog()
+            on_delete()
+
+        page.show_dialog(ft.AlertDialog(
+            modal=True,
+            title=ft.Text("Clear all user data?"),
+            content=ft.Container(
+                width=460,
+                content=ft.Column(
+                    [
+                        ft.Text(
+                            "This permanently removes your household profile and API keys, "
+                            "current plan, pantry, leftovers, purchase history, and imported "
+                            "or purchase photos from this computer."
+                        ),
+                        ft.Text(
+                            "This action cannot be undone.",
+                            color=theme.DANGER,
+                            weight=ft.FontWeight.W_700,
+                        ),
+                    ],
+                    spacing=10,
+                    tight=True,
+                ),
+            ),
+            actions=[
+                ft.TextButton(content="Cancel", on_click=lambda ev: page.pop_dialog()),
+                ft.FilledButton(
+                    content="Clear all user data",
+                    icon=ft.Icons.DELETE_FOREVER_OUTLINED,
+                    on_click=confirm_clear,
+                    style=ft.ButtonStyle(
+                        bgcolor=theme.DANGER,
+                        color=theme.SURFACE,
+                        icon_color=theme.SURFACE,
+                        shape=ft.RoundedRectangleBorder(radius=theme.RADIUS_SM),
+                    ),
+                ),
+            ],
+        ))
 
     save_button = primary_button("Save profile", icon=ft.Icons.CHECK)
     save_button.on_click = save
 
-    delete_button = ft.OutlinedButton(
-        content="Delete saved data",
-        icon=ft.Icons.DELETE_OUTLINE,
-        on_click=delete,
-        tooltip="Removes profile.json from this computer and restarts onboarding",
+    clear_all_button = ft.OutlinedButton(
+        content="Clear all user data",
+        icon=ft.Icons.DELETE_FOREVER_OUTLINED,
+        on_click=show_clear_all_confirmation,
+        tooltip="Permanently remove all locally saved RightMeal user data",
         style=ft.ButtonStyle(
             color=theme.DANGER,
             icon_color=theme.DANGER,
@@ -87,6 +127,17 @@ def build_profile_view(
             shape=ft.RoundedRectangleBorder(radius=theme.RADIUS_SM),
         ),
         height=44,
+    )
+
+    data_card = section_card(
+        "Data and privacy",
+        muted_text(
+            "Remove this household and all of its locally saved plans, pantry data, "
+            "history, leftovers, API keys, and user photos.",
+            size=13,
+        ),
+        clear_all_button,
+        subtitle="RightMeal stores this information only on this computer.",
     )
 
     keys_card = section_card(
@@ -106,7 +157,8 @@ def build_profile_view(
             muted_text("Everything here stays on this computer.", size=14),
             form.build(),
             keys_card,
-            ft.Row([save_button, delete_button], spacing=12),
+            ft.Row([save_button], spacing=12),
+            data_card,
         ],
         spacing=16,
         scroll=ft.ScrollMode.AUTO,

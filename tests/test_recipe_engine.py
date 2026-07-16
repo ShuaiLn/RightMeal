@@ -8,13 +8,11 @@ import pytest
 from data.loader import load_catalog, load_recipe_index, load_nutrient_targets
 from models.basket import BudgetStatus
 from models.profile import HouseholdProfile
-from models.meals import MealSlot, SOURCE_RECIPE
+from models.meals import SOURCE_RECIPE
 from services.nutrition import NutritionService
-from planner.recipe_scheduler import (
-    build_recipe_plan, VarietyMode, PlanGenerationError, RecipePlanConfig,
-)
+from planner.recipe_scheduler import VarietyMode, build_recipe_plan
 from planner.demand import ingredient_demand
-from planner.similarity import similarity_score, is_similar, identical_core_structure
+from planner.similarity import is_similar, similarity_score
 from services.basket_builder import build_shopping_result
 
 
@@ -51,7 +49,7 @@ def test_generates_full_week(catalog, nutrition, family):
 
 def test_every_meal_is_a_real_recipe_with_source(catalog, nutrition, family):
     _, recipes = catalog
-    by_id = {r.id: r for r in recipes}
+    by_id = {recipe.id: recipe for recipe in recipes}
     plan = _plan(catalog, nutrition, family)
     for day in plan.days:
         for meal in day.meals:
@@ -167,7 +165,9 @@ def test_basket_conservation(catalog, nutrition, family):
     quotes = {f.id: make_seed_quote(f) for f in foods.values()}
     result = build_shopping_result(demand, {}, foods, quotes, family, nutrition, 250.0, 7)
     # Every purchased food covers at least its demand (package rounding only overshoots).
-    bought = {i.food.id: i.grams for i in result.items}
+    bought: dict[str, float] = {}
+    for item in result.items:
+        bought[item.food.id] = bought.get(item.food.id, 0.0) + item.grams
     for fid, need in demand.items():
         if fid in bought:
             assert bought[fid] + 0.05 >= need, (fid, bought[fid], need)
@@ -195,7 +195,6 @@ def test_similarity_same_recipe_is_one(catalog, nutrition, family):
 
 def test_baked_dishes_not_auto_similar(catalog):
     _, recipes = catalog
-    by_id = {r.id: r for r in recipes}
     # Two different baked dishes with different protein/carb should not be similar
     # purely for sharing "baking".
     baked = [r for r in recipes if "baking" in r.cooking_methods and r.auto_plannable]

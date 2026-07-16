@@ -33,16 +33,46 @@ from models.purchase_log import (
     PurchaseInput,
     PurchaseRecord,
 )
+from models.quantities import (
+    add_grams,
+    normalize_grams,
+    normalize_money,
+    normalize_quantity,
+    subtract_grams,
+)
 
 
 def purchased_grams(food: Food, items: Sequence[SavedBasketItem]) -> float:
     """Total grams the plan buys of one food: count × package grams per line."""
-    grams_by_label = {pkg.label: pkg.grams for pkg in food.package_options}
-    return sum(
-        grams_by_label.get(item.package_label, 0.0) * item.count
-        for item in items
-        if item.food_id == food.id
-    )
+    total = 0.0
+    for item in items:
+        if item.food_id == food.id:
+            package_grams = item.package_grams
+            if package_grams <= 0 and item.package_id:
+                package = next(
+                    (
+                        package
+                        for package in food.package_options
+                        if package.package_id == item.package_id
+                    ),
+                    None,
+                )
+                package_grams = package.grams if package is not None else 0.0
+            # Compatibility for in-memory pre-v6 constructors only. Persisted
+            # ambiguous legacy rows retain no package identity or weight.
+            if package_grams <= 0 and not item.package_id:
+                candidates = [
+                    package
+                    for package in food.package_options
+                    if package.label == item.package_label
+                ]
+                if len(candidates) == 1:
+                    package_grams = candidates[0].grams
+            total = add_grams(
+                total,
+                package_grams * item.count,
+            )
+    return total
 
 
 # -- purchase events ---------------------------------------------------------
@@ -61,12 +91,47 @@ def _check_purchase_input(purchase_input: PurchaseInput) -> None:
         raise ValueError("a purchase event needs a known grams source")
     if purchase_input.line_total is not None and purchase_input.line_total <= 0:
         raise ValueError("a confirmed item total must be positive")
-    if purchase_input.quantity < 1:
+    if normalize_quantity(purchase_input.quantity) <= 0:
         raise ValueError("a purchase event needs a positive quantity")
     if purchase_input.source_line_index is not None and purchase_input.source_line_index < 0:
         raise ValueError("source line index must be non-negative")
     if purchase_input.segment_index is not None and purchase_input.segment_index < 0:
         raise ValueError("segment index must be non-negative")
+
+
+def _linked_basket_item(
+    plan: SavedPlan | None,
+    purchase_input: PurchaseInput,
+) -> SavedBasketItem | None:
+    """Resolve an explicit planned-child link; never infer one for imports."""
+
+    if purchase_input.basket_item_id is None:
+        return None
+    if plan is None or not purchase_input.apply_to_plan:
+        raise ValueError("a linked basket purchase must be applied to its plan")
+    matches = [
+        item
+        for item in plan.basket
+        if item.basket_item_id == purchase_input.basket_item_id
+    ]
+    if len(matches) != 1:
+        raise ValueError("the referenced basket item does not exist uniquely")
+    item = matches[0]
+    if item.food_id != purchase_input.food_id:
+        raise ValueError("the purchase food does not match the referenced basket item")
+    if item.package_id is None or item.package_grams <= 0:
+        raise ValueError("a display-only legacy basket item cannot be purchased directly")
+    if purchase_input.package_id is not None and purchase_input.package_id != item.package_id:
+        raise ValueError("the purchase package does not match the referenced basket item")
+    if purchase_input.package_label and purchase_input.package_label != item.package_label:
+        raise ValueError("the purchase package label does not match its basket snapshot")
+    expected_grams = normalize_grams(
+        item.package_grams * normalize_quantity(purchase_input.quantity),
+        positive=True,
+    )
+    if abs(expected_grams - purchase_input.grams) > 0.05:
+        raise ValueError("linked purchase grams do not match package snapshot and quantity")
+    return item
 
 
 def record_purchase_event(
@@ -81,17 +146,30 @@ def record_purchase_event(
     grams to the pantry and refreshes the plan aggregate when applied.
     ``plan`` may be None (pantry photo with no plan): the event is off-plan."""
     _check_purchase_input(purchase_input)
+    linked_item = _linked_basket_item(plan, purchase_input)
     applied = purchase_input.apply_to_plan and plan is not None
+    estimated_line_cost = purchase_input.estimated_line_cost
+    if estimated_line_cost is None and linked_item is not None:
+        if normalize_quantity(purchase_input.quantity) == float(linked_item.count):
+            estimated_line_cost = linked_item.cost
+        else:
+            estimated_line_cost = normalize_money(
+                linked_item.unit_cost * normalize_quantity(purchase_input.quantity)
+            )
     record = PurchaseRecord(
         event_id=purchase_input.event_id,
         food_id=purchase_input.food_id,
         raw_name=purchase_input.raw_name,
         brand=purchase_input.brand,
-        package_label=purchase_input.package_label,
-        grams=float(purchase_input.grams),
-        quantity=int(purchase_input.quantity),
+        package_label=(
+            linked_item.package_label
+            if linked_item is not None
+            else purchase_input.package_label
+        ),
+        grams=normalize_grams(purchase_input.grams, positive=True),
+        quantity=normalize_quantity(purchase_input.quantity),
         line_total=purchase_input.line_total,
-        estimated_line_cost=purchase_input.estimated_line_cost,
+        estimated_line_cost=estimated_line_cost,
         price_source=purchase_input.price_source,
         store=purchase_input.store,
         photo_path=purchase_input.photo_path,
@@ -99,10 +177,21 @@ def record_purchase_event(
         origin=purchase_input.origin,
         purchased_at=(now or datetime.now()).isoformat(timespec="seconds"),
         plan_id=plan.plan_id if applied else None,
-        pantry_grams_before=pantry.items.get(purchase_input.food_id, 0.0),
+        pantry_grams_before=normalize_grams(
+            pantry.items.get(purchase_input.food_id, 0.0)
+        ),
         grams_source=purchase_input.grams_source,
         source_line_index=purchase_input.source_line_index,
         segment_index=purchase_input.segment_index,
+        currency=purchase_input.currency,
+        basket_item_id=(
+            linked_item.basket_item_id if linked_item is not None else None
+        ),
+        package_id=(
+            linked_item.package_id
+            if linked_item is not None
+            else purchase_input.package_id
+        ),
     )
     pantry.add(record.food_id, record.grams)
     log.append(record)
@@ -123,6 +212,7 @@ def record_purchase_events(
     stock AFTER the previous one applied, so two same-food lines stack."""
     for purchase_input in inputs:
         _check_purchase_input(purchase_input)
+        _linked_basket_item(plan, purchase_input)
     return [
         record_purchase_event(plan, pantry, log, purchase_input, now=now)
         for purchase_input in inputs
@@ -177,11 +267,12 @@ def can_void_group(
         tail = food_events[-len(recs):]
         if any(rec.event_id not in group_ids for rec in tail):
             return False, "A newer pantry purchase exists — undo it first."
-        stock = pantry.items.get(food_id, 0.0)
+        stock = normalize_grams(pantry.items.get(food_id, 0.0))
         for record in reversed(tail):
             if stock - record.grams < record.pantry_grams_before - 1e-6:
                 return False, "Some of this purchase has already been used."
-            stock -= record.grams
+            remaining = subtract_grams(stock, record.grams)
+            stock = remaining
     return True, ""
 
 
@@ -219,7 +310,9 @@ def rebuild_purchase_aggregates(plan: SavedPlan, log: list[PurchaseRecord]) -> N
     totals: dict[str, float] = {}
     for record in log:
         if record.voided_at is None and record.plan_id == plan.plan_id:
-            totals[record.food_id] = totals.get(record.food_id, 0.0) + record.grams
+            totals[record.food_id] = add_grams(
+                totals.get(record.food_id, 0.0), record.grams
+            )
     plan.purchased.clear()
     plan.purchased.update(totals)
 
@@ -228,13 +321,13 @@ def actual_spent(plan: SavedPlan, log: list[PurchaseRecord]) -> float:
     """Σ CONFIRMED line totals of this plan's non-voided purchases — every
     value passed through the editable confirm dialog. Unknown prices simply
     don't count; estimates never do."""
-    return sum(
+    return normalize_money(sum(
         record.line_total
         for record in log
         if record.plan_id == plan.plan_id
         and record.voided_at is None
         and record.line_total is not None
-    )
+    ))
 
 
 def purchased_value(
@@ -242,11 +335,13 @@ def purchased_value(
     log: list[PurchaseRecord],
     basket_items: Sequence[SavedBasketItem],
 ) -> float:
-    """Approximate value of everything purchased for this plan: confirmed
-    line totals first, then click-time estimates, then the original basket
-    line costs for legacy-migrated records (which predate stored estimates)."""
+    """Confirmed totals plus estimates captured on actual purchase records.
+
+    Planned costs are never inferred from a matching food id: buying one offer
+    must not count every planned package/offer row for that food.
+    ``basket_items`` remains in the signature for caller compatibility.
+    """
     total = 0.0
-    legacy_foods: set[str] = set()
     for record in log:
         if record.plan_id != plan.plan_id or record.voided_at is not None:
             continue
@@ -254,10 +349,7 @@ def purchased_value(
             total += record.line_total
         elif record.estimated_line_cost is not None:
             total += record.estimated_line_cost
-        elif record.origin == ORIGIN_LEGACY_MIGRATION:
-            legacy_foods.add(record.food_id)
-    total += sum(item.cost for item in basket_items if item.food_id in legacy_foods)
-    return total
+    return normalize_money(total)
 
 
 def migrate_legacy_purchases(
@@ -284,8 +376,8 @@ def migrate_legacy_purchases(
             raw_name=food_id,
             brand=None,
             package_label=None,
-            grams=float(grams),
-            quantity=1,
+            grams=normalize_grams(grams, positive=True),
+            quantity=1.0,
             line_total=None,
             estimated_line_cost=None,
             price_source=PRICE_SOURCE_UNKNOWN,
@@ -295,7 +387,9 @@ def migrate_legacy_purchases(
             origin=ORIGIN_LEGACY_MIGRATION,
             purchased_at=plan.created_at,
             plan_id=plan.plan_id,
-            pantry_grams_before=float(plan.purchased_baseline.get(food_id, 0.0)),
+            pantry_grams_before=normalize_grams(
+                plan.purchased_baseline.get(food_id, 0.0)
+            ),
         )
         log.append(record)
         created.append(record)

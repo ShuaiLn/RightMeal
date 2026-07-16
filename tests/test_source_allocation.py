@@ -1,5 +1,6 @@
 """Live source-allocation invariants: meals/nutrition frozen, sourcing live."""
 
+from dataclasses import replace
 from datetime import date, timedelta
 
 import pytest
@@ -27,14 +28,17 @@ def make_meal(portions, slot=MealSlot.DINNER, is_leftover=False, batch_id=None) 
     )
 
 
-def make_basket_item(food, package, count, cost) -> SavedBasketItem:
+def make_basket_item(food, package, count, cost, *, offer_id=None, store="Seed data") -> SavedBasketItem:
     return SavedBasketItem(
         food_id=food.id,
+        package_id=package.package_id,
         package_label=package.label,
+        package_grams=package.grams,
         count=count,
+        offer_id=offer_id or f"test-offer:{package.package_id}",
         cost=cost,
         source="seed_estimate",
-        store="Seed data",
+        store=store,
         confidence=1.0,
         match_reason="test",
         matched_product_name=food.name,
@@ -232,6 +236,40 @@ class TestPackageFitting:
         alloc = allocate_sources(plan, Pantry(), foods_by_id)[rice.id]
         assert [(line.package_label, line.count) for line in alloc.to_buy] == [(pkg.label, 4)]
         assert alloc.to_buy[0].est_cost == pytest.approx(4 * 1.5)  # unit cost 3.0/2
+
+    def test_same_package_different_offers_remain_distinct_lines(self, rice, foods_by_id):
+        package = rice.package_options[0]
+        meal = make_meal([MealPortion(rice, package.grams * 2)])
+        basket = [
+            make_basket_item(
+                rice, package, 1, 1.50, offer_id="offer-store-a", store="Store A"
+            ),
+            make_basket_item(
+                rice, package, 1, 1.60, offer_id="offer-store-b", store="Store B"
+            ),
+        ]
+        plan = make_plan(days=[DayPlan(day_index=0, meals=(meal,))], basket=basket)
+        lines = allocate_sources(plan, Pantry(), foods_by_id)[rice.id].to_buy
+        assert len(lines) == 2
+        assert {line.offer_id for line in lines} == {"offer-store-a", "offer-store-b"}
+        assert len({line.basket_item_id for line in lines}) == 2
+        assert {line.store for line in lines} == {"Store A", "Store B"}
+
+    def test_saved_package_weight_snapshot_survives_catalog_change(self, rice, foods_by_id):
+        package = rice.package_options[0]
+        meal = make_meal([MealPortion(rice, package.grams)])
+        basket = [make_basket_item(rice, package, 1, 1.50)]
+        plan = make_plan(days=[DayPlan(day_index=0, meals=(meal,))], basket=basket)
+        changed_package = replace(package, grams=package.grams * 2)
+        changed_food = replace(
+            rice,
+            package_options=(changed_package, *rice.package_options[1:]),
+        )
+        changed_catalog = {**foods_by_id, rice.id: changed_food}
+        line = allocate_sources(plan, Pantry(), changed_catalog)[rice.id].to_buy[0]
+        assert line.package_id == package.package_id
+        assert line.package_grams == package.grams
+        assert line.count == 1
 
 
 class TestHistorical:

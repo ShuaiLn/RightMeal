@@ -11,6 +11,8 @@ from models.photo_analysis import (
     ProductFacts,
     ReceiptLineClassification,
     ReceiptLineFacts,
+    ReceiptScanItem,
+    ReceiptScanItemKind,
     WeightFact,
 )
 from models.purchase_log import (
@@ -138,7 +140,7 @@ def matching_packages(description: str, food: Food) -> tuple[PackageOption, ...]
 
 
 def resolve_weight(
-    facts: ProductFacts | ReceiptLineFacts,
+    facts: ProductFacts | ReceiptLineFacts | ReceiptScanItem,
     food: Food | None,
 ) -> ResolvedWeight:
     """Resolve grams in the exact evidence-to-estimate precedence order."""
@@ -190,14 +192,15 @@ def user_entered_weight(grams: float) -> ResolvedWeight:
     return ResolvedWeight(grams, GRAMS_SOURCE_USER_ENTERED, "User-entered grams")
 
 
-def confirmed_line_total(line: ReceiptLineFacts) -> float | None:
+def confirmed_line_total(line: ReceiptLineFacts | ReceiptScanItem) -> float | None:
     """Return only a positive printed merchandise line total allowed by policy."""
 
-    if (
-        line.classification is not ReceiptLineClassification.MERCHANDISE
-        or line.printed_line_total is None
-        or line.printed_line_total <= 0
-    ):
+    eligible = (
+        line.classification is ReceiptLineClassification.MERCHANDISE
+        if isinstance(line, ReceiptLineFacts)
+        else line.kind in (ReceiptScanItemKind.FOOD, ReceiptScanItemKind.UNKNOWN)
+    )
+    if not eligible or line.printed_line_total is None or line.printed_line_total <= 0:
         return None
     offer = _OFFER_RE.search(line.raw_printed_text)
     if offer is not None:

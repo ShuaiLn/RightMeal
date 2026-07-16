@@ -1,19 +1,28 @@
 """Saved-plan persistence tests using a temporary directory."""
 
 import json
+from dataclasses import replace
 from datetime import date
 
 import pytest
 
 from models import (
     Explanation,
+    DailyFoodCoverage,
     HouseholdProfile,
+    HouseholdSnapshot,
     MealSlot,
+    PackageOption,
+    PlanKind,
     SavedBasketItem,
     SavedPlan,
     SavedUnusedFood,
 )
-from models.plan import PLAN_SCHEMA_VERSION, _default_tracking_entry
+from models.plan import (
+    PLAN_SCHEMA_VERSION,
+    _default_tracking_entry,
+    deterministic_basket_item_id,
+)
 from planner import consumed_gaps
 from services.plan_store import PlanStore
 
@@ -278,7 +287,7 @@ def test_files_without_new_keys_still_load(tmp_path, foods_by_id, saved_plan):
     store = PlanStore(tmp_path)
     store.save(saved_plan)
     data = json.loads(store.path.read_text(encoding="utf-8"))
-    assert data["version"] == PLAN_SCHEMA_VERSION == 5
+    assert data["version"] == PLAN_SCHEMA_VERSION == 6
     data.pop("leftovers_used", None)
     data.pop("purchased_baseline", None)
     for day in data["meal_plan"]["days"]:
@@ -301,7 +310,7 @@ def test_files_without_new_keys_still_load(tmp_path, foods_by_id, saved_plan):
     assert entry == entry_with(eaten=True, used_fraction=1.0)
 
 
-def test_v3_round_trip_keeps_plan_id_without_resave_flag(tmp_path, foods_by_id, saved_plan):
+def test_v6_round_trip_keeps_plan_id_without_resave_flag(tmp_path, foods_by_id, saved_plan):
     store = PlanStore(tmp_path)
     store.save(saved_plan)
     loaded = store.load(foods_by_id)
@@ -339,3 +348,173 @@ def test_unknown_version_returns_none(tmp_path, foods_by_id, saved_plan):
     data["version"] = 1
     store.path.write_text(json.dumps(data), encoding="utf-8")
     assert store.load(foods_by_id) is None
+
+
+def _downgrade_basket_to_v5(data: dict) -> dict:
+    data["version"] = 5
+    data.pop("plan_kind", None)
+    data.pop("household_snapshot", None)
+    data.pop("daily_coverage", None)
+    for row in data["basket"]:
+        row["cost"] = row["total_cost_cents"] / 100.0
+        for key in (
+            "basket_item_id",
+            "package_id",
+            "package_grams",
+            "offer_id",
+            "unit_cost_cents",
+            "total_cost_cents",
+        ):
+            row.pop(key, None)
+    data["purchased"] = data.pop("purchased_grams_by_food", {})
+    return data
+
+
+def test_v5_basket_migration_has_stable_id_and_unique_package_backfill(
+    foods_by_id, saved_plan
+):
+    raw = _downgrade_basket_to_v5(saved_plan.to_dict())
+    first = SavedPlan.from_dict(raw, foods_by_id)
+    second = SavedPlan.from_dict(raw, foods_by_id)
+    assert first is not None and second is not None
+    assert first.needs_resave is True
+    assert [row.basket_item_id for row in first.basket] == [
+        row.basket_item_id for row in second.basket
+    ]
+    for row in first.basket:
+        matches = [
+            package
+            for package in foods_by_id[row.food_id].package_options
+            if package.label == row.package_label
+        ]
+        assert len(matches) == 1
+        assert row.package_id == matches[0].package_id
+        assert row.package_grams == matches[0].grams
+
+
+def test_v5_ambiguous_package_label_stays_display_only(foods_by_id, saved_plan):
+    raw = _downgrade_basket_to_v5(saved_plan.to_dict())
+    first_row = raw["basket"][0]
+    food = foods_by_id[first_row["food_id"]]
+    original = next(
+        package for package in food.package_options
+        if package.label == first_row["package_label"]
+    )
+    ambiguous_food = replace(
+        food,
+        package_options=(
+            PackageOption(
+                original.label,
+                original.grams,
+                original.seed_price,
+                ml=original.ml,
+                package_id="pkg-a",
+            ),
+            PackageOption(
+                original.label,
+                original.grams + 100,
+                original.seed_price + 1,
+                ml=(original.ml + 100 if original.ml is not None else None),
+                package_id="pkg-b",
+            ),
+        ),
+    )
+    catalog = {**foods_by_id, food.id: ambiguous_food}
+    migrated = SavedPlan.from_dict(raw, catalog)
+    assert migrated is not None
+    row = migrated.basket[0]
+    assert row.package_id is None
+    assert row.package_grams == 0.0
+    assert row.basket_item_id
+
+
+def test_v6_basket_identity_snapshots_and_cents_round_trip(foods_by_id, saved_plan):
+    food = foods_by_id[saved_plan.basket[0].food_id]
+    package = food.package_options[0]
+    basket_item_id = deterministic_basket_item_id(
+        saved_plan.plan_id, food.id, package.package_id, "offer-a", 2
+    )
+    row = SavedBasketItem(
+        basket_item_id=basket_item_id,
+        food_id=food.id,
+        package_id=package.package_id,
+        package_label=package.label,
+        package_grams=package.grams,
+        count=2,
+        offer_id="offer-a",
+        unit_cost_cents=250,
+        total_cost_cents=499,
+        source="seed_estimate",
+        store="Seed data",
+        confidence=1.0,
+        match_reason="test",
+        matched_product_name=food.name,
+    )
+    plan = replace(saved_plan, basket=(row,))
+    dumped = plan.to_dict()
+    assert dumped["basket"][0]["unit_cost_cents"] == 250
+    assert dumped["basket"][0]["total_cost_cents"] == 499
+    assert "cost" not in dumped["basket"][0]
+    loaded = SavedPlan.from_dict(dumped, foods_by_id)
+    assert loaded is not None
+    assert loaded.basket == (row,)
+    assert loaded.basket[0].cost == 4.99
+
+
+def test_v6_partial_metadata_snapshot_and_profile_staleness_round_trip(
+    foods_by_id, saved_plan
+):
+    profile = HouseholdProfile(
+        adults=2,
+        children=2,
+        seniors=0,
+        vegetarian=True,
+        allergies=["Peanut", "milk", "peanut"],
+        no_pork=True,
+        lactose_free=False,
+        variety_mode=saved_plan.variety_mode,
+    )
+    snapshot = HouseholdSnapshot.from_profile(profile)
+    coverage = tuple(
+        DailyFoodCoverage(
+            day_index=index,
+            portion_scale=0.6,
+            calories_ratio=0.61,
+            protein_ratio=0.62,
+        )
+        for index in range(saved_plan.horizon_days)
+    )
+    partial = replace(
+        saved_plan,
+        plan_kind=PlanKind.PARTIAL_FOOD_COVERAGE,
+        household_snapshot=snapshot,
+        daily_coverage=coverage,
+    )
+    loaded = SavedPlan.from_dict(partial.to_dict(), foods_by_id)
+    assert loaded is not None
+    assert loaded.plan_kind is PlanKind.PARTIAL_FOOD_COVERAGE
+    assert loaded.household_snapshot == snapshot
+    assert loaded.daily_coverage == coverage
+    assert loaded.profile_stale(profile) is False
+    assert loaded.profile_stale(replace(profile, children=3)) is True
+    assert loaded.profile_stale(replace(profile, variety_mode="meal_prep")) is True
+
+
+def test_v5_meal_and_plan_metadata_defaults(foods_by_id, saved_plan):
+    raw = _downgrade_basket_to_v5(saved_plan.to_dict())
+    raw_meal = raw["meal_plan"]["days"][0]["meals"][0]
+    servings = float(raw_meal["servings"])
+    raw_meal.pop("household_member_count", None)
+    raw_meal.pop("full_serving_equivalent", None)
+    raw_meal.pop("portion_scale", None)
+    migrated = SavedPlan.from_dict(raw, foods_by_id)
+    assert migrated is not None
+    meal = migrated.meal_plan.days[0].meals[0]
+    assert meal.household_member_count == (
+        max(1, int(round(servings))) if servings > 0 else 0
+    )
+    assert meal.full_serving_equivalent == servings
+    assert meal.portion_scale == 1.0
+    assert migrated.plan_kind is PlanKind.STANDARD
+    assert migrated.household_snapshot is None
+    assert migrated.daily_coverage == ()

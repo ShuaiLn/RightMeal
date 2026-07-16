@@ -11,6 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from .ingredient_parser import ParsedLine
+from .nonfood import is_nonfood_ingredient
 from .resolver import Resolution
 
 # Registry role -> whether it can be a CORE ingredient (subject to grams gates).
@@ -41,6 +42,7 @@ class ResolvedIngredient:
     match_method: str
     confidence: float
     optional: bool
+    is_nonfood: bool
 
 
 def grams_per_serving(
@@ -111,6 +113,27 @@ def classify_ingredient(
     servings: int,
     portion_defaults: dict,
 ) -> ResolvedIngredient:
+    nonfood = is_nonfood_ingredient(parsed.raw_text, parsed.name)
+    if nonfood:
+        # Preserve optional independently, but deliberately do not disguise
+        # equipment as a seasoning.  Nonfood is its own persisted semantic and
+        # is inert for mapping, grams, nutrition, demand, and pricing.
+        return ResolvedIngredient(
+            raw_text=parsed.raw_text,
+            food_id=None,
+            role="nonfood",
+            parent_category=None,
+            quantity_state=parsed.state_hint or "raw",
+            nutrition_basis=None,
+            grams_per_serving=None,
+            is_core=False,
+            is_seasoning=False,
+            match_method="nonfood",
+            confidence=1.0,
+            optional=parsed.optional,
+            is_nonfood=True,
+        )
+
     food_id = resolution.food_id
     meta = registry.get(food_id, {}) if food_id else {}
     role = meta.get("role", "seasoning") if food_id else "unknown"
@@ -143,4 +166,5 @@ def classify_ingredient(
         match_method=resolution.match_method,
         confidence=resolution.confidence,
         optional=parsed.optional,
+        is_nonfood=False,
     )

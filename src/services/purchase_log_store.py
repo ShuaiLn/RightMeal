@@ -26,6 +26,9 @@ PURCHASE_PHOTOS_DIRNAME = "purchase_photos"
 class PurchaseLogLoadResult:
     records: list[PurchaseRecord] = field(default_factory=list)
     load_error: str | None = None
+    # The caller should atomically resave old schemas as v4.  Loading itself is
+    # side-effect free so a failed multi-store startup migration remains safe.
+    needs_resave: bool = False
 
 
 class PurchaseLogStore:
@@ -46,14 +49,18 @@ class PurchaseLogStore:
         except (json.JSONDecodeError, OSError) as exc:
             return PurchaseLogLoadResult(load_error=f"unreadable purchase log: {exc}")
         try:
-            if int(data.get("version", 0)) not in (1, PURCHASE_LOG_SCHEMA_VERSION):
+            version = int(data.get("version", 0))
+            if version not in (1, 2, 3, PURCHASE_LOG_SCHEMA_VERSION):
                 return PurchaseLogLoadResult(
                     load_error=f"unknown purchase log version: {data.get('version')!r}"
                 )
             records = [PurchaseRecord.from_dict(raw) for raw in data.get("records", [])]
         except (KeyError, ValueError, TypeError, AttributeError) as exc:
             return PurchaseLogLoadResult(load_error=f"malformed purchase record: {exc}")
-        return PurchaseLogLoadResult(records=records)
+        return PurchaseLogLoadResult(
+            records=records,
+            needs_resave=version < PURCHASE_LOG_SCHEMA_VERSION,
+        )
 
     def to_json_text(self, records: list[PurchaseRecord]) -> str:
         """Serialized file content, for transactional multi-file writes."""

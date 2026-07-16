@@ -9,8 +9,10 @@ curated seed conversions are used instead (handled by callers).
 from __future__ import annotations
 
 import re
+import math
 
 from models.food import Food
+from services.package_units import package_unit
 
 GRAMS_PER: dict[str, float] = {
     "g": 1.0,
@@ -58,6 +60,8 @@ def parse_size(text: str) -> tuple[float, str] | None:
     """Parse a size string like '2.5 lb' or '59 fl oz' into (value, unit)."""
     if not text:
         return None
+    if re.search(r"\bhalf\s+dozen\b", text, re.IGNORECASE):
+        return 0.5, "dozen"
     match = _SIZE_RE.search(text)
     if not match:
         return None
@@ -85,8 +89,7 @@ def to_grams(value: float, unit: str, food: Food) -> float | None:
         per_count = _grams_per_count(food)
         if per_count is not None:
             return value * per_count
-        # Curated fallback: assume the smallest package is one countable unit.
-        return value * food.smallest_package.grams
+        return None
     return None
 
 
@@ -95,11 +98,17 @@ def _grams_per_count(food: Food) -> float | None:
     per_dozen = _package_grams_matching(food, "dozen")
     if per_dozen is not None:
         return per_dozen / 12.0
+    candidates: list[float] = []
     for pkg in food.package_options:
         size = parse_size(pkg.label)
         if size and size[1] in ("ct", "count", "each", "ea"):
-            return pkg.grams / size[0]
-    return None
+            candidates.append(float(package_unit(food, pkg).grams) / size[0])
+    if not candidates or any(
+        not math.isclose(value, candidates[0], abs_tol=0.001)
+        for value in candidates[1:]
+    ):
+        return None
+    return candidates[0]
 
 
 def to_ml(value: float, unit: str, food: Food) -> float | None:
@@ -115,13 +124,20 @@ def to_ml(value: float, unit: str, food: Food) -> float | None:
 
 
 def _package_grams_matching(food: Food, keyword: str) -> float | None:
+    candidates: list[float] = []
     for pkg in food.package_options:
         if keyword in pkg.label.lower():
             # e.g. eggs "1 dozen" -> 600 g per dozen (curated spec conversion)
             size = parse_size(pkg.label)
             count = size[0] if size else 1.0
-            return pkg.grams / count
-    return None
+            # Bind and revalidate before using catalog package grams.
+            candidates.append(float(package_unit(food, pkg).grams) / count)
+    if not candidates or any(
+        not math.isclose(value, candidates[0], abs_tol=0.001)
+        for value in candidates[1:]
+    ):
+        return None
+    return candidates[0]
 
 
 def normalized_price(price: float, size_text: str, food: Food) -> tuple[float, str] | None:

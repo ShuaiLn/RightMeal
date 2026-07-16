@@ -8,7 +8,7 @@ real recipe here and can be traced back to ``source_file``.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from enum import Enum
 
 from models.food import Nutrients
@@ -47,6 +47,8 @@ class RecipeIngredient:
     optional: bool
     match_method: str
     confidence: float
+    # Legacy recipe indexes predate this explicit signal and load as food.
+    is_nonfood: bool = False
 
     @classmethod
     def from_dict(cls, d: dict) -> "RecipeIngredient":
@@ -63,6 +65,7 @@ class RecipeIngredient:
             optional=bool(d.get("optional", False)),
             match_method=str(d.get("match_method", "unresolved")),
             confidence=float(d.get("confidence", 0.0)),
+            is_nonfood=bool(d.get("is_nonfood", False)),
         )
 
 
@@ -125,7 +128,7 @@ class Recipe:
     def core_ingredient_ids(self) -> frozenset[str]:
         return frozenset(
             i.canonical_food_id for i in self.ingredients
-            if i.is_core and i.canonical_food_id
+            if i.is_core and i.canonical_food_id and not i.is_nonfood
         )
 
     @classmethod

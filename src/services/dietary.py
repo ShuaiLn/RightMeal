@@ -61,6 +61,8 @@ def recipe_exclusion_reason(
         if allergen.strip().lower() in recipe.allergen_tags:
             return f"contains allergen '{allergen.strip().lower()}'"
     for ing in recipe.ingredients:
+        if ing.is_nonfood:
+            continue
         food = foods_by_id.get(ing.canonical_food_id) if ing.canonical_food_id else None
         if food is None:
             continue

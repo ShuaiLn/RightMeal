@@ -1,16 +1,17 @@
 """Recipe-first meal plan generator.
 
-Filters real catalog recipes, scores them (nutrition/pantry/time/variety),
-enforces hard variety and structure rules per mode, scales a chosen recipe to
-the household, optionally adds a verified side to meet the day's calories, and
-validates every candidate before committing. Never fabricates a dish, never
-tops calories up with arbitrary rice/oil: if it cannot build a valid plan within
-bounded repair attempts it raises PlanGenerationError with concrete reasons.
+Filters real catalog recipes, scores them (nutrition/pantry/time/variety), and
+uses a deterministic budget-aware bounded beam to schedule the complete
+horizon. The user-selected variety policy is searched first. A second bounded
+pass, with recipe repetition relaxed to at most two uses in any rolling seven
+days, is considered only when the strict pass has no fully-priced candidate
+inside the cap. Every candidate still passes dietary, allergy, meal-structure,
+portion, and provenance checks before entering the beam.
 
-Budget repair (``_repair_budget``) runs whole-plan, after the prepared-leftover
-overlay: while the plan's known real cost exceeds the budget, it swaps the most
-expensive swappable meals for cheaper same-slot recipes that pass the full
-validation/variety/calorie/quality gates. Known limitation: the search is
+Budget repair (``_repair_budget``) remains a whole-plan fallback: while the
+plan's known real cost exceeds the budget, it swaps the most expensive
+swappable meals for cheaper same-slot recipes that pass the full
+validation/variety/calorie/quality gates. Known limitation: the repair is
 greedy and single-swap-per-round — it cannot find savings that only appear
 from swapping two meals together. It never raises for budget infeasibility
 (that is reported via ``BudgetStatus.OVER``); real programming or data errors
@@ -30,7 +31,9 @@ from models.food import Food, Nutrients
 from models.meals import (
     DayPlan, Meal, MealPlan, MealPortion, MealSlot, SLOT_ORDER, SOURCE_RECIPE,
 )
+from models.planning import SearchLimits
 from models.profile import HouseholdProfile
+from models.pricing import PackageOffer, PriceQuote, dollars_to_cents
 from models.recipe import Recipe, RecipeType
 from planner.daily_validator import evaluate_day
 from planner.demand import ingredient_demand
@@ -52,12 +55,53 @@ class VarietyMode(str, Enum):
     MEAL_PREP = "meal_prep"
 
 
+@dataclass(frozen=True)
+class ScheduleSearchStats:
+    """Observed work from the deterministic scheduling beam.
+
+    ``candidate_count`` is the number of candidate meals actually expanded.
+    ``pruned_state_count`` counts candidate states discarded by meal
+    validation, the per-parent candidate cap, or the global beam-width cap.
+    Recipes rejected before expansion by hard variety and same-day rules are
+    not candidate states. Budget-repair scans are deliberately excluded.
+    """
+
+    candidate_count: int = 0
+    pruned_state_count: int = 0
+    passes_run: int = 0
+    relaxation_attempted: bool = False
+    relaxation_used: bool = False
+
+    def plus(
+        self,
+        other: "ScheduleSearchStats",
+        *,
+        relaxation_used: bool = False,
+    ) -> "ScheduleSearchStats":
+        return ScheduleSearchStats(
+            candidate_count=self.candidate_count + other.candidate_count,
+            pruned_state_count=self.pruned_state_count + other.pruned_state_count,
+            passes_run=self.passes_run + other.passes_run,
+            relaxation_attempted=(
+                self.relaxation_attempted or other.relaxation_attempted
+            ),
+            relaxation_used=relaxation_used,
+        )
+
+
 class PlanGenerationError(Exception):
     """No valid plan could be built; ``reasons`` explains why (honest failure)."""
 
-    def __init__(self, message: str, reasons: Sequence[str] = ()):
+    def __init__(
+        self,
+        message: str,
+        reasons: Sequence[str] = (),
+        *,
+        search_stats: ScheduleSearchStats = ScheduleSearchStats(),
+    ):
         super().__init__(message)
         self.reasons = list(reasons)
+        self.search_stats = search_stats
 
 
 @dataclass(frozen=True)
@@ -90,15 +134,27 @@ class _History:
     protein_last_day: dict[str, int] = field(default_factory=dict)
     carb_last_day: dict[str, int] = field(default_factory=dict)
     cuisine_last_day: dict[str, int] = field(default_factory=dict)
+    recipe_days: dict[str, list[int]] = field(default_factory=dict)
 
     def record(self, recipe: Recipe, day_index: int) -> None:
         self.used_counts[recipe.id] = self.used_counts.get(recipe.id, 0) + 1
         self.last_day_used[recipe.id] = day_index
+        self.recipe_days.setdefault(recipe.id, []).append(day_index)
         if recipe.main_protein:
             self.protein_last_day[recipe.main_protein] = day_index
         for c in recipe.main_carbs:
             self.carb_last_day[c] = day_index
         self.cuisine_last_day[recipe.cuisine] = day_index
+
+    def clone(self) -> "_History":
+        return _History(
+            used_counts=dict(self.used_counts),
+            last_day_used=dict(self.last_day_used),
+            protein_last_day=dict(self.protein_last_day),
+            carb_last_day=dict(self.carb_last_day),
+            cuisine_last_day=dict(self.cuisine_last_day),
+            recipe_days={rid: list(days) for rid, days in self.recipe_days.items()},
+        )
 
 
 @dataclass(frozen=True)
@@ -151,6 +207,34 @@ def finalize_meal_plan(
                     consumed_totals=consumed, horizon_days=horizon_days)
 
 
+@dataclass(frozen=True)
+class RecipePlanSearchResult:
+    meal_plan: MealPlan
+    search_stats: ScheduleSearchStats
+
+
+@dataclass(frozen=True)
+class _BeamState:
+    days: tuple[DayPlan, ...]
+    day_meals: tuple[Meal, ...]
+    chosen_recipes: tuple[Recipe, ...]
+    history: _History
+    virtual_pantry: dict[str, float]
+    score: float
+    demand: dict[str, float]
+    food_cost_cents: dict[str, int]
+    cost_cents: int
+    unpriced_food_ids: frozenset[str]
+
+
+@dataclass(frozen=True)
+class _BeamPassResult:
+    meal_plan: MealPlan | None
+    search_stats: ScheduleSearchStats
+    failure_reason: str = ""
+    within_budget: bool = False
+
+
 def build_recipe_plan(
     recipes: Sequence[Recipe],
     foods_by_id: dict[str, Food],
@@ -162,54 +246,580 @@ def build_recipe_plan(
     horizon_days: int,
     variety_mode: VarietyMode = VarietyMode.BALANCED,
     config: RecipePlanConfig = RecipePlanConfig(),
+    search_limits: SearchLimits = SearchLimits(),
+    preassigned=(),
 ) -> MealPlan:
+    """Build a complete plan using the deterministic bounded scheduler.
+
+    This compatibility API continues to return only ``MealPlan``.  Orchestration
+    that must expose observed search work uses ``build_recipe_plan_with_stats``.
+    """
+
+    return build_recipe_plan_with_stats(
+        recipes,
+        foods_by_id,
+        profile,
+        nutrition,
+        pantry_items,
+        quotes,
+        budget,
+        horizon_days,
+        variety_mode,
+        config,
+        search_limits,
+        preassigned=preassigned,
+    ).meal_plan
+
+
+def build_recipe_plan_with_stats(
+    recipes: Sequence[Recipe],
+    foods_by_id: dict[str, Food],
+    profile: HouseholdProfile,
+    nutrition: NutritionService,
+    pantry_items: dict[str, float],
+    quotes: dict | None,
+    budget: float,
+    horizon_days: int,
+    variety_mode: VarietyMode = VarietyMode.BALANCED,
+    config: RecipePlanConfig = RecipePlanConfig(),
+    search_limits: SearchLimits = SearchLimits(),
+    preassigned=(),
+) -> RecipePlanSearchResult:
+    """Return the highest-quality fully-priced plan inside ``budget``.
+
+    Fixed prepared leftovers participate in their real slots during search.
+    When no strict in-cap plan survives the bounded beam, one relaxed pass is
+    allowed.  An over-cap strict candidate is retained over an over-cap relaxed
+    candidate for the later repair and partial-coverage fallbacks.
+    """
+
     context = build_planner_context(recipes, foods_by_id, profile, nutrition)
-    members = context.members
-    portion_rules = context.portion_rules
-    per_person_daily_kcal = context.per_person_daily_kcal
-    recipes_by_id = context.recipes_by_id
-
-    pool = context.pool
     sides = _side_pool(recipes, profile, foods_by_id)
-    for slot in ("breakfast", "lunch", "dinner"):
-        if not pool[slot]:
-            raise PlanGenerationError(
-                _FAIL_MSG, reasons=[f"no eligible {slot} recipes for this profile"])
+    fixed_slots = _preassigned_slots(preassigned, horizon_days)
+    price_cache: dict[tuple[str, float], tuple[int, bool]] = {}
+    rough_cost_hints = {
+        recipe.id: _rough_recipe_cost_hint(recipe, context.members, quotes)
+        for recipes_for_slot in context.pool.values()
+        for recipe in recipes_for_slot
+    }
+    strict = _beam_schedule_pass(
+        context,
+        sides,
+        foods_by_id,
+        profile,
+        pantry_items,
+        quotes,
+        dollars_to_cents(budget),
+        horizon_days,
+        variety_mode,
+        config,
+        search_limits,
+        fixed_slots,
+        price_cache,
+        rough_cost_hints,
+        relax_repeats=False,
+    )
+    if strict.meal_plan is not None and (strict.within_budget or not quotes):
+        return RecipePlanSearchResult(strict.meal_plan, strict.search_stats)
 
-    virtual_pantry = dict(pantry_items)
-    history = _History()
-    days: list[DayPlan] = []
+    relaxed = _beam_schedule_pass(
+        context,
+        sides,
+        foods_by_id,
+        profile,
+        pantry_items,
+        quotes,
+        dollars_to_cents(budget),
+        horizon_days,
+        variety_mode,
+        config,
+        search_limits,
+        fixed_slots,
+        price_cache,
+        rough_cost_hints,
+        relax_repeats=True,
+    )
+    relaxed_selected = (
+        relaxed.meal_plan is not None
+        and (relaxed.within_budget or strict.meal_plan is None)
+    )
+    combined = strict.search_stats.plus(
+        relaxed.search_stats,
+        relaxation_used=relaxed_selected,
+    )
+    if relaxed_selected:
+        return RecipePlanSearchResult(relaxed.meal_plan, combined)
+    if strict.meal_plan is not None:
+        return RecipePlanSearchResult(strict.meal_plan, combined)
 
-    for day_index in range(horizon_days):
-        day_meals: list[Meal] = []
-        chosen: list[Recipe] = []
-        for slot in SLOT_ORDER:
-            ctx = PlanContext(profile, slot, day_index, per_person_daily_kcal,
-                              portion_rules, recipes_by_id, foods_by_id)
-            recipe, meal = _pick_for_slot(
-                slot, pool[slot.value], foods_by_id, members, per_person_daily_kcal,
-                portion_rules, history, day_meals, virtual_pantry, variety_mode,
-                config, ctx)
-            if meal is None:
-                raise PlanGenerationError(
-                    _FAIL_MSG, reasons=[
-                        f"day {day_index + 1} {slot.value}: no candidate passed validation "
-                        f"(try adjusting budget, variety, calorie tolerance, or expanding "
-                        f"the reviewed recipe catalog)"])
-            day_meals.append(meal)
-            chosen.append(recipe)
+    reason = (
+        relaxed.failure_reason
+        or strict.failure_reason
+        or "the bounded beam exhausted"
+    )
+    raise PlanGenerationError(
+        _FAIL_MSG,
+        reasons=[
+            f"{reason}; no complete plan was found after strict variety and "
+            "the bounded rolling-seven-day repeat relaxation"
+        ],
+        search_stats=combined,
+    )
 
-        day_meals = _repair_day_calories(
-            day_meals, profile, per_person_daily_kcal, sides, foods_by_id,
-            members, config, recipes_by_id)
 
-        for r in chosen:
-            history.record(r, day_index)
-        for m in day_meals:
-            _draw(virtual_pantry, m)
-        days.append(DayPlan(day_index=day_index, meals=tuple(day_meals)))
+def _beam_schedule_pass(
+    context: PlannerContext,
+    sides: Sequence[Recipe],
+    foods_by_id: dict[str, Food],
+    profile: HouseholdProfile,
+    pantry_items: dict[str, float],
+    quotes: dict | None,
+    cap_cents: int,
+    horizon_days: int,
+    variety_mode: VarietyMode,
+    config: RecipePlanConfig,
+    search_limits: SearchLimits,
+    fixed_slots: Mapping[tuple[int, MealSlot], Meal],
+    price_cache: dict[tuple[str, float], tuple[int, bool]],
+    rough_cost_hints: Mapping[str, float],
+    *,
+    relax_repeats: bool,
+) -> _BeamPassResult:
+    """Run one bounded deterministic beam pass.
 
-    return finalize_meal_plan(days, horizon_days, pantry_items)
+    At each slot, every retained parent expands at most
+    ``max_candidates_per_slot`` candidates selected between quality and exact
+    projected package cost. The global beam likewise preserves quality-leading and
+    cost-leading in-cap states, plus one cheapest non-actionable state for
+    repair or honest failure reporting.  The stable signature makes ties
+    independent of input iteration order.
+    """
+
+    candidate_count = 0
+    pruned_state_count = 0
+    initial = _BeamState(
+        days=(),
+        day_meals=(),
+        chosen_recipes=(),
+        history=_History(),
+        virtual_pantry=dict(pantry_items),
+        score=0.0,
+        demand={},
+        food_cost_cents={},
+        cost_cents=0,
+        unpriced_food_ids=frozenset(),
+    )
+    beam: list[_BeamState] = [initial]
+    total_slots = max(0, horizon_days) * len(SLOT_ORDER)
+    failure_reason = ""
+
+    for slot_index in range(total_slots):
+        day_index, within_day = divmod(slot_index, len(SLOT_ORDER))
+        slot = SLOT_ORDER[within_day]
+        next_states: list[_BeamState] = []
+
+        for state in beam:
+            plan_ctx = PlanContext(
+                profile,
+                slot,
+                day_index,
+                context.per_person_daily_kcal,
+                context.portion_rules,
+                context.recipes_by_id,
+                foods_by_id,
+            )
+            fixed_meal = fixed_slots.get((day_index, slot))
+            if fixed_meal is not None:
+                expansions: list[tuple[float, Recipe | None, Meal]] = [
+                    (0.0, None, fixed_meal)
+                ]
+            else:
+                scored = _scored_candidates_for_slot(
+                    slot,
+                    context.pool[slot.value],
+                    context.members,
+                    context.per_person_daily_kcal,
+                    state.history,
+                    state.day_meals,
+                    state.virtual_pantry,
+                    variety_mode,
+                    config,
+                    plan_ctx,
+                    relax_repeats=relax_repeats,
+                )
+                bounded = _budget_balanced_candidates(
+                    scored,
+                    state,
+                    slot,
+                    foods_by_id,
+                    context.members,
+                    variety_mode,
+                    pantry_items,
+                    quotes,
+                    search_limits.max_candidates_per_slot,
+                    price_cache,
+                    rough_cost_hints,
+                )
+                pruned_state_count += len(scored) - len(bounded)
+                expansions = [
+                    (
+                        score,
+                        recipe,
+                        _build_meal(
+                            recipe,
+                            slot,
+                            foods_by_id,
+                            context.members,
+                            variety_mode,
+                        ),
+                    )
+                    for score, _recipe_id, recipe in bounded
+                ]
+
+            for score, recipe, meal in expansions:
+                if recipe is not None:
+                    candidate_count += 1
+                    if validate_meal(meal, plan_ctx):
+                        pruned_state_count += 1
+                        continue
+
+                new_day_meals = state.day_meals + (meal,)
+                unrepaired_day_meals = new_day_meals
+                new_chosen = state.chosen_recipes + (
+                    ((recipe,) if recipe is not None else ())
+                )
+                new_days = state.days
+                new_history = state.history
+                new_pantry = state.virtual_pantry
+
+                if within_day == len(SLOT_ORDER) - 1:
+                    repaired = tuple(_repair_day_calories(
+                        list(new_day_meals),
+                        profile,
+                        context.per_person_daily_kcal,
+                        sides,
+                        foods_by_id,
+                        context.members,
+                        config,
+                        context.recipes_by_id,
+                    ))
+                    new_days = state.days + (
+                        DayPlan(day_index=day_index, meals=repaired),
+                    )
+                    new_history = state.history.clone()
+                    for chosen in new_chosen:
+                        new_history.record(chosen, day_index)
+                    new_pantry = dict(state.virtual_pantry)
+                    for repaired_meal in repaired:
+                        _draw(new_pantry, repaired_meal)
+                    new_day_meals = ()
+                    new_chosen = ()
+
+                replacements = (
+                    tuple(zip(unrepaired_day_meals, repaired))
+                    if within_day == len(SLOT_ORDER) - 1
+                    else ()
+                )
+                (
+                    new_demand,
+                    new_food_costs,
+                    new_cost_cents,
+                    new_unpriced,
+                ) = _advance_beam_pricing(
+                    state,
+                    meal,
+                    pantry_items,
+                    foods_by_id,
+                    quotes,
+                    price_cache,
+                    replacements=replacements,
+                )
+
+                next_states.append(_BeamState(
+                    days=new_days,
+                    day_meals=new_day_meals,
+                    chosen_recipes=new_chosen,
+                    history=new_history,
+                    virtual_pantry=new_pantry,
+                    score=state.score + score,
+                    demand=new_demand,
+                    food_cost_cents=new_food_costs,
+                    cost_cents=new_cost_cents,
+                    unpriced_food_ids=new_unpriced,
+                ))
+
+        if not next_states:
+            failure_reason = (
+                f"day {day_index + 1} {slot.value}: the bounded beam had no "
+                "candidate state that passed validation"
+            )
+            stats = ScheduleSearchStats(
+                candidate_count=candidate_count,
+                pruned_state_count=pruned_state_count,
+                passes_run=1,
+                relaxation_attempted=relax_repeats,
+            )
+            return _BeamPassResult(
+                meal_plan=None,
+                search_stats=stats,
+                failure_reason=failure_reason,
+            )
+
+        selected = _select_budget_aware_beam(
+            next_states,
+            search_limits.beam_width,
+            cap_cents,
+        )
+        pruned_state_count += len(next_states) - len(selected)
+        beam = selected
+
+    affordable = [state for state in beam if _state_within_budget(state, cap_cents)]
+    if affordable:
+        winner = min(affordable, key=_beam_state_sort_key)
+        within_budget = True
+    else:
+        winner = min(beam, key=_beam_fallback_sort_key)
+        within_budget = False
+    stats = ScheduleSearchStats(
+        candidate_count=candidate_count,
+        pruned_state_count=pruned_state_count,
+        passes_run=1,
+        relaxation_attempted=relax_repeats,
+        relaxation_used=relax_repeats,
+    )
+    return _BeamPassResult(
+        meal_plan=finalize_meal_plan(winner.days, horizon_days, pantry_items),
+        search_stats=stats,
+        failure_reason=failure_reason,
+        within_budget=within_budget,
+    )
+
+
+def _preassigned_slots(
+    preassigned: Sequence[object],
+    horizon_days: int,
+) -> Mapping[tuple[int, MealSlot], Meal]:
+    """Validate and freeze fixed prepared-leftover slots for the beam."""
+
+    slots: dict[tuple[int, MealSlot], Meal] = {}
+    for assignment in preassigned:
+        day_index = int(getattr(assignment, "day_index"))
+        slot = getattr(assignment, "slot")
+        meal = getattr(assignment, "meal")
+        if not isinstance(slot, MealSlot) or not isinstance(meal, Meal):
+            raise ValueError("preassigned entries require a MealSlot and Meal")
+        if day_index < 0 or day_index >= horizon_days:
+            raise ValueError("preassigned meal day is outside the planning horizon")
+        if meal.slot is not slot:
+            raise ValueError("preassigned meal slot does not match its assignment")
+        key = (day_index, slot)
+        if key in slots:
+            raise ValueError("only one preassigned meal is allowed per slot")
+        slots[key] = meal
+    return MappingProxyType(slots)
+
+
+def _demand_with_meal(demand: dict[str, float], meal: Meal) -> dict[str, float]:
+    result = dict(demand)
+    for food_id, grams in meal_draw_grams(meal).items():
+        result[food_id] = result.get(food_id, 0.0) + grams
+    return result
+
+
+def _advance_beam_pricing(
+    state: _BeamState,
+    meal: Meal,
+    pantry_items: dict[str, float],
+    foods_by_id: dict[str, Food],
+    quotes: dict | None,
+    price_cache: dict[tuple[str, float], tuple[int, bool]],
+    *,
+    replacements: Sequence[tuple[Meal, Meal]] = (),
+) -> tuple[dict[str, float], dict[str, int], int, frozenset[str]]:
+    """Add one slot and exactly reprice only foods whose demand changed."""
+
+    demand = _demand_with_meal(state.demand, meal)
+    changed_ids = set(meal_draw_grams(meal))
+    for old_meal, new_meal in replacements:
+        if old_meal == new_meal:
+            continue
+        changed_ids.update(meal_draw_grams(old_meal))
+        changed_ids.update(meal_draw_grams(new_meal))
+        demand = apply_meal_demand_delta(demand, old_meal, new_meal)
+
+    food_costs = dict(state.food_cost_cents)
+    unpriced = set(state.unpriced_food_ids)
+    for food_id in changed_ids:
+        food_costs.pop(food_id, None)
+        unpriced.discard(food_id)
+        grams = demand.get(food_id, 0.0)
+        if grams <= GRAM_EPSILON:
+            continue
+        cache_key = (food_id, round(grams, 3))
+        cached = price_cache.get(cache_key)
+        if cached is None:
+            priced = price_slice(
+                {food_id: grams},
+                pantry_items,
+                foods_by_id,
+                quotes,
+            )
+            cached = (
+                dollars_to_cents(priced.total_cost),
+                food_id in priced.unpriced_food_ids,
+            )
+            price_cache[cache_key] = cached
+        food_costs[food_id] = cached[0]
+        if cached[1]:
+            unpriced.add(food_id)
+    return demand, food_costs, sum(food_costs.values()), frozenset(unpriced)
+
+
+def _budget_balanced_candidates(
+    scored: Sequence[tuple[float, str, Recipe]],
+    state: _BeamState,
+    slot: MealSlot,
+    foods_by_id: dict[str, Food],
+    members: int,
+    variety_mode: VarietyMode,
+    pantry_items: dict[str, float],
+    quotes: dict | None,
+    limit: int,
+    price_cache: dict[tuple[str, float], tuple[int, bool]],
+    rough_cost_hints: Mapping[str, float],
+) -> list[tuple[float, str, Recipe]]:
+    """Bound one parent's expansion without discarding all cheap recipes."""
+
+    if len(scored) <= limit:
+        return list(scored)
+    # Exact package optimization is intentionally limited to a deterministic
+    # cheap shortlist. The rough hint only creates that shortlist; the rows
+    # admitted as cost leaders are ordered by exact cumulative state cost.
+    rough_ranked = sorted(
+        scored,
+        key=lambda row: (
+            rough_cost_hints.get(row[1], 0.0),
+            row[1],
+        ),
+    )
+    cheap_shortlist = rough_ranked[: min(len(rough_ranked), max(limit, limit * 2))]
+    projected: list[tuple[int, bool, float, str, tuple[float, str, Recipe]]] = []
+    for row in cheap_shortlist:
+        score, recipe_id, recipe = row
+        meal = _build_meal(recipe, slot, foods_by_id, members, variety_mode)
+        _, _, cost_cents, unpriced = _advance_beam_pricing(
+            state,
+            meal,
+            pantry_items,
+            foods_by_id,
+            quotes,
+            price_cache,
+        )
+        projected.append((cost_cents, bool(unpriced), score, recipe_id, row))
+
+    quality_ranked = list(scored)
+    cost_ranked = [
+        entry[4]
+        for entry in sorted(
+            projected,
+            key=lambda entry: (entry[1], entry[0], -entry[2], entry[3]),
+        )
+    ]
+    quality_slots = (limit + 1) // 2
+    cost_slots = limit - quality_slots
+    selected: dict[str, tuple[float, str, Recipe]] = {}
+    for row in quality_ranked[:quality_slots]:
+        selected[row[1]] = row
+    for row in cost_ranked[:cost_slots]:
+        selected[row[1]] = row
+    for ranked in (quality_ranked, cost_ranked):
+        for row in ranked:
+            if len(selected) >= limit:
+                break
+            selected.setdefault(row[1], row)
+    return sorted(selected.values(), key=lambda row: (-row[0], row[1]))
+
+
+def _state_within_budget(state: _BeamState, cap_cents: int) -> bool:
+    return not state.unpriced_food_ids and state.cost_cents <= cap_cents
+
+
+def _beam_fallback_sort_key(state: _BeamState) -> tuple:
+    return (
+        state.cost_cents,
+        bool(state.unpriced_food_ids),
+        len(state.unpriced_food_ids),
+        -state.score,
+        _beam_state_signature(state),
+    )
+
+
+def _select_budget_aware_beam(
+    states: Sequence[_BeamState],
+    beam_width: int,
+    cap_cents: int,
+) -> list[_BeamState]:
+    affordable = [state for state in states if _state_within_budget(state, cap_cents)]
+    fallback = [state for state in states if not _state_within_budget(state, cap_cents)]
+    if not affordable:
+        return [min(fallback, key=_beam_fallback_sort_key)]
+
+    reserve_fallback = bool(fallback) and beam_width > 1
+    affordable_limit = beam_width - int(reserve_fallback)
+    quality_ranked = sorted(affordable, key=_beam_state_sort_key)
+    cost_ranked = sorted(
+        affordable,
+        key=lambda state: (
+            state.cost_cents,
+            -state.score,
+            _beam_state_signature(state),
+        ),
+    )
+    quality_slots = (affordable_limit + 1) // 2
+    cost_slots = affordable_limit - quality_slots
+    selected: list[_BeamState] = []
+    selected_ids: set[int] = set()
+
+    def add(state: _BeamState) -> None:
+        if id(state) not in selected_ids and len(selected) < affordable_limit:
+            selected_ids.add(id(state))
+            selected.append(state)
+
+    for state in quality_ranked[:quality_slots]:
+        add(state)
+    for state in cost_ranked[:cost_slots]:
+        add(state)
+    for ranked in (quality_ranked, cost_ranked):
+        for state in ranked:
+            add(state)
+    if reserve_fallback:
+        selected.append(min(fallback, key=_beam_fallback_sort_key))
+    return selected
+
+
+def _beam_state_signature(state: _BeamState) -> tuple[tuple[int, str, str, str], ...]:
+    signature: list[tuple[int, str, str, str]] = []
+    for day in state.days:
+        for meal in day.meals:
+            signature.append((
+                day.day_index,
+                meal.slot.value,
+                meal.recipe_id or "",
+                meal.side_recipe_id or "",
+            ))
+    day_index = len(state.days)
+    for meal in state.day_meals:
+        signature.append((
+            day_index,
+            meal.slot.value,
+            meal.recipe_id or "",
+            meal.side_recipe_id or "",
+        ))
+    return tuple(signature)
+
+
+def _beam_state_sort_key(state: _BeamState) -> tuple:
+    return (-state.score, state.cost_cents, _beam_state_signature(state))
 
 
 _FAIL_MSG = (
@@ -245,7 +855,41 @@ def _side_pool(recipes, profile, foods_by_id) -> list[Recipe]:
 def _pick_for_slot(slot, candidates, foods_by_id, members, per_person_daily_kcal,
                    portion_rules, history, day_meals, virtual_pantry, variety_mode,
                    config, ctx):
-    slot_share = portion_rules["slot_kcal_share_midpoint"][slot.value]
+    scored = _scored_candidates_for_slot(
+        slot,
+        candidates,
+        members,
+        per_person_daily_kcal,
+        history,
+        day_meals,
+        virtual_pantry,
+        variety_mode,
+        config,
+        ctx,
+        relax_repeats=False,
+    )
+    for _, _, recipe in scored:
+        meal = _build_meal(recipe, slot, foods_by_id, members, variety_mode)
+        if not validate_meal(meal, ctx):
+            return recipe, meal
+    return None, None
+
+
+def _scored_candidates_for_slot(
+    slot,
+    candidates,
+    members,
+    per_person_daily_kcal,
+    history,
+    day_meals,
+    virtual_pantry,
+    variety_mode,
+    config,
+    ctx,
+    *,
+    relax_repeats: bool,
+):
+    slot_share = ctx.portion_rules["slot_kcal_share_midpoint"][slot.value]
     slot_target = per_person_daily_kcal * slot_share
     today_ids = {m.recipe_id for m in day_meals}
     prev_meal = day_meals[-1] if day_meals else None
@@ -255,24 +899,42 @@ def _pick_for_slot(slot, candidates, foods_by_id, members, per_person_daily_kcal
     for r in candidates:
         if r.id in today_ids:
             continue
-        if not _variety_ok(r, history, prev_meal, ctx, variety_mode):
+        if not _variety_ok(
+            r,
+            history,
+            prev_meal,
+            ctx,
+            variety_mode,
+            relax_repeats=relax_repeats,
+        ):
             continue
         score = _score(r, slot_target, members, history, today_recipes,
                        virtual_pantry, config)
         scored.append((score, r.id, r))
 
     scored.sort(key=lambda t: (-t[0], t[1]))
-    for _, _, recipe in scored:
-        meal = _build_meal(recipe, slot, foods_by_id, members, variety_mode)
-        if not validate_meal(meal, ctx):
-            return recipe, meal
-    return None, None
+    return scored
 
 
-def _variety_ok(r, history, prev_meal, ctx, mode) -> bool:
+def _variety_ok(
+    r,
+    history,
+    prev_meal,
+    ctx,
+    mode,
+    *,
+    relax_repeats: bool = False,
+) -> bool:
     used = history.used_counts.get(r.id, 0)
     last_day = history.last_day_used.get(r.id)
-    if mode == VarietyMode.HIGH_VARIETY:
+    if relax_repeats:
+        window_start = ctx.day_index - 6
+        rolling_uses = sum(
+            day >= window_start for day in history.recipe_days.get(r.id, ())
+        )
+        if rolling_uses >= 2:
+            return False
+    elif mode == VarietyMode.HIGH_VARIETY:
         if used >= 1:
             return False
     elif mode == VarietyMode.MEAL_PREP:
@@ -295,7 +957,11 @@ def _score(r, slot_target, members, history, today_recipes, virtual_pantry, conf
 
     total_g = cov_g = 0.0
     for ing in r.ingredients:
-        if not ing.canonical_food_id or ing.grams_per_serving is None:
+        if (
+            getattr(ing, "is_nonfood", False)
+            or not ing.canonical_food_id
+            or ing.grams_per_serving is None
+        ):
             continue
         g = ing.grams_per_serving * members
         total_g += g
@@ -348,7 +1014,12 @@ def _build_meal(recipe, slot, foods_by_id, members, variety_mode, side=None) -> 
 def _portions_for_recipe(recipe, foods_by_id, members, component) -> list[MealPortion]:
     portions: list[MealPortion] = []
     for ing in recipe.ingredients:
-        if not ing.canonical_food_id or ing.is_seasoning or ing.optional:
+        if (
+            getattr(ing, "is_nonfood", False)
+            or not ing.canonical_food_id
+            or ing.is_seasoning
+            or ing.optional
+        ):
             continue
         if ing.grams_per_serving is None:
             continue
@@ -369,10 +1040,18 @@ def _repair_day_calories(day_meals, profile, per_person_daily_kcal, sides,
         result = evaluate_day(DayPlan(0, tuple(day_meals)), profile, per_person_daily_kcal)
         if result.within_tolerance or result.shortfall_kcal <= 0:
             break
-        idx = min(range(len(day_meals)), key=lambda i: day_meals[i].kcal)
-        meal = day_meals[idx]
-        if meal.side_recipe_id is not None:
+        repairable = [
+            index
+            for index, candidate in enumerate(day_meals)
+            if candidate.recipe_id is not None
+            and candidate.side_recipe_id is None
+            and not candidate.is_leftover
+            and candidate.prepared_leftover_id is None
+        ]
+        if not repairable:
             break
+        idx = min(repairable, key=lambda i: day_meals[i].kcal)
+        meal = day_meals[idx]
         primary = recipes_by_id.get(meal.recipe_id)
         if primary is None:
             break
@@ -474,14 +1153,26 @@ def _rough_recipe_cost_hint(recipe: Recipe, members: int, quotes: dict | None) -
     quotes = quotes or {}
     total = 0.0
     for ing in recipe.ingredients:
-        if not ing.canonical_food_id or ing.is_seasoning or ing.optional:
+        if (
+            getattr(ing, "is_nonfood", False)
+            or not ing.canonical_food_id
+            or ing.is_seasoning
+            or ing.optional
+        ):
             continue
         if ing.grams_per_serving is None:
             continue
-        quote = quotes.get(ing.canonical_food_id)
-        if quote is None:
+        pricing = quotes.get(ing.canonical_food_id)
+        if pricing is None:
             continue
-        total += ing.grams_per_serving * members * quote.normalized_unit_price / 100.0
+        if isinstance(pricing, PriceQuote):
+            cost_per_gram = pricing.normalized_unit_price / 100.0
+        else:
+            offers = tuple(pricing)
+            if not offers or not all(isinstance(o, PackageOffer) for o in offers):
+                continue
+            cost_per_gram = min(o.price_cents / 100.0 / o.package_grams for o in offers)
+        total += ing.grams_per_serving * members * cost_per_gram
     return total
 
 

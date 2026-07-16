@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any, Iterable, Protocol, Sequence
 
 from models.food import Food
-from models.photo_analysis import FoodForm, ProductFacts, ReceiptLineFacts
+from models.photo_analysis import FoodForm, ProductFacts, ReceiptLineFacts, ReceiptScanItem
 
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 MODEL_VERSION = f"fastembed-0.8.0:{MODEL_NAME}"
@@ -349,7 +349,7 @@ class CatalogMatcher:
 
     def match(
         self,
-        facts: ProductFacts | ReceiptLineFacts,
+        facts: ProductFacts | ReceiptLineFacts | ReceiptScanItem,
         *,
         plan_food_ids: Iterable[str] = (),
     ) -> MatchResult:

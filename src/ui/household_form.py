@@ -15,7 +15,7 @@ ZIP_RE = re.compile(r"^\d{5}$")
 
 PRIVACY_NOTE = (
     "RightMeal stores profile data locally only — no accounts, no cloud sync. "
-    "Delete profile.json (or use the Delete saved data button) to remove it."
+    "Delete profile.json (or use the Clear all user data button) to remove it."
 )
 
 

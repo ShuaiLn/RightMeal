@@ -32,6 +32,7 @@ from models.food import Food, Nutrients
 from models.pricing import PriceSource
 from models.pantry import Pantry
 from models.plan import SavedBasketItem, SavedPlan
+from models.quantities import money_decimal
 from services.pantry_flow import meal_draw_grams
 
 # Sub-gram float dust (serialization rounds grams to 3 decimals) must never
@@ -48,6 +49,12 @@ class BuyLine:
     count: int
     est_cost: float
     source: str  # the original basket line's PriceSource value, or "seed"
+    basket_item_id: str | None = None
+    package_id: str | None = None
+    offer_id: str | None = None
+    unit_cost_cents: int = 0
+    total_cost_cents: int = 0
+    store: str = ""
 
 
 @dataclass(frozen=True)
@@ -97,62 +104,149 @@ def _fit_packages(
     package at its seed price."""
     if gap <= GRAM_EPSILON:
         return ()
-    grams_by_label = {pkg.label: pkg.grams for pkg in food.package_options}
+
+    packages_by_id = {package.package_id: package for package in food.package_options}
+
+    def snapshot_grams(line: SavedBasketItem) -> float:
+        if line.package_grams > 0:
+            return line.package_grams
+        if line.package_id and line.package_id in packages_by_id:
+            return packages_by_id[line.package_id].grams
+        # Only supports old in-memory constructors. A persisted ambiguous v6
+        # row has neither id nor snapshot and therefore remains display-only.
+        if not line.package_id:
+            matches = [
+                package
+                for package in food.package_options
+                if package.label == line.package_label
+            ]
+            if len(matches) == 1:
+                return matches[0].grams
+        return 0.0
+
     remaining = gap
     order: list[str] = []
-    acc: dict[str, dict] = {}  # label -> {grams, count, unit_cost, source}
+    acc: dict[str, dict] = {}
 
-    def add(label: str, grams: float, count: int, unit_cost: float, source: str) -> None:
+    def add(
+        identity: str,
+        *,
+        label: str,
+        grams: float,
+        count: int,
+        unit_cost_cents: int,
+        source: str,
+        store: str,
+        basket_item_id: str | None,
+        package_id: str | None,
+        offer_id: str | None,
+    ) -> None:
         if count <= 0:
             return
-        if label not in acc:
-            acc[label] = {"grams": grams, "count": 0, "unit_cost": unit_cost, "source": source}
-            order.append(label)
-        acc[label]["count"] += count
+        if identity not in acc:
+            acc[identity] = {
+                "label": label,
+                "grams": grams,
+                "count": 0,
+                "unit_cost_cents": unit_cost_cents,
+                "source": source,
+                "store": store,
+                "basket_item_id": basket_item_id,
+                "package_id": package_id,
+                "offer_id": offer_id,
+            }
+            order.append(identity)
+        acc[identity]["count"] += count
 
-    usable = [
-        line for line in lines
-        if line.count > 0 and grams_by_label.get(line.package_label, 0.0) > 0
-    ]
-    for line in usable:
+    usable = [(line, snapshot_grams(line)) for line in lines if line.count > 0]
+    usable = [(line, grams) for line, grams in usable if grams > 0]
+    for line, grams in usable:
         if remaining <= GRAM_EPSILON:
             break
-        grams = grams_by_label[line.package_label]
         take = min(line.count, math.ceil((remaining - GRAM_EPSILON) / grams))
         if take <= 0:
             continue
-        add(line.package_label, grams, take, line.cost / line.count, line.source)
+        add(
+            line.basket_item_id,
+            label=line.package_label,
+            grams=grams,
+            count=take,
+            unit_cost_cents=line.unit_cost_cents,
+            source=line.source,
+            store=line.store,
+            basket_item_id=line.basket_item_id,
+            package_id=line.package_id,
+            offer_id=line.offer_id,
+        )
         remaining -= take * grams
 
     if remaining > GRAM_EPSILON:
         if usable:
-            top_up = min(
+            top_up, grams = min(
                 usable,
-                key=lambda ln: (ln.cost / ln.count) / grams_by_label[ln.package_label],
+                key=lambda pair: (
+                    pair[0].unit_cost_cents / pair[1],
+                    pair[0].basket_item_id,
+                ),
             )
-            grams = grams_by_label[top_up.package_label]
             extra = math.ceil((remaining - GRAM_EPSILON) / grams)
-            add(top_up.package_label, grams, extra, top_up.cost / top_up.count, top_up.source)
+            add(
+                top_up.basket_item_id,
+                label=top_up.package_label,
+                grams=grams,
+                count=extra,
+                unit_cost_cents=top_up.unit_cost_cents,
+                source=top_up.source,
+                store=top_up.store,
+                basket_item_id=top_up.basket_item_id,
+                package_id=top_up.package_id,
+                offer_id=top_up.offer_id,
+            )
         else:
-            packages = [pkg for pkg in food.package_options if pkg.grams > 0]
+            packages = [package for package in food.package_options if package.grams > 0]
             if packages:
-                cheapest = min(packages, key=lambda pkg: pkg.seed_price / pkg.grams)
+                cheapest = min(
+                    packages,
+                    key=lambda package: (
+                        package.seed_price / package.grams,
+                        package.package_id,
+                    ),
+                )
                 extra = math.ceil((remaining - GRAM_EPSILON) / cheapest.grams)
+                unit_cost_cents = int(money_decimal(cheapest.seed_price) * 100)
                 add(
-                    cheapest.label, cheapest.grams, extra, cheapest.seed_price,
-                    PriceSource.SEED_ESTIMATE.value,
+                    f"catalog:{cheapest.package_id}",
+                    label=cheapest.label,
+                    grams=cheapest.grams,
+                    count=extra,
+                    unit_cost_cents=unit_cost_cents,
+                    source=PriceSource.SEED_ESTIMATE.value,
+                    store="Seed data",
+                    basket_item_id=None,
+                    package_id=cheapest.package_id,
+                    offer_id=None,
                 )
 
-    return tuple(
-        BuyLine(
-            package_label=label,
-            package_grams=acc[label]["grams"],
-            count=acc[label]["count"],
-            est_cost=acc[label]["count"] * acc[label]["unit_cost"],
-            source=acc[label]["source"],
+    result: list[BuyLine] = []
+    for identity in order:
+        row = acc[identity]
+        total_cost_cents = row["count"] * row["unit_cost_cents"]
+        result.append(
+            BuyLine(
+                package_label=row["label"],
+                package_grams=row["grams"],
+                count=row["count"],
+                est_cost=total_cost_cents / 100.0,
+                source=row["source"],
+                basket_item_id=row["basket_item_id"],
+                package_id=row["package_id"],
+                offer_id=row["offer_id"],
+                unit_cost_cents=row["unit_cost_cents"],
+                total_cost_cents=total_cost_cents,
+                store=row["store"],
+            )
         )
-        for label in order
-    )
+    return tuple(result)
 
 
 def allocate_sources(

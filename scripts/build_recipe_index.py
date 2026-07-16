@@ -29,7 +29,7 @@ from recipe_indexer import classifier as clf
 from recipe_indexer.batch import batch_info
 from recipe_indexer import nutrition as nut
 
-INDEX_VERSION = 1
+INDEX_VERSION = 2
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "src" / "data"
 CONTENT_DIR = PROJECT_ROOT / "content"
@@ -89,7 +89,7 @@ def build() -> dict:
             else:
                 res = resolver.resolve(parsed.name)
             ri = classify_ingredient(parsed, res, registry, servings, portion_defaults)
-            if ov:
+            if ov and not ri.is_nonfood:
                 if "role" in ov:
                     ri.role = ov["role"]
                 if "is_core" in ov:
@@ -97,7 +97,7 @@ def build() -> dict:
                 if "grams_per_serving" in ov:
                     ri.grams_per_serving = ov["grams_per_serving"]
             resolved.append(ri)
-            if ri.food_id is None and not ri.optional and ri.grams_per_serving \
+            if ri.food_id is None and not ri.optional and not ri.is_nonfood and ri.grams_per_serving \
                     and ri.grams_per_serving >= nut._UNRESOLVED_CORE_GRAMS:
                 unresolved_counter[parsed.name] += 1
 
@@ -166,6 +166,7 @@ def build() -> dict:
                     "nutrition_basis": r.nutrition_basis,
                     "is_core": r.is_core,
                     "is_seasoning": r.is_seasoning,
+                    "is_nonfood": r.is_nonfood,
                     "optional": r.optional,
                     "match_method": r.match_method,
                     "confidence": round(r.confidence, 3),
@@ -197,6 +198,7 @@ def build() -> dict:
             "core_coverage": nutrition.core_coverage,
             "coverage_by_mass": nutrition.coverage_by_mass,
             "unresolved_core": list(nutrition.unresolved_core_texts),
+            "nonfood": [r.raw_text for r in resolved if r.is_nonfood],
         })
 
     ids = [e["id"] for e in entries]
@@ -219,6 +221,7 @@ def _summary(coverage: list[dict]) -> dict:
     return {
         "total_recipes": len(coverage),
         "auto_plannable": sum(1 for r in coverage if r["auto_plannable"]),
+        "nonfood_lines": sum(len(r.get("nonfood", ())) for r in coverage),
         "by_recipe_type": dict(by_type),
         "auto_plannable_by_slot": dict(plannable_by_slot),
     }

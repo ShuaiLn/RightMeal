@@ -39,7 +39,9 @@ class TestAnalyze:
                 {"food_id": "chicken_breast", "remaining_fraction": 0.0},
             ],
         }
-        estimate = await analyzer(payload).analyze(meal, "米饭剩一半鸡肉吃完了")
+        estimate = await analyzer(payload).analyze(
+            meal, "half the rice is left and all the chicken was eaten"
+        )
         assert estimate is not None
         assert estimate.overall_fraction == pytest.approx(0.33)
         assert estimate.components == {"rice_white": 0.5, "chicken_breast": 0.0}
@@ -116,13 +118,13 @@ class TestRequestShape:
             return httpx.Response(200, json={"choices": [{"message": {"content": content}}]})
 
         client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
-        await LeftoverAnalyzer("sk-test", client).analyze(meal, "剩了一半")
+        await LeftoverAnalyzer("sk-test", client).analyze(meal, "half is left")
         assert captured["response_format"]["json_schema"]["strict"] is True
         assert "currently served" in captured["messages"][0]["content"].lower()
         user_payload = json.loads(captured["messages"][1]["content"])
         assert user_payload["meal_name"] == "Chicken fried rice"
         assert user_payload["is_batch_cooked"] is True
-        assert user_payload["user_note"] == "剩了一半"
+        assert user_payload["user_note"] == "half is left"
         assert {p["food_id"] for p in user_payload["portions"]} == {
             "rice_white", "chicken_breast",
         }

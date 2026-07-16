@@ -37,6 +37,15 @@ from models.prepared_leftover import (
 )
 from services.ingredient_matching import MatchCandidate, match_pantry_input
 from services.meal_tracking_flow import reserved_slot_for
+from services.package_units import (
+    base_unit_name,
+    display_amount,
+    display_amount_to_grams,
+    format_grams,
+    package_unit_name,
+    preferred_package_unit,
+)
+from models.quantities import normalize_grams
 from services.photo_images import normalize_image
 from services.photo_import_store import IMPORTED_IMAGES_DIRNAME
 from services.wikimedia_images import WikimediaImageSearch
@@ -48,8 +57,9 @@ from ui.components import (
     section_card,
     style_field,
 )
+from ui.image_processing import ImageFailureDetails, ImageProcessingView
 from ui.meals_section import carryover_amount_label
-from ui.photo_purchase import ensure_file_picker, run_product_photo_flow
+from ui.photo_purchase import ensure_file_picker, run_product_photo_flow, run_receipt_flow
 from ui.state import AppState
 
 
@@ -195,12 +205,21 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
 
     def pantry_card(food: Food, grams: float) -> ft.Container:
         brand = state.latest_brand_for(food)
-        amount_text = muted_text(carryover_amount_label(food, grams), size=12)
+        display_unit = preferred_package_unit(
+            food, state.saved_plan, state.purchase_log
+        )
+        amount_text = muted_text(format_grams(food, grams, display_unit), size=12)
         grams_field = ft.TextField(
-            value=f"{grams:g}", width=104, dense=True, text_size=12.5,
-            suffix=ft.Text("g", size=12, color=theme.TEXT_MUTED),
+            value=f"{display_amount(food, grams, display_unit):g}",
+            width=124, dense=True, text_size=12.5,
+            suffix=ft.Text(
+                package_unit_name(display_unit)
+                if display_unit is not None else base_unit_name(food),
+                size=12,
+                color=theme.TEXT_MUTED,
+            ),
             keyboard_type=ft.KeyboardType.NUMBER,
-            tooltip="Edit the grams you have left",
+            tooltip="Edit this package amount; inventory remains stored in grams",
         )
         style_field(grams_field)
         deleting = {"active": False}
@@ -209,15 +228,17 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
             if deleting["active"]:
                 return  # the delete button won the race — don't resurrect
             try:
-                new_grams = float(grams_field.value or "")
+                new_grams = display_amount_to_grams(
+                    food, grams_field.value or "", display_unit
+                )
             except ValueError:
-                grams_field.value = f"{pantry.items.get(food.id, 0.0):g}"
+                grams_field.value = f"{display_amount(food, pantry.items.get(food.id, 0.0), display_unit):g}"
                 grams_field.update()
                 return
             old_grams = pantry.items.get(food.id, 0.0)
             pantry.set_grams(food.id, max(new_grams, 0.0))  # 0 removes the food
             if not persist_pantry():
-                grams_field.value = f"{old_grams:g}"
+                grams_field.value = f"{display_amount(food, old_grams, display_unit):g}"
                 grams_field.update()
                 return
             if new_grams <= 0:
@@ -225,7 +246,7 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
                 page.update()
                 return
             # Amount-only change: refresh this card, keep scroll/focus intact.
-            amount_text.value = carryover_amount_label(food, new_grams)
+            amount_text.value = format_grams(food, new_grams, display_unit)
             card_container.update()
 
         grams_field.on_blur = on_grams_blur
@@ -328,9 +349,7 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
     def parse_add_grams() -> float | None:
         """The typed amount in grams, or None (with an inline error) if invalid."""
         try:
-            grams = float(add_grams_field.value or "")
-            if grams <= 0:
-                raise ValueError
+            grams = normalize_grams(add_grams_field.value or "", positive=True)
             add_grams_field.error_text = None
             return grams
         except ValueError:
@@ -388,11 +407,14 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
     file_picker = ensure_file_picker(page)
 
     def on_photo_committed() -> None:
-        rebuild_grid()
+        rebuild_all()
         page.update()
 
     async def on_add_photo(e) -> None:
         await run_product_photo_flow(page, state, file_picker, on_photo_committed)
+
+    async def on_scan_receipt(e) -> None:
+        await run_receipt_flow(page, state, file_picker, on_photo_committed)
 
     photo_button = ft.FilledTonalButton(
         content="Add by photo",
@@ -400,6 +422,14 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
         height=CONTROL_HEIGHT,
         on_click=on_add_photo,
         tooltip="Photograph a purchased food — AI fills in the details for review",
+    )
+
+    receipt_button = ft.FilledTonalButton(
+        content="Scan receipt",
+        icon=ft.Icons.RECEIPT_LONG_OUTLINED,
+        height=CONTROL_HEIGHT,
+        on_click=on_scan_receipt,
+        tooltip="Scan receipt foods; only uncertain items need review",
     )
 
     # -- custom items (not linked to the catalog) ------------------------------
@@ -415,6 +445,12 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
         items = sorted(pantry.pending_custom_items(), key=lambda c: c.display_name.lower())
         custom_row.controls = [custom_item_card(item) for item in items]
         empty_custom_text.visible = not items
+
+    def rebuild_all() -> None:
+        """Rebuild every Pantry surface affected by one photo transaction."""
+
+        rebuild_grid()  # catalog cards, empty state, and add-option annotations
+        refresh_custom_items()  # Custom cards and Custom empty state
 
     def save_custom_item(item: CustomPantryItem) -> bool:
         pantry.add_custom_item(item)
@@ -452,7 +488,7 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
             open_custom_create_dialog(typed, grams)
 
         page.show_dialog(ft.AlertDialog(
-            title=ft.Text(f"Did you mean one of these?", size=15,
+            title=ft.Text("Did you mean one of these?", size=15,
                           weight=ft.FontWeight.W_600, color=theme.TEXT),
             content=ft.Container(
                 width=340,
@@ -669,10 +705,33 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
             )
             if not files or not files[0].path:
                 return
+            processing = ImageProcessingView(
+                page, title="Processing Custom Pantry image"
+            )
+            processing.show(
+                "Preparing the uploaded image",
+                "The image is being decoded, orientation-corrected, and sanitized.",
+            )
             try:
                 normalized = normalize_image(Path(files[0].path).read_bytes())
-            except (OSError, ValueError):
-                page.show_dialog(ft.SnackBar(ft.Text("That image could not be read.")))
+            except OSError:
+                processing.show_failure(ImageFailureDetails(
+                    summary="The selected image file could not be opened.",
+                    stage="File access",
+                    reason="The file may have moved, be locked, or be unreadable.",
+                    suggestions=("Choose the image again from a local folder.",),
+                ))
+                return
+            except ValueError as exc:
+                processing.show_failure(ImageFailureDetails(
+                    summary="The selected file is not a supported image.",
+                    stage="Image normalization",
+                    reason=str(exc),
+                    suggestions=(
+                        "Use a valid JPG or PNG image.",
+                        "Choose a smaller image if the file is unusually large.",
+                    ),
+                ))
                 return
             relative = (
                 f"{IMPORTED_IMAGES_DIRNAME}/custom-{uuid.uuid4()}"
@@ -686,6 +745,10 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
                 item.image_author,
                 item.image_license,
                 item.image_license_url,
+            )
+            processing.show(
+                "Saving the Custom Pantry image",
+                "The sanitized image is being saved to local application storage.",
             )
             try:
                 final_path.parent.mkdir(parents=True, exist_ok=True)
@@ -712,8 +775,17 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
                     final_path.unlink()
                 except OSError:
                     pass
-                page.show_dialog(ft.SnackBar(ft.Text("The image could not be saved.")))
+                processing.show_failure(ImageFailureDetails(
+                    summary="The image was processed but could not be saved.",
+                    stage="Local image storage",
+                    reason="The application could not complete the local file transaction.",
+                    suggestions=(
+                        "Check available disk space and folder permissions.",
+                        "Retry the upload.",
+                    ),
+                ))
                 return
+            processing.close()
             refresh_custom_items()
             page.update()
 
@@ -1200,8 +1272,7 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
             ),
         )
 
-    rebuild_grid()
-    refresh_custom_items()
+    rebuild_all()
     refresh_leftovers()
 
     pantry_card_section = section_card(
@@ -1210,7 +1281,7 @@ def build_pantry_view(page: ft.Page, state: AppState) -> ft.Control:
         grid_row,
         ft.Divider(height=1, color=theme.BORDER),
         ft.Row(
-            [add_dropdown, add_grams_field, add_button, photo_button],
+            [add_dropdown, add_grams_field, add_button, photo_button, receipt_button],
             wrap=True,
             spacing=10,
             run_spacing=10,

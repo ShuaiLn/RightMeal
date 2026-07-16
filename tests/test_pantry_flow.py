@@ -25,6 +25,7 @@ from services.pantry_flow import (
     mark_ingredients_used,
     meal_draw_grams,
     migrate_legacy_purchases,
+    purchased_value,
     purchased_grams,
     rebuild_purchase_aggregates,
     record_purchase_event,
@@ -66,8 +67,11 @@ def make_plan(basket=()) -> SavedPlan:
 def make_basket_item(food, package, count) -> SavedBasketItem:
     return SavedBasketItem(
         food_id=food.id,
+        package_id=package.package_id,
         package_label=package.label,
+        package_grams=package.grams,
         count=count,
+        offer_id=f"test-offer:{package.package_id}",
         cost=1.0,
         source="seed_estimate",
         store="Seed data",
@@ -146,6 +150,73 @@ class TestPurchaseEvents:
         assert pantry.items[rice.id] == pytest.approx(900.0)
         assert plan.purchased[rice.id] == pytest.approx(800.0)
 
+    def test_explicit_basket_link_is_validated_and_persisted(self, foods_by_id):
+        rice = foods_by_id["rice_white"]
+        package = rice.package_options[0]
+        plan = make_plan([make_basket_item(rice, package, 2)])
+        item = plan.basket[0]
+        pantry, log = Pantry(), []
+        record = buy(
+            plan,
+            pantry,
+            log,
+            rice.id,
+            package.grams * 2,
+            quantity=2,
+            basket_item_id=item.basket_item_id,
+            package_id=package.package_id,
+        )
+        assert record.basket_item_id == item.basket_item_id
+        assert record.package_id == package.package_id
+        assert record.package_label == package.label
+        assert record.estimated_line_cost == item.cost
+
+    def test_link_mismatch_fails_before_batch_mutates(self, foods_by_id):
+        rice = foods_by_id["rice_white"]
+        package = rice.package_options[0]
+        plan = make_plan([make_basket_item(rice, package, 1)])
+        item = plan.basket[0]
+        pantry, log = Pantry(), []
+        valid = PurchaseInput(
+            event_id="valid",
+            food_id=rice.id,
+            grams=package.grams,
+            quantity=1,
+            apply_to_plan=True,
+            basket_item_id=item.basket_item_id,
+            package_id=package.package_id,
+        )
+        invalid = PurchaseInput(
+            event_id="invalid",
+            food_id=rice.id,
+            grams=package.grams,
+            quantity=1,
+            apply_to_plan=True,
+            basket_item_id=item.basket_item_id,
+            package_id="another-package",
+        )
+        with pytest.raises(ValueError, match="package does not match"):
+            record_purchase_events(plan, pantry, log, [valid, invalid])
+        assert pantry.items == {}
+        assert log == []
+        assert plan.purchased == {}
+
+    def test_generic_purchase_keeps_package_but_never_infers_basket_link(self, foods_by_id):
+        rice = foods_by_id["rice_white"]
+        package = rice.package_options[0]
+        plan = make_plan([make_basket_item(rice, package, 1)])
+        pantry, log = Pantry(), []
+        record = buy(
+            plan,
+            pantry,
+            log,
+            rice.id,
+            package.grams,
+            package_id=package.package_id,
+        )
+        assert record.package_id == package.package_id
+        assert record.basket_item_id is None
+
 
 class TestVoidGroup:
     def test_void_restores_exactly_and_marks_never_deletes(self, foods_by_id):
@@ -187,6 +258,16 @@ class TestVoidGroup:
         # All-or-nothing: the safe oil record must not have been voided either.
         assert all(record.voided_at is None for record in log)
         assert pantry.items[oil.id] == pytest.approx(200.0)
+
+    def test_manual_extra_stock_survives_exact_decimal_undo(self, foods_by_id):
+        rice = foods_by_id["rice_white"]
+        plan, pantry, log = make_plan(), Pantry(), []
+        group = new_purchase_event_id()
+        buy(plan, pantry, log, rice.id, 0.3, group_id=group)
+        pantry.add(rice.id, 0.1)
+        ok, reason = void_purchase_group(plan, pantry, log, group, today=WHEN)
+        assert ok, reason
+        assert pantry.items[rice.id] == 0.1
 
     def test_newer_off_plan_event_blocks_plan_page_undo(self, foods_by_id):
         rice = foods_by_id["rice_white"]
@@ -253,12 +334,33 @@ class TestAggregatesAndMigration:
         rebuild_purchase_aggregates(plan, log)
         assert plan.purchased[rice.id] == pytest.approx(500.0)
         assert pantry.items[rice.id] == pytest.approx(600.0)
+        assert first[0].basket_item_id is None
+        assert first[0].package_id is None
 
     def test_migration_skips_foods_that_already_have_events(self, foods_by_id):
         rice = foods_by_id["rice_white"]
         plan, pantry, log = make_plan(), Pantry(), []
         buy(plan, pantry, log, rice.id, 500.0)
         assert migrate_legacy_purchases(plan, log) == []
+
+    def test_purchased_value_uses_records_not_all_same_food_plan_lines(self, foods_by_id):
+        rice = foods_by_id["rice_white"]
+        basket = [
+            make_basket_item(rice, package, 1)
+            for package in rice.package_options[:2]
+        ]
+        plan, pantry, log = make_plan(basket), Pantry(), []
+        buy(
+            plan,
+            pantry,
+            log,
+            rice.id,
+            100.0,
+            estimated_line_cost=1.25,
+        )
+        buy(plan, pantry, log, rice.id, 50.0)
+        assert sum(item.cost for item in plan.basket) == 2.0
+        assert purchased_value(plan, log, plan.basket) == 1.25
 
 
 class TestMealDraws:

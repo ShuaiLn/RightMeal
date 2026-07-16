@@ -26,6 +26,7 @@ from services.purchase_log_store import PurchaseLogStore
 from services.photo_import_store import PhotoImportStore
 from services.recipe_store import RecipeStore
 from services.tx import TransactionManager
+from services.tx import TransactionStatus
 from ui.plan_draft import PlanDraft
 
 
@@ -67,6 +68,13 @@ class AppState:
     generation_seq: int = 0
     # Starting a newer analysis invalidates every older open analysis dialog.
     photo_analysis_seq: int = 0
+    # Optimistic-concurrency tokens.  They advance only after the corresponding
+    # durable store was committed successfully; failed/rolled-back writes leave
+    # every token unchanged.
+    plan_revision: int = 0
+    pantry_revision: int = 0
+    purchase_revision: int = 0
+    photo_import_revision: int = 0
     pantry_matcher: CatalogMatcher | None = None
 
     def __post_init__(self) -> None:
@@ -108,10 +116,6 @@ class AppState:
             writes[self.plan_store.path] = self.plan_store.to_json_text(plan)
         if pantry is not None:
             writes[self.pantry_store.path] = self.pantry_store.to_json_text(pantry)
-            # The pantry is a generation input: editing it mid-flight must
-            # invalidate any in-flight generation even if none is restarted.
-            # (Profile saves bypass persist(); their save sites bump directly.)
-            self.begin_generation()
         if leftovers is not None:
             writes[self.prepared_leftovers_store.path] = (
                 self.prepared_leftovers_store.to_json_text(leftovers)
@@ -126,7 +130,23 @@ class AppState:
             writes[self.photo_import_store.path] = (
                 self.photo_import_store.to_json_text(photo_imports)
             )
-        self.tx.save_all(writes)
+        result = self.tx.save_all(writes)
+        if result.status is not TransactionStatus.COMMITTED:
+            # ``save_all`` raises for every non-committed result.  Keep this
+            # guard so a future transaction backend cannot accidentally bump
+            # revisions for an ambiguous outcome.
+            raise RuntimeError(f"unexpected transaction result: {result.status.value}")
+        if plan is not None:
+            self.plan_revision += 1
+        if pantry is not None:
+            self.pantry_revision += 1
+            # Pantry is a plan-generation input, but failed persistence must not
+            # invalidate a generation that still describes durable state.
+            self.begin_generation()
+        if purchases is not None:
+            self.purchase_revision += 1
+        if photo_imports is not None:
+            self.photo_import_revision += 1
 
     def begin_generation(self) -> int:
         """Issue a new generation token; every earlier token becomes stale."""

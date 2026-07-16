@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import math
 from dataclasses import dataclass
 
 from PIL import Image, ImageOps, UnidentifiedImageError
@@ -82,13 +83,78 @@ def crop_region(image_bytes: bytes, region: BoundingRegion) -> bytes:
     try:
         with Image.open(io.BytesIO(image_bytes)) as image:
             image.load()
-            left = max(0, min(image.width - 1, round(region.x1 * image.width)))
-            top = max(0, min(image.height - 1, round(region.y1 * image.height)))
-            right = max(left + 1, min(image.width, round(region.x2 * image.width)))
-            bottom = max(top + 1, min(image.height, round(region.y2 * image.height)))
+            left = math.floor(region.x1 * image.width)
+            top = math.floor(region.y1 * image.height)
+            right = math.ceil(region.x2 * image.width)
+            bottom = math.ceil(region.y2 * image.height)
+            if not (
+                0 <= left < right <= image.width
+                and 0 <= top < bottom <= image.height
+            ):
+                raise ValueError("The crop region is outside the image.")
             crop = image.crop((left, top, right, bottom))
             output = io.BytesIO()
             crop.save(output, format="PNG", optimize=True)
             return output.getvalue()
     except (UnidentifiedImageError, OSError) as exc:
         raise ValueError("The image could not be cropped.") from exc
+
+
+def horizontal_ink_density_bands(
+    image_bytes: bytes,
+    *,
+    row_density_threshold: float = 0.01,
+    ink_threshold: int = 220,
+    merge_gap_pixels: int = 2,
+) -> tuple[tuple[float, float], ...]:
+    """Return weak, normalized horizontal ink bands without doing OCR.
+
+    The signal is intentionally conservative and is only a manual-review aid;
+    callers must never treat it as proof of receipt coverage or as a boundary.
+    """
+
+    try:
+        with Image.open(io.BytesIO(image_bytes)) as opened:
+            gray = opened.convert("L")
+            width, height = gray.size
+            if width <= 0 or height <= 0:
+                return ()
+            pixels = gray.load()
+            active = []
+            for y in range(height):
+                ink = sum(1 for x in range(width) if pixels[x, y] < ink_threshold)
+                active.append((ink / width) >= row_density_threshold)
+    except (UnidentifiedImageError, OSError):
+        return ()
+
+    spans: list[list[int]] = []
+    start: int | None = None
+    last_active: int | None = None
+    for y, is_active in enumerate(active):
+        if is_active:
+            if start is None:
+                start = y
+            last_active = y
+        elif (
+            start is not None
+            and last_active is not None
+            and y - last_active > merge_gap_pixels
+        ):
+            spans.append([start, last_active + 1])
+            start = None
+            last_active = None
+    if start is not None and last_active is not None:
+        spans.append([start, last_active + 1])
+    return tuple((top / height, bottom / height) for top, bottom in spans)
+
+
+def crop_to_boundary(image: NormalizedImage, boundary_y: float) -> NormalizedImage:
+    """Crop a sanitized receipt immediately above a validated manual line."""
+
+    if not math.isfinite(boundary_y) or not 0.0 < boundary_y <= 1.0:
+        raise ValueError("The receipt boundary is outside the image.")
+    cropped = crop_region(
+        image.content,
+        BoundingRegion(0.0, 0.0, 1.0, boundary_y),
+    )
+    return normalize_image(cropped)

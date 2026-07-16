@@ -32,22 +32,29 @@ class LocalExplanationService(ExplanationService):
         if result.budget_status is BudgetStatus.OVER:
             return (
                 f"This basket is estimated at ${result.total_cost:.2f}, which is over "
-                f"your ${result.budget:.2f} budget for {result.horizon_days} days."
+                f"your ${result.budget:.2f} Estimated basket budget cap for "
+                f"{result.horizon_days} days."
             )
         if result.budget_status is BudgetStatus.UNKNOWN:
             return (
                 f"Price data is missing for some ingredients, so we can't confirm "
-                f"whether this basket fits the ${result.budget:.2f} budget."
+                f"whether this basket fits the ${result.budget:.2f} Estimated basket "
+                "budget cap."
             )
         base = (
             f"This basket has an estimated planning total of ${result.total_cost:.2f} "
-            f"(budget ${result.budget:.2f}) and covers {result.groups_covered} of 6 food "
-            f"groups with {result.distinct_foods} different foods for your household of "
-            f"{profile.total_members} over {result.horizon_days} days."
+            f"(Estimated basket budget cap ${result.budget:.2f}) and covers "
+            f"{result.groups_covered} of 6 food groups with {result.distinct_foods} "
+            f"different foods for your household of {profile.total_members} over "
+            f"{result.horizon_days} days."
         )
         if result.nutrition_feasible:
             return base + " All planning targets were met."
-        return base + " Some nutrition targets could not be met within this budget — see the gaps below."
+        return (
+            base
+            + " Some nutrition targets could not be met within this estimated basket "
+            "budget cap — see the gaps below."
+        )
 
     @staticmethod
     def _item_reasons(result: OptimizationResult) -> dict[str, str]:
@@ -84,8 +91,9 @@ class LocalExplanationService(ExplanationService):
         parts: list[str] = []
         if result.budget_status is BudgetStatus.WITHIN:
             parts.append(
-                f"${result.total_cost:.2f} of the ${result.budget:.2f} budget is used "
-                f"(prices are planning estimates from mixed sources, not one store's checkout total)."
+                f"${result.total_cost:.2f} of the ${result.budget:.2f} Estimated basket "
+                "budget cap is used (prices are planning estimates from mixed sources, "
+                "not one store's checkout total)."
             )
         parts.extend(result.relaxed_constraints)
         if result.dominance_flags:

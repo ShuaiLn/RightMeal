@@ -316,7 +316,10 @@ def budget_bar(
                     weight=ft.FontWeight.W_700,
                     color=theme.TEXT,
                 ),
-                muted_text(f"of ${budget:.2f} · {horizon_days}-day plan"),
+                muted_text(
+                    f"of ${budget:.2f} · Estimated basket budget cap · "
+                    f"{horizon_days}-day plan"
+                ),
             ],
             spacing=8,
             vertical_alignment=ft.CrossAxisAlignment.END,
@@ -729,11 +732,13 @@ def warnings_strip(
         return None
     if budget_status is BudgetStatus.OVER:
         # The accurate dollar detail is already in relaxed_constraints below.
-        headline = "Over budget."
+        headline = "Over the estimated basket budget cap."
     elif budget_status is BudgetStatus.UNKNOWN:
-        headline = "Budget status unknown — price data is incomplete."
+        headline = "Estimated-cap status unknown — price data is incomplete."
     else:
-        headline = "Within budget — nutrition targets partially met."
+        headline = (
+            "Within the estimated basket budget cap — nutrition targets partially met."
+        )
     lines: list[ft.Control] = [
         ft.Text(headline, size=13.5, weight=ft.FontWeight.W_600, color=theme.WARN_INK)
     ]

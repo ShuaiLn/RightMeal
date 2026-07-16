@@ -13,18 +13,25 @@ from typing import Callable
 import flet as ft
 
 import theme
-from models import SLOT_LABELS, SLOT_ORDER, Nutrients
+from models import SLOT_LABELS, SLOT_ORDER, Nutrients, PlanKind
 from services.nutrition import NutrientStatus, eaten_day_status, suggest_foods_for
 from ui.components import (
     NUTRIENT_STYLES,
     card,
-    food_avatar,
     muted_text,
     pill,
     primary_button,
     section_card,
 )
-from ui.meals_section import SLOT_ICONS, dish_or_ingredient_photo, portion_label
+from ui.meals_section import (
+    SLOT_ICONS,
+    dish_or_ingredient_photo,
+    meal_per_person_nutrition_label,
+    meal_serving_summary,
+    partial_plan_warning_banner,
+    portion_label,
+    stale_plan_warning_banner,
+)
 from ui.state import AppState
 
 _WEEKDAY_HEADERS = ("Su", "Mo", "Tu", "We", "Th", "Fr", "Sa")
@@ -312,9 +319,11 @@ def build_calendar_view(
         elif meal.is_leftover:
             name_row.append(pill("leftovers", theme.SURFACE_TINT, theme.TEXT_MUTED))
         dish = dish_or_ingredient_photo(meal, state, size=44, width=44)
-        pp = meal.per_person_kcal
-        kcal_text = (f"≈{pp:,.0f} kcal/person" if pp is not None and meal.servings > 0
-                     else f"≈{meal.kcal:,.0f} kcal")
+        partial_warning = (
+            [partial_plan_warning_banner(compact=True)]
+            if plan.plan_kind is PlanKind.PARTIAL_FOOD_COVERAGE
+            else []
+        )
         return ft.Container(
             content=ft.Column(
                 [
@@ -328,12 +337,14 @@ def build_calendar_view(
                                 color=theme.PRIMARY_DARK,
                             ),
                             ft.Container(expand=True),
-                            muted_text(kcal_text, size=12),
                         ],
                         spacing=6,
                     ),
                     ft.Row([dish, ft.Row(name_row, spacing=8, expand=True)], spacing=10),
+                    muted_text(meal_serving_summary(meal), size=12),
+                    muted_text(meal_per_person_nutrition_label(meal), size=12),
                     muted_text(" · ".join(portion_label(p) for p in meal.portions), size=12),
+                    *partial_warning,
                     status_block(when, meal),
                 ],
                 spacing=8,
@@ -409,12 +420,19 @@ def build_calendar_view(
         spacing=10,
     )
 
-    return ft.Column(
+    warnings: list[ft.Control] = []
+    if plan.plan_kind is PlanKind.PARTIAL_FOOD_COVERAGE:
+        warnings.append(partial_plan_warning_banner())
+    if state.profile is not None and plan.profile_stale(state.profile):
+        warnings.append(stale_plan_warning_banner())
+
+    scroll_body = ft.Column(
         [grid_card, section_card(None, detail_column)],
         spacing=16,
         scroll=ft.ScrollMode.AUTO,
         expand=True,
     )
+    return ft.Column([*warnings, scroll_body], spacing=12, expand=True)
 
 
 def _go_to_plan_button(on_go_to_plan: Callable[[], None]) -> ft.FilledButton:

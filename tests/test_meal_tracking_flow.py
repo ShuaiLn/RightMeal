@@ -276,7 +276,7 @@ class TestRecordLeftover:
             state, plan, WHEN, meal.slot, meal,
             overall_fraction=0.33,
             components={"rice_white": 0.5, "chicken_breast": 0.0},
-            note="米饭剩一半鸡肉吃完了",
+            note="half the rice is left and all the chicken was eaten",
         )
         assert result.ok
         assert state.pantry.items == pantry_after_eating  # never refunded
@@ -286,7 +286,9 @@ class TestRecordLeftover:
                          "chicken_breast": pytest.approx(0.0)}
         entry = plan.tracking_entry(WHEN, meal.slot)
         assert entry["leftover_created_id"] == record.id
-        assert entry["leftover_note"] == "米饭剩一半鸡肉吃完了"
+        assert entry["leftover_note"] == (
+            "half the rice is left and all the chicken was eaten"
+        )
 
     def test_servings_are_derived_not_taken_from_overall(self, foods_by_id):
         state = StubState(foods_by_id, Pantry(items={"rice_white": 1000.0,

@@ -2,11 +2,17 @@
 
 import json
 import threading
+from pathlib import Path
 
 import pytest
 
 from services import tx as tx_module
-from services.tx import TX_JOURNAL_FILENAME, TransactionManager
+from services.tx import (
+    TX_JOURNAL_FILENAME,
+    TransactionManager,
+    TransactionRecoveryRequiredError,
+    TransactionStatus,
+)
 
 
 def read(base_dir, name):
@@ -142,6 +148,32 @@ class TestSaveAll:
         # Whole transactions only: both files always end on the same writer.
         assert read(tmp_path, "plan.json") == read(tmp_path, "pantry.json")
         assert not (tmp_path / TX_JOURNAL_FILENAME).exists()
+
+    def test_unsafe_journal_cleanup_reports_recovery_and_freezes_writes(
+        self, tmp_path, monkeypatch
+    ):
+        seed(tmp_path, {"plan.json": "old-plan"})
+        manager = TransactionManager(tmp_path)
+        journal = tmp_path / TX_JOURNAL_FILENAME
+        real_unlink = Path.unlink
+
+        def failing_unlink(path, *args, **kwargs):
+            if path == journal:
+                raise OSError("journal is locked")
+            return real_unlink(path, *args, **kwargs)
+
+        monkeypatch.setattr(Path, "unlink", failing_unlink)
+        with pytest.raises(TransactionRecoveryRequiredError) as error:
+            manager.save_all({tmp_path / "plan.json": "new-plan"})
+        assert error.value.result.status is TransactionStatus.RECOVERY_REQUIRED
+        assert error.value.result.files_may_be_committed
+        assert read(tmp_path, "plan.json") == "new-plan"
+        assert journal.exists()
+        assert manager.writes_frozen
+
+        with pytest.raises(TransactionRecoveryRequiredError):
+            manager.save_all({tmp_path / "plan.json": "must-not-land"})
+        assert read(tmp_path, "plan.json") == "new-plan"
 
 
 class TestRecoverPending:

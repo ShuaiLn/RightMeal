@@ -1,7 +1,11 @@
 """Unit tests for the dev-time recipe indexer (scripts/recipe_indexer)."""
 
+# The indexer is a script package added to ``sys.path`` below.
+# ruff: noqa: E402
+
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -24,6 +28,21 @@ def test_parses_quantity_unit_name_prep():
     assert round(p.grams_explicit) == 227  # 0.5 lb, NOT the fraction denominator
 
 
+def test_parses_tightly_attached_metric_units():
+    cases = {
+        "500g flour": (500.0, "g", 500.0, None, "flour"),
+        "200ml milk": (200.0, "ml", None, 200.0, "milk"),
+        "1kg potatoes": (1.0, "kg", 1000.0, None, "potatoes"),
+    }
+    for text, expected in cases.items():
+        parsed = parse_ingredient_line(text)
+        assert (
+            parsed.quantity,
+            parsed.unit,
+            parsed.grams_explicit,
+            parsed.ml_explicit,
+            parsed.name,
+        ) == expected
 def test_unicode_fraction_and_parenthetical_metric():
     assert parse_ingredient_line("3⁄4 rolled oats").quantity == 0.75
     p = parse_ingredient_line("2 cans (28 oz.) plum tomatoes")
@@ -60,6 +79,22 @@ def test_resolver_exact_alias_and_plural():
     assert r.resolve("boneless chicken").food_id == "chicken_breast"
     assert r.resolve("yellow onion").food_id == "onions_yellow"  # singularized alias
     assert r.resolve("unicorn meat").food_id is None
+
+
+def test_star_anise_is_not_mapped_to_red_pepper_flakes():
+    data_dir = _SCRIPTS.parent / "src" / "data"
+    aliases = json.loads(
+        (data_dir / "ingredient_aliases.json").read_text(encoding="utf-8")
+    )["aliases"]
+    registry = json.loads(
+        (data_dir / "ingredient_registry.json").read_text(encoding="utf-8")
+    )["roles"]
+    resolver = IngredientResolver({}, aliases, {}, set(registry))
+
+    resolution = resolver.resolve("star anise")
+    assert resolution.food_id == "star_anise"
+    assert resolution.food_id != "red_pepper_flakes"
+    assert registry[resolution.food_id]["is_seasoning"] is True
 
 
 def test_normalize_folds_accents_and_case():

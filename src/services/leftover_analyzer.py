@@ -1,7 +1,7 @@
 """OpenAI-backed leftover estimation from a one-sentence note.
 
 Given a cooked meal (name + per-ingredient raw grams for the ONE serving the
-meal card represents) and the user's note in any language ("剩了大概三分之一",
+meal card represents) and the user's note ("about one third is left",
 "we ate all the rice but left the chicken"), the model estimates how much is
 left — overall and, when the note names specific foods, per ingredient.
 

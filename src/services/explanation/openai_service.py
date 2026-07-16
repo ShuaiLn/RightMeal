@@ -31,7 +31,9 @@ SYSTEM_PROMPT = (
     "of health outcomes. Use neutral coverage language like 'covers 74% of the "
     "planning target'.\n"
     "3. Never include links, URLs, or shopping instructions.\n"
-    "4. Write plain, friendly English for a general audience.\n"
+    "4. Call the user's limit the 'Estimated basket budget cap', never a "
+    "checkout budget or affordability guarantee.\n"
+    "5. Write plain, friendly English for a general audience.\n"
     "Respond with JSON matching the provided schema."
 )
 
@@ -76,10 +78,10 @@ def serialize_result(result: OptimizationResult, profile: HouseholdProfile) -> d
     """Compact, verified facts the model is allowed to describe."""
     return {
         "estimated_planning_total_usd": result.total_cost,
-        "budget_usd": result.budget,
+        "estimated_basket_budget_cap_usd": result.budget,
         "horizon_days": result.horizon_days,
         "household_members": profile.total_members,
-        "budget_status": result.budget_status.value,
+        "estimated_cap_status": result.budget_status.value,
         "unpriced_foods": list(result.unpriced_food_names),
         "nutrition_feasible": result.nutrition_feasible,
         "items": [

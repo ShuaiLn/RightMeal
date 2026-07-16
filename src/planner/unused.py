@@ -61,6 +61,10 @@ def categorize_unused(
             )
         else:
             categories[UnusedCategory.NOT_SELECTED].append(
-                (food, f"not chosen within the ${result.budget:.0f} budget and nutrition targets")
+                (
+                    food,
+                    f"not chosen within the ${result.budget:.0f} estimated basket "
+                    "budget cap and nutrition targets",
+                )
             )
     return categories

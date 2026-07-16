@@ -398,7 +398,7 @@ class TestBudgetStatusMigration:
         assert plan is not None
         assert plan.budget_status is BudgetStatus.UNKNOWN
 
-    def test_all_statuses_round_trip_at_v5(self, foods_by_id):
+    def test_all_statuses_round_trip_at_v6(self, foods_by_id):
         from models import BudgetStatus
         from models.plan import PLAN_SCHEMA_VERSION
 
@@ -410,7 +410,7 @@ class TestBudgetStatusMigration:
             plan = SavedPlan.from_dict(raw, foods_by_id)
             assert plan.budget_status is status
             dumped = plan.to_dict()
-            assert dumped["version"] == PLAN_SCHEMA_VERSION == 5
+            assert dumped["version"] == PLAN_SCHEMA_VERSION == 6
             assert dumped["feasibility"]["budget_status"] == status.value
             assert "budget_feasible" not in dumped["feasibility"]
             again = SavedPlan.from_dict(dumped, foods_by_id)

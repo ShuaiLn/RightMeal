@@ -55,7 +55,7 @@ def compute(
     core_ids: list[str] = []
 
     for ing in ingredients:
-        if ing.optional or ing.is_seasoning:
+        if ing.optional or ing.is_seasoning or ing.is_nonfood:
             continue
         grams = ing.grams_per_serving or 0.0
 

@@ -2,9 +2,16 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, fields
+import uuid
+from dataclasses import dataclass, fields, replace
+from decimal import Decimal
 from enum import Enum
 from typing import ClassVar
+
+from models.quantities import grams_decimal, quantity_decimal
+
+
+PACKAGE_ID_NAMESPACE = uuid.uuid5(uuid.NAMESPACE_URL, "rightmeal.local/package")
 
 
 class PrepState(str, Enum):
@@ -122,14 +129,87 @@ class PackageOption:
     grams: float
     seed_price: float
     ml: float | None = None  # set for liquids; price normalization uses per-100ml
+    # Catalog package identity.  Existing curated data omits this field; Food
+    # backfills it deterministically after the owning food id is known.
+    package_id: str = ""
 
     def __post_init__(self) -> None:
+        object.__setattr__(self, "package_id", str(self.package_id).strip())
         if self.grams <= 0:
             raise ValueError(f"Package '{self.label}' must have positive grams")
         if self.seed_price < 0:
             raise ValueError(f"Package '{self.label}' must have a non-negative price")
         if self.ml is not None and self.ml <= 0:
             raise ValueError(f"Package '{self.label}' ml must be positive when set")
+
+
+def deterministic_package_id(food_id: str, package: PackageOption) -> str:
+    """Stable id for catalog packages that predate explicit ids.
+
+    Labels remain display text.  Weight/volume are included so a later catalog
+    package that happens to reuse a label cannot silently take over the old
+    package's identity.
+    """
+
+    grams = format(grams_decimal(package.grams).normalize(), "f")
+    ml = "" if package.ml is None else format(grams_decimal(package.ml).normalize(), "f")
+    fingerprint = f"{food_id}\x1f{package.label}\x1f{grams}\x1f{ml}"
+    return str(uuid.uuid5(PACKAGE_ID_NAMESPACE, fingerprint))
+
+
+@dataclass(frozen=True)
+class PackageUnit:
+    """A package conversion bound to one exact catalog food and package.
+
+    The binding is deliberately revalidated against the current ``Food`` on
+    every conversion.  A unit retained by a UI after the selected food changes
+    therefore becomes invalid immediately instead of silently reusing a weight
+    from the previous food.
+    """
+
+    food_id: str
+    package_label: str
+    grams: Decimal
+    package_id: str = ""
+
+    def __post_init__(self) -> None:
+        if not self.food_id or not self.package_label:
+            raise ValueError("a package unit needs a food and package label")
+        object.__setattr__(self, "grams", grams_decimal(self.grams, positive=True))
+        object.__setattr__(self, "package_id", str(self.package_id).strip())
+
+    @classmethod
+    def from_option(cls, food: "Food", package: PackageOption) -> "PackageUnit":
+        if not any(
+            candidate.package_id == package.package_id
+            and candidate.label == package.label
+            and grams_decimal(candidate.grams) == grams_decimal(package.grams)
+            for candidate in food.package_options
+        ):
+            raise ValueError("the package does not belong to the selected food")
+        return cls(
+            food.id,
+            package.label,
+            grams_decimal(package.grams, positive=True),
+            package.package_id,
+        )
+
+    def option_for(self, food: "Food") -> PackageOption:
+        if food.id != self.food_id:
+            raise ValueError("the package unit belongs to a different food")
+        for package in food.package_options:
+            if (
+                (not self.package_id or package.package_id == self.package_id)
+                and package.label == self.package_label
+                and grams_decimal(package.grams) == self.grams
+            ):
+                return package
+        raise ValueError("the package is no longer valid for the selected food")
+
+    def to_grams(self, quantity: object, food: "Food") -> float:
+        self.option_for(food)
+        normalized_quantity = quantity_decimal(quantity, positive=True)
+        return float(grams_decimal(normalized_quantity * self.grams, positive=True))
 
 
 @dataclass(frozen=True)
@@ -166,6 +246,16 @@ class Food:
     max_plated_grams_per_member_day: float | None = None
 
     def __post_init__(self) -> None:
+        packages = tuple(
+            package
+            if package.package_id
+            else replace(package, package_id=deterministic_package_id(self.id, package))
+            for package in self.package_options
+        )
+        package_ids = [package.package_id for package in packages]
+        if len(package_ids) != len(set(package_ids)):
+            raise ValueError(f"Food '{self.id}' has duplicate package ids")
+        object.__setattr__(self, "package_options", packages)
         if not self.package_options:
             raise ValueError(f"Food '{self.id}' must have at least one package option")
         if self.is_liquid:

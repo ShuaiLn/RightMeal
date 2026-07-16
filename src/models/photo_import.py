@@ -52,6 +52,10 @@ class PhotoImportRecord:
     transaction_fingerprint: str | None
     purchase_event_ids: tuple[str, ...]
     custom_pantry_ids: tuple[str, ...]
+    # Fingerprint of the immutable, user-confirmed commit command.  ``None`` is
+    # accepted only for legacy records; such a record can participate in
+    # duplicate detection but can never be replayed as an idempotent command.
+    commit_fingerprint: str | None = None
 
     def to_dict(self) -> dict:
         return {
@@ -62,6 +66,7 @@ class PhotoImportRecord:
             "transaction_fingerprint": self.transaction_fingerprint,
             "purchase_event_ids": list(self.purchase_event_ids),
             "custom_pantry_ids": list(self.custom_pantry_ids),
+            "commit_fingerprint": self.commit_fingerprint,
         }
 
     @classmethod
@@ -70,7 +75,9 @@ class PhotoImportRecord:
             "operation_id", "photo_kind", "imported_at", "images",
             "transaction_fingerprint", "purchase_event_ids", "custom_pantry_ids",
         }
-        if set(data) != expected:
+        # Schema-v1 ledgers predate command fingerprints.  Load them for audit
+        # and duplicate detection, but replay remains fail-closed.
+        if set(data) not in (expected, expected | {"commit_fingerprint"}):
             raise ValueError("unexpected photo import fields")
         fingerprint = data.get("transaction_fingerprint")
         if fingerprint is not None:
@@ -79,6 +86,13 @@ class PhotoImportRecord:
                 char not in "0123456789abcdef" for char in fingerprint
             ):
                 raise ValueError("invalid transaction fingerprint")
+        commit_fingerprint = data.get("commit_fingerprint")
+        if commit_fingerprint is not None:
+            commit_fingerprint = str(commit_fingerprint)
+            if len(commit_fingerprint) != 64 or any(
+                char not in "0123456789abcdef" for char in commit_fingerprint
+            ):
+                raise ValueError("invalid photo import commit fingerprint")
         operation_id = str(data["operation_id"])
         if not operation_id:
             raise ValueError("operation id is required")
@@ -97,4 +111,5 @@ class PhotoImportRecord:
             transaction_fingerprint=fingerprint,
             purchase_event_ids=purchase_ids,
             custom_pantry_ids=custom_ids,
+            commit_fingerprint=commit_fingerprint,
         )

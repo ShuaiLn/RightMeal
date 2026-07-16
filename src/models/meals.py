@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+import math
 
 from models.food import Food, Nutrients
 
@@ -102,6 +103,30 @@ class Meal:
     # Set when this meal IS a scheduled prepared leftover (ready meal): it
     # draws zero raw ingredients and eating it consumes the referenced record.
     prepared_leftover_id: str | None = None
+    # Explicit portion semantics (v6 plans). ``servings`` remains as a legacy
+    # wire alias for full-serving equivalents; it must not be interpreted as
+    # the number of people a reduced-portion meal feeds.
+    household_member_count: int = 0
+    full_serving_equivalent: float = 0.0
+    portion_scale: float = 1.0
+
+    def __post_init__(self) -> None:
+        members = self.household_member_count
+        equivalents = self.full_serving_equivalent
+        if equivalents <= 0 and self.servings > 0:
+            equivalents = float(self.servings)
+            object.__setattr__(self, "full_serving_equivalent", equivalents)
+        if members <= 0 and self.servings > 0:
+            members = max(1, int(round(self.servings)))
+            object.__setattr__(self, "household_member_count", members)
+        if members > 0 and equivalents > 0:
+            derived = equivalents / members
+            # Legacy constructors use the default scale. Derive the explicit
+            # ratio when the two new identity fields say this is reduced.
+            if self.portion_scale == 1.0 and not math.isclose(derived, 1.0):
+                object.__setattr__(self, "portion_scale", derived)
+        if self.portion_scale <= 0 or self.portion_scale > 1.0:
+            raise ValueError("meal portion_scale must be within (0, 1]")
 
     @property
     def nutrients(self) -> Nutrients:
@@ -118,6 +143,8 @@ class Meal:
     def per_person_kcal(self) -> float | None:
         """Calories per person; None for legacy meals with unknown servings
         (the UI then falls back to the whole-household total)."""
+        if self.household_member_count > 0:
+            return self.nutrients.calories_kcal / self.household_member_count
         if self.servings and self.servings > 0:
             return self.nutrients.calories_kcal / self.servings
         return None

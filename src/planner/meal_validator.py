@@ -105,7 +105,7 @@ def _role_of(food_id: str, recipe: Recipe, side: Recipe | None) -> str | None:
         if r is None:
             continue
         for ing in r.ingredients:
-            if ing.canonical_food_id == food_id:
+            if not ing.is_nonfood and ing.canonical_food_id == food_id:
                 return ing.role
     return None
 
@@ -116,7 +116,7 @@ def _allowed_food_ids(recipe: Recipe, side: Recipe | None) -> set[str]:
         if r is None:
             continue
         for ing in r.ingredients:
-            if ing.canonical_food_id:
+            if ing.canonical_food_id and not ing.is_nonfood:
                 ids.add(ing.canonical_food_id)
         for sub in r.substitutions:
             ids.add(sub.to_food_id)

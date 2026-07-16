@@ -99,10 +99,18 @@ def main(page: ft.Page):
             migrated = migrate_legacy_purchases(state.saved_plan, state.purchase_log)
             if not is_historical(state.saved_plan):
                 rebuild_purchase_aggregates(state.saved_plan, state.purchase_log)
-        if state.saved_plan is not None and (migrated or state.saved_plan.needs_resave):
+        plan_needs_resave = bool(
+            state.saved_plan is not None
+            and (migrated or state.saved_plan.needs_resave)
+        )
+        if plan_needs_resave or load_result.needs_resave:
             try:
-                state.persist(plan=state.saved_plan, purchases=state.purchase_log)
-                state.saved_plan.needs_resave = False
+                state.persist(
+                    plan=(state.saved_plan if plan_needs_resave else None),
+                    purchases=state.purchase_log,
+                )
+                if state.saved_plan is not None and plan_needs_resave:
+                    state.saved_plan.needs_resave = False
             except Exception:  # noqa: BLE001 - retried next launch (idempotent)
                 pass
         sweep_orphan_photos(state.purchase_log_store, state.purchase_log)
@@ -183,7 +191,11 @@ def main(page: ft.Page):
         set_active_nav(start_nav)
         content.padding = DEFAULT_CONTENT_PADDING
         content.content = build_start_view(
-            page, state, on_planned=show_planning, on_edit_household=show_profile
+            page,
+            state,
+            on_planned=show_planning,
+            on_edit_household=show_profile,
+            on_delete_plan=handle_plan_delete,
         )
         page.update()
         current_view["refresh"] = show_start
@@ -242,7 +254,23 @@ def main(page: ft.Page):
         else:
             show_start()
 
+    def handle_plan_delete() -> None:
+        # Invalidate any generation still running before removing its target.
+        state.begin_generation()
+        try:
+            state.plan_store.delete()
+        except OSError as exc:
+            page.show_dialog(ft.SnackBar(ft.Text(f"Could not delete the plan: {exc}")))
+            return
+        state.saved_plan = None
+        state.plan_revision += 1
+        show_start()
+
     def handle_delete() -> None:
+        # Clearing user data must also invalidate work that captured the old
+        # profile or stores and could otherwise write it back after deletion.
+        state.begin_generation()
+        state.begin_photo_analysis()
         state.store.delete()
         state.plan_store.delete()
         state.pantry_store.delete()

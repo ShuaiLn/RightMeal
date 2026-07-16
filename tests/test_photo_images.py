@@ -37,3 +37,13 @@ def test_crop_uses_normalized_region_and_rejects_invalid_bounds():
 def test_invalid_image_is_rejected():
     with pytest.raises(ValueError):
         normalize_image(b"not an image")
+
+
+def test_exif_rotation_is_applied_before_final_coordinate_dimensions():
+    image = Image.new("RGB", (40, 20), "white")
+    exif = image.getexif()
+    exif[0x0112] = 6  # rotate 90 degrees clockwise for display
+    output = io.BytesIO()
+    image.save(output, format="JPEG", exif=exif)
+    normalized = normalize_image(output.getvalue())
+    assert (normalized.width, normalized.height) == (20, 40)

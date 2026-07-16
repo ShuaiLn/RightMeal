@@ -53,7 +53,7 @@ def collect_gaps() -> list[RecipeGap]:
         pending: set[str] = set()
         unresolved_core = False
         for ing in r["ingredients"]:
-            if ing["optional"] or ing["is_seasoning"]:
+            if ing["optional"] or ing["is_seasoning"] or ing.get("is_nonfood", False):
                 continue
             fid = ing["canonical_food_id"]
             grams = ing["grams_per_serving"] or 0.0

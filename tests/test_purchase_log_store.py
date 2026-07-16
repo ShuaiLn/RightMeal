@@ -43,6 +43,21 @@ class TestRoundTrip:
         result = PurchaseLogStore(tmp_path).load()
         assert result.load_error is None
         assert result.records == records
+        assert result.needs_resave is False
+
+    def test_v4_round_trips_optional_basket_and_package_links(self, tmp_path):
+        record = make_record()
+        record = PurchaseRecord(**{
+            **record.__dict__,
+            "basket_item_id": "basket-line-1",
+            "package_id": "package-1",
+        })
+        store = PurchaseLogStore(tmp_path)
+        store.save([record])
+        raw = json.loads(store.path.read_text(encoding="utf-8"))
+        assert raw["records"][0]["basket_item_id"] == "basket-line-1"
+        assert raw["records"][0]["package_id"] == "package-1"
+        assert store.load().records == [record]
 
     def test_missing_file_is_a_legal_empty_log(self, tmp_path):
         result = PurchaseLogStore(tmp_path).load()
@@ -54,6 +69,44 @@ class TestRoundTrip:
         raw = json.loads(store.path.read_text(encoding="utf-8"))
         assert raw["records"][0]["photo_path"] == "purchase_photos/x.jpg"
         assert "\\" not in raw["records"][0]["photo_path"]
+
+    def test_v4_uses_canonical_decimal_text_and_round_trips_fractional_quantity(self, tmp_path):
+        record = make_record()
+        record = PurchaseRecord(**{
+            **record.__dict__,
+            "grams": 300,
+            "quantity": 0.5,
+            "line_total": 1,
+        })
+        store = PurchaseLogStore(tmp_path)
+        store.save([record])
+        raw = json.loads(store.path.read_text(encoding="utf-8"))
+        assert raw["version"] == 4
+        assert raw["records"][0]["quantity"] == "0.500"
+        assert raw["records"][0]["grams"] == "300.000"
+        assert raw["records"][0]["line_total"] == "1.00"
+        assert store.load().records == [record]
+
+    def test_v1_through_v3_integer_quantities_load_as_normalized_decimals(self, tmp_path):
+        for version in (1, 2, 3):
+            raw_record = make_record().to_dict()
+            raw_record["quantity"] = 1
+            raw_record["grams"] = 300
+            raw_record.pop("basket_item_id", None)
+            raw_record.pop("package_id", None)
+            path = tmp_path / f"v{version}"
+            path.mkdir()
+            (path / "purchases.json").write_text(
+                json.dumps({"version": version, "records": [raw_record]}),
+                encoding="utf-8",
+            )
+            loaded = PurchaseLogStore(path).load()
+            assert loaded.load_error is None
+            assert loaded.needs_resave is True
+            assert loaded.records[0].quantity == 1.0
+            assert loaded.records[0].basket_item_id is None
+            assert loaded.records[0].package_id is None
+            assert loaded.records[0].to_dict()["quantity"] == "1.000"
 
 
 class TestCorruption:
@@ -112,3 +165,10 @@ class TestPurchaseInputDefaults:
         assert purchase_input.apply_to_plan is False
         assert purchase_input.line_total is None
         assert purchase_input.price_source == "unknown"
+
+    def test_fractional_quantity_is_normalized(self):
+        values = [
+            PurchaseInput(event_id="e", food_id="rice", grams=300, quantity=value)
+            for value in ("0.5", "0.500", 0.5)
+        ]
+        assert {item.quantity for item in values} == {0.5}

@@ -111,6 +111,7 @@
     "cayenne":            {"role": "seasoning", "parent_category": "spice",    "default_state": "dry",   "nutrition_source": "none", "is_seasoning": true},
     "chili_powder":       {"role": "seasoning", "parent_category": "spice",    "default_state": "dry",   "nutrition_source": "none", "is_seasoning": true},
     "red_pepper_flakes":  {"role": "seasoning", "parent_category": "spice",    "default_state": "dry",   "nutrition_source": "none", "is_seasoning": true},
+    "star_anise":          {"role": "seasoning", "parent_category": "spice",    "default_state": "dry",   "nutrition_source": "none", "is_seasoning": true},
     "baking_powder":      {"role": "seasoning", "parent_category": "leavening","default_state": "dry",   "nutrition_source": "none", "is_seasoning": true},
     "baking_soda":        {"role": "seasoning", "parent_category": "leavening","default_state": "dry",   "nutrition_source": "none", "is_seasoning": true},
     "vanilla_extract":    {"role": "seasoning", "parent_category": "extract",  "default_state": "raw",   "nutrition_source": "none", "is_seasoning": true},

@@ -173,9 +173,17 @@ class _DummyPage:
 
     def __init__(self):
         self.overlay = []
+        self.dialogs = []
 
     def update(self):
         pass
+
+    def show_dialog(self, dialog):
+        self.dialogs.append(dialog)
+
+    def pop_dialog(self):
+        if self.dialogs:
+            self.dialogs.pop()
 
 
 def _iter_controls(node):
@@ -195,6 +203,15 @@ def _find_control(root, predicate):
         if predicate(node):
             return node
     raise AssertionError("no matching control found in tree")
+
+
+def test_candidate_cap_conversion_never_rounds_below_candidate():
+    from ui.start_view import _base_budget_for_cap
+
+    daily = _base_budget_for_cap(10.00, 3, daily_mode=True)
+    weekly = _base_budget_for_cap(10.00, 3, daily_mode=False)
+    assert round(daily * 3, 2) >= 10.00
+    assert round(weekly * 3 / 7, 2) >= 10.00
 
 
 class TestStartViewDraftPreservation:
@@ -218,7 +235,9 @@ class TestStartViewDraftPreservation:
 
     def _fields(self, root, ft):
         budget_field = _find_control(
-            root, lambda c: isinstance(c, ft.TextField) and c.label == "Budget (USD)"
+            root,
+            lambda c: isinstance(c, ft.TextField)
+            and c.label == "Estimated basket budget cap",
         )
         zip_field = _find_control(
             root, lambda c: isinstance(c, ft.TextField) and c.label == "ZIP code"
@@ -374,7 +393,9 @@ class TestStaleGenerationRace:
             on_edit_household=lambda: None,
         )
         budget_field = _find_control(
-            root, lambda c: isinstance(c, ft.TextField) and c.label == "Budget (USD)"
+            root,
+            lambda c: isinstance(c, ft.TextField)
+            and c.label == "Estimated basket budget cap",
         )
         plan_button = _find_control(
             root, lambda c: isinstance(c, ft.FilledButton) and c.content == "Plan my groceries"
@@ -498,13 +519,126 @@ class TestStartViewHousehold:
             _DummyPage(), state, on_planned=lambda: None, on_edit_household=lambda: None
         )
         budget_field = _find_control(
-            root, lambda c: isinstance(c, ft.TextField) and c.label == "Budget (USD)"
+            root,
+            lambda c: isinstance(c, ft.TextField)
+            and c.label == "Estimated basket budget cap",
         )
         zip_field = _find_control(
             root, lambda c: isinstance(c, ft.TextField) and c.label == "ZIP code"
         )
         assert budget_field.value == "66"
         assert zip_field.value == "94000"
+
+
+class TestStartViewDeletePlan:
+    def test_delete_button_only_appears_for_existing_plan(self, tmp_path):
+        import flet as ft
+
+        from test_pantry_flow import make_plan
+        from ui.start_view import build_start_view
+
+        state = _make_app_state(tmp_path, adults=1, zip_code="90001")
+        page = _DummyPage()
+        without_plan = build_start_view(
+            page, state, on_planned=lambda: None, on_edit_household=lambda: None
+        )
+        assert not any(
+            isinstance(control, ft.OutlinedButton) and control.content == "Delete plan"
+            for control in _iter_controls(without_plan)
+        )
+
+        state.saved_plan = make_plan()
+        with_plan = build_start_view(
+            page, state, on_planned=lambda: None, on_edit_household=lambda: None
+        )
+        _find_control(
+            with_plan,
+            lambda control: isinstance(control, ft.OutlinedButton)
+            and control.content == "Delete plan",
+        )
+
+    def test_delete_requires_confirmation_and_calls_handler(self, tmp_path):
+        import flet as ft
+
+        from test_pantry_flow import make_plan
+        from ui.start_view import build_start_view
+
+        state = _make_app_state(tmp_path, adults=1, zip_code="90001")
+        state.saved_plan = make_plan()
+        page = _DummyPage()
+        deleted = []
+        root = build_start_view(
+            page,
+            state,
+            on_planned=lambda: None,
+            on_edit_household=lambda: None,
+            on_delete_plan=lambda: deleted.append(1),
+        )
+        delete_button = _find_control(
+            root,
+            lambda control: isinstance(control, ft.OutlinedButton)
+            and control.content == "Delete plan",
+        )
+
+        delete_button.on_click(None)
+        assert deleted == []
+        assert len(page.dialogs) == 1
+        dialog = page.dialogs[-1]
+        confirm = next(
+            action
+            for action in dialog.actions
+            if isinstance(action, ft.FilledButton) and action.content == "Delete plan"
+        )
+        confirm.on_click(None)
+
+        assert deleted == [1]
+        assert page.dialogs == []
+
+
+class TestProfileClearAllData:
+    def test_clear_all_data_requires_explicit_confirmation(self):
+        import flet as ft
+
+        from models import HouseholdProfile
+        from ui.profile_view import build_profile_view
+
+        page = _DummyPage()
+        cleared = []
+        root = build_profile_view(
+            page,
+            HouseholdProfile(adults=1, zip_code="90001"),
+            on_save=lambda profile: None,
+            on_delete=lambda: cleared.append(1),
+        )
+        clear_button = _find_control(
+            root,
+            lambda control: isinstance(control, ft.OutlinedButton)
+            and control.content == "Clear all user data",
+        )
+
+        clear_button.on_click(None)
+        assert cleared == []
+        assert len(page.dialogs) == 1
+        cancel = next(
+            action
+            for action in page.dialogs[-1].actions
+            if isinstance(action, ft.TextButton) and action.content == "Cancel"
+        )
+        cancel.on_click(None)
+        assert cleared == []
+        assert page.dialogs == []
+
+        clear_button.on_click(None)
+        confirm = next(
+            action
+            for action in page.dialogs[-1].actions
+            if isinstance(action, ft.FilledButton)
+            and action.content == "Clear all user data"
+        )
+        confirm.on_click(None)
+
+        assert cleared == [1]
+        assert page.dialogs == []
 
 
 class TestEnsureFilePicker:

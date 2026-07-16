@@ -188,6 +188,21 @@ def parse_ingredient_line(text: str) -> ParsedLine:
     # Remove parentheticals from the working name (they held metric hints).
     working = _PAREN_RE.sub(" ", head).strip()
 
+    # Normalize tightly attached metric quantities before the leading-number
+    # parser. A word-boundary after the number does not exist in ``500g`` /
+    # ``200ml`` / ``1kg`` because both digits and letters are word characters.
+    # Limit this rewrite to known mass/volume units so ingredient names such as
+    # "7up" are not split into fabricated quantities.
+    tight_units = sorted(
+        set(_MASS_TO_G) | set(_VOLUME_TO_ML), key=len, reverse=True
+    )
+    working = re.sub(
+        r"^(\d+(?:\.\d+)?)(" + "|".join(re.escape(unit) for unit in tight_units) + r")\b",
+        r"\1 \2 ",
+        working,
+        flags=re.I,
+    ).strip()
+
     # Leading quantity, then optional unit.
     qty, rest = _parse_leading_quantity(working)
     unit: str | None = None

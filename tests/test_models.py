@@ -1,11 +1,14 @@
 """Model contract tests: enums, labels, nutrient math, quote validation."""
 
+from dataclasses import replace
+
 import pytest
 
 from models import (
     PRICE_SOURCE_LABELS,
     FoodGroup,
     Nutrients,
+    PackageOption,
     PrepState,
     PriceQuote,
     PriceSource,
@@ -59,6 +62,34 @@ class TestNutrients:
 
     def test_every_nutrient_has_a_label(self):
         assert set(Nutrients.NUTRIENT_LABELS) == set(Nutrients.NAMES)
+
+
+def test_food_backfills_stable_unique_package_ids(foods):
+    food = foods[0]
+    without_ids = tuple(replace(package, package_id="") for package in food.package_options)
+    first = replace(food, package_options=without_ids)
+    second = replace(food, package_options=tuple(reversed(without_ids)))
+    assert all(package.package_id for package in first.package_options)
+    assert len({package.package_id for package in first.package_options}) == len(
+        first.package_options
+    )
+    assert {package.label: package.package_id for package in first.package_options} == {
+        package.label: package.package_id for package in second.package_options
+    }
+
+
+def test_food_rejects_duplicate_explicit_package_ids(foods):
+    food = foods[0]
+    package = food.package_options[0]
+    duplicate = PackageOption(
+        label=f"{package.label} duplicate",
+        grams=package.grams + 1,
+        seed_price=package.seed_price,
+        ml=(package.ml + 1 if package.ml is not None else None),
+        package_id=package.package_id,
+    )
+    with pytest.raises(ValueError, match="duplicate package ids"):
+        replace(food, package_options=(package, duplicate))
 
 
 def _quote(**overrides) -> PriceQuote:
