@@ -249,9 +249,9 @@ def aligned_food_card_grid(cards: Sequence[ft.Container]) -> ft.ResponsiveRow:
     """Responsive grid that preserves each card's compact content height."""
 
     controls = list(cards)
-    for card in controls:
-        card.width = None
-        card.col = {
+    for food_card in controls:
+        food_card.width = None
+        food_card.col = {
             ft.ResponsiveRowBreakpoint.XS: 12,
             ft.ResponsiveRowBreakpoint.LG: 6,
         }

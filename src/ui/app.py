@@ -150,7 +150,7 @@ def main(page: ft.Page):
 
     brand_mark = ft.Container(
         content=ft.Image(
-            src="/RightMeal logo.png",
+            src="/icon.png",
             width=34,
             height=34,
             fit=ft.BoxFit.CONTAIN,

@@ -17,7 +17,8 @@ from pathlib import Path
 try:
     import httpx
 except ImportError:  # pragma: no cover
-    print("httpx is required (run via the project venv)."); sys.exit(1)
+    print("httpx is required (run via the project venv).")
+    sys.exit(1)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 INDEX_PATH = PROJECT_ROOT / "src" / "data" / "recipe_index.json"
@@ -29,11 +30,11 @@ MAX_BYTES = 3_000_000
 def main() -> None:
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
     index = json.loads(INDEX_PATH.read_text(encoding="utf-8"))
-    wanted: list[str] = []
-    for r in index["recipes"]:
-        asset = r.get("image_asset")
-        if asset:
-            wanted.append(Path(asset).stem)  # the slug
+    wanted = [
+        Path(asset).stem
+        for recipe in index["recipes"]
+        if (asset := recipe.get("image_asset"))
+    ]
 
     got = skipped = failed = 0
     with httpx.Client(follow_redirects=True, timeout=30.0) as client:

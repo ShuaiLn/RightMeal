@@ -1,19 +1,14 @@
 """Explanation layer tests: local templates, OpenAI validation, fallbacks."""
 
-import json
-
-import httpx
 import pytest
 
+from conftest import openai_client, result_from_demand
 from models import BudgetStatus, HouseholdProfile
 from services.explanation import (
     LocalExplanationService,
     OpenAIExplanationService,
     get_explanation_service,
 )
-
-from conftest import result_from_demand
-
 
 @pytest.fixture
 def feasible_result(foods_by_id, seed_quotes, nutrition):
@@ -87,9 +82,6 @@ class TestLocalExplanations:
                 assert "www." not in lowered
                 for banned in ("cure", "treat", "diagnos", "prevent disease", "heal "):
                     assert banned not in lowered
-
-
-from conftest import openai_client  # shared mock OpenAI transport
 
 
 def valid_payload(result) -> dict:

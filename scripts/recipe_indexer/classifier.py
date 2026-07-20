@@ -7,7 +7,6 @@ recipe_overrides.json is the final word for anything the rules get wrong.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, field
 
 # recipe_type -> which meal slots this recipe may fill as the primary dish.

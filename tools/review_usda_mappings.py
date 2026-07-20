@@ -96,18 +96,22 @@ def _validate_candidate(ingredient_id: str, meta: dict, cand: dict) -> tuple[lis
 
     # 3. Basic ingredient matched to a branded product or a composite dish.
     if cand.get("dataType") == "Branded":
-        notes.append("branded product"); confidence -= 0.1
+        notes.append("branded product")
+        confidence -= 0.1
     if " with " in desc or re.search(r"\b(and|in)\b .*\bsauce\b", desc):
-        notes.append("possible composite dish"); confidence -= 0.1
+        notes.append("possible composite dish")
+        confidence -= 0.1
 
     # 4. Preparation-state mismatch (raw vs cooked/canned/dried).
     cand_state = next((w for w in _STATE_WORDS if re.search(rf"\b{w}\b", desc)), None)
     if cand_state and cand_state not in _STATE_COMPAT.get(expected_state, {expected_state}):
-        notes.append(f"state '{cand_state}' vs expected '{expected_state}'"); confidence -= 0.08
+        notes.append(f"state '{cand_state}' vs expected '{expected_state}'")
+        confidence -= 0.08
 
     # 5. Key nutrient abnormally missing for the role.
     if role == "protein" and float(nutr.get("protein_g", 0) or 0) <= 0:
-        notes.append("protein_g is 0 for a protein"); confidence -= 0.1
+        notes.append("protein_g is 0 for a protein")
+        confidence -= 0.1
 
     return hard, round(max(confidence, 0.5), 2), notes
 

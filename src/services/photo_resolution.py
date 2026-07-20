@@ -21,7 +21,6 @@ from models.purchase_log import (
     GRAMS_SOURCE_USER_ENTERED,
     GRAMS_SOURCE_VISIBLE_TOTAL,
     GRAMS_SOURCE_VISIBLE_UNIT_TIMES_QUANTITY,
-    GRAMS_SOURCES,
 )
 from services.pantry_matcher import normalize_identity
 

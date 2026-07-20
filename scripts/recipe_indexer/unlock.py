@@ -9,7 +9,7 @@ recipe missing several core ingredients would score every single one 0 for
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 # Core-role weight: unlocking a main protein/carb matters more than a minor fat.
 _ROLE_WEIGHT = {

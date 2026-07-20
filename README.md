@@ -1,7 +1,7 @@
 # RightMeal
 
 <p align="center">
-  <img src="RightMeal%20logo.png" alt="RightMeal logo" width="180">
+  <img src="src/assets/icon.png" alt="RightMeal logo" width="180">
 </p>
 
 RightMeal is a local-first grocery, meal, pantry, and nutrition-planning application built with Python and [Flet](https://flet.dev/). It creates a calendar of traceable, named recipes for a household, derives the ingredient demand, uses current pantry stock first, rounds the remaining demand into purchasable packages, and checks the resulting estimate against an **Estimated basket budget cap**.
@@ -49,6 +49,8 @@ RightMeal is a planning aid, not a store or checkout service. It has no accounts
 - Reports typed planning outcomes instead of presenting bounded-search exhaustion as proof that no plan exists.
 - Tracks purchased food, prepared meals, eaten status, raw pantry deductions, and prepared leftovers.
 - Supports manual pantry entries, inert custom items, product-photo imports, and multi-image receipt imports.
+- Supports safe corrections: purchase groups and meal preparation can be undone only when an exact reversal is still possible; otherwise display status or notes can be corrected without replaying inventory mutations.
+- Shows actual eaten-day nutrition in Calendar and suggests diet-compatible catalog foods for the most important shortfall.
 - Works without API keys; optional credentials improve live prices and enable OpenAI-assisted features.
 - Stores ordinary user data locally and uses atomic, journaled transactions for multi-file state changes.
 
@@ -162,6 +164,102 @@ The profile can be edited later. If the household profile changes after a plan i
 | **Pantry** | Edit raw catalog stock, add items manually, import a product photo or receipt, manage custom items, link a custom item to the catalog, and manage prepared leftovers. |
 | **Calendar** | View the saved plan on real calendar dates, inspect a day's meals and eaten-status dots, and jump back to that date in Plan. |
 | **Profile** | Edit household settings and optional keys, inspect provider configuration, or clear all local user data after confirmation. |
+
+### Complete page-by-page feature reference
+
+The following inventory lists every currently reachable user operation. Formatting helpers and internal implementation functions are covered later under [Architecture](#architecture), rather than being presented as separate product features.
+
+#### Application shell and onboarding
+
+- Loads `.env`, resolves the local profile directory, and runs transaction recovery before loading user stores.
+- Opens onboarding when no profile exists, Plan when a saved plan exists, and Start otherwise.
+- Provides persistent navigation among Start, Plan, Pantry, Calendar, and Profile.
+- Uses non-negative steppers for adults, children, and seniors and requires at least one household member.
+- Provides vegetarian, no-pork, and lactose-free switches plus removable free-form allergy chips. Common allergens can be added from suggestions or typed manually.
+- Validates the five-digit U.S. ZIP code before saving a profile or starting a plan.
+- Prefetches images referenced by the saved plan; Calendar itself renders only bundled or already cached images.
+- Shows startup warnings when an interrupted transaction was recovered or when protected purchase history could not be read; an unreadable photo-import ledger is reported when an import is attempted.
+
+#### Start page
+
+- Accepts a positive **Estimated basket budget cap** in daily or weekly mode and shows the cap converted to the selected inclusive date range.
+- Provides an inclusive first/last date picker and validates the planning ZIP code independently of the saved default.
+- Offers **High variety**, **Balanced**, and **Meal prep** scheduling styles and saves the selected style back to the profile.
+- Preserves the unsaved budget, ZIP, cap mode, variety style, and date range while the user temporarily opens Profile to edit the household. An untouched ZIP follows the updated profile default when the form is restored.
+- Disables planning for a zero-member household and shows the current household summary next to **Edit household**.
+- Reports progress separately for offer lookup, recipe selection, blocking-food fallback lookup, and explanation generation.
+- Automatically saves only a complete, fully priced candidate within the cap.
+- For an above-cap complete candidate, shows the observed candidate price and can copy that amount back into the cap field; it does not present the amount as a proven minimum.
+- Requires a review dialog and a second explicit warning before saving a partial food-coverage plan.
+- Displays distinct messages for missing data, bounded-search exhaustion, above-cap candidates, and other typed planning outcomes. A non-saveable outcome never replaces the existing plan.
+- Can delete only the current plan after confirmation while preserving the profile, pantry, purchases, and prepared leftovers.
+
+#### Plan page: basket and purchases
+
+- Displays persistent banners for partial plans and plans made for an older household profile, plus budget/nutrition/relaxation warnings.
+- Shows the current estimated purchased amount, estimated still-needed amount, original basket estimate, cap, horizon, and mix of saved price sources.
+- Recomputes live **Use from pantry** and **Need to buy** allocations from current stock without changing the frozen meal schedule. Ended plans display their saved historical allocation and disable new purchase actions.
+- Groups each food's selected package offers, including mixed package sizes or retailers, and shows package count, physical amount, price, store, source, matched product, confidence, and match reason.
+- Uses the catalog/recent-purchase package unit for display while retaining grams as the inventory identity.
+- Records a linked package row with **Purchased**, adds its exact package grams to Pantry, updates plan progress, and creates an immutable purchase event.
+- Imports receipt photos directly from the basket section as an alternative to the per-package button.
+- Separates unpurchased rows from an expandable purchase history grouped by the original button press or receipt import.
+- Undoes a whole purchase group only when it is the newest active purchase for every affected food, the stock has not been consumed, the plan is still active, and the record is not a legacy migration. Undo marks events void instead of deleting audit history and removes only the grams contributed by that group.
+- Pauses purchase and undo actions when the existing purchase log is unreadable, instead of treating the log as empty.
+- Lists unpriced pantry staples used by recipes as a separate checklist rather than silently adding them to the priced basket.
+
+#### Plan page: meals, tracking, nutrition, and explanation
+
+- Provides a plan-day strip and scroll navigation for **Basket**, **Daily meals**, **Nutrition**, and **Why this basket?**.
+- Shows breakfast, lunch, and dinner cards with a bundled dish image when available, an ingredient-image fallback, servings, per-person nutrition, component amounts, batch/prepared-leftover labels, and missing-slot cards when necessary.
+- Opens meal details with recipe provenance and original directions. If directions are absent, it can load a signature-cached OpenAI fallback; without a key it shows a configuration placeholder.
+- Can reveal a selected day's nutrient totals separately from the whole-horizon nutrition report.
+- Marking a normal meal **Eaten** deducts its raw ingredient draw once, records preparation separately from display status, and immediately asks whether any food remains.
+- The leftover prompt supports **No leftovers**, an overall percentage slider, component-specific remaining percentages, an optional note, and OpenAI note analysis. Component values override the overall percentage.
+- A clean **Undo** restores exactly the recorded raw pantry draw and reverses any untouched leftover record. When downstream leftover history prevents a safe reversal, **Fix status** changes only the displayed eaten state and cannot trigger a second pantry deduction later.
+- Allows correction of the leftover amount while the record is still editable; after downstream use, only the note can be corrected.
+- Batch dinners deduct the batch quantity once and may create a reserved prepared-leftover record for a linked future lunch. The linked lunch consumes that record and never deducts raw ingredients again.
+- Meals assigned from pre-existing prepared leftovers consume only the referenced record. Missing, discarded, or insufficient records fail conservatively and never invent stock.
+- Compares both planned consumption and currently covered food against all 12 horizon targets, reports exact gaps, and shows coverage of all six food groups.
+- Shows a deterministic local or validated AI-assisted explanation, item-level reasons, budget trade-offs, food-group coverage, and the generated-by label.
+
+#### Pantry page
+
+- Displays catalog stock as image cards, optionally showing the latest recorded brand.
+- Edits amounts in an appropriate package/count/volume/mass unit while storing normalized grams; setting an amount to zero or using Remove deletes the raw-stock entry.
+- Provides a searchable catalog add box. Exact names and reviewed aliases can auto-match, medium-confidence matches require disambiguation, and re-adding an existing food increases its current stock.
+- Saves unmatched input as a Custom item only after review. A custom record can keep its display/original name, amount, unit, estimated grams, brand, price, expiration date, creation time, and image.
+- Keeps Custom items inert until explicitly linked. Linking offers reviewed suggestions plus the full catalog, requires confirmation, transfers the estimated grams into catalog stock, and then enables planning/nutrition use.
+- Allows a Custom item to keep a locally uploaded JPG/PNG or a user-selected Wikimedia Commons image. Uploaded/downloaded files are normalized before storage; Commons attribution and license metadata are retained.
+- Supports replacing a Custom-item image, keeping the placeholder, or removing the Custom item.
+- Starts product-photo and receipt-import flows from Pantry in addition to the receipt entry point on Plan.
+- Lists available prepared leftovers by suggested use-by date. A detail dialog shows origin, remaining servings/components, preparation/use-by dates, note, batch status, and any current-plan reservation.
+- For an unreserved prepared leftover, supports **Eat now**, reducing the remaining amount, correcting the original estimate while untouched, and discarding it. Remaining food can only decrease; cooked food cannot be converted back into raw pantry stock.
+- Locks a prepared leftover reserved by the current plan until that meal is eaten or the plan is regenerated/deleted.
+
+#### Calendar page
+
+- Opens on today when today is inside the plan, otherwise on the plan's first date.
+- Navigates previous/next months, highlights today and plan dates, and shows one eaten-status dot for each scheduled meal.
+- Shows the selected day's recipe cards, serving/component summaries, leftover state, notes, and partial/stale-plan warnings in read-only form.
+- Jumps from any planned date to that day's meal cards on Plan, where tracking mutations are performed.
+- After at least one meal is logged, totals what was actually eaten for that day, shows calories plus the two lowest-covered nutrients by default, and can reveal all 12 nutrient statuses.
+- Suggests diet-compatible catalog foods for the worst lacking or borderline nutrient. Past days and the current day use different status wording so an unfinished current day is not presented as a final failure.
+
+#### Profile page and destructive actions
+
+- Reuses the full household, dietary, allergy, city, and ZIP form from onboarding.
+- Stores optional Kroger, Instacart, BLS, OpenAI, and developer FDC keys with reveal controls; blank fields defer to `.env`/environment variables.
+- Shows whether Kroger, Instacart, BLS, and OpenAI-backed explanations are currently configured.
+- Marks an existing plan stale after relevant household/profile changes rather than silently rebuilding or deleting it.
+- **Clear all user data** requires confirmation and deletes the profile and keys, plan, pantry and Custom items, prepared leftovers, purchase/import history, fallback recipe cache, imported/purchase photos, pending transaction artifacts, and in-memory session cache. It invalidates in-flight planning and photo work before deletion.
+
+#### Cross-page concurrency and correction behavior
+
+- A profile change, pantry change, new plan request, plan deletion, or full data clear invalidates older in-flight generation work before it can save.
+- Photo review dialogs capture plan, pantry, purchase, import-ledger, catalog-package, and price-offer revisions. A stale dialog must be reviewed again instead of committing against changed state.
+- Stateful writes snapshot memory before persistence and restore it when the disk transaction fails.
+- Repeated clicks and completed-operation retries are idempotent through stable operation, purchase, basket, and leftover IDs.
 
 ### Typical workflow
 
@@ -472,6 +570,15 @@ Before upload or persistence, Pillow:
 - Only eligible positive printed merchandise line totals are recorded. Missing prices remain unknown.
 - A final report lists Pantry additions, Custom-item additions, and every ignored/unconfirmed line.
 
+### Import review, duplicate, and retry rules
+
+- Product review exposes the detected facts, candidate catalog match, food form, amount/weight evidence, package unit, optional visible price, and destination. The user can apply it to active-plan progress, add it only to Pantry, keep it as a Custom item, or ignore it.
+- Receipt batch review exposes every detected merchandise and non-merchandise line. Individual food lines can be enabled, disabled, edited, rematched, redirected, or left unresolved before the batch is committed.
+- A previously imported product image or receipt whose output still exists requires an additional duplicate acknowledgement. A duplicate warning stops appearing after all output from the earlier import has been voided, consumed, removed, or linked and depleted.
+- Retrying the same fully committed operation returns the existing result and never adds grams twice. A reused operation ID with changed images/commands, or a partially present operation/child manifest, fails closed for manual review.
+- Receipt transaction fingerprints use reliable receipt identity and money fields rather than mutable AI display text; deterministic child IDs keep retries stable.
+- A stale confirmation context, corrupt import ledger, unsafe image path, invalid amount/unit, or mismatched basket/package link writes nothing.
+
 Image hashes, transaction fingerprints, deterministic event IDs, optimistic revision checks, and an import ledger prevent accidental replay or stale-dialog commits. The plan, pantry, purchase log, import ledger, custom items, and image files are saved as one logical operation; failures roll back the JSON state and remove newly written images unless crash recovery is required.
 
 Before selecting a receipt image, crop names, addresses, payment/member details, and QR codes. The application cannot reliably redact all sensitive visual content automatically.
@@ -625,6 +732,25 @@ Services provide package pricing, dietary filters, nutrition math, live source a
 ### UI
 
 `src/ui/app.py` owns application startup, recovery, navigation, and view switching. UI handlers call domain flows and then re-render; planning and import operations use snapshots/tokens so late async results cannot overwrite newer state.
+
+### Runtime capability map
+
+| Capability | Primary implementation | Behavior exposed to the rest of the project |
+|---|---|---|
+| Catalog/data loading | `data/loader.py` | Loads and validates seed/extended foods, targets, package metadata, aliases, mappings, and the compiled recipe index using package-relative paths. |
+| Recipe planning | `services/planner_engine.py`, `planner/recipe_scheduler.py` | Produces typed outcomes, deterministic schedules, search statistics, validated repair attempts, and partial-plan candidates. |
+| Demand and sourcing | `planner/demand.py`, `services/source_allocation.py` | Aggregates raw-basis meal draws, assigns current pantry and prepared food, refits open package gaps, and freezes historical-plan presentation. |
+| Basket/package costing | `services/basket_builder.py`, `services/package_units.py`, `services/units.py` | Normalizes supported units, preserves offer identity, finds whole-package combinations, and computes exact-cent cost/status. |
+| Price acquisition | `services/price_engine.py`, `services/price_providers/` | Runs Kroger/Instacart/BLS/seed tiers, validates quotes, bounds concurrency, reports progress, and caches success or failure for the session. |
+| Dietary and nutrition rules | `services/dietary.py`, `services/nutrition.py`, planner validators | Applies hard exclusions, computes household/horizon targets and consumed/covered totals, identifies daily nutrient status, and produces safe food suggestions. |
+| Purchase and pantry accounting | `services/pantry_flow.py`, `services/purchase_log_store.py`, `services/pantry_store.py` | Records immutable events, exact baselines, void history, plan progress, confirmed/estimated value, pantry mutations, and legacy migration/rebuild behavior. |
+| Meal and leftover accounting | `services/meal_tracking_flow.py`, `services/prepared_leftovers_store.py`, `planner/leftover_prepass.py` | Makes preparation idempotent, records component leftovers, enforces safe edits/undo, creates batch records, reserves ready meals, and consumes them only when eaten. |
+| Photo analysis and import | `services/photo_analyzer.py`, `photo_images.py`, `photo_resolution.py`, `photo_imports.py`, receipt services | Sanitizes images, requests structured extraction, resolves evidence-backed amounts/prices, validates receipts, detects duplicates/stale contexts, and atomically commits all outputs. |
+| Local catalog matching | `services/pantry_matcher.py`, `services/ingredient_matching.py` | Uses reviewed aliases, lexical scoring, food-form conflicts, and bundled multilingual embeddings while leaving uncertain choices to the user. |
+| Recipe directions and explanations | `services/recipe_service.py`, `services/explanation/`, `services/leftover_analyzer.py` | Prefers source directions, validates optional OpenAI JSON, signatures/caches fallback steps, analyzes leftover notes, and falls back to deterministic local output. |
+| Images and attribution | `services/image_cache.py`, `services/wikimedia_images.py`, UI image processing | Uses bundled recipe media, caches remote ingredient images, validates/sanitizes user or Commons images, and retains Commons license metadata. |
+| Persistence and transactions | Store classes and `services/tx.py` | Performs versioned loads/migrations, atomic writes, shared-lock multi-file commits, rollback, crash recovery, corrupt-journal quarantine, and protected-log failure states. |
+| Session/state coordination | `ui/state.py`, `services/cache.py` | Holds loaded state and revisions, resolves display images/brands, invalidates stale async work, and caches provider results without changing durable planning inputs. |
 
 ## Recipe catalog development
 

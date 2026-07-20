@@ -21,7 +21,6 @@ from __future__ import annotations
 
 import json
 import os
-import sys
 import time
 from pathlib import Path
 
@@ -122,15 +121,15 @@ def _fetch_candidates(client, api_key: str, terms: list[str]) -> list[dict]:
     # Preserve the data-type preference order; keep several for human review.
     foods.sort(key=lambda f: PREFERRED_TYPES.index(f["dataType"])
                if f.get("dataType") in PREFERRED_TYPES else 99)
-    candidates = []
-    for f in foods[:6]:
-        candidates.append({
+    return [
+        {
             "fdcId": f.get("fdcId"),
             "description": f.get("description"),
             "dataType": f.get("dataType"),
             "nutrients_per_100g": _extract_nutrients(f),
-        })
-    return candidates
+        }
+        for f in foods[:6]
+    ]
 
 
 def main() -> None:

@@ -5,11 +5,10 @@ Flet (Python) desktop/web app that plans a grocery basket and calendar of
 named meals for a household within a budget. See [README.md](README.md) for
 the user-facing feature description and disclaimers.
 
-> **README.md is currently stale.** The codebase is mid-refactor from an
-> optimizer/template meal engine to a recipe-first engine (see below). The
-> README's "How the optimizer works" / "From basket to meals" / "Architecture"
-> sections still describe the *old* design. Trust the code and this file over
-> the README until it's rewritten.
+> **README.md describes the current recipe-first application.** Keep its
+> complete feature inventory, limitations, architecture, and repository counts
+> synchronized with behavior changes. When documentation and code conflict,
+> verify the current implementation and update both this file and the README.
 
 ## Run & test
 
@@ -26,7 +25,7 @@ Rebuilding the recipe catalog (dev-time only, not run by the app):
 python scripts/build_recipe_index.py
 ```
 
-Reads `content/*.md` (recipe markdown, read-only, ~435 files) plus the
+Reads `content/*.md` (408 recipe files plus `_index.md`, read-only) plus the
 curated JSON in `src/data/` (`ingredient_registry.json`,
 `ingredient_aliases.json`, `ingredient_overrides.json`,
 `ingredient_portion_defaults.json`, `ingredient_price_defaults.json`,
@@ -73,7 +72,7 @@ Layered, one-way dependencies, no framework code below the UI:
 
 ### The recipe-first pivot
 
-The old design (still described in README.md) built a shopping basket first
+The old design built a shopping basket first
 via a pure-Python optimizer (`src/optimizer/`, now deleted) against a curated
 ~53-food catalog, then scheduled hand-written dish *templates*
 (`SHORT_NAMES`, `ComponentSpec.eligible`) on top of it. That engine is gone.
@@ -91,10 +90,12 @@ is fabricated, and calories are never topped up with an arbitrary
 rice/oil addition. If no valid plan can be built, `build_recipe_plan` raises
 `PlanGenerationError` with concrete reasons rather than returning a bad plan.
 
-Do not resurrect references to `optimizer/`, `templates.py`, or
-`SHORT_NAMES` — they no longer exist. If you're chasing an old note (a
-commit, a code comment, a past design doc) that mentions them, treat it as
-historical and check current code instead.
+Do not resurrect references to `optimizer/`, `templates.py`, or the old
+template-meal `SHORT_NAMES` table. Those planning components no longer exist.
+`planner.food_labels.SHORT_NAMES` is a current, presentation-only food-label
+mapping and is unrelated to the retired template engine. If an old note
+mentions template eligibility or basket-first planning, treat it as historical
+and check current code instead.
 
 ## Invariants worth protecting
 
